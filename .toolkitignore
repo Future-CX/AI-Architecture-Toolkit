@@ -1,0 +1,18 @@
+# Public but not active toolkit content
+BACKLOG.md
+CHANGELOG.md
+CONTEXT.md
+GLOSSARY.md
+www/
+examples/
+capabilities/
+
+# Local and operating system files
+.DS_Store
+**/.DS_Store
+
+# Local-only files
+.env
+.env.*
+.private/
+*.local.md
