@@ -1,0 +1,69 @@
+---
+name: write-a-capability-overview
+description: Write business capability overview documents from a standard template and store them under the root capabilities folder. Use when the user asks to create, draft, document, or assess a business capability, capability overview, capability map entry, or capability definition.
+---
+
+# Write A Capability Overview
+
+## Quick Start
+
+Write capability overview documents under `capabilities/` using the preset template in `templates/capability-overview-template.md`.
+
+Use the helper script when the requested capability has clear input values:
+
+```sh
+python3 skills/write-a-capability-overview/scripts/write-capability-overview.py "Order Management" \
+  --domain "Commerce" \
+  --business-objective "Improve order accuracy, lifecycle visibility, and fulfillment coordination." \
+  --stakeholder "Customer service" \
+  --stakeholder "Operations" \
+  --existing-system "ERP" \
+  --strategic-importance "High" \
+  --pain-point "Order status is fragmented across systems." \
+  --related-capability "Inventory Management"
+```
+
+This creates `capabilities/order-management.md`.
+
+## Required Inputs
+
+- Capability name
+- Domain
+- Business objective
+- Stakeholders
+- Existing systems
+- Strategic importance
+- Pain points
+- Related capabilities
+
+## Workflow
+
+1. Gather the required inputs.
+2. Convert the capability name to `capabilities/<slug>.md`.
+3. Derive the outputs from the inputs and any available repository context.
+4. Use `templates/capability-overview-template.md` as the output structure.
+5. Do not overwrite an existing capability file unless the user explicitly asks.
+6. Keep company-confidential details out of the public toolkit repository; use a private company lab repo for real company content.
+
+## Required Outputs
+
+Each capability overview must include:
+
+- Capability definition
+- Business outcome
+- Scope
+- Inputs/outputs
+- Actors
+- Processes supported
+- Applications involved
+- Data involved
+- Integrations
+- KPIs
+- NFR considerations
+- Risks
+- Maturity assessment
+- Future-state considerations
+
+## Template
+
+Use `templates/capability-overview-template.md` as the source template for generated capability overview files.
