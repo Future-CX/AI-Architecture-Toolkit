@@ -30,7 +30,7 @@ def slugify(name: str) -> str:
     slug = re.sub(r"[^a-z0-9]+", "-", strip_capability_suffix(name).lower()).strip("-")
     if not slug:
         raise ValueError("Capability name must contain at least one letter or number.")
-    return f"{slug}.md"
+    return slug
 
 
 def bullet_list(items: list[str], fallback: str = "TBD") -> str:
@@ -133,9 +133,11 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     capability_name = normalize_name(args.name)
+    capability_slug = slugify(args.name)
     output_root = Path(args.output_root).expanduser().resolve()
     capabilities_dir = output_root / "capabilities"
-    target = capabilities_dir / slugify(args.name)
+    capability_dir = capabilities_dir / capability_slug
+    target = capability_dir / f"{capability_slug}.md"
 
     if target.exists() and not args.force:
         raise SystemExit(f"Refusing to overwrite existing file: {target}")
@@ -176,12 +178,12 @@ def main() -> None:
     for token, value in replacements.items():
         rendered = rendered.replace(token, value)
 
-    capabilities_dir.mkdir(parents=True, exist_ok=True)
+    capability_dir.mkdir(parents=True, exist_ok=True)
     target.write_text(rendered + "\n", encoding="utf-8")
     capability_list = update_capability_list(
         capabilities_dir,
         capability_name,
-        target.name,
+        f"{capability_slug}/{target.name}",
         paragraph(args.business_objective),
     )
     print(target)

@@ -7,7 +7,7 @@ description: Write business capability overview documents from a standard templa
 
 ## Quick Start
 
-Write capability overview documents under the consuming repository's root `capabilities/` folder using the preset template in `templates/capability-overview-template.md`.
+Write capability overview documents under the consuming repository's root `capabilities/<slug>/` folder using the preset template in `templates/capability-overview-template.md`.
 
 When this toolkit is used as a submodule, do not write generated capability files under `toolkit/capabilities/`. Run the command from the private repository root, or pass `--output-root <private-repo-root>`, so output goes to `<private-repo-root>/capabilities/`.
 
@@ -25,9 +25,9 @@ python3 skills/write-a-capability-overview/scripts/write-capability-overview.py 
   --related-capability "Inventory Management"
 ```
 
-This creates `capabilities/order-management.md`.
+This creates `capabilities/order-management/order-management.md`.
 
-If the requested name includes a redundant leading or trailing word `Capability`, remove it from the generated filename. For example, `Search Capability` and `Capability Search` both create `capabilities/search.md`.
+If the requested name includes a redundant leading or trailing word `Capability`, remove it from the generated folder and filename. For example, `Search Capability` and `Capability Search` both create `capabilities/search/search.md`.
 
 Each generated capability must also be added to `capabilities/_capability-list.md` using a markdown table with `name`, `description`, and `last_updated` columns. Create `_capability-list.md` when it does not exist. Keep rows sorted alphabetically by capability name.
 
@@ -44,7 +44,7 @@ python3 toolkit/skills/write-a-capability-overview/scripts/write-capability-over
   --related-capability "Inventory Management"
 ```
 
-Run from the private lab root, this creates `capabilities/order-management.md` beside `toolkit/`.
+Run from the private lab root, this creates `capabilities/order-management/order-management.md` beside `toolkit/`.
 
 ## Required Inputs
 
@@ -60,11 +60,11 @@ Run from the private lab root, this creates `capabilities/order-management.md` b
 ## Workflow
 
 1. Gather the required inputs.
-2. Convert the capability name to `<workspace-root>/capabilities/<slug>.md`, removing a redundant leading or trailing word `Capability` from the slug.
+2. Convert the capability name to `<workspace-root>/capabilities/<slug>/<slug>.md`, removing a redundant leading or trailing word `Capability` from the slug.
 3. Derive the outputs from the inputs and any available repository context.
 4. Use `templates/capability-overview-template.md` as the output structure.
 5. Do not overwrite an existing capability file unless the user explicitly asks.
-6. Add or update the generated capability in `<workspace-root>/capabilities/_capability-list.md` with a relative link, description, and `last_updated` date.
+6. Add or update the generated capability in `<workspace-root>/capabilities/_capability-list.md` with a relative link to `<slug>/<slug>.md`, description, and `last_updated` date.
 7. If the toolkit is mounted as `toolkit/` in a private lab repo, write the generated capability overview to the private lab root, not to `toolkit/capabilities/`.
 8. Keep company-confidential details out of the public toolkit repository; use a private company lab repo for real company content.
 
