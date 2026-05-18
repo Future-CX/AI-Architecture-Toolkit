@@ -7,7 +7,9 @@ description: Write business capability overview documents from a standard templa
 
 ## Quick Start
 
-Write capability overview documents under `capabilities/` using the preset template in `templates/capability-overview-template.md`.
+Write capability overview documents under the consuming repository's root `capabilities/` folder using the preset template in `templates/capability-overview-template.md`.
+
+When this toolkit is used as a submodule, do not write generated capability files under `toolkit/capabilities/`. Run the command from the private repository root, or pass `--output-root <private-repo-root>`, so output goes to `<private-repo-root>/capabilities/`.
 
 Use the helper script when the requested capability has clear input values:
 
@@ -25,6 +27,21 @@ python3 skills/write-a-capability-overview/scripts/write-capability-overview.py 
 
 This creates `capabilities/order-management.md`.
 
+When running from a private lab repo that contains this toolkit as a submodule:
+
+```sh
+python3 toolkit/skills/write-a-capability-overview/scripts/write-capability-overview.py "Order Management" \
+  --domain "Commerce" \
+  --business-objective "Improve order accuracy, lifecycle visibility, and fulfillment coordination." \
+  --stakeholder "Customer service" \
+  --existing-system "ERP" \
+  --strategic-importance "High" \
+  --pain-point "Order status is fragmented across systems." \
+  --related-capability "Inventory Management"
+```
+
+Run from the private lab root, this creates `capabilities/order-management.md` beside `toolkit/`.
+
 ## Required Inputs
 
 - Capability name
@@ -39,11 +56,12 @@ This creates `capabilities/order-management.md`.
 ## Workflow
 
 1. Gather the required inputs.
-2. Convert the capability name to `capabilities/<slug>.md`.
+2. Convert the capability name to `<workspace-root>/capabilities/<slug>.md`.
 3. Derive the outputs from the inputs and any available repository context.
 4. Use `templates/capability-overview-template.md` as the output structure.
 5. Do not overwrite an existing capability file unless the user explicitly asks.
-6. Keep company-confidential details out of the public toolkit repository; use a private company lab repo for real company content.
+6. If the toolkit is mounted as `toolkit/` in a private lab repo, write the generated capability overview to the private lab root, not to `toolkit/capabilities/`.
+7. Keep company-confidential details out of the public toolkit repository; use a private company lab repo for real company content.
 
 ## Required Outputs
 

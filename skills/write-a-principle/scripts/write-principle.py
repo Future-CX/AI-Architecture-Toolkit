@@ -8,9 +8,7 @@ import re
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[3]
 TEMPLATE = Path(__file__).resolve().parents[1] / "templates" / "principle-template.md"
-PRINCIPLES_DIR = ROOT / "principles"
 
 
 def title_case_name(name: str) -> str:
@@ -46,6 +44,11 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--usage", required=True, help="Usage guidance for applying the principles.")
     parser.add_argument(
+        "--output-root",
+        default=".",
+        help="Repository root where the principles folder should be created. Defaults to the current working directory.",
+    )
+    parser.add_argument(
         "--force",
         action="store_true",
         help="Overwrite the principle file if it already exists.",
@@ -56,7 +59,9 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     principle_name = title_case_name(args.name)
-    target = PRINCIPLES_DIR / slugify_name(args.name)
+    output_root = Path(args.output_root).expanduser().resolve()
+    principles_dir = output_root / "principles"
+    target = principles_dir / slugify_name(args.name)
 
     if target.exists() and not args.force:
         raise SystemExit(f"Refusing to overwrite existing file: {target}")
@@ -67,7 +72,7 @@ def main() -> None:
     rendered = rendered.replace("{{PRINCIPLES}}", format_principles(args.principle))
     rendered = rendered.replace("{{USAGE}}", args.usage.strip())
 
-    PRINCIPLES_DIR.mkdir(parents=True, exist_ok=True)
+    principles_dir.mkdir(parents=True, exist_ok=True)
     target.write_text(rendered + "\n", encoding="utf-8")
     print(target)
 

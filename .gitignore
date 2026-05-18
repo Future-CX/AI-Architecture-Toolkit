@@ -11,6 +11,7 @@ Thumbs.db
 # Local-only workspace files
 .private/
 *.local.md
+BACKLOG.md
 
 # Editor and IDE files
 .idea/

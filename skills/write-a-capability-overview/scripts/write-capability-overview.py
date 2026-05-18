@@ -8,9 +8,7 @@ import re
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[3]
 TEMPLATE = Path(__file__).resolve().parents[1] / "templates" / "capability-overview-template.md"
-CAPABILITIES_DIR = ROOT / "capabilities"
 
 
 def normalize_name(name: str) -> str:
@@ -49,6 +47,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--strategic-importance", required=True, help="Strategic importance, for example Low, Medium, High, or Critical.")
     parser.add_argument("--pain-point", action="append", required=True, help="Pain point. Repeat for multiple pain points.")
     parser.add_argument("--related-capability", action="append", required=True, help="Related capability. Repeat for multiple capabilities.")
+    parser.add_argument(
+        "--output-root",
+        default=".",
+        help="Repository root where the capabilities folder should be created. Defaults to the current working directory.",
+    )
     parser.add_argument("--force", action="store_true", help="Overwrite the capability file if it already exists.")
     return parser.parse_args()
 
@@ -56,7 +59,9 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     capability_name = normalize_name(args.name)
-    target = CAPABILITIES_DIR / slugify(args.name)
+    output_root = Path(args.output_root).expanduser().resolve()
+    capabilities_dir = output_root / "capabilities"
+    target = capabilities_dir / slugify(args.name)
 
     if target.exists() and not args.force:
         raise SystemExit(f"Refusing to overwrite existing file: {target}")
@@ -91,7 +96,7 @@ def main() -> None:
     for token, value in replacements.items():
         rendered = rendered.replace(token, value)
 
-    CAPABILITIES_DIR.mkdir(parents=True, exist_ok=True)
+    capabilities_dir.mkdir(parents=True, exist_ok=True)
     target.write_text(rendered + "\n", encoding="utf-8")
     print(target)
 
