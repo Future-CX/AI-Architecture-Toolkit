@@ -1,18 +1,14 @@
 # {{CAPABILITY_NAME}}
 
-_Provide the official or preferred name of the capability to be defined._
-
-## Capability Definition
-
-_Provide a clear description of the purpose and scope of the capability._
-
-{{CAPABILITY_DEFINITION}}
-
-## Domain
-
-_Specify the functional or business domain the capability belongs to._
-
-{{DOMAIN}}
+| Field                        | Value                            |
+| ---------------------------- | -------------------------------- |
+| Name                         | {{CAPABILITY_NAME}}              |
+| Description                  | {{CAPABILITY_DESCRIPTION}}       |
+| Domain                       | {{DOMAIN}}                       |
+| Application                  | {{APPLICATION}}                  |
+| Application Lifecycle Status | {{APPLICATION_LIFECYCLE_STATUS}} |
+| Owner(s)                     | {{OWNERS}}                       |
+| Last Update                  | {{LAST_UPDATE}}                  |
 
 ## Business Objective
 

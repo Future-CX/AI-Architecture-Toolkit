@@ -23,6 +23,8 @@ python3 toolkit/skills/architecture-decision-record/scripts/write-adr.py "Use Do
   --summary "Ordering and Billing will communicate via domain events instead of synchronous HTTP. This reduces runtime coupling and supports independent deployment, accepting eventual consistency as a trade-off."
 ```
 
+Each generated ADR is also added to `adr/_adr-list.md` using a markdown table with `name`, `description`, and `last_updated` columns. Create `_adr-list.md` when it does not exist. Keep rows sorted alphabetically by ADR title.
+
 Create ADRs only when all three conditions are true:
 
 1. The decision is hard to reverse.
@@ -35,7 +37,8 @@ Create ADRs only when all three conditions are true:
 2. Identify the meaningful alternatives that were rejected.
 3. Check whether the decision meets the ADR threshold.
 4. If it qualifies, write the ADR under the consuming repository's root `adr/` folder using `templates/adr-template.md`.
-5. If it does not qualify, summarize the decision inline without creating an ADR.
+5. Add or update the ADR in `adr/_adr-list.md` with a relative link, summary, and `last_updated` date.
+6. If it does not qualify, summarize the decision inline without creating an ADR.
 
 ## Format
 

@@ -45,6 +45,11 @@ def paragraph(value: str, fallback: str = "TBD") -> str:
     return cleaned if cleaned else fallback
 
 
+def inline_list(items: list[str], fallback: str = "TBD") -> str:
+    cleaned = [item.strip() for item in items if item.strip()]
+    return ", ".join(cleaned) if cleaned else fallback
+
+
 def escape_table_cell(value: str) -> str:
     return value.replace("|", "\\|").replace("\n", " ").strip()
 
@@ -137,8 +142,13 @@ def main() -> None:
 
     replacements = {
         "{{CAPABILITY_NAME}}": capability_name,
+        "{{CAPABILITY_DESCRIPTION}}": paragraph(args.business_objective),
         "{{CAPABILITY_DEFINITION}}": f"{capability_name} is the business capability responsible for achieving the stated objective within the {args.domain.strip()} domain.",
         "{{DOMAIN}}": paragraph(args.domain),
+        "{{APPLICATION}}": inline_list(args.existing_system),
+        "{{APPLICATION_LIFECYCLE_STATUS}}": "TBD",
+        "{{OWNERS}}": inline_list(args.stakeholder),
+        "{{LAST_UPDATE}}": date.today().isoformat(),
         "{{BUSINESS_OBJECTIVE}}": paragraph(args.business_objective),
         "{{BUSINESS_OUTCOME}}": "TBD: Define the measurable business outcome this capability should enable.",
         "{{STRATEGIC_IMPORTANCE}}": paragraph(args.strategic_importance),

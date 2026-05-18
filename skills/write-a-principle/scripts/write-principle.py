@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import re
+from datetime import date
 from pathlib import Path
 
 
@@ -30,6 +31,62 @@ def format_principles(items: list[str]) -> str:
     if not cleaned:
         raise ValueError("At least one principle is required.")
     return "\n".join(f"{index}. {item}." for index, item in enumerate(cleaned, start=1))
+
+
+def escape_table_cell(value: str) -> str:
+    return value.replace("|", "\\|").replace("\n", " ").strip()
+
+
+def parse_index_table(existing: str) -> dict[str, dict[str, str]]:
+    rows: dict[str, dict[str, str]] = {}
+    for line in existing.splitlines():
+        stripped = line.strip()
+        if not stripped.startswith("|") or stripped.startswith("| ---"):
+            continue
+        cells = [cell.strip() for cell in stripped.strip("|").split("|")]
+        if len(cells) != 3 or cells[0].lower() == "name":
+            continue
+        match = re.match(r"\[(?P<name>[^\]]+)\]\((?P<filename>[^)]+)\)", cells[0])
+        if not match:
+            continue
+        rows[match.group("filename")] = {
+            "name": match.group("name"),
+            "filename": match.group("filename"),
+            "description": cells[1].replace("\\|", "|"),
+            "last_updated": cells[2],
+        }
+    return rows
+
+
+def render_index_table(title: str, rows: dict[str, dict[str, str]]) -> str:
+    sorted_rows = sorted(rows.values(), key=lambda row: row["name"].lower())
+    lines = [
+        f"# {title}",
+        "",
+        "| name | description | last_updated |",
+        "| --- | --- | --- |",
+    ]
+    for row in sorted_rows:
+        lines.append(
+            f"| [{escape_table_cell(row['name'])}]({row['filename']}) | "
+            f"{escape_table_cell(row['description'])} | "
+            f"{escape_table_cell(row['last_updated'])} |"
+        )
+    return "\n".join(lines) + "\n"
+
+
+def update_principles_list(principles_dir: Path, principle_name: str, filename: str, description: str) -> Path:
+    principles_list = principles_dir / "_principles-list.md"
+    existing = principles_list.read_text(encoding="utf-8") if principles_list.exists() else ""
+    rows = parse_index_table(existing)
+    rows[filename] = {
+        "name": principle_name,
+        "filename": filename,
+        "description": description,
+        "last_updated": date.today().isoformat(),
+    }
+    principles_list.write_text(render_index_table("Principles List", rows), encoding="utf-8")
+    return principles_list
 
 
 def parse_args() -> argparse.Namespace:
@@ -74,7 +131,14 @@ def main() -> None:
 
     principles_dir.mkdir(parents=True, exist_ok=True)
     target.write_text(rendered + "\n", encoding="utf-8")
+    principles_list = update_principles_list(
+        principles_dir,
+        principle_name,
+        target.name,
+        args.intent.strip(),
+    )
     print(target)
+    print(principles_list)
 
 
 if __name__ == "__main__":

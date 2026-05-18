@@ -35,6 +35,8 @@ python3 toolkit/skills/write-a-principle/scripts/write-principle.py "Data Archit
 
 Run from the private lab root, this creates `principles/data-architecture-principles.md` beside `toolkit/`.
 
+Each generated principle is also added to `principles/_principles-list.md` using a markdown table with `name`, `description`, and `last_updated` columns. Create `_principles-list.md` when it does not exist. Keep rows sorted alphabetically by principle name.
+
 ## Workflow
 
 1. Determine the principle document name and convert it to `<workspace-root>/principles/<slug>.md`.
@@ -42,9 +44,10 @@ Run from the private lab root, this creates `principles/data-architecture-princi
 3. Capture 3-7 concrete principles.
 4. Capture practical usage guidance.
 5. Generate the file under the consuming repository's root `principles/` folder using the preset template.
-6. Do not overwrite an existing principle file unless the user explicitly asks.
-7. If the toolkit is mounted as `toolkit/` in a private lab repo, write the generated principle to the private lab root, not to `toolkit/principles/`.
-8. Keep the style consistent with the existing files in `principles/`.
+6. Add or update the generated principle in `<workspace-root>/principles/_principles-list.md` with a relative link, intent, and `last_updated` date.
+7. Do not overwrite an existing principle file unless the user explicitly asks.
+8. If the toolkit is mounted as `toolkit/` in a private lab repo, write the generated principle to the private lab root, not to `toolkit/principles/`.
+9. Keep the style consistent with the existing files in `principles/`.
 
 ## Output Standard
 

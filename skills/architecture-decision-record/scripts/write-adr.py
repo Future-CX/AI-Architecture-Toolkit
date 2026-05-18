@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import re
+from datetime import date
 from pathlib import Path
 
 
@@ -24,6 +25,62 @@ def next_adr_number(adr_dir: Path) -> int:
             except ValueError:
                 continue
     return highest + 1
+
+
+def escape_table_cell(value: str) -> str:
+    return value.replace("|", "\\|").replace("\n", " ").strip()
+
+
+def parse_index_table(existing: str) -> dict[str, dict[str, str]]:
+    rows: dict[str, dict[str, str]] = {}
+    for line in existing.splitlines():
+        stripped = line.strip()
+        if not stripped.startswith("|") or stripped.startswith("| ---"):
+            continue
+        cells = [cell.strip() for cell in stripped.strip("|").split("|")]
+        if len(cells) != 3 or cells[0].lower() == "name":
+            continue
+        match = re.match(r"\[(?P<name>[^\]]+)\]\((?P<filename>[^)]+)\)", cells[0])
+        if not match:
+            continue
+        rows[match.group("filename")] = {
+            "name": match.group("name"),
+            "filename": match.group("filename"),
+            "description": cells[1].replace("\\|", "|"),
+            "last_updated": cells[2],
+        }
+    return rows
+
+
+def render_index_table(title: str, rows: dict[str, dict[str, str]]) -> str:
+    sorted_rows = sorted(rows.values(), key=lambda row: row["name"].lower())
+    lines = [
+        f"# {title}",
+        "",
+        "| name | description | last_updated |",
+        "| --- | --- | --- |",
+    ]
+    for row in sorted_rows:
+        lines.append(
+            f"| [{escape_table_cell(row['name'])}]({row['filename']}) | "
+            f"{escape_table_cell(row['description'])} | "
+            f"{escape_table_cell(row['last_updated'])} |"
+        )
+    return "\n".join(lines) + "\n"
+
+
+def update_adr_list(adr_dir: Path, title: str, filename: str, description: str) -> Path:
+    adr_list = adr_dir / "_adr-list.md"
+    existing = adr_list.read_text(encoding="utf-8") if adr_list.exists() else ""
+    rows = parse_index_table(existing)
+    rows[filename] = {
+        "name": title,
+        "filename": filename,
+        "description": description,
+        "last_updated": date.today().isoformat(),
+    }
+    adr_list.write_text(render_index_table("ADR List", rows), encoding="utf-8")
+    return adr_list
 
 
 def parse_args() -> argparse.Namespace:
@@ -58,7 +115,9 @@ def main() -> None:
 
     adr_dir.mkdir(parents=True, exist_ok=True)
     target.write_text(content + "\n", encoding="utf-8")
+    adr_list = update_adr_list(adr_dir, args.title.strip(), target.name, args.summary.strip())
     print(target)
+    print(adr_list)
 
 
 if __name__ == "__main__":
