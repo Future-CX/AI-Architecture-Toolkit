@@ -27,6 +27,10 @@ python3 skills/write-a-capability-overview/scripts/write-capability-overview.py 
 
 This creates `capabilities/order-management.md`.
 
+If the requested name includes a redundant leading or trailing word `Capability`, remove it from the generated filename. For example, `Search Capability` and `Capability Search` both create `capabilities/search.md`.
+
+Each generated capability must also be added to `capabilities/_capability-list.md` using a markdown table with `name`, `description`, and `last_updated` columns. Create `_capability-list.md` when it does not exist. Keep rows sorted alphabetically by capability name.
+
 When running from a private lab repo that contains this toolkit as a submodule:
 
 ```sh
@@ -56,12 +60,13 @@ Run from the private lab root, this creates `capabilities/order-management.md` b
 ## Workflow
 
 1. Gather the required inputs.
-2. Convert the capability name to `<workspace-root>/capabilities/<slug>.md`.
+2. Convert the capability name to `<workspace-root>/capabilities/<slug>.md`, removing a redundant leading or trailing word `Capability` from the slug.
 3. Derive the outputs from the inputs and any available repository context.
 4. Use `templates/capability-overview-template.md` as the output structure.
 5. Do not overwrite an existing capability file unless the user explicitly asks.
-6. If the toolkit is mounted as `toolkit/` in a private lab repo, write the generated capability overview to the private lab root, not to `toolkit/capabilities/`.
-7. Keep company-confidential details out of the public toolkit repository; use a private company lab repo for real company content.
+6. Add or update the generated capability in `<workspace-root>/capabilities/_capability-list.md` with a relative link, description, and `last_updated` date.
+7. If the toolkit is mounted as `toolkit/` in a private lab repo, write the generated capability overview to the private lab root, not to `toolkit/capabilities/`.
+8. Keep company-confidential details out of the public toolkit repository; use a private company lab repo for real company content.
 
 ## Required Outputs
 
@@ -74,6 +79,7 @@ Each capability overview must include:
 - Actors
 - Processes supported
 - Applications involved
+- Application lifecycle management
 - Data involved
 - Integrations
 - KPIs

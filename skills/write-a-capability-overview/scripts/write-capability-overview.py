@@ -5,21 +5,29 @@ from __future__ import annotations
 
 import argparse
 import re
+from datetime import date
 from pathlib import Path
 
 
 TEMPLATE = Path(__file__).resolve().parents[1] / "templates" / "capability-overview-template.md"
 
 
-def normalize_name(name: str) -> str:
+def strip_capability_suffix(name: str) -> str:
     cleaned = re.sub(r"\s+", " ", name.strip())
+    cleaned = re.sub(r"^capability\s+", "", cleaned, flags=re.IGNORECASE)
+    cleaned = re.sub(r"\s+capability$", "", cleaned, flags=re.IGNORECASE)
+    return cleaned.strip()
+
+
+def normalize_name(name: str) -> str:
+    cleaned = strip_capability_suffix(name)
     if not cleaned:
         raise ValueError("Capability name cannot be empty.")
     return " ".join(word[:1].upper() + word[1:] for word in cleaned.split(" "))
 
 
 def slugify(name: str) -> str:
-    slug = re.sub(r"[^a-z0-9]+", "-", name.strip().lower()).strip("-")
+    slug = re.sub(r"[^a-z0-9]+", "-", strip_capability_suffix(name).lower()).strip("-")
     if not slug:
         raise ValueError("Capability name must contain at least one letter or number.")
     return f"{slug}.md"
@@ -35,6 +43,67 @@ def bullet_list(items: list[str], fallback: str = "TBD") -> str:
 def paragraph(value: str, fallback: str = "TBD") -> str:
     cleaned = value.strip()
     return cleaned if cleaned else fallback
+
+
+def escape_table_cell(value: str) -> str:
+    return value.replace("|", "\\|").replace("\n", " ").strip()
+
+
+def parse_capability_table(existing: str) -> dict[str, dict[str, str]]:
+    rows: dict[str, dict[str, str]] = {}
+    for line in existing.splitlines():
+        stripped = line.strip()
+        if not stripped.startswith("|") or stripped.startswith("| ---"):
+            continue
+        cells = [cell.strip() for cell in stripped.strip("|").split("|")]
+        if len(cells) != 3 or cells[0].lower() == "name":
+            continue
+        match = re.match(r"\[(?P<name>[^\]]+)\]\((?P<filename>[^)]+)\)", cells[0])
+        if not match:
+            continue
+        rows[match.group("filename")] = {
+            "name": match.group("name"),
+            "filename": match.group("filename"),
+            "description": cells[1].replace("\\|", "|"),
+            "last_updated": cells[2],
+        }
+    return rows
+
+
+def render_capability_table(rows: dict[str, dict[str, str]]) -> str:
+    sorted_rows = sorted(rows.values(), key=lambda row: row["name"].lower())
+    lines = [
+        "# Capability List",
+        "",
+        "| name | description | last_updated |",
+        "| --- | --- | --- |",
+    ]
+    for row in sorted_rows:
+        lines.append(
+            f"| [{escape_table_cell(row['name'])}]({row['filename']}) | "
+            f"{escape_table_cell(row['description'])} | "
+            f"{escape_table_cell(row['last_updated'])} |"
+        )
+    return "\n".join(lines) + "\n"
+
+
+def update_capability_list(
+    capabilities_dir: Path,
+    capability_name: str,
+    filename: str,
+    description: str,
+) -> Path:
+    capability_list = capabilities_dir / "_capability-list.md"
+    existing = capability_list.read_text(encoding="utf-8") if capability_list.exists() else ""
+    rows = parse_capability_table(existing)
+    rows[filename] = {
+        "name": capability_name,
+        "filename": filename,
+        "description": description,
+        "last_updated": date.today().isoformat(),
+    }
+    capability_list.write_text(render_capability_table(rows), encoding="utf-8")
+    return capability_list
 
 
 def parse_args() -> argparse.Namespace:
@@ -81,6 +150,7 @@ def main() -> None:
         "{{OUTPUTS}}": "TBD: List the decisions, records, events, products, services, and reports produced by this capability.",
         "{{EXISTING_SYSTEMS}}": bullet_list(args.existing_system),
         "{{APPLICATIONS_INVOLVED}}": bullet_list(args.existing_system),
+        "{{APPLICATION_LIFECYCLE_MANAGEMENT}}": "TBD: Describe application ownership, lifecycle stage, roadmap status, technical health, support model, and retirement or modernization considerations.",
         "{{DATA_INVOLVED}}": "TBD: Identify core data entities, ownership, quality needs, and retention concerns.",
         "{{INTEGRATIONS}}": "TBD: Identify upstream and downstream integrations, APIs, events, files, and dependencies.",
         "{{KPIS}}": "TBD: Define measurable indicators for effectiveness, efficiency, quality, and adoption.",
@@ -98,7 +168,14 @@ def main() -> None:
 
     capabilities_dir.mkdir(parents=True, exist_ok=True)
     target.write_text(rendered + "\n", encoding="utf-8")
+    capability_list = update_capability_list(
+        capabilities_dir,
+        capability_name,
+        target.name,
+        paragraph(args.business_objective),
+    )
     print(target)
+    print(capability_list)
 
 
 if __name__ == "__main__":
