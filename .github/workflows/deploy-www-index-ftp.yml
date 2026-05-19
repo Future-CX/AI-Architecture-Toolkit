@@ -1,4 +1,4 @@
-name: Deploy website index to FTP
+name: Deploy website to FTP
 
 on:
   push:
@@ -6,11 +6,13 @@ on:
       - main
     paths:
       - www/index.html
+      - www/favicon.svg
+      - www/.htaccess
   workflow_dispatch:
 
 jobs:
   deploy:
-    name: Upload www/index.html
+    name: Upload website files
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +22,7 @@ jobs:
       - name: Install FTP client
         run: sudo apt-get update && sudo apt-get install -y lftp
 
-      - name: Upload index.html
+      - name: Upload website files
         env:
           FTP_HOST: ${{ secrets.FTP_HOST }}
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
@@ -47,8 +49,10 @@ jobs:
               cd $REMOTE_DIR;
               pwd;
               put www/index.html -o index.html;
+              put www/favicon.svg -o favicon.svg;
+              put www/.htaccess -o .htaccess;
               cls -l;
               bye;
             "
 
-          echo "Uploaded www/index.html to $FTP_HOST:$REMOTE_DIR/index.html"
+          echo "Uploaded website files to $FTP_HOST:$REMOTE_DIR"

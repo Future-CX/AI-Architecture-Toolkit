@@ -1,0 +1,8 @@
+RewriteEngine On
+
+RewriteCond %{HTTP_HOST} !^www\.architecturetoolkit\.ai$ [NC]
+RewriteRule ^ https://www.architecturetoolkit.ai%{REQUEST_URI} [R=301,L]
+
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
