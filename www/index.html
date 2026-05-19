@@ -721,6 +721,7 @@
           <a
             class="button"
             target="_blank"
+            rel="noopener noreferrer"
             href="https://github.com/Future-CX/AI-Architecture-Toolkit"
             data-track-github
             >GitHub</a
@@ -742,6 +743,8 @@
             <a
               class="primary-action"
               href="https://github.com/Future-CX/AI-Architecture-Toolkit"
+              target="_blank"
+              rel="noopener noreferrer"
               data-track-github
             >
               View on GitHub
@@ -976,7 +979,7 @@ python3 toolkit/skills/write-a-capability-overview/scripts/write-capability-over
               <span class="dot"></span>
               <span class="dot"></span>
             </div>
-            <pre><code>company-architecture-lab/
+            <pre><code>your-company-repo/
 ├── toolkit/
 │   ├── agents/
 │   ├── skills/
@@ -1006,6 +1009,8 @@ python3 toolkit/skills/write-a-capability-overview/scripts/write-capability-over
         >
         <a
           href="https://github.com/Future-CX/AI-Architecture-Toolkit"
+          target="_blank"
+          rel="noopener noreferrer"
           data-track-github
           >github.com/Future-CX/AI-Architecture-Toolkit</a
         >
@@ -1013,15 +1018,40 @@ python3 toolkit/skills/write-a-capability-overview/scripts/write-capability-over
     </footer>
     <script>
       document.querySelectorAll("[data-track-github]").forEach((link) => {
-        link.addEventListener("click", () => {
-          if (typeof gtag === "function") {
-            gtag("event", "github_click", {
-              event_category: "engagement",
-              event_label: link.href,
-              link_text: link.textContent.trim(),
-              transport_type: "beacon",
-            });
+        link.addEventListener("click", (event) => {
+          const href = link.href;
+          const target = link.target || "_self";
+
+          if (typeof gtag !== "function") {
+            return;
           }
+
+          const eventData = {
+            send_to: "G-BCB7S9N610",
+            event_category: "engagement",
+            event_label: href,
+            link_url: href,
+            link_text: link.textContent.trim(),
+            transport_type: "beacon",
+          };
+
+          if (target === "_blank") {
+            gtag("event", "github_click", eventData);
+            return;
+          }
+
+          event.preventDefault();
+          const openOnce = () => {
+            window.location.href = href;
+          };
+
+          gtag("event", "github_click", {
+            ...eventData,
+            event_callback: openOnce,
+            event_timeout: 1000,
+          });
+
+          window.setTimeout(openOnce, 1000);
         });
       });
     </script>
