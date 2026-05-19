@@ -4,11 +4,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>AI Architecture Toolkit</title>
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <meta
       name="description"
       content="Open-source AI agents, skills, templates, and governance workflows for software architects and enterprise architecture teams."
     />
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-BCB7S9N610"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-BCB7S9N610");
+    </script>
     <style>
       :root {
         --ink: #17201d;
@@ -418,6 +432,19 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
+      .creates-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
+        gap: 18px;
+        align-items: start;
+      }
+
+      .creates-cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
       .card {
         min-height: 100%;
         border: 1px solid var(--line);
@@ -527,6 +554,10 @@
         line-height: 1.6;
       }
 
+      .file-tree {
+        margin-top: 0;
+      }
+
       code {
         font-family:
           ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -583,6 +614,7 @@
       @media (max-width: 940px) {
         .hero-inner,
         .workflow,
+        .creates-layout,
         .grid.two,
         .grid.three {
           grid-template-columns: 1fr;
@@ -602,6 +634,10 @@
 
         .section-head p {
           margin-top: 12px;
+        }
+
+        .creates-cards {
+          grid-template-columns: 1fr;
         }
       }
 
@@ -905,28 +941,57 @@ python3 toolkit/skills/write-a-capability-overview/scripts/write-capability-over
             with your existing architecture process.
           </p>
         </div>
-        <div class="grid three">
-          <article class="card">
-            <h3>Capability folders</h3>
-            <p>
-              <code>capabilities/search/search.md</code> plus a maintained
-              <code>_capability-list.md</code>.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Decision records</h3>
-            <p>
-              Numbered ADRs with an <code>_adr-list.md</code> table for scanning
-              decisions over time.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Principle catalogs</h3>
-            <p>
-              Principle documents with a maintained
-              <code>_principles-list.md</code> index.
-            </p>
-          </article>
+        <div class="creates-layout">
+          <div class="creates-cards">
+            <article class="card">
+              <h3>Capability folders</h3>
+              <p>
+                <code>capabilities/search/search.md</code> plus a maintained
+                <code>_capability-list.md</code>.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Decision records</h3>
+              <p>
+                Numbered ADRs with an <code>_adr-list.md</code> table for
+                scanning decisions over time.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Principle catalogs</h3>
+              <p>
+                Principle documents with a maintained
+                <code>_principles-list.md</code> index.
+              </p>
+            </article>
+          </div>
+          <div
+            class="terminal file-tree"
+            aria-label="Generated repository file tree"
+          >
+            <div class="terminal-head">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <pre><code>company-architecture-lab/
+├── toolkit/
+│   ├── agents/
+│   ├── skills/
+│   └── governance/
+├── capabilities/
+│   ├── _capability-list.md
+│   └── search/
+│       └── search.md
+├── principles/
+│   ├── _principles-list.md
+│   ├── architecture-principles.md
+│   ├── integration-principles.md
+│   └── {other}-principles.md
+└── adr/
+    ├── _adr-list.md
+    └── 0001-short-decision-title.md</code></pre>
+          </div>
         </div>
       </section>
     </main>
