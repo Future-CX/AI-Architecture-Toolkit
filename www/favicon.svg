@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AIAT">
+  <rect width="64" height="64" rx="12" fill="#585c7b"/>
+  <rect x="5" y="5" width="54" height="54" rx="9" fill="#ffc000"/>
+  <text
+    x="32"
+    y="39"
+    fill="#17201d"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="18"
+    font-weight="800"
+    text-anchor="middle"
+  >AIAT</text>
+</svg>
