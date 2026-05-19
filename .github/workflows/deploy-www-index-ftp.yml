@@ -1,0 +1,45 @@
+name: Deploy website index to FTP
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - www/index.html
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Upload www/index.html
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install FTP client
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Upload index.html
+        env:
+          FTP_HOST: ${{ secrets.FTP_HOST }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_REMOTE_DIR: ${{ secrets.FTP_REMOTE_DIR }}
+        run: |
+          test -n "$FTP_HOST"
+          test -n "$FTP_USERNAME"
+          test -n "$FTP_PASSWORD"
+          test -n "$FTP_REMOTE_DIR"
+
+          lftp \
+            -u "$FTP_USERNAME","$FTP_PASSWORD" \
+            "$FTP_HOST" \
+            -e "
+              set ftp:ssl-allow true;
+              set ssl:verify-certificate true;
+              mkdir -p \"$FTP_REMOTE_DIR\";
+              cd \"$FTP_REMOTE_DIR\";
+              put www/index.html -o index.html;
+              bye;
+            "

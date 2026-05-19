@@ -1,0 +1,942 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Architecture Toolkit</title>
+    <meta
+      name="description"
+      content="Open-source AI agents, skills, templates, and governance workflows for software architects and enterprise architecture teams."
+    />
+    <style>
+      :root {
+        --ink: #17201d;
+        --muted: #5d6964;
+        --line: #d8dfda;
+        --surface: #fbfcfa;
+        --panel: #ffffff;
+        --accent: #ffc000;
+        --accent-ink: #4a3600;
+        --accent-soft: #fff3c4;
+        --header: rgb(255, 255, 255);
+        --teal: #0f766e;
+        --blue: #315f8f;
+        --amber: #b7791f;
+        --red: #a3433f;
+        --shadow: 0 18px 50px rgba(23, 32, 29, 0.11);
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--surface);
+        color: var(--ink);
+        line-height: 1.5;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid rgba(216, 223, 218, 0.9);
+        background: var(--header);
+        backdrop-filter: blur(14px);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: min(1160px, calc(100% - 32px));
+        height: 64px;
+        margin: 0 auto;
+        gap: 18px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+        color: var(--ink);
+        font-weight: 800;
+      }
+
+      .brand-mark {
+        color: var(--accent);
+        font-size: 17px;
+        font-weight: 900;
+        white-space: nowrap;
+      }
+
+      .brand span:last-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .nav-links a,
+      .button {
+        border-radius: 8px;
+        padding: 9px 12px;
+      }
+
+      .nav-links a:hover {
+        background: #f1f4f2;
+        color: var(--ink);
+      }
+
+      .button {
+        border: 1px solid rgba(255, 192, 0, 0.72);
+        background: var(--accent);
+        color: var(--accent-ink);
+        font-weight: 700;
+      }
+
+      .button:hover {
+        background: #ffd34d;
+        color: var(--accent-ink);
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        min-height: 600px;
+        border-bottom: 1px solid var(--line);
+        background:
+          linear-gradient(rgba(251, 252, 250, 0.92), rgba(251, 252, 250, 0.83)),
+          repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 47px,
+            rgba(31, 111, 91, 0.09) 48px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 47px,
+            rgba(49, 95, 143, 0.08) 48px
+          ),
+          #f6f8f4;
+      }
+
+      .hero-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 0.92fr) minmax(390px, 1.08fr);
+        align-items: start;
+        gap: 44px;
+        width: min(1160px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 64px 0 42px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        gap: 8px;
+        margin: 0 0 18px;
+        border: 1px solid #cad7d0;
+        border-radius: 999px;
+        padding: 7px 10px;
+        background: rgba(255, 255, 255, 0.74);
+        color: var(--accent-ink);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      h1 {
+        max-width: 820px;
+        margin: 0;
+        font-size: clamp(42px, 6vw, 68px);
+        line-height: 0.95;
+        letter-spacing: 0;
+      }
+
+      .hero-copy {
+        max-width: 660px;
+        margin: 24px 0 0;
+        color: #3d4944;
+        font-size: 19px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 32px;
+      }
+
+      .primary-action,
+      .secondary-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        border-radius: 8px;
+        padding: 12px 16px;
+        font-weight: 800;
+      }
+
+      .primary-action {
+        background: var(--accent);
+        color: var(--accent-ink);
+      }
+
+      .secondary-action {
+        border: 1px solid #b9c6be;
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 42px;
+        max-width: 620px;
+      }
+
+      .stat {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 16px;
+        background: rgba(255, 255, 255, 0.76);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 30px;
+        line-height: 1;
+      }
+
+      .stat span {
+        display: block;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .architecture-map {
+        position: relative;
+        min-height: 460px;
+        border: 1px solid #cbd6cf;
+        border-radius: 8px;
+        background:
+          linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.88),
+            rgba(239, 245, 241, 0.9)
+          ),
+          repeating-linear-gradient(
+            0deg,
+            transparent 0,
+            transparent 39px,
+            rgba(23, 32, 29, 0.05) 40px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            transparent 0,
+            transparent 39px,
+            rgba(23, 32, 29, 0.05) 40px
+          );
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .map-title {
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        right: 18px;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .map-line {
+        position: absolute;
+        height: 2px;
+        transform-origin: left center;
+        background: #b8c5bd;
+      }
+
+      .line-a {
+        top: 170px;
+        left: 150px;
+        width: 250px;
+        transform: rotate(14deg);
+      }
+
+      .line-b {
+        top: 264px;
+        left: 220px;
+        width: 290px;
+        transform: rotate(-18deg);
+      }
+
+      .line-c {
+        top: 340px;
+        left: 132px;
+        width: 330px;
+        transform: rotate(10deg);
+      }
+
+      .map-node {
+        position: absolute;
+        width: min(210px, 38%);
+        border: 1px solid #c2cec7;
+        border-radius: 8px;
+        padding: 14px;
+        background: white;
+        box-shadow: 0 12px 30px rgba(23, 32, 29, 0.08);
+      }
+
+      .map-node strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 15px;
+      }
+
+      .map-node span {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .node-agents {
+        top: 84px;
+        left: 48px;
+        border-top: 5px solid var(--accent);
+      }
+
+      .node-skills {
+        top: 122px;
+        right: 46px;
+        border-top: 5px solid var(--blue);
+      }
+
+      .node-templates {
+        top: 262px;
+        left: 84px;
+        border-top: 5px solid var(--amber);
+      }
+
+      .node-governance {
+        right: 70px;
+        bottom: 10px;
+        border-top: 5px solid var(--red);
+      }
+
+      .map-code {
+        position: absolute;
+        left: 28px;
+        right: 28px;
+        bottom: 20px;
+        border: 1px solid #d6dfd9;
+        border-radius: 8px;
+        padding: 14px;
+        background: #17201d;
+        color: #d9eadf;
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: 12px;
+        overflow: hidden;
+      }
+
+      main section {
+        width: min(1160px, calc(100% - 32px));
+        margin: 0 auto;
+        padding: 76px 0;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 28px;
+      }
+
+      h2 {
+        max-width: 720px;
+        margin: 0;
+        font-size: clamp(30px, 4vw, 46px);
+        line-height: 1.06;
+        letter-spacing: 0;
+      }
+
+      .section-head p,
+      .section-copy {
+        max-width: 580px;
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .grid.three {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .grid.two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .card {
+        min-height: 100%;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 20px;
+        background: var(--panel);
+      }
+
+      .card h3 {
+        margin: 0 0 10px;
+        font-size: 19px;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .tag {
+        display: inline-flex;
+        margin-bottom: 14px;
+        border-radius: 999px;
+        padding: 5px 9px;
+        background: var(--accent-soft);
+        color: var(--accent-ink);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .workflow {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 26px;
+        align-items: start;
+      }
+
+      .steps {
+        counter-reset: steps;
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .steps li {
+        counter-increment: steps;
+        display: grid;
+        grid-template-columns: 42px minmax(0, 1fr);
+        gap: 12px;
+        align-items: start;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 14px;
+        background: #ffffff;
+      }
+
+      .steps li::before {
+        content: counter(steps);
+        display: grid;
+        width: 34px;
+        height: 34px;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--accent-soft);
+        color: var(--accent-ink);
+        font-weight: 900;
+      }
+
+      .steps strong {
+        display: block;
+        margin-bottom: 4px;
+      }
+
+      .steps span {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .terminal {
+        border-radius: 8px;
+        overflow: hidden;
+        background: #17201d;
+        color: #d9eadf;
+        box-shadow: var(--shadow);
+      }
+
+      .terminal-head {
+        display: flex;
+        gap: 7px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 12px;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: #7fb39d;
+      }
+
+      pre {
+        margin: 0;
+        padding: 18px;
+        overflow-x: auto;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      code {
+        font-family:
+          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      }
+
+      .split-band {
+        width: 100%;
+        border-block: 1px solid var(--line);
+        background: #edf3ef;
+      }
+
+      .split-band section {
+        padding: 72px 0;
+      }
+
+      .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 22px;
+      }
+
+      .pill {
+        border: 1px solid #c8d4cd;
+        border-radius: 999px;
+        padding: 8px 11px;
+        background: white;
+        color: #34413b;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 36px 0;
+        background: #17201d;
+        color: #dce7e1;
+      }
+
+      footer .inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        width: min(1160px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      footer a {
+        color: #dce7e1;
+        font-weight: 800;
+      }
+
+      @media (max-width: 940px) {
+        .hero-inner,
+        .workflow,
+        .grid.two,
+        .grid.three {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+        }
+
+        .architecture-map {
+          min-height: 520px;
+        }
+
+        .section-head {
+          display: block;
+        }
+
+        .section-head p {
+          margin-top: 12px;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .nav {
+          height: auto;
+          align-items: flex-start;
+          padding: 12px 0;
+        }
+
+        .nav-links a:not(.button) {
+          display: none;
+        }
+
+        .hero-inner {
+          padding-top: 52px;
+        }
+
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        .architecture-map {
+          min-height: 640px;
+        }
+
+        .map-node {
+          left: 22px;
+          right: 22px;
+          width: auto;
+        }
+
+        .node-agents {
+          top: 72px;
+        }
+
+        .node-skills {
+          top: 186px;
+        }
+
+        .node-templates {
+          top: 300px;
+        }
+
+        .node-governance {
+          top: 414px;
+          bottom: auto;
+        }
+
+        .map-line {
+          display: none;
+        }
+
+        .map-code {
+          left: 18px;
+          right: 18px;
+        }
+
+        footer .inner {
+          display: block;
+        }
+
+        footer a {
+          display: inline-block;
+          margin-top: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="brand" href="#top" aria-label="AI Architecture Toolkit home">
+          <span class="brand-mark">Future CX</span>
+          <span>AI Architecture Toolkit</span>
+        </a>
+        <div class="nav-links">
+          <a href="#agents">Agents</a>
+          <a href="#skills">Skills</a>
+          <a href="#workflow">Workflow</a>
+          <a
+            class="button"
+            target="_blank"
+            href="https://github.com/Future-CX/AI-Architecture-Toolkit"
+            >GitHub</a
+          >
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <div>
+          <h1>AI Architecture Toolkit</h1>
+          <p class="hero-copy">
+            Agents, skills, templates, and governance workflows for architects
+            who need AI support that produces reviewable artifacts, traceable
+            decisions, and reusable architecture knowledge.
+          </p>
+          <div class="hero-actions" aria-label="Primary actions">
+            <a
+              class="primary-action"
+              href="https://github.com/Future-CX/AI-Architecture-Toolkit"
+            >
+              View on GitHub
+            </a>
+            <a class="secondary-action" href="#workflow">See the workflow</a>
+          </div>
+        </div>
+
+        <div class="architecture-map" aria-label="Toolkit architecture map">
+          <div class="map-title">
+            <span>Toolkit map</span>
+            <span>agents + skills + governance</span>
+          </div>
+          <div class="map-line line-a"></div>
+          <div class="map-line line-b"></div>
+          <div class="map-line line-c"></div>
+          <div class="map-node node-agents">
+            <strong>Architecture agents</strong>
+            <span
+              >Role briefs for solution, enterprise, integration, API, and
+              review board work.</span
+            >
+          </div>
+          <div class="map-node node-skills">
+            <strong>Reusable skills</strong>
+            <span
+              >Repeatable workflows for ADRs, capabilities, principles,
+              language, and review.</span
+            >
+          </div>
+          <div class="map-node node-templates">
+            <strong>Artifact templates</strong>
+            <span
+              >Consistent markdown structures for architecture
+              deliverables.</span
+            >
+          </div>
+          <div class="map-node node-governance">
+            <strong>Governance boundary</strong>
+            <span
+              >Public toolkit content stays separate from private company
+              context.</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <section id="agents">
+        <div class="section-head">
+          <h2>Use purpose-built agents for architecture work.</h2>
+          <p>
+            Start each engagement with a role brief that sets scope,
+            responsibilities, and expected outputs for a specific architecture
+            discipline.
+          </p>
+        </div>
+        <div class="grid three">
+          <article class="card">
+            <span class="tag">Solution</span>
+            <h3>Solution Architect Agent</h3>
+            <p>
+              Turns business needs into coherent application, data, integration,
+              security, and operational architecture.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">Enterprise</span>
+            <h3>Enterprise Architect Agent</h3>
+            <p>
+              Aligns initiatives with capabilities, standards, platforms,
+              roadmaps, and target architecture.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">Integration</span>
+            <h3>Integration Architect Agent</h3>
+            <p>
+              Shapes APIs, events, data flows, reliability, observability, and
+              integration ownership.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">Governance</span>
+            <h3>API Governance Agent</h3>
+            <p>
+              Reviews API contracts for naming, versioning, security, lifecycle
+              risk, and developer experience.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">Review</span>
+            <h3>Architecture Review Board Agent</h3>
+            <p>
+              Prepares review findings, tracks decisions, and checks alignment
+              with principles and guardrails.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">Model guidance</span>
+            <h3>Reasoning where it matters</h3>
+            <p>
+              Use frontier reasoning models for decisions and faster models for
+              drafting, summaries, and cleanup.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <div class="split-band">
+        <section id="skills">
+          <div class="section-head">
+            <h2>Turn architecture habits into repeatable skills.</h2>
+            <p>
+              Skills encode the workflow, templates, scripts, and guardrails
+              needed to produce consistent artifacts.
+            </p>
+          </div>
+          <div class="grid two">
+            <article class="card">
+              <h3>Capability overview</h3>
+              <p>
+                Create capability folders, overview documents, and an
+                alphabetized capability index with owners, applications, and
+                lifecycle status.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Architecture decisions</h3>
+              <p>
+                Capture durable decisions as concise ADRs and maintain a
+                searchable ADR list with descriptions and update dates.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Ubiquitous language</h3>
+              <p>
+                Extract domain terms, resolve ambiguity, and keep terminology
+                precise across architecture conversations.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Grill me</h3>
+              <p>
+                Stress-test a plan by walking the decision tree, checking
+                terminology, and offering ADRs only when they earn their place.
+              </p>
+            </article>
+          </div>
+        </section>
+      </div>
+
+      <section id="workflow">
+        <div class="workflow">
+          <div>
+            <h2>
+              Keep public toolkit content separate from private company work.
+            </h2>
+            <p class="section-copy">
+              Use this repository as the public source of reusable architecture
+              assets. Add it to a private company lab as a submodule when
+              testing against real context.
+            </p>
+            <div class="pill-list" aria-label="Included toolkit areas">
+              <span class="pill">agents</span>
+              <span class="pill">skills</span>
+              <span class="pill">principles</span>
+              <span class="pill">templates</span>
+              <span class="pill">governance</span>
+            </div>
+          </div>
+          <div class="terminal" aria-label="Git submodule setup">
+            <div class="terminal-head">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <pre><code>git submodule add https://github.com/Future-CX/AI-Architecture-Toolkit.git toolkit
+git commit -m "Add AI Architecture Toolkit submodule"
+
+python3 toolkit/skills/write-a-capability-overview/scripts/write-capability-overview.py "Search Capability" \
+  --domain "Digital" \
+  --business-objective "Improve product discovery." \
+  --stakeholder "Product Owner" \
+  --existing-system "Search Platform" \
+  --strategic-importance "High" \
+  --pain-point "Search quality is inconsistent" \
+  --related-capability "Navigation"</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <h2>What the toolkit creates.</h2>
+          <p>
+            The output is plain markdown, easy to review, version, and improve
+            with your existing architecture process.
+          </p>
+        </div>
+        <div class="grid three">
+          <article class="card">
+            <h3>Capability folders</h3>
+            <p>
+              <code>capabilities/search/search.md</code> plus a maintained
+              <code>_capability-list.md</code>.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Decision records</h3>
+            <p>
+              Numbered ADRs with an <code>_adr-list.md</code> table for scanning
+              decisions over time.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Principle catalogs</h3>
+            <p>
+              Principle documents with a maintained
+              <code>_principles-list.md</code> index.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="inner">
+        <span>AI Architecture Toolkit by Future CX</span>
+        <a href="https://github.com/Future-CX/AI-Architecture-Toolkit"
+          >github.com/Future-CX/AI-Architecture-Toolkit</a
+        >
+      </div>
+    </footer>
+  </body>
+</html>
