@@ -44,7 +44,6 @@ jobs:
             -e "
               set ftp:ssl-allow true;
               set ssl:verify-certificate false;
-              mkdir -p $REMOTE_DIR;
               cd $REMOTE_DIR;
               pwd;
               put www/index.html -o index.html;
