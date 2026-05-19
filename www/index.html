@@ -722,6 +722,7 @@
             class="button"
             target="_blank"
             href="https://github.com/Future-CX/AI-Architecture-Toolkit"
+            data-track-github
             >GitHub</a
           >
         </div>
@@ -741,6 +742,7 @@
             <a
               class="primary-action"
               href="https://github.com/Future-CX/AI-Architecture-Toolkit"
+              data-track-github
             >
               View on GitHub
             </a>
@@ -1002,10 +1004,26 @@ python3 toolkit/skills/write-a-capability-overview/scripts/write-capability-over
           >AI Architecture Toolkit by
           <a href="https://www.futurecx.nl" target="_blank">Future CX</a></span
         >
-        <a href="https://github.com/Future-CX/AI-Architecture-Toolkit"
+        <a
+          href="https://github.com/Future-CX/AI-Architecture-Toolkit"
+          data-track-github
           >github.com/Future-CX/AI-Architecture-Toolkit</a
         >
       </div>
     </footer>
+    <script>
+      document.querySelectorAll("[data-track-github]").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (typeof gtag === "function") {
+            gtag("event", "github_click", {
+              event_category: "engagement",
+              event_label: link.href,
+              link_text: link.textContent.trim(),
+              transport_type: "beacon",
+            });
+          }
+        });
+      });
+    </script>
   </body>
 </html>
