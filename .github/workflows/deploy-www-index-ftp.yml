@@ -40,6 +40,10 @@ jobs:
               set ssl:verify-certificate false;
               mkdir -p \"$FTP_REMOTE_DIR\";
               cd \"$FTP_REMOTE_DIR\";
+              pwd;
               put www/index.html -o index.html;
+              cls -l;
               bye;
             "
+
+          echo "Uploaded www/index.html to $FTP_HOST:$FTP_REMOTE_DIR/index.html"
