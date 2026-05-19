@@ -37,7 +37,7 @@ jobs:
             "$FTP_HOST" \
             -e "
               set ftp:ssl-allow true;
-              set ssl:verify-certificate true;
+              set ssl:verify-certificate false;
               mkdir -p \"$FTP_REMOTE_DIR\";
               cd \"$FTP_REMOTE_DIR\";
               put www/index.html -o index.html;
