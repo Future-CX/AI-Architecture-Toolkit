@@ -32,18 +32,24 @@ jobs:
           test -n "$FTP_PASSWORD"
           test -n "$FTP_REMOTE_DIR"
 
+          REMOTE_DIR="${FTP_REMOTE_DIR%\"}"
+          REMOTE_DIR="${REMOTE_DIR#\"}"
+          REMOTE_DIR="${REMOTE_DIR%\'}"
+          REMOTE_DIR="${REMOTE_DIR#\'}"
+          REMOTE_DIR="${REMOTE_DIR%/}"
+
           lftp \
             -u "$FTP_USERNAME","$FTP_PASSWORD" \
             "$FTP_HOST" \
             -e "
               set ftp:ssl-allow true;
               set ssl:verify-certificate false;
-              mkdir -p \"$FTP_REMOTE_DIR\";
-              cd \"$FTP_REMOTE_DIR\";
+              mkdir -p $REMOTE_DIR;
+              cd $REMOTE_DIR;
               pwd;
               put www/index.html -o index.html;
               cls -l;
               bye;
             "
 
-          echo "Uploaded www/index.html to $FTP_HOST:$FTP_REMOTE_DIR/index.html"
+          echo "Uploaded www/index.html to $FTP_HOST:$REMOTE_DIR/index.html"
