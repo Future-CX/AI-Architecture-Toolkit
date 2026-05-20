@@ -10,7 +10,7 @@ Extract and formalize domain terminology from the current conversation into a co
 
 ## Process
 
-1. **Scan the conversation** for domain-relevant nouns, verbs, and concepts
+1. **Scan the conversation** for domain-relevant nouns, verbs, concepts, and known applications
 2. **Identify problems**:
    - Same word used for different concepts (ambiguity)
    - Different words used for the same concept (synonyms)
@@ -28,17 +28,24 @@ Write a `GLOSSARY.md` file with this structure:
 
 ## Order lifecycle
 
-| Term        | Definition                                                                            | Aliases to avoid      |
-| ----------- | ------------------------------------------------------------------------------------- | --------------------- |
-| **Order**   | A customer's request to purchase one or more items<br>- ERP: Sales Order              | Purchase, transaction |
+| Term        | Definition                                                                             | Aliases to avoid      |
+| ----------- | -------------------------------------------------------------------------------------- | --------------------- |
+| **Order**   | A customer's request to purchase one or more items<br>- ERP: Sales Order               | Purchase, transaction |
 | **Invoice** | A request for payment sent to a customer after delivery<br>- Billing: Billing Document | Bill, payment request |
 
 ## People
 
-| Term         | Definition                                                                    | Aliases to avoid       |
-| ------------ | ----------------------------------------------------------------------------- | ---------------------- |
-| **Customer** | A person or organization that places orders<br>- Commerce Platform: B2B Unit  | Client, buyer, account |
-| **User**     | An authentication identity in the system<br>- Commerce Platform: Customer     | Login, account         |
+| Term         | Definition                                                                   | Aliases to avoid       |
+| ------------ | ---------------------------------------------------------------------------- | ---------------------- |
+| **Customer** | A person or organization that places orders<br>- Commerce Platform: B2B Unit | Client, buyer, account |
+| **User**     | An authentication identity in the system<br>- Commerce Platform: Customer    | Login, account         |
+
+## Applications
+
+| Application           | Definition                                                        | Capabilities and functions delivered                                                                                                                |
+| --------------------- | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Commerce Platform** | Application used to manage digital commerce interactions.         | Customer Management, Product Catalog, Order Capture<br>- Manage B2B units<br>- Maintain customer accounts<br>- Publish articles<br>- Capture orders |
+| **ERP**               | System of record for core operational and financial transactions. | Order Management, Inventory Management, Financial Accounting<br>- Maintain sales orders<br>- Manage stock positions<br>- Post invoices              |
 
 ## Relationships
 
@@ -59,6 +66,7 @@ Write a `GLOSSARY.md` file with this structure:
 - **Show relationships.** Use bold term names and express cardinality where obvious.
 - **Only include domain terms.** Skip generic programming concepts (array, function, endpoint) unless they have domain-specific meaning.
 - **Group terms into multiple tables** when natural clusters emerge (e.g. by subdomain, lifecycle, or actor). Each group gets its own heading and table. If all terms belong to a single cohesive domain, one table is fine — don't force groupings.
+- **Maintain an Applications section.** List known applications in a dedicated `## Applications` section using columns for `Application`, `Definition`, and `Capabilities and functions delivered`. Keep application definitions short and business-facing. Use the combined delivery column to name supported business capabilities first, followed by dash-prefixed concrete functions the application performs.
 - **Map application-owned terms to canonical terms.** When an application uses its own name for an existing domain object, do not create a separate glossary term. Add it inside the canonical term's `Definition` cell after the definition sentence as a dash-prefixed entry, using the format `<br>- <Application>: <Application-owned term>`. For example, if the canonical term is **Customer** and an application calls it `B2B Unit`, add `<br>- Commerce Platform: B2B Unit` inside the **Customer** definition.
 - **Use application-owned terms only as mappings.** Application-owned terms explain translation between systems and domain language; they are not canonical terms unless the business also uses them as the shared domain term.
 
