@@ -4,7 +4,9 @@ Write solution architecture documents that connect business capabilities to stra
 
 Generated documents belong under the private company lab root at `solution-architectures/<slug>/`, with numbered section files and an assembled `solution-architecture-document.md`.
 
-Before any files are created, the workflow must run a `grill-me` style clarification session and update the private lab root `GLOSSARY.md` with `ubiquitous-language` as terms are clarified.
+Before any files are created, the workflow must run a `grill-me` style clarification session and update the private lab root `GLOSSARY.md` with `ubiquitous-language` as terms are clarified. If `GLOSSARY.md` was not created or updated afterwards, stop and ask the user to run `grill-me` followed by `ubiquitous-language`.
+
+While solution architecture section files are created or updated, the workflow must keep `GLOSSARY.md` current with any newly introduced or changed domain terms, applications, data objects, and relationships.
 
 ```text
 solution-architectures/<slug>/
