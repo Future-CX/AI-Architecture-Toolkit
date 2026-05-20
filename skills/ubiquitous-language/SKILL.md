@@ -49,10 +49,13 @@ Write a `GLOSSARY.md` file with this structure:
 
 ## Data objects
 
-| Data object         | Definition                                                                 | Owner or source of truth |
-| ------------------- | -------------------------------------------------------------------------- | ------------------------ |
-| **Customer Record** | Structured information representing a Customer for operational processing. | CRM                      |
-| **Sales Order**     | Structured information representing an Order accepted for fulfillment.     | ERP                      |
+| Data object      | Definition                                                      | Owner or source of truth |
+| ---------------- | --------------------------------------------------------------- | ------------------------ |
+| **Customer**     | Structured information representing a person or organization.   | CRM                      |
+| **Order**        | Structured information representing a customer's purchase.      | ERP                      |
+| **Product**      | Structured information representing an item offered for sale.   | Product Management       |
+| **Price**        | Structured information representing the amount charged.         | Pricing                  |
+| **Availability** | Structured information representing whether something can sell. | Inventory Management     |
 
 ## Relationships
 
@@ -74,7 +77,7 @@ Write a `GLOSSARY.md` file with this structure:
 - **Only include domain terms.** Skip generic programming concepts (array, function, endpoint) unless they have domain-specific meaning.
 - **Group terms into multiple tables** when natural clusters emerge (e.g. by subdomain, lifecycle, or actor). Each group gets its own heading and table. If all terms belong to a single cohesive domain, one table is fine — don't force groupings.
 - **Maintain an Applications section.** List known applications in a dedicated `## Applications` section using columns for `Application`, `Definition`, and `Capabilities and functions delivered`. Keep application definitions short and business-facing. Use the combined delivery column to name supported business capabilities first, followed by dash-prefixed concrete functions the application performs.
-- **Maintain a Data objects section when data objects are discussed.** List data objects in a dedicated `## Data objects` section using columns for `Data object`, `Definition`, and `Owner or source of truth`. Keep definitions business-facing and avoid physical implementation details unless the object is explicitly a physical or integration data object.
+- **Maintain a Data objects section when data objects are discussed.** List data objects in a dedicated `## Data objects` section using columns for `Data object`, `Definition`, and `Owner or source of truth`. Keep data objects general and canonical, using business-level names such as **Product**, **Customer**, **User**, **Order**, **Price**, and **Availability**. Do not create application-specific data objects such as `SAP Material`, `Commerce Product`, `CRM Account`, `ERP Sales Order`, or API/resource/table names. Capture application-specific names as mappings on the canonical term when useful.
 - **Map application-owned terms to canonical terms.** When an application uses its own name for an existing domain object, do not create a separate glossary term. Add it inside the canonical term's `Definition` cell after the definition sentence as a dash-prefixed entry, using the format `<br>- <Application>: <Application-owned term>`. For example, if the canonical term is **Customer** and an application calls it `B2B Unit`, add `<br>- Commerce Platform: B2B Unit` inside the **Customer** definition.
 - **Use application-owned terms only as mappings.** Application-owned terms explain translation between systems and domain language; they are not canonical terms unless the business also uses them as the shared domain term.
 
