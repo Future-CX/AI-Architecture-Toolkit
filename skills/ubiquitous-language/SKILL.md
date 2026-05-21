@@ -29,12 +29,12 @@ Write a `GLOSSARY.md` file with this structure:
 
 ## Table of Contents
 
-- [Applications](#applications)
-- [Data objects](#data-objects)
-- [Flagged ambiguities](#flagged-ambiguities)
 - [Order lifecycle](#order-lifecycle)
 - [People](#people)
+- [Applications](#applications)
+- [Data objects](#data-objects)
 - [Relationships](#relationships)
+- [Flagged ambiguities](#flagged-ambiguities)
 
 ## Order lifecycle
 
@@ -85,7 +85,7 @@ Write a `GLOSSARY.md` file with this structure:
 - **Keep definitions tight.** One sentence max. Define what it IS, not what it does.
 - **Show relationships.** Use bold term names and express cardinality where obvious.
 - **Only include domain terms.** Skip generic programming concepts (array, function, endpoint) unless they have domain-specific meaning.
-- **Maintain a table of contents.** Every time `GLOSSARY.md` is created or updated, rebuild the `## Table of Contents` section immediately below `# Glossary`. Include every main glossary section heading below the title, excluding `## Table of Contents` itself. Sort ToC entries alphabetically by heading text and link to the Markdown anchor, e.g. `[Data objects](#data-objects)`.
+- **Maintain a table of contents.** Every time `GLOSSARY.md` is created or updated, rebuild the `## Table of Contents` section immediately below `# Glossary`. Include every main glossary section heading below the title, excluding `## Table of Contents` itself. Keep ToC entries in the same order as the sections appear in the document and link to the Markdown anchor, e.g. `[Data objects](#data-objects)`.
 - **Sort rows alphabetically.** In every glossary table, sort rows alphabetically by the value in the first column, ignoring Markdown bold markers and case.
 - **Group terms into multiple tables** when natural clusters emerge (e.g. by subdomain, lifecycle, or actor). Each group gets its own heading and table. If all terms belong to a single cohesive domain, one table is fine — don't force groupings.
 - **Maintain an Applications section.** List known applications in a dedicated `## Applications` section using columns for `Application`, `Definition`, and `Capabilities and functions delivered`. Keep application definitions short and business-facing. Use the combined delivery column to name supported business capabilities first, followed by dash-prefixed concrete functions the application performs.
