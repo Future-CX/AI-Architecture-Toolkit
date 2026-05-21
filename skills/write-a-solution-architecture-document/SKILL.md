@@ -63,7 +63,7 @@ solution-architectures/<slug>/
 6. For every section below, update `<private-lab-root>/GLOSSARY.md` before or alongside the section when the section introduces or changes:
    - Domain terms and aliases
    - Applications and the capabilities or functions they deliver
-   - Data objects, ownership, source-of-truth, and lifecycle notes
+   - General canonical data objects, ownership, source-of-truth, and lifecycle notes
    - Relationships between terms, applications, and data objects
 7. Create or update `00-index.md` from `templates/00-index-template.md` with document metadata, status, section links, and open review checkpoints.
 8. Do not overwrite an existing section file or assembled document unless the user explicitly asks.

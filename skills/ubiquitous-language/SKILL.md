@@ -30,8 +30,8 @@ Write a `GLOSSARY.md` file with this structure:
 
 | Term        | Definition                                                                             | Aliases to avoid      |
 | ----------- | -------------------------------------------------------------------------------------- | --------------------- |
-| **Order**   | A customer's request to purchase one or more items<br>- ERP: Sales Order               | Purchase, transaction |
 | **Invoice** | A request for payment sent to a customer after delivery<br>- Billing: Billing Document | Bill, payment request |
+| **Order**   | A customer's request to purchase one or more items<br>- ERP: Sales Order               | Purchase, transaction |
 
 ## People
 
@@ -51,11 +51,11 @@ Write a `GLOSSARY.md` file with this structure:
 
 | Data object      | Definition                                                      | Owner or source of truth |
 | ---------------- | --------------------------------------------------------------- | ------------------------ |
+| **Availability** | Structured information representing whether something can sell. | Inventory Management     |
 | **Customer**     | Structured information representing a person or organization.   | CRM                      |
 | **Order**        | Structured information representing a customer's purchase.      | ERP                      |
-| **Product**      | Structured information representing an item offered for sale.   | Product Management       |
 | **Price**        | Structured information representing the amount charged.         | Pricing                  |
-| **Availability** | Structured information representing whether something can sell. | Inventory Management     |
+| **Product**      | Structured information representing an item offered for sale.   | Product Management       |
 
 ## Relationships
 
@@ -75,6 +75,7 @@ Write a `GLOSSARY.md` file with this structure:
 - **Keep definitions tight.** One sentence max. Define what it IS, not what it does.
 - **Show relationships.** Use bold term names and express cardinality where obvious.
 - **Only include domain terms.** Skip generic programming concepts (array, function, endpoint) unless they have domain-specific meaning.
+- **Sort rows alphabetically.** In every glossary table, sort rows alphabetically by the value in the first column, ignoring Markdown bold markers and case.
 - **Group terms into multiple tables** when natural clusters emerge (e.g. by subdomain, lifecycle, or actor). Each group gets its own heading and table. If all terms belong to a single cohesive domain, one table is fine — don't force groupings.
 - **Maintain an Applications section.** List known applications in a dedicated `## Applications` section using columns for `Application`, `Definition`, and `Capabilities and functions delivered`. Keep application definitions short and business-facing. Use the combined delivery column to name supported business capabilities first, followed by dash-prefixed concrete functions the application performs.
 - **Maintain a Data objects section when data objects are discussed.** List data objects in a dedicated `## Data objects` section using columns for `Data object`, `Definition`, and `Owner or source of truth`. Keep data objects general and canonical, using business-level names such as **Product**, **Customer**, **User**, **Order**, **Price**, and **Availability**. Do not create application-specific data objects such as `SAP Material`, `Commerce Product`, `CRM Account`, `ERP Sales Order`, or API/resource/table names. Capture application-specific names as mappings on the canonical term when useful.
