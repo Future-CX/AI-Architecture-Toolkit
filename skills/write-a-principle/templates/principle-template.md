@@ -6,7 +6,11 @@
 
 ## Principles
 
-{{PRINCIPLES}}
+{{PRINCIPLES_INDEX}}
+
+## Principle Details
+
+{{PRINCIPLE_DETAILS}}
 
 ## Usage
 

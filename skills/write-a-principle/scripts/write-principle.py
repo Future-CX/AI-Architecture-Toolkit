@@ -10,6 +10,7 @@ from pathlib import Path
 
 
 TEMPLATE = Path(__file__).resolve().parents[1] / "templates" / "principle-template.md"
+TOOLKIT_ROOT = Path(__file__).resolve().parents[3]
 
 
 def title_case_name(name: str) -> str:
@@ -26,11 +27,112 @@ def slugify_name(name: str) -> str:
     return f"{slug}.md"
 
 
-def format_principles(items: list[str]) -> str:
-    cleaned = [item.strip().rstrip(".") for item in items if item.strip()]
+def is_relative_to(path: Path, parent: Path) -> bool:
+    try:
+        path.relative_to(parent)
+        return True
+    except ValueError:
+        return False
+
+
+def validate_output_root(output_root: Path) -> None:
+    if output_root == TOOLKIT_ROOT or is_relative_to(output_root, TOOLKIT_ROOT):
+        raise SystemExit(
+            "Refusing to write generated principles inside the toolkit repository. "
+            "Run from a private lab root with this toolkit mounted as a submodule, "
+            "or pass --output-root <private-lab-root>."
+        )
+
+
+def infer_category_code(name: str) -> str:
+    lowered = name.lower()
+    known_codes = {
+        "data": "DATA",
+        "architecture": "ARCH",
+        "cloud": "CLD",
+        "integration": "INT",
+        "security": "SEC",
+        "api": "API",
+    }
+    words = re.findall(r"[a-zA-Z]+", lowered)
+    for word in words:
+        if word in known_codes:
+            return known_codes[word]
+    for keyword, code in known_codes.items():
+        if keyword in lowered:
+            return code
+    if not words:
+        raise ValueError("Cannot infer a category code from the principle document name.")
+    return words[0][:4].upper()
+
+
+def normalize_category_code(value: str) -> str:
+    code = value.strip().upper()
+    if not re.fullmatch(r"[A-Z]{3,4}", code):
+        raise ValueError("Category code must be 3-4 letters, for example ARCH, DATA, CLD, or INT.")
+    return code
+
+
+def clean_items(items: list[str] | None) -> list[str]:
+    if not items:
+        return []
+    return [item.strip().rstrip(".") for item in items if item.strip()]
+
+
+def clean_principles(items: list[str], category_code: str) -> list[dict[str, str | list[str]]]:
+    cleaned = clean_items(items)
     if not cleaned:
         raise ValueError("At least one principle is required.")
-    return "\n".join(f"{index}. {item}." for index, item in enumerate(cleaned, start=1))
+    return [{"identifier": f"{category_code}{index:03d}", "name": item} for index, item in enumerate(cleaned, start=1)]
+
+
+def attach_field(principles: list[dict[str, str | list[str]]], field: str, values: list[str] | None) -> None:
+    cleaned = clean_items(values)
+    for index, principle in enumerate(principles):
+        principle[field] = cleaned[index] if index < len(cleaned) else "TBD"
+
+
+def attach_list_field(principles: list[dict[str, str | list[str]]], field: str, values: list[str] | None) -> None:
+    cleaned = clean_items(values)
+    for index, principle in enumerate(principles):
+        principle[field] = [cleaned[index]] if index < len(cleaned) else []
+
+
+def format_principles_index(items: list[dict[str, str | list[str]]]) -> str:
+    return "\n".join(f"- [{item['identifier']} - {item['name']}.](#{str(item['identifier']).lower()})" for item in items)
+
+
+def bullet_list(items: list[str], fallback: str = "TBD") -> str:
+    if not items:
+        return f"- {fallback}"
+    return "\n".join(f"- {item}." for item in items)
+
+
+def format_principle_details(items: list[dict[str, str | list[str]]]) -> str:
+    sections = []
+    for item in items:
+        optional_guidance = ""
+        if isinstance(item["dos"], list) and isinstance(item["donts"], list) and (item["dos"] or item["donts"]):
+            guidance_parts = ["\n\n#### Do's and Don'ts"]
+            if item["dos"]:
+                guidance_parts.append(f"\n\n##### Do's\n\n{bullet_list(item['dos'])}")
+            if item["donts"]:
+                guidance_parts.append(f"\n\n##### Don'ts\n\n{bullet_list(item['donts'])}")
+            optional_guidance = "".join(guidance_parts)
+        sections.append(
+            f'<a id="{str(item["identifier"]).lower()}"></a>\n\n'
+            f"### {item['identifier']} - {item['name']}.\n\n"
+            f"#### Identifier\n\n"
+            f"{item['identifier']}.\n\n"
+            f"#### Description\n\n"
+            f"{item['description']}.\n\n"
+            f"#### Rationale\n\n"
+            f"{item['rationale']}.\n\n"
+            f"#### Consequences\n\n"
+            f"{item['consequences']}."
+            f"{optional_guidance}"
+        )
+    return "\n\n".join(sections)
 
 
 def escape_table_cell(value: str) -> str:
@@ -92,12 +194,41 @@ def update_principles_list(principles_dir: Path, principle_name: str, filename: 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("name", help="Principle document name, for example 'Data Architecture Principles'.")
+    parser.add_argument(
+        "--category-code",
+        help="3-4 letter principle category code, for example ARCH, DATA, CLD, or INT. Defaults to a value inferred from the document name.",
+    )
     parser.add_argument("--intent", required=True, help="One-sentence intent for the principle document.")
     parser.add_argument(
         "--principle",
         action="append",
         required=True,
-        help="Principle statement. Repeat for multiple principles.",
+        help="Principle name or statement. Repeat for multiple principles.",
+    )
+    parser.add_argument(
+        "--principle-description",
+        action="append",
+        help="Principle description. Repeat in the same order as --principle.",
+    )
+    parser.add_argument(
+        "--principle-rationale",
+        action="append",
+        help="Principle rationale. Repeat in the same order as --principle.",
+    )
+    parser.add_argument(
+        "--principle-consequence",
+        action="append",
+        help="Principle consequence. Repeat in the same order as --principle.",
+    )
+    parser.add_argument(
+        "--principle-do",
+        action="append",
+        help="Principle do guidance. Repeat in the same order as --principle.",
+    )
+    parser.add_argument(
+        "--principle-dont",
+        action="append",
+        help="Principle don't guidance. Repeat in the same order as --principle.",
     )
     parser.add_argument("--usage", required=True, help="Usage guidance for applying the principles.")
     parser.add_argument(
@@ -117,16 +248,25 @@ def main() -> None:
     args = parse_args()
     principle_name = title_case_name(args.name)
     output_root = Path(args.output_root).expanduser().resolve()
+    validate_output_root(output_root)
     principles_dir = output_root / "principles"
     target = principles_dir / slugify_name(args.name)
 
     if target.exists() and not args.force:
         raise SystemExit(f"Refusing to overwrite existing file: {target}")
 
+    category_code = normalize_category_code(args.category_code or infer_category_code(args.name))
+    principles = clean_principles(args.principle, category_code)
+    attach_field(principles, "description", args.principle_description)
+    attach_field(principles, "rationale", args.principle_rationale)
+    attach_field(principles, "consequences", args.principle_consequence)
+    attach_list_field(principles, "dos", args.principle_do)
+    attach_list_field(principles, "donts", args.principle_dont)
     rendered = TEMPLATE.read_text(encoding="utf-8")
     rendered = rendered.replace("{{PRINCIPLE_NAME}}", principle_name)
     rendered = rendered.replace("{{INTENT}}", args.intent.strip())
-    rendered = rendered.replace("{{PRINCIPLES}}", format_principles(args.principle))
+    rendered = rendered.replace("{{PRINCIPLES_INDEX}}", format_principles_index(principles))
+    rendered = rendered.replace("{{PRINCIPLE_DETAILS}}", format_principle_details(principles))
     rendered = rendered.replace("{{USAGE}}", args.usage.strip())
 
     principles_dir.mkdir(parents=True, exist_ok=True)
