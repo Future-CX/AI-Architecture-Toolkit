@@ -41,7 +41,7 @@ Each generated principle is also added to `principles/_principles-list.md` using
 5. Capture a concise intent statement.
 6. Capture 3-7 concrete principles. Each principle must have an identifier, name, description, rationale, and consequences. Do's and don'ts are optional.
 7. Generate each principle identifier from the category code plus a three-digit incremental number starting with `001`, for example `DATA001`, `DATA002`, and `DATA003`.
-8. Add a linked list at the top of the document's `## Principles` section containing only the principle identifier and name. Each list item must link to the matching principle detail section below.
+8. Add a linked list at the top of the document's `## Principles` section containing only first-level principle identifiers and names. If the document has multiple levels of principles, sub-principles, controls, examples, or nested guidance, keep those inside the matching principle detail section and do not include them in the top list.
 9. Capture practical usage guidance.
 10. Generate the file under the private lab repository's root `principles/` folder using the preset template.
 11. Add or update the generated principle in `<private-lab-root>/principles/_principles-list.md` with a relative link, intent, and `last_updated` date.
@@ -71,12 +71,6 @@ One-sentence intent.
 
 ### DATA001 - Principle one.
 
-#### Identifier
-
-DATA001.
-
-#### Description
-
 Describe the principle in practical terms.
 
 #### Rationale
@@ -97,15 +91,15 @@ Explain what teams must accept or change when applying the principle.
 
 - Discouraged behavior.
 
+#### Sub-Principles
+
+##### DATA001.1 - Sub-principle one.
+
+Describe lower-level guidance here. Do not add this sub-principle to the top `## Principles` list.
+
 <a id="data002"></a>
 
 ### DATA002 - Principle two.
-
-#### Identifier
-
-DATA002.
-
-#### Description
 
 Describe the principle in practical terms.
 
@@ -120,12 +114,6 @@ Explain what teams must accept or change when applying the principle.
 <a id="data003"></a>
 
 ### DATA003 - Principle three.
-
-#### Identifier
-
-DATA003.
-
-#### Description
 
 Describe the principle in practical terms.
 
