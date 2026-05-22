@@ -22,7 +22,7 @@
 - [08 Roadmap Themes](08-roadmap-themes.md)
 - [09 Governance Actions](09-governance-actions.md)
 - [10 Risks and Open Questions](10-risks-and-open-questions.md)
-- [Assembled Solution Architecture Document](solution-architecture-document.md)
+- [Assembled Target Architecture Document](target-architecture-document.md)
 
 ## Review Checkpoints
 

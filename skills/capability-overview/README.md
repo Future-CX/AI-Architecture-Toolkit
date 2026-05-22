@@ -1,4 +1,4 @@
-# Write A Capability Overview
+# Capability Overview
 
 Write business capability overview documents under the consuming repository's root `capabilities/<slug>/` folder using a preset markdown template.
 

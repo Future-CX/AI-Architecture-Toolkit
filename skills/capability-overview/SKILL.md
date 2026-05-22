@@ -1,9 +1,9 @@
 ---
-name: write-a-capability-overview
+name: capability-overview
 description: Write business capability overview documents from a standard template and store them under the root capabilities folder. Use when the user asks to create, draft, document, or assess a business capability, capability overview, capability map entry, or capability definition.
 ---
 
-# Write A Capability Overview
+# Capability Overview
 
 ## Quick Start
 
@@ -20,7 +20,7 @@ When this toolkit is used as a submodule, do not write generated capability file
 Use the helper script only after the clarification session and glossary validation are complete, and only when the requested capability has clear input values:
 
 ```sh
-python3 skills/write-a-capability-overview/scripts/write-capability-overview.py "Order Management" \
+python3 skills/capability-overview/scripts/write-capability-overview.py "Order Management" \
   --domain "Commerce" \
   --business-objective "Improve order accuracy, lifecycle visibility, and fulfillment coordination." \
   --stakeholder "Customer service" \
@@ -40,7 +40,7 @@ Each generated capability must also be added to `capabilities/_capability-list.m
 When running from a private lab repo that contains this toolkit as a submodule:
 
 ```sh
-python3 toolkit/skills/write-a-capability-overview/scripts/write-capability-overview.py "Order Management" \
+python3 toolkit/skills/capability-overview/scripts/write-capability-overview.py "Order Management" \
   --domain "Commerce" \
   --business-objective "Improve order accuracy, lifecycle visibility, and fulfillment coordination." \
   --stakeholder "Customer service" \

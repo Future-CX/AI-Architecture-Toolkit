@@ -1,12 +1,12 @@
-# Write A Solution Architecture Document
+# Target Architecture Document
 
-Write solution architecture documents that connect business capabilities to strategy, target architecture, applications, data, integration, and technology direction.
+Write target architecture documents that connect business capabilities to strategy, target architecture, applications, data, integration, and technology direction.
 
-Generated documents belong under the private company lab root at `solution-architectures/<slug>/`, with numbered section files and an assembled `solution-architecture-document.md`.
+Generated documents belong under the private company lab root at `solution-architectures/<slug>/`, with numbered section files and an assembled `target-architecture-document.md`.
 
 Before any files are created, the workflow must run a `grill-me` style clarification session and update the private lab root `GLOSSARY.md` with `ubiquitous-language` as terms are clarified. If `GLOSSARY.md` was not created or updated afterwards, stop and ask the user to run `grill-me` followed by `ubiquitous-language`.
 
-While solution architecture section files are created or updated, the workflow must keep `GLOSSARY.md` current with any newly introduced or changed domain terms, applications, data objects, and relationships.
+While target architecture section files are created or updated, the workflow must keep `GLOSSARY.md` current with any newly introduced or changed domain terms, applications, data objects, and relationships.
 
 ```text
 solution-architectures/<slug>/
@@ -21,7 +21,7 @@ solution-architectures/<slug>/
 ├── 08-roadmap-themes.md
 ├── 09-governance-actions.md
 ├── 10-risks-and-open-questions.md
-└── solution-architecture-document.md
+└── target-architecture-document.md
 ```
 
 - [SKILL.md](SKILL.md)
@@ -39,4 +39,4 @@ solution-architectures/<slug>/
 - [Roadmap themes template](templates/08-roadmap-themes-template.md)
 - [Governance actions template](templates/09-governance-actions-template.md)
 - [Risks and open questions template](templates/10-risks-and-open-questions-template.md)
-- [Solution architecture document template](templates/solution-architecture-document-template.md)
+- [Target architecture document template](templates/target-architecture-document-template.md)

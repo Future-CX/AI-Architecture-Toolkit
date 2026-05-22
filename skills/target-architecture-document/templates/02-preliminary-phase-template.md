@@ -1,6 +1,6 @@
 # Preliminary Phase
 
-Describe the enterprise architecture context that frames the solution architecture document.
+Describe the enterprise architecture context that frames the target architecture document.
 
 ## Enterprise Scope
 

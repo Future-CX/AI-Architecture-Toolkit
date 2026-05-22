@@ -1,4 +1,4 @@
-# {{DOMAIN_NAME}} Solution Architecture Document
+# {{DOMAIN_NAME}} Target Architecture Document
 
 | Field | Value |
 | --- | --- |
@@ -22,7 +22,7 @@ Create a high-level overview for each included capability.
 
 ## 3. Preliminary Phase Input
 
-Describe the enterprise architecture context that frames the solution architecture document.
+Describe the enterprise architecture context that frames the target architecture document.
 
 ### Enterprise Scope
 
