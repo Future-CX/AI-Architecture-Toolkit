@@ -21,7 +21,7 @@ After the clarification session, validate that `<private-lab-root>/GLOSSARY.md` 
 
 When this toolkit is used as a submodule, do not write generated high-level solution design files under `toolkit/solution-architectures/`. Run from the private lab root, or otherwise target the private lab root explicitly, so output goes to `<private-lab-root>/solution-architectures/L2-solution-design-<slug>/`.
 
-Use `templates/high-level-solution-design-template.md` as the output structure. When Mermaid diagrams are created, store each diagram as a separate `.mmd` file in the same folder as the high-level solution design document and reference those files from the document.
+Use `templates/high-level-solution-design-template.md` as the output structure. When Mermaid diagrams are created, store each diagram as a separate `.mmd` source file in the same folder as the high-level solution design document. For every `.mmd` file, also render a same-basename `.svg` file and embed the SVG in the document.
 
 ## Required Inputs
 
@@ -49,15 +49,20 @@ Use `templates/high-level-solution-design-template.md` as the output structure. 
    - General canonical data objects, ownership, source-of-truth, and lifecycle notes
    - Relationships between terms, applications, and data objects
 10. Create the technical document from `templates/high-level-solution-design-template.md`.
-11. Create separate Mermaid files in the same output folder when the required architecture relationships are known:
+11. Create separate Mermaid source files in the same output folder when the required architecture relationships are known:
     - `capability-context.mmd` for the capability context diagram
     - `application-component-view.mmd` for the application/component diagram
     - `conceptual-data-model.mmd` for the data model or conceptual entity relationship diagram
     - `integration-flow.mmd` for the integration flow or sequence diagram
-12. Reference each created `.mmd` file from the `## Diagrams` section of `<slug>-architecture.md`. Do not inline Mermaid diagram code in the design document unless the user explicitly asks for inline diagrams.
-13. Do not create placeholder `.mmd` files for unknown diagrams. Mark missing diagrams as assumptions or open questions in the design document.
-14. Record specific technical design choices in the document. If a choice is durable, hard to reverse, surprising without context, and based on a real trade-off, propose an ADR using `../architecture-decision-record/SKILL.md`.
-15. Mark unknowns as assumptions or open questions. Do not invent implementation facts.
+12. Render a same-basename SVG for each created Mermaid file in the same output folder:
+    - `capability-context.svg`
+    - `application-component-view.svg`
+    - `conceptual-data-model.svg`
+    - `integration-flow.svg`
+13. Embed each created `.svg` file in the `## Diagrams` section of `<slug>-architecture.md` using Markdown image syntax, and include a nearby source link to the matching `.mmd` file. Do not inline Mermaid diagram code in the design document unless the user explicitly asks for inline diagrams.
+14. Do not create placeholder `.mmd` or `.svg` files for unknown diagrams. Mark missing diagrams as assumptions or open questions in the design document.
+15. Record specific technical design choices in the document. If a choice is durable, hard to reverse, surprising without context, and based on a real trade-off, propose an ADR using `../architecture-decision-record/SKILL.md`.
+16. Mark unknowns as assumptions or open questions. Do not invent implementation facts.
 
 ## Required Outputs
 
@@ -70,7 +75,7 @@ Each high-level solution design document must include:
 - Application and component architecture
 - Data model and data ownership
 - Data integrations and interface contracts
-- Mermaid diagram files in the same folder as the design document, referenced from the document, where enough detail is known
+- Mermaid `.mmd` source files and rendered `.svg` files in the same folder as the design document, with SVGs embedded in the document where enough detail is known
 - Security, privacy, and compliance design
 - NFR and operational design
 - Technical design choices and trade-offs
