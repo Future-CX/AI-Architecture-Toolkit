@@ -83,5 +83,5 @@ decision records → governance review → roadmap actions
 - [Solution Architect](solution-architect.md) — designs the technical solution you govern
 - [Business Analyst](business-analyst.md) — provides stakeholder, requirements, and traceability context
 - [Data Architect](data-architect.md) — owns data architecture inputs that affect the enterprise roadmap
-- [Technical Architect](technical-architect.md) — turns approved architecture direction into implementable designs
+- [Lead Developer](lead-developer.md) — turns approved architecture direction into implementable delivery work
 - [Security Architect](security-architect.md) — owns the security compliance you review
