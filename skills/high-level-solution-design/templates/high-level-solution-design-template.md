@@ -67,27 +67,19 @@
 
 ### Capability Context
 
-```mermaid
-{{CAPABILITY_CONTEXT_DIAGRAM}}
-```
+{{CAPABILITY_CONTEXT_DIAGRAM_REFERENCE}}
 
 ### Application and Component View
 
-```mermaid
-{{APPLICATION_COMPONENT_DIAGRAM}}
-```
+{{APPLICATION_COMPONENT_DIAGRAM_REFERENCE}}
 
 ### Conceptual Data Model
 
-```mermaid
-{{CONCEPTUAL_DATA_MODEL_DIAGRAM}}
-```
+{{CONCEPTUAL_DATA_MODEL_DIAGRAM_REFERENCE}}
 
 ### Integration Flow
 
-```mermaid
-{{INTEGRATION_FLOW_DIAGRAM}}
-```
+{{INTEGRATION_FLOW_DIAGRAM_REFERENCE}}
 
 ## Security, Privacy, and Compliance
 
