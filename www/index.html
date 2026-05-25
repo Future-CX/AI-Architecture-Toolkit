@@ -1016,13 +1016,6 @@ python3 toolkit/skills/capability-overview/scripts/write-capability-overview.py 
         <div class="creates-layout">
           <div class="creates-cards">
             <article class="card">
-              <h3>Capability and architecture folders</h3>
-              <p>
-                Capability overviews and solution architecture documents under
-                the matching repository folders.
-              </p>
-            </article>
-            <article class="card">
               <h3>Decision records</h3>
               <p>
                 Numbered ADRs linked from the technical design choices they
@@ -1030,10 +1023,25 @@ python3 toolkit/skills/capability-overview/scripts/write-capability-overview.py 
               </p>
             </article>
             <article class="card">
-              <h3>Glossaries and principles</h3>
+              <h3>Capability overviews</h3>
               <p>
-                Shared language in <code>GLOSSARY.md</code> plus reusable
-                principle documents under <code>principles/</code>.
+                Business capability documents under
+                <code>capabilities/</code> with scope, outcomes, owners, and
+                related systems.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Principles</h3>
+              <p>
+                Reusable architecture principle documents under
+                <code>principles/</code>.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Solution architectures</h3>
+              <p>
+                Target architecture and high-level solution design documents
+                under <code>solution-architectures/</code>.
               </p>
             </article>
             <article class="card">
@@ -1042,6 +1050,13 @@ python3 toolkit/skills/capability-overview/scripts/write-capability-overview.py 
                 Mermaid <code>.mmd</code> sources and Draw.io
                 <code>.drawio</code> files paired with same-basename
                 <code>.svg</code> exports when embedded in design documents.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Glossary</h3>
+              <p>
+                Shared domain language in <code>GLOSSARY.md</code>, including
+                canonical terms, applications, data objects, and relationships.
               </p>
             </article>
           </div>
@@ -1072,13 +1087,14 @@ python3 toolkit/skills/capability-overview/scripts/write-capability-overview.py 
 │   ├──  cloud-principles.md
 │   └── integration-principles.md
 └── solution-architectures/
-    ├── target-architecture-document/
-    |   ├── target-architecture-document.md
-    └── L2-solution-design-search/
-        ├── search-architecture.md
-        ├── solution-design.mmd
-        ├── solution-design.drawio
-        └── solution-design.svg
+│   ├── target-architecture-document/
+│   |   ├── target-architecture-document.md
+│   └── L2-solution-design-search/
+│       ├── search-architecture.md
+│       ├── solution-design.mmd
+│       ├── solution-design.drawio
+│       └── solution-design.svg
+└── GLOSSARY.md
 
 </code></pre>
           </div>
