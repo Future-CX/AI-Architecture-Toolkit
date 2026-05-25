@@ -412,6 +412,14 @@
         letter-spacing: 0;
       }
 
+      .text-accent {
+        color: var(--accent);
+      }
+
+      .text-skill {
+        color: var(--blue);
+      }
+
       .section-head p,
       .section-copy {
         max-width: 580px;
@@ -453,6 +461,14 @@
         background: var(--panel);
       }
 
+      #agents .card {
+        border-left: 5px solid var(--accent);
+      }
+
+      #skills .card {
+        border-left: 5px solid var(--blue);
+      }
+
       .card h3 {
         margin: 0 0 10px;
         font-size: 19px;
@@ -461,17 +477,6 @@
       .card p {
         margin: 0;
         color: var(--muted);
-      }
-
-      .tag {
-        display: inline-flex;
-        margin-bottom: 14px;
-        border-radius: 999px;
-        padding: 5px 9px;
-        background: var(--accent-soft);
-        color: var(--accent-ink);
-        font-size: 12px;
-        font-weight: 800;
       }
 
       .workflow {
@@ -796,7 +801,10 @@
     <main>
       <section id="agents">
         <div class="section-head">
-          <h2>Use purpose-built agents for architecture work.</h2>
+          <h2>
+            Use purpose-built <span class="text-accent">agents</span> for
+            architecture work.
+          </h2>
           <p>
             Start each engagement with a role brief that sets scope,
             responsibilities, and expected outputs for a specific architecture
@@ -805,7 +813,6 @@
         </div>
         <div class="grid three">
           <article class="card">
-            <span class="tag">Solution</span>
             <h3>Solution Architect Agent</h3>
             <p>
               Creates high-level solution designs from capability overviews,
@@ -813,7 +820,6 @@
             </p>
           </article>
           <article class="card">
-            <span class="tag">Enterprise</span>
             <h3>Enterprise Architect Agent</h3>
             <p>
               Owns governance, principles, target architecture, roadmap
@@ -821,7 +827,6 @@
             </p>
           </article>
           <article class="card">
-            <span class="tag">Analysis</span>
             <h3>Business Analyst Agent</h3>
             <p>
               Clarifies business needs, scope, stakeholders, outcomes,
@@ -829,7 +834,6 @@
             </p>
           </article>
           <article class="card">
-            <span class="tag">Data</span>
             <h3>Data Architect Agent</h3>
             <p>
               Guides canonical data objects, ownership, lifecycle, privacy,
@@ -837,7 +841,6 @@
             </p>
           </article>
           <article class="card">
-            <span class="tag">Integration</span>
             <h3>Integration Architect Agent</h3>
             <p>
               Shapes APIs, events, data flows, reliability, observability, and
@@ -845,7 +848,6 @@
             </p>
           </article>
           <article class="card">
-            <span class="tag">Governance</span>
             <h3>API Governance Agent</h3>
             <p>
               Reviews API contracts for naming, versioning, security, lifecycle
@@ -853,7 +855,6 @@
             </p>
           </article>
           <article class="card">
-            <span class="tag">Review</span>
             <h3>Architecture Review Board Agent</h3>
             <p>
               Prepares review findings, tracks decisions, and checks alignment
@@ -861,7 +862,6 @@
             </p>
           </article>
           <article class="card">
-            <span class="tag">Security</span>
             <h3>Security Architect Agent</h3>
             <p>
               Identifies threats, controls, privacy concerns, compliance
@@ -869,7 +869,6 @@
             </p>
           </article>
           <article class="card">
-            <span class="tag">Delivery</span>
             <h3>Lead Developer Agent</h3>
             <p>
               Turns approved architecture direction into buildable, testable,
@@ -882,7 +881,10 @@
       <div class="split-band">
         <section id="skills">
           <div class="section-head">
-            <h2>Turn architecture habits into repeatable skills.</h2>
+            <h2>
+              Turn architecture habits into repeatable
+              <span class="text-skill">skills</span>.
+            </h2>
             <p>
               Skills encode the workflow, templates, scripts, and guardrails
               needed to produce consistent artifacts.
@@ -901,6 +903,13 @@
               <p>
                 Produce implementation-oriented solution designs with chapter
                 guidance, Mermaid sources, rendered SVGs, and linked ADRs.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Create Draw.io diagram</h3>
+              <p>
+                Create editable Draw.io architecture diagrams from templates for
+                capability context, components, data models, and integrations.
               </p>
             </article>
             <article class="card">
@@ -1030,8 +1039,9 @@ python3 toolkit/skills/capability-overview/scripts/write-capability-overview.py 
             <article class="card">
               <h3>Rendered diagrams</h3>
               <p>
-                Mermaid <code>.mmd</code> sources paired with same-basename
-                <code>.svg</code> files embedded in design documents.
+                Mermaid <code>.mmd</code> sources and Draw.io
+                <code>.drawio</code> files paired with same-basename
+                <code>.svg</code> exports when embedded in design documents.
               </p>
             </article>
           </div>
@@ -1049,18 +1059,28 @@ python3 toolkit/skills/capability-overview/scripts/write-capability-overview.py 
 │   ├── agents/
 │   ├── skills/
 │   └── governance/
+├── adr/
+│   ├── 0001-short-decision-title.md
+│   └── 0002-short-decision-title.md
 ├── capabilities/
+│   ├── ecommerce
+│   │   └── ecommerce-capability-overview.md
 │   └── search/
-│       └── search.md
-├── solution-architectures/
-│   └── L2-solution-design-search/
-│       ├── search-architecture.md
-│       ├── capability-context.mmd
-│       └── capability-context.svg
+│       └── search-capability-overview.md
 ├── principles/
-│   └── architecture-principles.md
-└── adr/
-    └── 0001-short-decision-title.md</code></pre>
+│   ├── architecture-principles.md
+│   ├──  cloud-principles.md
+│   └── integration-principles.md
+└── solution-architectures/
+    ├── target-architecture-document/
+    |   ├── target-architecture-document.md
+    └── L2-solution-design-search/
+        ├── search-architecture.md
+        ├── solution-design.mmd
+        ├── solution-design.drawio
+        └── solution-design.svg
+
+</code></pre>
           </div>
         </div>
       </section>
