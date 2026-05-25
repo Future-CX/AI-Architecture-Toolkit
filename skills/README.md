@@ -2,8 +2,10 @@
 
 - [Architecture Decision Record](architecture-decision-record/SKILL.md) - Record durable architecture decisions as concise ADRs using the repository ADR format.
 - [Create An Agent](create-an-agent/SKILL.md) - Create architecture agent definitions under `agents/` from a preset template.
+- [Target Architecture Document](target-architecture-document/SKILL.md) - Write capability-aligned target architecture documents using Preliminary Phase and Phase A-D architecture input.
 - [Grill Me](grill-me/SKILL.md) - Interview the user relentlessly about a plan or design until reaching shared understanding.
 - [Ubiquitous Language](ubiquitous-language/SKILL.md) - Extract a DDD-style ubiquitous language glossary, flag ambiguities, and propose canonical terms.
-- [Write A Capability Overview](write-a-capability-overview/SKILL.md) - Write business capability overview documents under `capabilities/` from a preset template.
+- [High-Level Solution Design](high-level-solution-design/SKILL.md) - Write high-level solution design documents from existing capability overviews.
+- [Capability Overview](capability-overview/SKILL.md) - Write business capability overview documents under `capabilities/` from a preset template.
 - [Write A Principle](write-a-principle/SKILL.md) - Write architecture principle documents under `principles/` from a preset template.
-- [Write A Skill](write-a-skill/SKILL.md) - Create new agent skills with proper structure, progressive disclosure, and bundled resources.
+- [Create A Skill](create-a-skill/SKILL.md) - Create new agent skills with proper structure, progressive disclosure, and bundled resources.

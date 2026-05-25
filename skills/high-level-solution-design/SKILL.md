@@ -21,7 +21,7 @@ After the clarification session, validate that `<private-lab-root>/GLOSSARY.md` 
 
 When this toolkit is used as a submodule, do not write generated high-level solution design files under `toolkit/solution-architectures/`. Run from the private lab root, or otherwise target the private lab root explicitly, so output goes to `<private-lab-root>/solution-architectures/L2-solution-design-<slug>/`.
 
-Use `templates/high-level-solution-design-template.md` as the output structure. When Mermaid diagrams are created, store each diagram as a separate `.mmd` source file in the same folder as the high-level solution design document. For every `.mmd` file, also render a same-basename `.svg` file and embed the SVG in the document.
+Use `templates/high-level-solution-design-template.md` as the output structure and follow the chapter writing guidance below when replacing placeholders. Replace each complete placeholder block with finished document content; do not leave placeholder names, placeholder guidance, or drafting instructions in the generated document. When Mermaid diagrams are created, store each diagram as a separate `.mmd` source file in the same folder as the high-level solution design document. For every `.mmd` file, also render a same-basename `.svg` file and embed the SVG in the document.
 
 ## Required Inputs
 
@@ -63,6 +63,105 @@ Use `templates/high-level-solution-design-template.md` as the output structure. 
 14. Do not create placeholder `.mmd` or `.svg` files for unknown diagrams. Mark missing diagrams as assumptions or open questions in the design document.
 15. Record specific technical design choices in the document. If a choice is durable, hard to reverse, surprising without context, and based on a real trade-off, propose an ADR using `../architecture-decision-record/SKILL.md`.
 16. Mark unknowns as assumptions or open questions. Do not invent implementation facts.
+
+## Chapter Writing Guidance
+
+Write each chapter as implementation-oriented architecture guidance, not as a restatement of the capability overview. Prefer specific decisions, responsibilities, boundaries, data ownership, interfaces, constraints, and trade-offs. Use concise prose plus tables where comparison or accountability is clearer than paragraphs.
+
+### Architecture Summary
+
+- State the target solution in 3-6 paragraphs for senior stakeholders and delivery leads.
+- Name the capability, the business outcome, the main architectural approach, the primary applications or components, and the most important constraints.
+- Include the key design consequences: what changes, what stays stable, and what must be decided next.
+- Do not include generic benefits or marketing language.
+
+### Capability Overview
+
+- Summarize only the capability context needed to understand the design.
+- Link to the source capability overview and identify the source sections, assumptions, or statements used.
+- Capture the capability boundary, upstream/downstream capabilities, triggering business events, and expected outcomes.
+- Call out any gaps or contradictions found in the source overview.
+- Do not link ADRs from this section; ADR links belong in `Technical Design Choices`.
+
+### Scope and Assumptions
+
+- Use clear bullet lists for in scope, out of scope, and assumptions.
+- Scope should define the technical responsibility boundary for the design, not the entire business capability.
+- Assumptions must be testable or reviewable. Avoid vague assumptions such as "systems will integrate correctly."
+- Move unresolved facts that require a decision or answer to `Open Questions`, not assumptions.
+
+### Target Technical Implementation
+
+- Describe the target runtime solution: main services, applications, platforms, deployment model, environments, and operational ownership.
+- Explain build-versus-buy, reuse, replacement, and modernization choices where relevant.
+- Identify lifecycle flows from request or event through processing, persistence, integration, observability, and user or system outcome.
+- Include important technology standards, constraints, and version or platform assumptions when known.
+
+### Application and Component Architecture
+
+- Identify each application, service, module, integration component, user interface, and shared platform involved.
+- For each component, describe responsibility, ownership, key dependencies, and whether it is new, changed, reused, or retired.
+- Make boundaries explicit: what each component owns, what it must not own, and where orchestration or business rules live.
+- Use a table when there are multiple components.
+
+### Data Model and Ownership
+
+- Define canonical business data objects, their meaning, owner or source of truth, lifecycle, and consumers.
+- Keep data objects business-level and general. Do not use vendor object names, table names, endpoint resources, or application-specific object names as canonical data objects.
+- Capture important relationships, identifiers, master/reference data, retention needs, privacy classification, and data quality responsibilities.
+- State where mappings are needed between canonical objects and application-specific representations.
+
+### Data Integrations and Interface Contracts
+
+- Describe each interface, event, API, file, batch, stream, or manual handoff needed for the capability.
+- For each integration, state producer, consumer, payload or data object, trigger, frequency, protocol or pattern, ownership, error handling, retry/idempotency needs, and observability.
+- Distinguish command, query, event, synchronization, and reporting flows.
+- Flag unclear interface contracts as open questions instead of inventing fields or endpoints.
+
+### Diagrams
+
+- Embed the rendered SVG for each diagram and provide a nearby link to the matching Mermaid source file.
+- Use diagrams only where they clarify boundaries, relationships, ownership, or sequence. Do not add decorative diagrams.
+- The capability context diagram should show actors, neighboring capabilities, and external dependencies.
+- The application/component view should show applications, services, components, platforms, and major responsibilities.
+- The conceptual data model should show canonical data objects and meaningful relationships.
+- The integration flow should show direction, trigger, protocol or pattern, and important sequencing.
+
+### Security, Privacy, and Compliance
+
+- Describe authentication, authorization, identity propagation, secrets, encryption, audit logging, data protection, consent, retention, and regulatory constraints where relevant.
+- Tie controls to concrete data objects, interfaces, components, or user roles.
+- Identify trust boundaries and privileged operations.
+- Mark missing security or privacy decisions as open questions.
+
+### NFR and Operational Design
+
+- Cover availability, resilience, performance, scalability, latency, recovery, observability, support model, deployment, release, backup, monitoring, alerting, and incident response.
+- Use measurable targets where known. If targets are unknown, identify the decision needed rather than inventing numbers.
+- Explain failure modes and recovery behavior for critical integrations and data stores.
+- Include operational ownership and handover concerns.
+
+### Technical Design Choices
+
+- Record meaningful choices with alternatives, rationale, trade-offs, and whether an ADR is needed or already exists.
+- Link existing or newly created ADRs in this section, next to the decision they support.
+- Include only choices that affect delivery, reversibility, coupling, cost, risk, operations, security, or future evolution.
+- Avoid filling the table with obvious implementation facts.
+- Propose an ADR when a choice is durable, hard to reverse, surprising without context, and based on a real trade-off.
+
+### Risks, Dependencies, and Migration Notes
+
+- Separate risks, dependencies, and migration notes clearly.
+- Risks should include cause, impact, and mitigation or owner where known.
+- Dependencies should identify the external decision, team, system, platform, data, vendor, or prerequisite needed.
+- Migration notes should explain transition states, coexistence, cutover, rollback, data migration, compatibility, and decommissioning concerns.
+
+### Open Questions
+
+- Capture unresolved decisions, missing facts, and review items that block or materially influence the design.
+- Each question should have an owner or target audience when known.
+- Prefer concrete questions that can be answered, such as "Which system is source of truth for Product availability?".
+- Do not use open questions as a place for generic next steps.
 
 ## Required Outputs
 
