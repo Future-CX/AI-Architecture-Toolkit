@@ -14,31 +14,31 @@ Open-source AI agents, skills, templates, and workflows for software architects 
 
 ## Purpose
 
-This toolkit helps architecture teams standardize how they use AI for solution design, enterprise architecture, integration design, API governance, risk assessment, and architecture review.
+This toolkit helps architecture teams standardize how they use AI for enterprise architecture, solution design, integration design, API governance, risk assessment, architecture review, and implementation handover.
 
-The active toolkit boundary is documented in [TOOLKIT.md](TOOLKIT.md). Toolkit-aware scanners should also honor [.toolkitignore](.toolkitignore).
+Toolkit-aware scanners should honor [.toolkitignore](.toolkitignore) when separating active toolkit content from local or generated files.
 
 For testing this public toolkit against real company context, use a separate private company lab repository. See [Private Company Lab](governance/private-company-lab.md).
 
 ## How To Use The Toolkit
 
 1. Choose the agent that matches the work.
-   Use the agent files in `agents/` as role briefs for architecture conversations. For example, use the Solution Architect Agent for high-level solution design, the Enterprise Architect Agent for capability and roadmap alignment, or the Integration Architect Agent for integration design.
+   Use the agent files in `agents/` as role briefs for architecture conversations. For example, use the Enterprise Architect Agent for governance, principles, target architecture, and roadmap alignment; use the Solution Architect Agent for high-level solution design, technical choices, diagrams, and solution ADRs; or use the Integration Architect Agent for integration design.
 
 2. Use skills for repeatable architecture tasks.
-   Skills in `skills/` define focused workflows. Use them when creating agents, writing principles, recording ADRs, producing capability overviews, hardening domain language, or stress-testing a plan.
+   Skills in `skills/` define focused workflows. Use them when creating agents, writing principles, recording ADRs, producing capability overviews, drafting target architecture, creating high-level solution designs, hardening domain language, or stress-testing a plan.
 
 3. Start from templates.
    Use shared templates in `templates/` and skill-owned templates in `skills/*/templates/` to create consistent artifacts.
 
 4. Store generated artifacts in the matching folder.
-   Agent definitions belong in `agents/`, principles in `principles/`, generated capability overviews in `capabilities/`, and ADRs in the location defined by the ADR skill.
+   Agent definitions belong in `agents/`, principles in `principles/`, generated capability overviews in `capabilities/`, solution architecture documents in `solution-architectures/`, private-lab glossaries in `GLOSSARY.md`, and ADRs in the location defined by the ADR skill.
 
 5. Keep public and private work separate.
    This repository should stay generic and public. Use a private company lab repository for real company context, internal system names, stakeholder details, generated company glossaries, and real architecture decisions.
 
 6. Respect the active toolkit boundary.
-   Use [TOOLKIT.md](TOOLKIT.md) to understand what counts as active toolkit content. Toolkit-aware scripts and agents should honor [.toolkitignore](.toolkitignore).
+   Toolkit-aware scripts and agents should honor [.toolkitignore](.toolkitignore) when deciding what counts as active toolkit content.
 
 ## Git Usage
 
@@ -106,19 +106,34 @@ git commit -m "Update AI Architecture Toolkit submodule"
 | Agent | Purpose |
 | --- | --- |
 | [API Governance Agent](agents/api-governance-agent.md) | Support API design quality, consistency, discoverability, lifecycle management, and compliance with API standards. |
-| [Architecture Review Board Agent](agents/architecture-review-board-agent.md) | Support architecture review board preparation, review consistency, and decision tracking. |
-| [Enterprise Architect Agent](agents/enterprise-architect-agent.md) | Support enterprise alignment across capabilities, platforms, standards, roadmaps, and strategic technology direction. |
-| [Integration Architect Agent](agents/integration-architect-agent.md) | Support integration design across APIs, events, data flows, messaging, orchestration, and operational ownership. |
-| [Solution Architect Agent](agents/solution-architect-agent.md) | Support solution design by translating business needs into coherent application, data, integration, security, and operational architecture. |
+| [Architecture Review Board Agent](agents/architecture-review-board.md) | Support architecture review board preparation, review consistency, and decision tracking. |
+| [Business Analyst Agent](agents/business-analyst.md) | Support requirements discovery by clarifying business needs, scope, stakeholders, outcomes, terminology, and traceability for architecture work. |
+| [Data Architect Agent](agents/data-architect.md) | Support data architecture decisions across canonical data objects, ownership, lifecycle, privacy, quality, integration, and governance. |
+| [Enterprise Architect Agent](agents/enterprise-architect.md) | Own governance, principles, target architecture, roadmap alignment, and enterprise-impacting architecture decisions. |
+| [Integration Architect Agent](agents/integration-architect.md) | Support integration design across APIs, events, data flows, messaging, orchestration, and operational ownership. |
+| [Lead Developer Agent](agents/lead-developer.md) | Support implementation leadership by turning approved solution designs into buildable, testable, operable software delivery plans. |
+| [Security Architect Agent](agents/security-architect.md) | Support security architecture by identifying threats, controls, privacy concerns, compliance constraints, and operational security requirements for architecture work. |
+| [Solution Architect Agent](agents/solution-architect.md) | Create high-level solution designs from capability overviews, record material ADRs, and embed rendered Mermaid diagrams. |
 
 ## Skills
 
 | Skill | Purpose |
 | --- | --- |
-| [Architecture Decision Record](skills/architecture-decision-record/SKILL.md) | Record durable architecture decisions as concise ADRs using the repository ADR format. |
+| [Architecture Decision Record](skills/architecture-decision-record/SKILL.md) | Record durable architecture decisions as concise ADRs when choices are hard to reverse and based on real trade-offs. |
 | [Create An Agent](skills/create-an-agent/SKILL.md) | Create architecture agent definitions under `agents/` from a preset template. |
-| [Grill Me](skills/grill-me/SKILL.md) | Interview the user relentlessly about a plan or design until reaching shared understanding. |
-| [Ubiquitous Language](skills/ubiquitous-language/SKILL.md) | Extract a DDD-style ubiquitous language glossary, flag ambiguities, and propose canonical terms. |
-| [Write A Capability Overview](skills/write-a-capability-overview/SKILL.md) | Write business capability overview documents under `capabilities/` from a preset template. |
-| [Write A Principle](skills/write-a-principle/SKILL.md) | Write architecture principle documents under `principles/` from a preset template. |
-| [Write A Skill](skills/write-a-skill/SKILL.md) | Create new agent skills with proper structure, progressive disclosure, and bundled resources. |
+| [Target Architecture Document](skills/target-architecture-document/SKILL.md) | Connect capabilities to strategy, business architecture, data, applications, integration, technology, gaps, and roadmap themes. |
+| [Grill Me](skills/grill-me/SKILL.md) | Challenge plans, assumptions, constraints, terminology, risks, and decisions until the design context is explicit. |
+| [Ubiquitous Language](skills/ubiquitous-language/SKILL.md) | Extract a shared glossary, flag ambiguous terms, and define canonical applications, data objects, and relationships. |
+| [High-Level Solution Design](skills/high-level-solution-design/SKILL.md) | Write implementation-oriented solution designs with chapter guidance, Mermaid sources, rendered SVGs, and linked ADRs. |
+| [Capability Overview](skills/capability-overview/SKILL.md) | Write business capability overview documents under `capabilities/` from a preset template. |
+| [Write A Principle](skills/write-a-principle/SKILL.md) | Draft architecture principle documents with identifiers, rationale, consequences, and reviewable guidance. |
+| [Create A Skill](skills/create-a-skill/SKILL.md) | Create reusable skills with progressive disclosure, templates, scripts, and clear trigger guidance. |
+
+## What The Toolkit Creates
+
+- Capability overviews under `capabilities/`.
+- Target architecture and high-level solution design documents under `solution-architectures/`.
+- Mermaid `.mmd` diagram sources paired with same-basename `.svg` files embedded in design documents.
+- ADRs linked from the technical design choices they support.
+- Private-lab glossary entries in `GLOSSARY.md`.
+- Architecture principle documents under `principles/`.

@@ -415,7 +415,7 @@
       .section-head p,
       .section-copy {
         max-width: 580px;
-        margin: 0;
+        margin: 24px 0 0;
         color: var(--muted);
       }
 
@@ -764,15 +764,15 @@
           <div class="map-node node-agents">
             <strong>Architecture agents</strong>
             <span
-              >Role briefs for solution, enterprise, integration, API, and
-              review board work.</span
+              >Role briefs for enterprise governance, solution design,
+              integration, data, security, API, delivery, and review work.</span
             >
           </div>
           <div class="map-node node-skills">
             <strong>Reusable skills</strong>
             <span
-              >Repeatable workflows for ADRs, capabilities, principles,
-              language, and review.</span
+              >Repeatable workflows for target architecture, solution design,
+              ADRs, capabilities, principles, language, and review.</span
             >
           </div>
           <div class="map-node node-templates">
@@ -808,16 +808,32 @@
             <span class="tag">Solution</span>
             <h3>Solution Architect Agent</h3>
             <p>
-              Turns business needs into coherent application, data, integration,
-              security, and operational architecture.
+              Creates high-level solution designs from capability overviews,
+              records material ADRs, and embeds rendered Mermaid diagrams.
             </p>
           </article>
           <article class="card">
             <span class="tag">Enterprise</span>
             <h3>Enterprise Architect Agent</h3>
             <p>
-              Aligns initiatives with capabilities, standards, platforms,
-              roadmaps, and target architecture.
+              Owns governance, principles, target architecture, roadmap
+              alignment, and enterprise-impacting architecture decisions.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">Analysis</span>
+            <h3>Business Analyst Agent</h3>
+            <p>
+              Clarifies business needs, scope, stakeholders, outcomes,
+              terminology, and traceability for architecture work.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">Data</span>
+            <h3>Data Architect Agent</h3>
+            <p>
+              Guides canonical data objects, ownership, lifecycle, privacy,
+              quality, integration, and governance decisions.
             </p>
           </article>
           <article class="card">
@@ -845,11 +861,19 @@
             </p>
           </article>
           <article class="card">
-            <span class="tag">Model guidance</span>
-            <h3>Reasoning where it matters</h3>
+            <span class="tag">Security</span>
+            <h3>Security Architect Agent</h3>
             <p>
-              Use frontier reasoning models for decisions and faster models for
-              drafting, summaries, and cleanup.
+              Identifies threats, controls, privacy concerns, compliance
+              constraints, and operational security requirements.
+            </p>
+          </article>
+          <article class="card">
+            <span class="tag">Delivery</span>
+            <h3>Lead Developer Agent</h3>
+            <p>
+              Turns approved architecture direction into buildable, testable,
+              operable delivery plans.
             </p>
           </article>
         </div>
@@ -864,34 +888,68 @@
               needed to produce consistent artifacts.
             </p>
           </div>
-          <div class="grid two">
+          <div class="grid three">
             <article class="card">
-              <h3>Capability overview</h3>
+              <h3>Target architecture document (ADD)</h3>
               <p>
-                Create capability folders, overview documents, and an
-                alphabetized capability index with owners, applications, and
-                lifecycle status.
+                Connect capabilities to strategy, business architecture, data,
+                applications, integration, technology, gaps, and roadmap themes.
               </p>
             </article>
             <article class="card">
-              <h3>Architecture decisions</h3>
+              <h3>High-level solution design</h3>
               <p>
-                Capture durable decisions as concise ADRs and maintain a
-                searchable ADR list with descriptions and update dates.
+                Produce implementation-oriented solution designs with chapter
+                guidance, Mermaid sources, rendered SVGs, and linked ADRs.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Capability overview</h3>
+              <p>
+                Write business capability overviews under
+                <code>capabilities/</code> from a standard template.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Architecture decision record (ADR)</h3>
+              <p>
+                Capture durable architecture decisions as concise ADRs when
+                choices are hard to reverse and based on real trade-offs.
               </p>
             </article>
             <article class="card">
               <h3>Ubiquitous language</h3>
               <p>
-                Extract domain terms, resolve ambiguity, and keep terminology
-                precise across architecture conversations.
+                Extract a shared glossary, flag ambiguous terms, and define
+                canonical applications, data objects, and relationships.
               </p>
             </article>
             <article class="card">
               <h3>Grill me</h3>
               <p>
-                Stress-test a plan by walking the decision tree, checking
-                terminology, and offering ADRs only when they earn their place.
+                Challenge plans, assumptions, constraints, terminology, risks,
+                and decisions until the design context is explicit.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Write a principle</h3>
+              <p>
+                Draft architecture principle documents with identifiers,
+                rationale, consequences, and reviewable guidance.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Create an agent</h3>
+              <p>
+                Create role-specific architecture agent definitions under
+                <code>agents/</code> from the repository template.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Create a skill</h3>
+              <p>
+                Create reusable skills with progressive disclosure, templates,
+                scripts, and clear trigger guidance.
               </p>
             </article>
           </div>
@@ -926,7 +984,7 @@
             <pre><code>git submodule add https://github.com/Future-CX/AI-Architecture-Toolkit.git toolkit
 git commit -m "Add AI Architecture Toolkit submodule"
 
-python3 toolkit/skills/write-a-capability-overview/scripts/write-capability-overview.py "Search Capability" \
+python3 toolkit/skills/capability-overview/scripts/write-capability-overview.py "Search Capability" \
   --domain "Digital" \
   --business-objective "Improve product discovery." \
   --stakeholder "Product Owner" \
@@ -949,24 +1007,31 @@ python3 toolkit/skills/write-a-capability-overview/scripts/write-capability-over
         <div class="creates-layout">
           <div class="creates-cards">
             <article class="card">
-              <h3>Capability folders</h3>
+              <h3>Capability and architecture folders</h3>
               <p>
-                <code>capabilities/search/search.md</code> plus a maintained
-                <code>_capability-list.md</code>.
+                Capability overviews and solution architecture documents under
+                the matching repository folders.
               </p>
             </article>
             <article class="card">
               <h3>Decision records</h3>
               <p>
-                Numbered ADRs with an <code>_adr-list.md</code> table for
-                scanning decisions over time.
+                Numbered ADRs linked from the technical design choices they
+                support.
               </p>
             </article>
             <article class="card">
-              <h3>Principle catalogs</h3>
+              <h3>Glossaries and principles</h3>
               <p>
-                Principle documents with a maintained
-                <code>_principles-list.md</code> index.
+                Shared language in <code>GLOSSARY.md</code> plus reusable
+                principle documents under <code>principles/</code>.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Rendered diagrams</h3>
+              <p>
+                Mermaid <code>.mmd</code> sources paired with same-basename
+                <code>.svg</code> files embedded in design documents.
               </p>
             </article>
           </div>
@@ -985,16 +1050,16 @@ python3 toolkit/skills/write-a-capability-overview/scripts/write-capability-over
 │   ├── skills/
 │   └── governance/
 ├── capabilities/
-│   ├── _capability-list.md
 │   └── search/
 │       └── search.md
+├── solution-architectures/
+│   └── L2-solution-design-search/
+│       ├── search-architecture.md
+│       ├── capability-context.mmd
+│       └── capability-context.svg
 ├── principles/
-│   ├── _principles-list.md
-│   ├── architecture-principles.md
-│   ├── integration-principles.md
-│   └── {other}-principles.md
+│   └── architecture-principles.md
 └── adr/
-    ├── _adr-list.md
     └── 0001-short-decision-title.md</code></pre>
           </div>
         </div>
