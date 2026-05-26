@@ -6,6 +6,7 @@
 - [Grill Me](grill-me/SKILL.md) - Interview the user relentlessly about a plan or design until reaching shared understanding.
 - [Ubiquitous Language](ubiquitous-language/SKILL.md) - Extract a DDD-style ubiquitous language glossary, flag ambiguities, and propose canonical terms.
 - [High-Level Solution Design](high-level-solution-design/SKILL.md) - Write high-level solution design documents from existing capability overviews.
+- [Integration Design](integration-design/SKILL.md) - Create integration design documents for APIs, events, files, batches, messaging, and orchestration.
 - [Create Draw.io Diagram](create-drawio-diagram/SKILL.md) - Create editable Draw.io architecture diagrams from reusable templates.
 - [To Epics](to-epics/SKILL.md) - Break target architecture work into user-confirmed epics and list each epic in Phase E of the target architecture document.
 - [Capability Overview](capability-overview/SKILL.md) - Write business capability overview documents under `capabilities/` from a preset template.

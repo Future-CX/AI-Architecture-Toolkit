@@ -111,8 +111,8 @@ git commit -m "Update AI Architecture Toolkit submodule"
 | [Business Analyst Agent](agents/business-analyst.md) | Support requirements discovery by clarifying business needs, scope, stakeholders, outcomes, terminology, and traceability for architecture work. |
 | [Data Architect Agent](agents/data-architect.md) | Support data architecture decisions across canonical data objects, ownership, lifecycle, privacy, quality, integration, and governance. |
 | [Enterprise Architect Agent](agents/enterprise-architect.md) | Own governance, principles, target architecture, roadmap alignment, and enterprise-impacting architecture decisions. |
-| [Integration Architect Agent](agents/integration-architect.md) | Support integration design across APIs, events, data flows, messaging, orchestration, and operational ownership. |
-| [Lead Developer Agent](agents/lead-developer.md) | Support implementation leadership by turning approved solution designs into buildable, testable, operable software delivery plans. |
+| [Integration Architect Agent](agents/integration-architect.md) | Own integration principles and patterns, and support integration design across APIs, events, data flows, messaging, orchestration, and operational ownership. |
+| [Lead Developer Agent](agents/lead-developer.md) | Support implementation leadership by turning approved solution and integration designs into buildable, testable, operable software delivery plans. |
 | [Security Architect Agent](agents/security-architect.md) | Support security architecture by identifying threats, controls, privacy concerns, compliance constraints, and operational security requirements for architecture work. |
 | [Solution Architect Agent](agents/solution-architect.md) | Create high-level solution designs from capability overviews, record material ADRs, and embed rendered Mermaid diagrams. |
 
@@ -126,6 +126,7 @@ git commit -m "Update AI Architecture Toolkit submodule"
 | [Grill Me](skills/grill-me/SKILL.md) | Challenge plans, assumptions, constraints, terminology, risks, and decisions until the design context is explicit. |
 | [Ubiquitous Language](skills/ubiquitous-language/SKILL.md) | Extract a shared glossary, flag ambiguous terms, and define canonical applications, data objects, and relationships. |
 | [High-Level Solution Design](skills/high-level-solution-design/SKILL.md) | Write implementation-oriented solution designs with chapter guidance, Mermaid sources, rendered SVGs, and linked ADRs. |
+| [Integration Design](skills/integration-design/SKILL.md) | Create integration design documents for APIs, events, files, batches, messaging, and orchestration. |
 | [Create Draw.io Diagram](skills/create-drawio-diagram/SKILL.md) | Create editable Draw.io architecture diagrams from reusable templates for solution and target architecture documents. |
 | [To Epics](skills/to-epics/SKILL.md) | Break target architecture work into user-confirmed epics and list each epic in Phase E of the target architecture document. |
 | [Capability Overview](skills/capability-overview/SKILL.md) | Write business capability overview documents under `capabilities/` from a preset template. |
@@ -137,6 +138,7 @@ git commit -m "Update AI Architecture Toolkit submodule"
 - Capability overviews under `capabilities/`.
 - Target architecture and high-level solution design documents under `solution-architectures/`.
 - User-confirmed epics under `requirements/<name-of-target-architecture>/`, listed in Phase E of the target architecture document.
+- Integration designs under `integrations/` using `INT-0001-<integration-slug>.md` numbering.
 - Mermaid `.mmd` diagram sources paired with same-basename `.svg` files embedded in design documents.
 - Editable Draw.io `.drawio` diagrams for stakeholders who need diagrams.net-compatible source files.
 - ADRs linked from the technical design choices they support.
