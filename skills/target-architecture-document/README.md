@@ -1,6 +1,6 @@
 # Target Architecture Document
 
-Write target architecture documents that connect business capabilities to strategy, target architecture, applications, data, integration, technology direction, solution building blocks, and epics to build.
+Write target architecture documents that connect business capabilities to strategy, target architecture, applications, data, integration, technology direction, and epics to build.
 
 Generated documents belong under the private company lab root at `solution-architectures/<slug>/`, with numbered section files and an assembled `target-architecture-document.md`.
 
@@ -37,7 +37,7 @@ solution-architectures/<slug>/
 - [Phase B business architecture template](templates/04-phase-b-business-architecture-template.md)
 - [Phase C data architecture template](templates/05-phase-c-data-architecture-template.md)
 - [Phase D technology architecture template](templates/06-phase-d-technology-architecture-template.md)
-- [Phase E solution building blocks template](templates/07-phase-e-solution-building-blocks-template.md)
+- [Phase E epics template](templates/07-phase-e-solution-building-blocks-template.md)
 - [Gap analysis template](templates/08-gap-analysis-template.md)
 - [Roadmap themes template](templates/09-roadmap-themes-template.md)
 - [Governance actions template](templates/10-governance-actions-template.md)

@@ -1,6 +1,6 @@
 ---
 name: target-architecture-document
-description: Write target architecture documents that connect business capabilities to strategy, target architecture, applications, data, integration, technology direction, solution building blocks, and epics to build. Use when the user asks to create, draft, or update a target architecture document, solution architecture document, domain architecture document, capability-aligned architecture document, or TOGAF-style Preliminary and Phase A-E architecture input.
+description: Write target architecture documents that connect business capabilities to strategy, target architecture, applications, data, integration, technology direction, and epics to build. Use when the user asks to create, draft, or update a target architecture document, solution architecture document, domain architecture document, capability-aligned architecture document, or TOGAF-style Preliminary and Phase A-E architecture input.
 ---
 
 # Target Architecture Document
@@ -52,7 +52,7 @@ solution-architectures/<slug>/
 - Stakeholders and governance bodies
 - Current-state application, data, integration, and technology context
 - Target-state direction, constraints, standards, and roadmap expectations
-- Candidate solution building blocks, delivery slices, or architecture work packages
+- Candidate delivery slices or architecture work packages
 - Known risks, dependencies, and open decisions
 
 ## Workflow
@@ -116,7 +116,6 @@ solution-architectures/<slug>/
 
 15. Create `07-phase-e-solution-building-blocks.md` from `templates/07-phase-e-solution-building-blocks-template.md` using Phase E input:
 
-- Candidate solution building blocks that implement the target architecture
 - Related capabilities and architecture trace references
 - Delivery dependencies and sequencing notes
 - Epics to build, left as `_No linked epics yet._` until the user explicitly creates epics with `../to-epics/SKILL.md`
