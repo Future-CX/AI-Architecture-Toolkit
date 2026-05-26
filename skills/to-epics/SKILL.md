@@ -1,6 +1,6 @@
 ---
 name: to-epics
-description: Break approved target architecture work into reviewable epics, validate terminology against the glossary, and list each epic in Phase E of the related target architecture document. Use when the user asks to create, draft, split, or convert architecture work into epics, especially from a target architecture document created by the target-architecture-document skill; require explicit user-provided epic name, phase, description, and main capability before creating or updating any epic.
+description: Break approved target architecture work into reviewable epics, run a grill-me clarification session, validate terminology against the glossary, and list each epic in Phase E of the related target architecture document. Use when the user asks to create, draft, split, or convert architecture work into epics, especially from a target architecture document created by the target-architecture-document skill; require explicit user-provided epic name, phase, description, and main capability before creating or updating any epic.
 ---
 
 # To Epics
@@ -47,7 +47,13 @@ Use `templates/epic-template.md` for the epic file.
 2. Read the target architecture document and relevant section files, especially `07-phase-e-solution-building-blocks.md`, roadmap themes, gap analysis, governance actions, risks, and open questions.
 3. Ask the user for the epic name, phase, epic description, and main capability if not already provided.
 4. Ask whether the epic has an existing Jira item URL/key and Confluence page URL. These references are optional; use `TBD` when the user does not provide them.
-5. Confirm the target architecture linkage:
+5. Start a `grill-me` clarification session using `../grill-me/SKILL.md`.
+   - Focus the session on whether the epic has enough detail to be useful for delivery planning.
+   - Ask one question at a time and wait for the user's answer before continuing.
+   - Cover scope, out of scope, assumptions, dependencies, business requirements, visual design, solution design, architecture impact, open questions, and glossary-sensitive terminology.
+   - Use `../ubiquitous-language/SKILL.md` during the session when terms are vague, overloaded, missing from `GLOSSARY.md`, or important enough to become shared domain language.
+   - Continue only when the required epic fields are confirmed and remaining unknowns are explicitly captured as open questions or `TBD`.
+6. Confirm the target architecture linkage:
    - Target architecture document path
    - Requirements output folder: `<private-lab-root>/requirements/<name-of-target-architecture>/`
    - Phase
@@ -56,17 +62,17 @@ Use `templates/epic-template.md` for the epic file.
    - Confluence page reference, if provided
    - Roadmap theme, gap, decision, governance action, or architecture section the epic supports
    - Any known dependencies or sequencing constraints
-6. Validate terminology before writing the epic:
+7. Validate terminology before writing the epic:
    - Locate `<private-lab-root>/GLOSSARY.md`.
    - Check the epic name, description, main capability, scope terms, application names, data objects, integrations, and business requirements against the glossary.
    - If `GLOSSARY.md` is missing, or if important terms are missing, ambiguous, or inconsistent, use `../ubiquitous-language/SKILL.md` to create or update `<private-lab-root>/GLOSSARY.md` before creating the epic.
    - Do not write real-company terminology into this public toolkit repository; update the private lab root glossary.
-7. Create `requirements/<name-of-target-architecture>/<epic-slug>.md` from the template. Do not overwrite an existing epic unless the user explicitly asks to update it.
-8. Update the target architecture linkage:
+8. Create `requirements/<name-of-target-architecture>/<epic-slug>.md` from the template. Do not overwrite an existing epic unless the user explicitly asks to update it.
+9. Update the target architecture linkage:
    - Add or update the `## Epics To Build` table in `07-phase-e-solution-building-blocks.md` when that file exists.
    - Add or update the `### Epics To Build` table in the Phase E section of `target-architecture-document.md`.
    - Link the epic file with a relative markdown link from the target architecture document folder to the requirements file.
-9. Summarize what was created, which glossary terms were confirmed or added, and which target architecture sections the epic traces to.
+10. Summarize what was created, which grill-me questions materially shaped the epic, which glossary terms were confirmed or added, and which target architecture sections the epic traces to.
 
 ## Epic Content Guidance
 
@@ -87,6 +93,14 @@ Include:
 - Open questions that need product, architecture, security, data, or delivery input.
 
 Do not invent delivery commitments, dates, team names, estimates, or business facts. Mark unknowns as `TBD` or open questions.
+
+## Grill-Me Clarification
+
+Treat the `grill-me` session as mandatory before creating or updating an epic file.
+
+Use `../grill-me/SKILL.md` to challenge whether the epic is clear enough to hand to delivery. Ask one question at a time. Prefer questions that expose missing scope boundaries, unclear capability ownership, weak business requirements, hidden dependencies, unresolved visual design expectations, incomplete solution design details, and ambiguous terminology.
+
+Do not create the epic file until the user has answered the clarification questions needed to avoid avoidable misunderstanding. If an answer is genuinely unknown, record it as `TBD` or an open question in the epic.
 
 ## Glossary Validation
 
@@ -122,6 +136,7 @@ If the table still contains `_No linked epics yet._`, replace that placeholder r
 ## Guardrails
 
 - User input is mandatory for the target architecture linkage and for every epic name, phase, description, and main capability.
+- A `grill-me` clarification session is mandatory before creating or updating an epic file.
 - Suggest candidate epics only as a review list; do not create files until the user selects a candidate and provides or confirms the name, description, and main capability.
 - Keep generated real-company epics in the private company lab repository, not inside this public toolkit.
 - Keep real-company glossary updates in the private company lab repository, not inside this public toolkit.
