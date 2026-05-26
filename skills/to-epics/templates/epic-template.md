@@ -1,14 +1,14 @@
 # {{EPIC_NAME}}
 
-| Field               | Value                        |
-| ------------------- | ---------------------------- |
-| Epic                | {{EPIC_NAME}}                |
-| Phase               | {{PHASE}}                    |
-| Main Capability     | [{{MAIN_CAPABILITY_TITLE}}]({{MAIN_CAPABILITY_LINK}}) |
-| Target Architecture | [{{TARGET_ARCHITECTURE_TITLE}}]({{TARGET_ARCHITECTURE_LINK}}) |
+| Field                    | Value                                                                   |
+| ------------------------ | ----------------------------------------------------------------------- |
+| Epic                     | {{EPIC_NAME}}                                                           |
+| Phase                    | {{PHASE}}                                                               |
+| Main Capability          | [{{MAIN_CAPABILITY_TITLE}}]({{MAIN_CAPABILITY_LINK}})                   |
+| Target Architecture      | [{{TARGET_ARCHITECTURE_TITLE}}]({{TARGET_ARCHITECTURE_LINK}})           |
 | L2 Solution Architecture | [{{L2_SOLUTION_ARCHITECTURE_TITLE}}]({{L2_SOLUTION_ARCHITECTURE_LINK}}) |
-| Jira                | [{{JIRA_TITLE}}]({{JIRA_REFERENCE}}) |
-| Confluence          | [{{CONFLUENCE_TITLE}}]({{CONFLUENCE_REFERENCE}}) |
+| Jira                     | [{{JIRA_TITLE}}]({{JIRA_REFERENCE}})                                    |
+| Confluence               | [{{CONFLUENCE_TITLE}}]({{CONFLUENCE_REFERENCE}})                        |
 
 ## Description
 
@@ -50,15 +50,15 @@
 
 ## Architecture Impact
 
-| Area                    | Impact                         |
-| ----------------------- | ------------------------------ |
+| Area                    | Impact                                                |
+| ----------------------- | ----------------------------------------------------- |
 | Main Capability         | [{{MAIN_CAPABILITY_TITLE}}]({{MAIN_CAPABILITY_LINK}}) |
-| Other Capabilities      | {{OTHER_CAPABILITY_IMPACT}}    |
-| Applications            | {{APPLICATION_IMPACT}}         |
-| Data                    | {{DATA_IMPACT}}                |
-| Integration             | {{INTEGRATION_IMPACT}}         |
-| Technology              | {{TECHNOLOGY_IMPACT}}          |
-| Security and Operations | {{SECURITY_OPERATIONS_IMPACT}} |
+| Other Capabilities      | {{OTHER_CAPABILITY_IMPACT}}                           |
+| Applications            | {{APPLICATION_IMPACT}}                                |
+| Data                    | {{DATA_IMPACT}}                                       |
+| Integration             | {{INTEGRATION_IMPACT}}                                |
+| Technology              | {{TECHNOLOGY_IMPACT}}                                 |
+| Security and Operations | {{SECURITY_OPERATIONS_IMPACT}}                        |
 
 ## Dependencies
 
@@ -98,8 +98,8 @@
 
 ## Relevant Links
 
-- [{{TARGET_ARCHITECTURE_TITLE}}]({{TARGET_ARCHITECTURE_LINK}})
-- [{{MAIN_CAPABILITY_TITLE}}]({{MAIN_CAPABILITY_LINK}})
+- [Target Architecture: {{TARGET_ARCHITECTURE_TITLE}}]({{TARGET_ARCHITECTURE_LINK}})
+- [Capability Overview: {{MAIN_CAPABILITY_TITLE}}]({{MAIN_CAPABILITY_LINK}})
 - [{{L2_SOLUTION_ARCHITECTURE_TITLE}}]({{L2_SOLUTION_ARCHITECTURE_LINK}})
 - [{{JIRA_TITLE}}]({{JIRA_REFERENCE}})
 - [{{CONFLUENCE_TITLE}}]({{CONFLUENCE_REFERENCE}})
