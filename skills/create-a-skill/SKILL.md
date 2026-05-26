@@ -17,6 +17,7 @@ description: Create new agent skills with proper structure, progressive disclosu
    - SKILL.md with concise instructions
    - Additional reference files if content exceeds 500 lines
    - Utility scripts if deterministic operations needed
+   - README.md only when the skill has templates, scripts, or resources that need a short local index
 
 3. **Review with user** - present draft and ask:
    - Does this cover your use cases?
@@ -28,6 +29,7 @@ description: Create new agent skills with proper structure, progressive disclosu
 ```
 skill-name/
 ├── SKILL.md           # Main instructions (required)
+├── README.md          # Local index when templates/scripts/resources exist
 ├── REFERENCE.md       # Detailed docs (if needed)
 ├── EXAMPLES.md        # Usage examples (if needed)
 └── scripts/           # Utility scripts (if needed)
