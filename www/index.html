@@ -895,7 +895,8 @@
               <h3>Target architecture document (ADD)</h3>
               <p>
                 Connect capabilities to strategy, business architecture, data,
-                applications, integration, technology, gaps, and roadmap themes.
+                applications, integration, technology, solution building blocks,
+                and epics to build.
               </p>
             </article>
             <article class="card">
@@ -910,6 +911,13 @@
               <p>
                 Create editable Draw.io architecture diagrams from templates for
                 capability context, components, data models, and integrations.
+              </p>
+            </article>
+            <article class="card">
+              <h3>To epics</h3>
+              <p>
+                Break target architecture work into user-confirmed epics and list
+                each epic in Phase E of the target architecture document.
               </p>
             </article>
             <article class="card">
@@ -1016,25 +1024,11 @@ python3 toolkit/skills/capability-overview/scripts/write-capability-overview.py 
         <div class="creates-layout">
           <div class="creates-cards">
             <article class="card">
-              <h3>Decision records</h3>
-              <p>
-                Numbered ADRs linked from the technical design choices they
-                support.
-              </p>
-            </article>
-            <article class="card">
               <h3>Capability overviews</h3>
               <p>
                 Business capability documents under
                 <code>capabilities/</code> with scope, outcomes, owners, and
                 related systems.
-              </p>
-            </article>
-            <article class="card">
-              <h3>Principles</h3>
-              <p>
-                Reusable architecture principle documents under
-                <code>principles/</code>.
               </p>
             </article>
             <article class="card">
@@ -1045,11 +1039,17 @@ python3 toolkit/skills/capability-overview/scripts/write-capability-overview.py 
               </p>
             </article>
             <article class="card">
-              <h3>Rendered diagrams</h3>
+              <h3>Epics</h3>
               <p>
-                Mermaid <code>.mmd</code> sources and Draw.io
-                <code>.drawio</code> files paired with same-basename
-                <code>.svg</code> exports when embedded in design documents.
+                User-confirmed epic files under <code>requirements/</code>,
+                listed in Phase E with traceability to target architecture.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Decision records</h3>
+              <p>
+                Numbered ADRs linked from the technical design choices they
+                support.
               </p>
             </article>
             <article class="card">
@@ -1057,6 +1057,21 @@ python3 toolkit/skills/capability-overview/scripts/write-capability-overview.py 
               <p>
                 Shared domain language in <code>GLOSSARY.md</code>, including
                 canonical terms, applications, data objects, and relationships.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Principles</h3>
+              <p>
+                Reusable architecture principle documents under
+                <code>principles/</code>.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Rendered diagrams</h3>
+              <p>
+                Mermaid <code>.mmd</code> sources and Draw.io
+                <code>.drawio</code> files paired with same-basename
+                <code>.svg</code> exports when embedded in design documents.
               </p>
             </article>
           </div>
@@ -1086,14 +1101,18 @@ python3 toolkit/skills/capability-overview/scripts/write-capability-overview.py 
 │   ├── architecture-principles.md
 │   ├──  cloud-principles.md
 │   └── integration-principles.md
-└── solution-architectures/
+├── solution-architectures/
 │   ├── target-architecture-document/
-│   |   ├── target-architecture-document.md
+│   │   ├── target-architecture-document.md
+│   │   └── 07-phase-e-solution-building-blocks.md
 │   └── L2-solution-design-search/
 │       ├── search-architecture.md
 │       ├── solution-design.mmd
 │       ├── solution-design.drawio
 │       └── solution-design.svg
+├── requirements/
+│   └── target-architecture-document/
+│       └── improve-search-relevance.md
 └── GLOSSARY.md
 
 </code></pre>
