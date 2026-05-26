@@ -120,18 +120,44 @@ Describe the enterprise architecture context that frames the target architecture
 
 {{LIFECYCLE_AND_TECHNICAL_HEALTH_CONCERNS}}
 
-## 8. Gap Analysis
+## 8. Phase E - Solution Building Blocks
+
+Translate the target architecture into candidate solution building blocks and user-confirmed epics to build.
+
+### Solution Building Blocks
+
+| Building Block | Purpose | Related Capability | Architecture Trace | Dependencies |
+| --- | --- | --- | --- | --- |
+| {{BUILDING_BLOCK}} | {{PURPOSE}} | {{RELATED_CAPABILITY}} | {{ARCHITECTURE_TRACE}} | {{DEPENDENCIES}} |
+
+### Epics To Build
+
+List only epics explicitly created or confirmed by the user through the `to-epics` skill.
+
+| Epic | Main Capability | Description | Architecture Trace | Status |
+| --- | --- | --- | --- | --- |
+| _No linked epics yet._ |  |  |  |  |
+
+### Sequencing Notes
+
+{{SEQUENCING_NOTES}}
+
+### Open Delivery Questions
+
+{{OPEN_DELIVERY_QUESTIONS}}
+
+## 9. Gap Analysis
 
 Describe capability, process, application, data, integration, and technology gaps between the current and target state.
 
-## 9. Roadmap Themes
+## 10. Roadmap Themes
 
 Group recommended work into pragmatic roadmap themes with sequencing logic and dependencies.
 
-## 10. Governance Actions
+## 11. Governance Actions
 
 List decisions, standards updates, review checkpoints, and ownership actions needed to move the domain toward the target architecture.
 
-## 11. Risks and Open Questions
+## 12. Risks and Open Questions
 
 Document unresolved assumptions, risks, dependencies, and questions that need stakeholder input.

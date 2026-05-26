@@ -1,6 +1,6 @@
 ---
 name: target-architecture-document
-description: Write target architecture documents that connect business capabilities to strategy, target architecture, applications, data, integration, and technology direction. Use when the user asks to create, draft, or update a target architecture document, solution architecture document, domain architecture document, capability-aligned architecture document, or TOGAF-style Preliminary and Phase A-D architecture input.
+description: Write target architecture documents that connect business capabilities to strategy, target architecture, applications, data, integration, technology direction, solution building blocks, and epics to build. Use when the user asks to create, draft, or update a target architecture document, solution architecture document, domain architecture document, capability-aligned architecture document, or TOGAF-style Preliminary and Phase A-E architecture input.
 ---
 
 # Target Architecture Document
@@ -36,10 +36,11 @@ solution-architectures/<slug>/
 ├── 04-phase-b-business-architecture.md
 ├── 05-phase-c-data-architecture.md
 ├── 06-phase-d-technology-architecture.md
-├── 07-gap-analysis.md
-├── 08-roadmap-themes.md
-├── 09-governance-actions.md
-├── 10-risks-and-open-questions.md
+├── 07-phase-e-solution-building-blocks.md
+├── 08-gap-analysis.md
+├── 09-roadmap-themes.md
+├── 10-governance-actions.md
+├── 11-risks-and-open-questions.md
 └── target-architecture-document.md
 ```
 
@@ -51,6 +52,7 @@ solution-architectures/<slug>/
 - Stakeholders and governance bodies
 - Current-state application, data, integration, and technology context
 - Target-state direction, constraints, standards, and roadmap expectations
+- Candidate solution building blocks, delivery slices, or architecture work packages
 - Known risks, dependencies, and open decisions
 
 ## Workflow
@@ -112,10 +114,18 @@ solution-architectures/<slug>/
 - Technology standards and constraints
 - Technology lifecycle concerns
 
-15. Create `07-gap-analysis.md`, `08-roadmap-themes.md`, `09-governance-actions.md`, and `10-risks-and-open-questions.md` from their matching templates.
-16. Before assembling the final document, review the generated section files against `<private-lab-root>/GLOSSARY.md` and add any missing terms, applications, data objects, and relationships discovered during drafting.
-17. Assemble `target-architecture-document.md` from the section files using `templates/target-architecture-document-template.md` as the final document structure.
-18. Keep the section files as reviewable working artifacts. The assembled `target-architecture-document.md` is the final consolidated artifact.
+15. Create `07-phase-e-solution-building-blocks.md` from `templates/07-phase-e-solution-building-blocks-template.md` using Phase E input:
+
+- Candidate solution building blocks that implement the target architecture
+- Related capabilities and architecture trace references
+- Delivery dependencies and sequencing notes
+- Epics to build, left as `_No linked epics yet._` until the user explicitly creates epics with `../to-epics/SKILL.md`
+
+16. Create `08-gap-analysis.md`, `09-roadmap-themes.md`, `10-governance-actions.md`, and `11-risks-and-open-questions.md` from their matching templates.
+17. Before assembling the final document, review the generated section files against `<private-lab-root>/GLOSSARY.md` and add any missing terms, applications, data objects, and relationships discovered during drafting.
+18. Assemble `target-architecture-document.md` from the section files using `templates/target-architecture-document-template.md` as the final document structure.
+19. Keep the section files as reviewable working artifacts. The assembled `target-architecture-document.md` is the final consolidated artifact.
+20. Leave the Phase E `Epics To Build` table empty until the user explicitly creates epics with `../to-epics/SKILL.md`. Generated epic files belong under `<private-lab-root>/requirements/<name-of-target-architecture>/`, not under the target architecture folder. Do not infer or create epics during target architecture drafting. Every epic requires a user-provided main capability.
 
 ## Guardrails
 
@@ -123,3 +133,4 @@ solution-architectures/<slug>/
 - If using real company details, work in a private company lab repository and write outputs to that repository's `solution-architectures/` folder.
 - Do not invent specific enterprise facts. Mark unknowns as assumptions or open questions.
 - Prefer generic capability names unless the user is working in a private repository.
+- Do not create epics automatically. Epics require explicit user-provided names, descriptions, and main capabilities through the `to-epics` skill.

@@ -1,6 +1,6 @@
 # Target Architecture Document
 
-Write target architecture documents that connect business capabilities to strategy, target architecture, applications, data, integration, and technology direction.
+Write target architecture documents that connect business capabilities to strategy, target architecture, applications, data, integration, technology direction, solution building blocks, and epics to build.
 
 Generated documents belong under the private company lab root at `solution-architectures/<slug>/`, with numbered section files and an assembled `target-architecture-document.md`.
 
@@ -17,14 +17,16 @@ solution-architectures/<slug>/
 ├── 04-phase-b-business-architecture.md
 ├── 05-phase-c-data-architecture.md
 ├── 06-phase-d-technology-architecture.md
-├── 07-gap-analysis.md
-├── 08-roadmap-themes.md
-├── 09-governance-actions.md
-├── 10-risks-and-open-questions.md
+├── 07-phase-e-solution-building-blocks.md
+├── 08-gap-analysis.md
+├── 09-roadmap-themes.md
+├── 10-governance-actions.md
+├── 11-risks-and-open-questions.md
 └── target-architecture-document.md
 ```
 
 - [SKILL.md](SKILL.md)
+- Epics are listed in Phase E and created under `requirements/<name-of-target-architecture>/` with [To Epics](../to-epics/SKILL.md) only after the user provides an epic name, description, and main capability.
 
 ### Templates
 
@@ -35,8 +37,9 @@ solution-architectures/<slug>/
 - [Phase B business architecture template](templates/04-phase-b-business-architecture-template.md)
 - [Phase C data architecture template](templates/05-phase-c-data-architecture-template.md)
 - [Phase D technology architecture template](templates/06-phase-d-technology-architecture-template.md)
-- [Gap analysis template](templates/07-gap-analysis-template.md)
-- [Roadmap themes template](templates/08-roadmap-themes-template.md)
-- [Governance actions template](templates/09-governance-actions-template.md)
-- [Risks and open questions template](templates/10-risks-and-open-questions-template.md)
+- [Phase E solution building blocks template](templates/07-phase-e-solution-building-blocks-template.md)
+- [Gap analysis template](templates/08-gap-analysis-template.md)
+- [Roadmap themes template](templates/09-roadmap-themes-template.md)
+- [Governance actions template](templates/10-governance-actions-template.md)
+- [Risks and open questions template](templates/11-risks-and-open-questions-template.md)
 - [Target architecture document template](templates/target-architecture-document-template.md)
