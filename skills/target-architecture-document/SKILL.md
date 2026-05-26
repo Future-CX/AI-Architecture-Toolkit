@@ -21,7 +21,7 @@ After the clarification session, validate that `<private-lab-root>/GLOSSARY.md` 
 
 Use the matching template in `templates/` for each generated section file. Use `templates/target-architecture-document-template.md` only for the assembled final document.
 
-Store generated target architecture documents under the private company lab root at `solution-architectures/target-architecture-<slug>/`.
+Store generated target architecture documents under the private company lab root at `solution-architectures/L1-target-architecture-<slug>/`.
 
 When this toolkit is used as a submodule, do not write generated target architecture documents under `toolkit/solution-architectures/` or inside this public toolkit repository. Run from the private company lab root, or otherwise target the private lab root explicitly, so output goes to `<private-lab-root>/solution-architectures/`.
 

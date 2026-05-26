@@ -22,6 +22,7 @@
 - [Business Requirements](#business-requirements)
 - [Visual Design](#visual-design)
 - [Solution Design](#solution-design)
+- [Site Reliability Engineering](#site-reliability-engineering)
 
 ## Open Questions
 
@@ -68,3 +69,27 @@
 ## Solution Design
 
 {{SOLUTION_DESIGN}}
+
+## Site Reliability Engineering
+
+> Prevention is better than cure
+
+### How critical is this process or component?
+
+{{SRE_CRITICALITY}}
+
+### What can go wrong?
+
+{{SRE_FAILURE_MODES}}
+
+### How do we see when it goes wrong?
+
+{{SRE_DETECTION}}
+
+### What can we do when it goes wrong?
+
+{{SRE_RESPONSE}}
+
+### How can we prevent or minimize impact when it goes wrong?
+
+{{SRE_PREVENTION_OR_IMPACT_REDUCTION}}

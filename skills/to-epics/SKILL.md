@@ -50,7 +50,7 @@ Use `templates/epic-template.md` for the epic file.
 5. Start a `grill-me` clarification session using `../grill-me/SKILL.md`.
    - Focus the session on whether the epic has enough detail to be useful for delivery planning.
    - Ask one question at a time and wait for the user's answer before continuing.
-   - Cover scope, out of scope, assumptions, dependencies, business requirements, visual design, solution design, architecture impact, open questions, and glossary-sensitive terminology.
+   - Cover scope, out of scope, assumptions, dependencies, business requirements, visual design, solution design, Site Reliability Engineering, architecture impact, open questions, and glossary-sensitive terminology.
    - Use `../ubiquitous-language/SKILL.md` during the session when terms are vague, overloaded, missing from `GLOSSARY.md`, or important enough to become shared domain language.
    - Continue only when the required epic fields are confirmed and remaining unknowns are explicitly captured as open questions or `TBD`.
 6. Confirm the target architecture linkage:
@@ -90,6 +90,7 @@ Include:
 - Business requirements.
 - Visual design needs, UX/UI references, screens, flows, or `TBD`.
 - Solution design notes, components, integration behavior, data changes, or `TBD`.
+- Site Reliability Engineering answers for criticality, failure modes, detection, response, and impact prevention or minimization.
 - Open questions that need product, architecture, security, data, or delivery input.
 
 Do not invent delivery commitments, dates, team names, estimates, or business facts. Mark unknowns as `TBD` or open questions.
@@ -98,7 +99,15 @@ Do not invent delivery commitments, dates, team names, estimates, or business fa
 
 Treat the `grill-me` session as mandatory before creating or updating an epic file.
 
-Use `../grill-me/SKILL.md` to challenge whether the epic is clear enough to hand to delivery. Ask one question at a time. Prefer questions that expose missing scope boundaries, unclear capability ownership, weak business requirements, hidden dependencies, unresolved visual design expectations, incomplete solution design details, and ambiguous terminology.
+Use `../grill-me/SKILL.md` to challenge whether the epic is clear enough to hand to delivery. Ask one question at a time. Prefer questions that expose missing scope boundaries, unclear capability ownership, weak business requirements, hidden dependencies, unresolved visual design expectations, incomplete solution design details, SRE risks, and ambiguous terminology.
+
+Ask these SRE questions during the session:
+
+1. How critical is this process or component?
+2. What can go wrong?
+3. How do we see when it goes wrong?
+4. What can we do when it goes wrong?
+5. How can we prevent or minimize impact when it goes wrong?
 
 Do not create the epic file until the user has answered the clarification questions needed to avoid avoidable misunderstanding. If an answer is genuinely unknown, record it as `TBD` or an open question in the epic.
 

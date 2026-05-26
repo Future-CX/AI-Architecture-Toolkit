@@ -6,7 +6,7 @@ Use this skill only after the user selects the target architecture to link to an
 
 Before creating an epic, update the private lab root `GLOSSARY.md` with `ubiquitous-language` when important terminology is missing or ambiguous.
 
-Before writing the epic file, run `grill-me` to clarify scope, requirements, dependencies, visual design, solution design, and open questions.
+Before writing the epic file, run `grill-me` to clarify scope, requirements, dependencies, visual design, solution design, SRE concerns, and open questions.
 
 - [SKILL.md](SKILL.md)
 - [Epic template](templates/epic-template.md)
