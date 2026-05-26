@@ -107,9 +107,9 @@ When adding the link to `07-phase-e-solution-building-blocks.md`, use this table
 ```md
 ## Epics To Build
 
-| Epic                                                                              | Main Capability     | Description          | Jira               | Confluence               | Architecture Trace                | Status |
-| --------------------------------------------------------------------------------- | ------------------- | -------------------- | ------------------ | ------------------------ | --------------------------------- | ------ |
-| [{{EPIC_NAME}}](../../requirements/{{TARGET_ARCHITECTURE_NAME}}/{{EPIC_SLUG}}.md) | {{MAIN_CAPABILITY}} | {{EPIC_DESCRIPTION}} | {{JIRA_REFERENCE}} | {{CONFLUENCE_REFERENCE}} | {{TARGET_ARCHITECTURE_REFERENCE}} | Draft  |
+| Epic                                                                              | Main Capability     | Description          |
+| --------------------------------------------------------------------------------- | ------------------- | -------------------- |
+| [{{EPIC_NAME}}](../../requirements/{{TARGET_ARCHITECTURE_NAME}}/{{EPIC_SLUG}}.md) | {{MAIN_CAPABILITY}} | {{EPIC_DESCRIPTION}} |
 ```
 
 When adding the same link to the assembled `target-architecture-document.md`, use the matching `### Epics To Build` table inside `## 8. Phase E - Solution Building Blocks`.
