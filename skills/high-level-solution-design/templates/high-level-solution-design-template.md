@@ -1,18 +1,20 @@
 # L2 - {{CAPABILITY_NAME}} Architecture
 
-| Field           | Value                          |
-| --------------- | ------------------------------ |
-| Capability      | {{CAPABILITY_NAME}}            |
-| Source overview | {{SOURCE_CAPABILITY_OVERVIEW}} |
-| Domain          | {{DOMAIN}}                     |
-| Owner(s)        | {{OWNERS}}                     |
-| Status          | {{STATUS}}                     |
-| Last update     | {{LAST_UPDATE}}                |
+| Field               | Value                          |
+| ------------------- | ------------------------------ |
+| Capability          | {{CAPABILITY_NAME}}            |
+| Source overview     | {{SOURCE_CAPABILITY_OVERVIEW}} |
+| Target architecture | {{TARGET_ARCHITECTURE_LINK}}   |
+| Domain              | {{DOMAIN}}                     |
+| Owner(s)            | {{OWNERS}}                     |
+| Status              | {{STATUS}}                     |
+| Last update         | {{LAST_UPDATE}}                |
 
 ## Table of Contents
 
 - [Architecture Summary](#architecture-summary)
 - [Capability Overview](#capability-overview)
+- [Open Questions](#open-questions)
 - [Scope and Assumptions](#scope-and-assumptions)
 - [Target Technical Implementation](#target-technical-implementation)
 - [Application and Component Architecture](#application-and-component-architecture)
@@ -23,7 +25,7 @@
 - [NFR and Operational Design](#nfr-and-operational-design)
 - [Technical Design Choices](#technical-design-choices)
 - [Risks, Dependencies, and Migration Notes](#risks-dependencies-and-migration-notes)
-- [Open Questions](#open-questions)
+- [Relevant Links](#relevant-links)
 
 ## Architecture Summary
 
@@ -34,6 +36,11 @@ State the target solution in 3-6 paragraphs. Include the capability, business ou
 
 {{CAPABILITY_OVERVIEW:
 Link to the source capability overview. Summarize the capability boundary, upstream/downstream capabilities, triggering business events, expected outcomes, and source assumptions used. Call out source gaps or contradictions. Do not link ADRs here; ADR links belong in Technical Design Choices.}}
+
+## Open Questions
+
+{{OPEN_QUESTIONS:
+List unresolved decisions, missing facts, and review items that block or materially influence the design. Add owner or target audience where known.}}
 
 ## Scope and Assumptions
 
@@ -106,8 +113,8 @@ Cover availability, resilience, performance, scalability, latency, recovery, obs
 
 ## Technical Design Choices
 
-| Decision     | Choice     | Alternatives considered     | Rationale     | Trade-offs     | ADR              |
-| ------------ | ---------- | --------------------------- | ------------- | -------------- | ---------------- |
+| Decision     | Choice     | Alternatives considered     | Rationale     | Trade-offs     | ADR                    |
+| ------------ | ---------- | --------------------------- | ------------- | -------------- | ---------------------- |
 | {{DECISION}} | {{CHOICE}} | {{ALTERNATIVES_CONSIDERED}} | {{RATIONALE}} | {{TRADE_OFFS}} | {{ADR_LINK_OR_STATUS}} |
 
 ## Risks, Dependencies, and Migration Notes
@@ -127,7 +134,8 @@ List external decisions, teams, systems, platforms, data, vendors, or prerequisi
 {{MIGRATION_NOTES:
 Explain transition states, coexistence, cutover, rollback, data migration, compatibility, and decommissioning concerns.}}
 
-## Open Questions
+## Relevant Links
 
-{{OPEN_QUESTIONS:
-List unresolved decisions, missing facts, and review items that block or materially influence the design. Add owner or target audience where known.}}
+- [Main capability]({{SOURCE_CAPABILITY_OVERVIEW}})
+- [Target architecture]({{TARGET_ARCHITECTURE_LINK}})
+- {{RELEVANT_LINK}}

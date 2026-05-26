@@ -4,8 +4,9 @@
 | ------------------- | ---------------------------- |
 | Epic                | {{EPIC_NAME}}                |
 | Phase               | {{PHASE}}                    |
-| Main Capability     | {{MAIN_CAPABILITY}}          |
+| Main Capability     | [{{MAIN_CAPABILITY}}]({{MAIN_CAPABILITY_LINK}}) |
 | Target Architecture | {{TARGET_ARCHITECTURE_LINK}} |
+| L2 Solution Architecture | {{L2_SOLUTION_ARCHITECTURE_LINK}} |
 | Jira                | {{JIRA_REFERENCE}}           |
 | Confluence          | {{CONFLUENCE_REFERENCE}}     |
 
@@ -23,6 +24,7 @@
 - [Visual Design](#visual-design)
 - [Solution Design](#solution-design)
 - [Site Reliability Engineering](#site-reliability-engineering)
+- [Relevant Links](#relevant-links)
 
 ## Open Questions
 
@@ -50,7 +52,7 @@
 
 | Area                    | Impact                         |
 | ----------------------- | ------------------------------ |
-| Main Capability         | {{MAIN_CAPABILITY}}            |
+| Main Capability         | [{{MAIN_CAPABILITY}}]({{MAIN_CAPABILITY_LINK}}) |
 | Other Capabilities      | {{OTHER_CAPABILITY_IMPACT}}    |
 | Applications            | {{APPLICATION_IMPACT}}         |
 | Data                    | {{DATA_IMPACT}}                |
@@ -93,3 +95,12 @@
 ### How can we prevent or minimize impact when it goes wrong?
 
 {{SRE_PREVENTION_OR_IMPACT_REDUCTION}}
+
+## Relevant Links
+
+- [Target architecture]({{TARGET_ARCHITECTURE_LINK}})
+- [Main capability]({{MAIN_CAPABILITY_LINK}})
+- [Main L2 solution architecture]({{L2_SOLUTION_ARCHITECTURE_LINK}})
+- [Jira]({{JIRA_REFERENCE}})
+- [Confluence]({{CONFLUENCE_REFERENCE}})
+- {{RELEVANT_LINK}}

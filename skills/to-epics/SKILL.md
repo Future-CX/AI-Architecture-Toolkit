@@ -46,7 +46,12 @@ Use `templates/epic-template.md` for the epic file.
    - Do not create an epic until the user has selected or confirmed the target architecture linkage.
 2. Read the target architecture document and relevant section files, especially `07-phase-e-solution-building-blocks.md`, roadmap themes, gap analysis, governance actions, risks, and open questions.
 3. Ask the user for the epic name, phase, epic description, and main capability if not already provided.
-4. Ask whether the epic has an existing Jira item URL/key and Confluence page URL. These references are optional; use `TBD` when the user does not provide them.
+4. Ask for reference links:
+   - Main capability link
+   - Main L2 solution architecture link
+   - Existing Jira item URL/key, if any
+   - Existing Confluence page URL, if any
+   These references are optional except when the user can identify the linked artifact. Use `TBD` when the user does not provide a link.
 5. Start a `grill-me` clarification session using `../grill-me/SKILL.md`.
    - Focus the session on whether the epic has enough detail to be useful for delivery planning.
    - Ask one question at a time and wait for the user's answer before continuing.
@@ -58,6 +63,8 @@ Use `templates/epic-template.md` for the epic file.
    - Requirements output folder: `<private-lab-root>/requirements/<name-of-target-architecture>/`
    - Phase
    - Main capability
+   - Main capability link, or `TBD`
+   - Main L2 solution architecture link, or `TBD`
    - Jira item reference, if provided
    - Confluence page reference, if provided
    - Roadmap theme, gap, decision, governance action, or architecture section the epic supports
@@ -83,6 +90,7 @@ Include:
 - User-provided name and description, unchanged except for minor formatting.
 - User-provided phase, unchanged except for minor formatting.
 - User-provided main capability, unchanged except for minor formatting.
+- Main capability link and main L2 solution architecture link when provided; otherwise use `TBD`.
 - Jira item and Confluence page references when provided; otherwise use `TBD`.
 - Scope: in scope, out of scope, and key assumptions.
 - Candidate capabilities, applications, data objects, integrations, and quality attributes affected.
