@@ -28,6 +28,10 @@
 
 - {{OPEN_QUESTION}}
 
+## Business Requirements
+
+- {{BUSINESS_REQUIREMENT}}
+
 ## Scope
 
 ### In Scope
@@ -57,10 +61,6 @@
 ## Dependencies
 
 {{DEPENDENCIES}}
-
-## Business Requirements
-
-- {{BUSINESS_REQUIREMENT}}
 
 ## Visual Design
 
