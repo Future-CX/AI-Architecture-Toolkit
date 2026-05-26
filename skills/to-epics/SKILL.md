@@ -1,6 +1,6 @@
 ---
 name: to-epics
-description: Break approved target architecture work into reviewable epics, validate terminology against the glossary, and list each epic in Phase E of the related target architecture document. Use when the user asks to create, draft, split, or convert architecture work into epics, especially from a target architecture document created by the target-architecture-document skill; require explicit user-provided epic name, description, and main capability before creating or updating any epic.
+description: Break approved target architecture work into reviewable epics, validate terminology against the glossary, and list each epic in Phase E of the related target architecture document. Use when the user asks to create, draft, split, or convert architecture work into epics, especially from a target architecture document created by the target-architecture-document skill; require explicit user-provided epic name, phase, description, and main capability before creating or updating any epic.
 ---
 
 # To Epics
@@ -13,6 +13,7 @@ Do not automatically create epics from analysis alone. Before creating or updati
 
 - Target architecture to link to
 - Epic name
+- Phase
 - Epic description
 - Main capability
 
@@ -44,11 +45,12 @@ Use `templates/epic-template.md` for the epic file.
    - If the user did not name one, search for `solution-architectures/*/target-architecture-document.md`, present the candidates, and ask the user to choose.
    - Do not create an epic until the user has selected or confirmed the target architecture linkage.
 2. Read the target architecture document and relevant section files, especially `07-phase-e-solution-building-blocks.md`, roadmap themes, gap analysis, governance actions, risks, and open questions.
-3. Ask the user for the epic name, epic description, and main capability if not already provided.
+3. Ask the user for the epic name, phase, epic description, and main capability if not already provided.
 4. Ask whether the epic has an existing Jira item URL/key and Confluence page URL. These references are optional; use `TBD` when the user does not provide them.
 5. Confirm the target architecture linkage:
    - Target architecture document path
    - Requirements output folder: `<private-lab-root>/requirements/<name-of-target-architecture>/`
+   - Phase
    - Main capability
    - Jira item reference, if provided
    - Confluence page reference, if provided
@@ -73,6 +75,7 @@ Keep the epic useful for delivery planning while preserving architecture traceab
 Include:
 
 - User-provided name and description, unchanged except for minor formatting.
+- User-provided phase, unchanged except for minor formatting.
 - User-provided main capability, unchanged except for minor formatting.
 - Jira item and Confluence page references when provided; otherwise use `TBD`.
 - Scope: in scope, out of scope, and key assumptions.
@@ -107,9 +110,9 @@ When adding the link to `07-phase-e-solution-building-blocks.md`, use this table
 ```md
 ## Epics To Build
 
-| Epic                                                                              | Main Capability     | Description          |
-| --------------------------------------------------------------------------------- | ------------------- | -------------------- |
-| [{{EPIC_NAME}}](../../requirements/{{TARGET_ARCHITECTURE_NAME}}/{{EPIC_SLUG}}.md) | {{MAIN_CAPABILITY}} | {{EPIC_DESCRIPTION}} |
+| Epic                                                                              | Main Capability     | Description          | Phase     |
+| --------------------------------------------------------------------------------- | ------------------- | -------------------- | --------- |
+| [{{EPIC_NAME}}](../../requirements/{{TARGET_ARCHITECTURE_NAME}}/{{EPIC_SLUG}}.md) | {{MAIN_CAPABILITY}} | {{EPIC_DESCRIPTION}} | {{PHASE}} |
 ```
 
 When adding the same link to the assembled `target-architecture-document.md`, use the matching `### Epics To Build` table inside `## 8. Phase E - Solution Building Blocks`.
@@ -118,7 +121,7 @@ If the table still contains `_No linked epics yet._`, replace that placeholder r
 
 ## Guardrails
 
-- User input is mandatory for the target architecture linkage and for every epic name, description, and main capability.
+- User input is mandatory for the target architecture linkage and for every epic name, phase, description, and main capability.
 - Suggest candidate epics only as a review list; do not create files until the user selects a candidate and provides or confirms the name, description, and main capability.
 - Keep generated real-company epics in the private company lab repository, not inside this public toolkit.
 - Keep real-company glossary updates in the private company lab repository, not inside this public toolkit.

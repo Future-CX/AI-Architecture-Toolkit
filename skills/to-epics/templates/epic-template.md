@@ -3,6 +3,7 @@
 | Field               | Value                        |
 | ------------------- | ---------------------------- |
 | Epic                | {{EPIC_NAME}}                |
+| Phase               | {{PHASE}}                    |
 | Main Capability     | {{MAIN_CAPABILITY}}          |
 | Target Architecture | {{TARGET_ARCHITECTURE_LINK}} |
 | Jira                | {{JIRA_REFERENCE}}           |
