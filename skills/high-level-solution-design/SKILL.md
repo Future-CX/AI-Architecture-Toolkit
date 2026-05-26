@@ -64,6 +64,7 @@ Use `templates/high-level-solution-design-template.md` as the output structure a
 15. Do not create placeholder `.mmd`, `.drawio`, or `.svg` files for unknown diagrams. Mark missing diagrams as assumptions or open questions in the design document.
 16. Record specific technical design choices in the document. If a choice is durable, hard to reverse, surprising without context, and based on a real trade-off, propose an ADR using `../architecture-decision-record/SKILL.md`.
 17. Mark unknowns as assumptions or open questions. Do not invent implementation facts.
+18. Use linked document titles as Markdown link labels whenever possible. For local Markdown files such as source capability overviews and target architecture documents, derive the title from the first `#` heading; otherwise use the filename without extension. Do not use generic labels such as "Target architecture" when a document title is available.
 
 ## Chapter Writing Guidance
 
@@ -164,6 +165,13 @@ Write each chapter as implementation-oriented architecture guidance, not as a re
 - Each question should have an owner or target audience when known.
 - Prefer concrete questions that can be answered, such as "Which system is source of truth for Product availability?".
 - Do not use open questions as a place for generic next steps.
+
+### Relevant Links
+
+- Use linked document titles as Markdown link labels whenever possible.
+- For source capability overviews and target architecture documents, read the first `#` heading and use it as the link text.
+- If a title cannot be found, use the filename without extension.
+- Keep extra relevant links concise and directly related to the solution design.
 
 ## Required Outputs
 

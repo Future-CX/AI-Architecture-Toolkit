@@ -4,11 +4,11 @@
 | ------------------- | ---------------------------- |
 | Epic                | {{EPIC_NAME}}                |
 | Phase               | {{PHASE}}                    |
-| Main Capability     | [{{MAIN_CAPABILITY}}]({{MAIN_CAPABILITY_LINK}}) |
-| Target Architecture | {{TARGET_ARCHITECTURE_LINK}} |
-| L2 Solution Architecture | {{L2_SOLUTION_ARCHITECTURE_LINK}} |
-| Jira                | {{JIRA_REFERENCE}}           |
-| Confluence          | {{CONFLUENCE_REFERENCE}}     |
+| Main Capability     | [{{MAIN_CAPABILITY_TITLE}}]({{MAIN_CAPABILITY_LINK}}) |
+| Target Architecture | [{{TARGET_ARCHITECTURE_TITLE}}]({{TARGET_ARCHITECTURE_LINK}}) |
+| L2 Solution Architecture | [{{L2_SOLUTION_ARCHITECTURE_TITLE}}]({{L2_SOLUTION_ARCHITECTURE_LINK}}) |
+| Jira                | [{{JIRA_TITLE}}]({{JIRA_REFERENCE}}) |
+| Confluence          | [{{CONFLUENCE_TITLE}}]({{CONFLUENCE_REFERENCE}}) |
 
 ## Description
 
@@ -52,7 +52,7 @@
 
 | Area                    | Impact                         |
 | ----------------------- | ------------------------------ |
-| Main Capability         | [{{MAIN_CAPABILITY}}]({{MAIN_CAPABILITY_LINK}}) |
+| Main Capability         | [{{MAIN_CAPABILITY_TITLE}}]({{MAIN_CAPABILITY_LINK}}) |
 | Other Capabilities      | {{OTHER_CAPABILITY_IMPACT}}    |
 | Applications            | {{APPLICATION_IMPACT}}         |
 | Data                    | {{DATA_IMPACT}}                |
@@ -98,9 +98,9 @@
 
 ## Relevant Links
 
-- [Target architecture]({{TARGET_ARCHITECTURE_LINK}})
-- [Main capability]({{MAIN_CAPABILITY_LINK}})
-- [Main L2 solution architecture]({{L2_SOLUTION_ARCHITECTURE_LINK}})
-- [Jira]({{JIRA_REFERENCE}})
-- [Confluence]({{CONFLUENCE_REFERENCE}})
+- [{{TARGET_ARCHITECTURE_TITLE}}]({{TARGET_ARCHITECTURE_LINK}})
+- [{{MAIN_CAPABILITY_TITLE}}]({{MAIN_CAPABILITY_LINK}})
+- [{{L2_SOLUTION_ARCHITECTURE_TITLE}}]({{L2_SOLUTION_ARCHITECTURE_LINK}})
+- [{{JIRA_TITLE}}]({{JIRA_REFERENCE}})
+- [{{CONFLUENCE_TITLE}}]({{CONFLUENCE_REFERENCE}})
 - {{RELEVANT_LINK}}

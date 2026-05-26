@@ -3,8 +3,8 @@
 | Field               | Value                          |
 | ------------------- | ------------------------------ |
 | Capability          | {{CAPABILITY_NAME}}            |
-| Source overview     | {{SOURCE_CAPABILITY_OVERVIEW}} |
-| Target architecture | {{TARGET_ARCHITECTURE_LINK}}   |
+| Source overview     | [{{SOURCE_CAPABILITY_OVERVIEW_TITLE}}]({{SOURCE_CAPABILITY_OVERVIEW}}) |
+| Target architecture | [{{TARGET_ARCHITECTURE_TITLE}}]({{TARGET_ARCHITECTURE_LINK}}) |
 | Domain              | {{DOMAIN}}                     |
 | Owner(s)            | {{OWNERS}}                     |
 | Status              | {{STATUS}}                     |
@@ -136,6 +136,6 @@ Explain transition states, coexistence, cutover, rollback, data migration, compa
 
 ## Relevant Links
 
-- [Main capability]({{SOURCE_CAPABILITY_OVERVIEW}})
-- [Target architecture]({{TARGET_ARCHITECTURE_LINK}})
+- [{{SOURCE_CAPABILITY_OVERVIEW_TITLE}}]({{SOURCE_CAPABILITY_OVERVIEW}})
+- [{{TARGET_ARCHITECTURE_TITLE}}]({{TARGET_ARCHITECTURE_LINK}})
 - {{RELEVANT_LINK}}

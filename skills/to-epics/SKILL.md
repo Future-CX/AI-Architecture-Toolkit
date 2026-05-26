@@ -52,6 +52,7 @@ Use `templates/epic-template.md` for the epic file.
    - Existing Jira item URL/key, if any
    - Existing Confluence page URL, if any
    These references are optional except when the user can identify the linked artifact. Use `TBD` when the user does not provide a link.
+   Use the linked document title as the Markdown link label whenever possible. For local markdown files, derive the title from the first `#` heading; otherwise use the filename without extension. For Jira and Confluence links, use the issue key/page title when the user provides it; otherwise ask for the title or use `TBD`.
 5. Start a `grill-me` clarification session using `../grill-me/SKILL.md`.
    - Focus the session on whether the epic has enough detail to be useful for delivery planning.
    - Ask one question at a time and wait for the user's answer before continuing.
@@ -64,9 +65,13 @@ Use `templates/epic-template.md` for the epic file.
    - Phase
    - Main capability
    - Main capability link, or `TBD`
+   - Main capability link title, derived from the linked capability document title where possible
    - Main L2 solution architecture link, or `TBD`
+   - Main L2 solution architecture link title, derived from the linked solution architecture document title where possible
    - Jira item reference, if provided
+   - Jira link title, normally the issue key or issue summary
    - Confluence page reference, if provided
+   - Confluence link title, normally the page title
    - Roadmap theme, gap, decision, governance action, or architecture section the epic supports
    - Any known dependencies or sequencing constraints
 7. Validate terminology before writing the epic:
@@ -90,8 +95,8 @@ Include:
 - User-provided name and description, unchanged except for minor formatting.
 - User-provided phase, unchanged except for minor formatting.
 - User-provided main capability, unchanged except for minor formatting.
-- Main capability link and main L2 solution architecture link when provided; otherwise use `TBD`.
-- Jira item and Confluence page references when provided; otherwise use `TBD`.
+- Main capability link and main L2 solution architecture link when provided; otherwise use `TBD`. Use the linked document titles as link labels.
+- Jira item and Confluence page references when provided; otherwise use `TBD`. Use the issue key, issue summary, or Confluence page title as the link label when known.
 - Scope: in scope, out of scope, and key assumptions.
 - Candidate capabilities, applications, data objects, integrations, and quality attributes affected.
 - Dependencies.
