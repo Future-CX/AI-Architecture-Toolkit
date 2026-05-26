@@ -21,7 +21,7 @@ After the clarification session, validate that `<private-lab-root>/GLOSSARY.md` 
 
 When this toolkit is used as a submodule, do not write generated high-level solution design files under `toolkit/solution-architectures/`. Run from the private lab root, or otherwise target the private lab root explicitly, so output goes to `<private-lab-root>/solution-architectures/L2-solution-design-<slug>/`.
 
-Use `templates/high-level-solution-design-template.md` as the output structure and follow the chapter writing guidance below when replacing placeholders. Replace each complete placeholder block with finished document content; do not leave placeholder names, placeholder guidance, or drafting instructions in the generated document. When Mermaid diagrams are created, store each diagram as a separate `.mmd` source file in the same folder as the high-level solution design document. For every `.mmd` file, also render a same-basename `.svg` file and embed the SVG in the document.
+Use `templates/high-level-solution-design-template.md` as the output structure and follow the chapter writing guidance below when replacing placeholders. Replace each complete placeholder block with finished document content; do not leave placeholder names, placeholder guidance, or drafting instructions in the generated document. When Mermaid diagrams are created, store each diagram as a separate `.mmd` source file in the same folder as the high-level solution design document. For every `.mmd` file, also render a same-basename `.svg` file and embed the SVG in the document. When the user asks for Draw.io or editable diagrams, use `../create-drawio-diagram/SKILL.md` to create matching `.drawio` files from the diagram templates.
 
 ## Required Inputs
 
@@ -60,9 +60,10 @@ Use `templates/high-level-solution-design-template.md` as the output structure a
     - `conceptual-data-model.svg`
     - `integration-flow.svg`
 13. Embed each created `.svg` file in the `## Diagrams` section of `<slug>-architecture.md` using Markdown image syntax, and include a nearby source link to the matching `.mmd` file. Do not inline Mermaid diagram code in the design document unless the user explicitly asks for inline diagrams.
-14. Do not create placeholder `.mmd` or `.svg` files for unknown diagrams. Mark missing diagrams as assumptions or open questions in the design document.
-15. Record specific technical design choices in the document. If a choice is durable, hard to reverse, surprising without context, and based on a real trade-off, propose an ADR using `../architecture-decision-record/SKILL.md`.
-16. Mark unknowns as assumptions or open questions. Do not invent implementation facts.
+14. If the user asks for Draw.io or editable diagrams, use `../create-drawio-diagram/SKILL.md` to create matching `.drawio` files in the same output folder. Export same-basename `.svg` files from Draw.io when the document needs embedded images, and link the `.drawio` source near each embedded SVG.
+15. Do not create placeholder `.mmd`, `.drawio`, or `.svg` files for unknown diagrams. Mark missing diagrams as assumptions or open questions in the design document.
+16. Record specific technical design choices in the document. If a choice is durable, hard to reverse, surprising without context, and based on a real trade-off, propose an ADR using `../architecture-decision-record/SKILL.md`.
+17. Mark unknowns as assumptions or open questions. Do not invent implementation facts.
 
 ## Chapter Writing Guidance
 
@@ -121,6 +122,7 @@ Write each chapter as implementation-oriented architecture guidance, not as a re
 ### Diagrams
 
 - Embed the rendered SVG for each diagram and provide a nearby link to the matching Mermaid source file.
+- When Draw.io is requested, create editable `.drawio` diagrams using `../create-drawio-diagram/SKILL.md` and provide a nearby link to each `.drawio` source.
 - Use diagrams only where they clarify boundaries, relationships, ownership, or sequence. Do not add decorative diagrams.
 - The capability context diagram should show actors, neighboring capabilities, and external dependencies.
 - The application/component view should show applications, services, components, platforms, and major responsibilities.
@@ -175,6 +177,7 @@ Each high-level solution design document must include:
 - Data model and data ownership
 - Data integrations and interface contracts
 - Mermaid `.mmd` source files and rendered `.svg` files in the same folder as the design document, with SVGs embedded in the document where enough detail is known
+- Draw.io `.drawio` files when the user asks for editable diagrams, with exported SVGs embedded in the document when needed
 - Security, privacy, and compliance design
 - NFR and operational design
 - Technical design choices and trade-offs

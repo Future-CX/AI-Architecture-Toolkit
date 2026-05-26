@@ -32,7 +32,7 @@ For testing this public toolkit against real company context, use a separate pri
    Use shared templates in `templates/` and skill-owned templates in `skills/*/templates/` to create consistent artifacts.
 
 4. Store generated artifacts in the matching folder.
-   Agent definitions belong in `agents/`, principles in `principles/`, generated capability overviews in `capabilities/`, solution architecture documents in `solution-architectures/`, private-lab glossaries in `GLOSSARY.md`, and ADRs in the location defined by the ADR skill.
+   Agent definitions belong in `agents/`, principles in `principles/`, generated capability overviews in `capabilities/`, solution architecture documents in `solution-architectures/`, epics in `requirements/<name-of-target-architecture>/`, private-lab glossaries in `GLOSSARY.md`, and ADRs in the location defined by the ADR skill.
 
 5. Keep public and private work separate.
    This repository should stay generic and public. Use a private company lab repository for real company context, internal system names, stakeholder details, generated company glossaries, and real architecture decisions.
@@ -69,6 +69,7 @@ company-architecture-lab/
 ├── docs/
 │   └── adr/
 ├── company/
+├── requirements/
 ├── outputs/
 └── toolkit/
 ```
@@ -121,10 +122,12 @@ git commit -m "Update AI Architecture Toolkit submodule"
 | --- | --- |
 | [Architecture Decision Record](skills/architecture-decision-record/SKILL.md) | Record durable architecture decisions as concise ADRs when choices are hard to reverse and based on real trade-offs. |
 | [Create An Agent](skills/create-an-agent/SKILL.md) | Create architecture agent definitions under `agents/` from a preset template. |
-| [Target Architecture Document](skills/target-architecture-document/SKILL.md) | Connect capabilities to strategy, business architecture, data, applications, integration, technology, gaps, and roadmap themes. |
+| [Target Architecture Document](skills/target-architecture-document/SKILL.md) | Connect capabilities to strategy, business architecture, data, applications, integration, technology, and epics to build. |
 | [Grill Me](skills/grill-me/SKILL.md) | Challenge plans, assumptions, constraints, terminology, risks, and decisions until the design context is explicit. |
 | [Ubiquitous Language](skills/ubiquitous-language/SKILL.md) | Extract a shared glossary, flag ambiguous terms, and define canonical applications, data objects, and relationships. |
 | [High-Level Solution Design](skills/high-level-solution-design/SKILL.md) | Write implementation-oriented solution designs with chapter guidance, Mermaid sources, rendered SVGs, and linked ADRs. |
+| [Create Draw.io Diagram](skills/create-drawio-diagram/SKILL.md) | Create editable Draw.io architecture diagrams from reusable templates for solution and target architecture documents. |
+| [To Epics](skills/to-epics/SKILL.md) | Break target architecture work into user-confirmed epics and list each epic in Phase E of the target architecture document. |
 | [Capability Overview](skills/capability-overview/SKILL.md) | Write business capability overview documents under `capabilities/` from a preset template. |
 | [Write A Principle](skills/write-a-principle/SKILL.md) | Draft architecture principle documents with identifiers, rationale, consequences, and reviewable guidance. |
 | [Create A Skill](skills/create-a-skill/SKILL.md) | Create reusable skills with progressive disclosure, templates, scripts, and clear trigger guidance. |
@@ -133,7 +136,9 @@ git commit -m "Update AI Architecture Toolkit submodule"
 
 - Capability overviews under `capabilities/`.
 - Target architecture and high-level solution design documents under `solution-architectures/`.
+- User-confirmed epics under `requirements/<name-of-target-architecture>/`, listed in Phase E of the target architecture document.
 - Mermaid `.mmd` diagram sources paired with same-basename `.svg` files embedded in design documents.
+- Editable Draw.io `.drawio` diagrams for stakeholders who need diagrams.net-compatible source files.
 - ADRs linked from the technical design choices they support.
 - Private-lab glossary entries in `GLOSSARY.md`.
 - Architecture principle documents under `principles/`.

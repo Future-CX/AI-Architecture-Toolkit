@@ -45,6 +45,8 @@ When a high-level solution design creates Mermaid diagrams:
 - Link the `.mmd` source near the embedded SVG.
 - Do not inline Mermaid code unless the user explicitly asks.
 
+When the user asks for Draw.io, diagrams.net, or editable architecture diagrams, use the create-drawio-diagram skill and its templates. Store generated `.drawio` files beside the document they support, and export same-basename `.svg` files when the diagram must be embedded.
+
 When creating target architecture documents, use the target-architecture-document skill.
 
 ## SKILLS

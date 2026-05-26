@@ -1,0 +1,34 @@
+<mxfile host="app.diagrams.net" modified="2026-05-25T00:00:00.000Z" agent="AI Architecture Toolkit" version="24.7.17">
+  <diagram id="conceptual-data-model" name="Conceptual Data Model">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#fbfcfa" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Conceptual Data Model" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontStyle=1;fontSize=24;fontColor=#17201d;" vertex="1" parent="1">
+          <mxGeometry x="60" y="40" width="460" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="data-a" value="Canonical data object A&#xa;Owner/source of truth" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="130" y="180" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="data-b" value="Canonical data object B&#xa;Owner/source of truth" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="470" y="180" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="data-c" value="Canonical data object C&#xa;Owner/source of truth" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="470" y="360" width="230" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="data-d" value="Reference or master data" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="810" y="270" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-a-b" value="relationship name" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;startArrow=open;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="data-a" target="data-b">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-b-c" value="relationship name" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;startArrow=open;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="data-b" target="data-c">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-b-d" value="classified by" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;startArrow=open;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="data-b" target="data-d">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

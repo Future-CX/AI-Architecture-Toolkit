@@ -1,0 +1,40 @@
+<mxfile host="app.diagrams.net" modified="2026-05-25T00:00:00.000Z" agent="AI Architecture Toolkit" version="24.7.17">
+  <diagram id="capability-context" name="Capability Context">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#fbfcfa" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Capability Context" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=24;fontColor=#17201d;" vertex="1" parent="1">
+          <mxGeometry x="60" y="40" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="actor" value="Actor or channel" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#fff3c4;strokeColor=#b7791f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="70" y="250" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="capability" value="Target capability" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;fontSize=16;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="455" y="230" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="upstream" value="Upstream capability or system" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="455" y="100" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="downstream" value="Downstream capability or system" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="455" y="410" width="260" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="external" value="External dependency" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#f8cecc;strokeColor=#a3433f;fontColor=#17201d;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="880" y="250" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-actor-capability" value="triggers or uses" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="actor" target="capability">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-upstream-capability" value="provides input" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="upstream" target="capability">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-capability-downstream" value="produces outcome" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="capability" target="downstream">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-capability-external" value="depends on" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="capability" target="external">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

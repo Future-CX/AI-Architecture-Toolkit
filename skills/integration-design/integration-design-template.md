@@ -1,0 +1,21 @@
+# Integration Design Template
+
+## Integration Overview
+
+Describe the integration purpose, source systems, target systems, and business process.
+
+## Pattern
+
+Synchronous API | Event-driven | Batch | File transfer | Messaging | Orchestration
+
+## Contract
+
+Document payloads, schemas, endpoints, topics, queues, protocols, and versioning.
+
+## Runtime Qualities
+
+Capture latency, throughput, ordering, reliability, idempotency, retries, and failure handling.
+
+## Security and Operations
+
+Document authentication, authorization, encryption, monitoring, alerting, and support ownership.

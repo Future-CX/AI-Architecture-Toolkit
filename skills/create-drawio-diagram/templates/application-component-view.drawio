@@ -1,0 +1,37 @@
+<mxfile host="app.diagrams.net" modified="2026-05-25T00:00:00.000Z" agent="AI Architecture Toolkit" version="24.7.17">
+  <diagram id="application-component-view" name="Application Component View">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#fbfcfa" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Application and Component View" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontStyle=1;fontSize=24;fontColor=#17201d;" vertex="1" parent="1">
+          <mxGeometry x="60" y="40" width="520" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ui" value="User interface or channel" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#fff3c4;strokeColor=#b7791f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="170" width="210" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="app" value="Application boundary" style="swimlane;whiteSpace=wrap;html=1;startSize=34;fillColor=#edf3ef;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="390" y="130" width="390" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="component-a" value="Component or service A&#xa;Responsibility" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#ffffff;strokeColor=#0f766e;fontColor=#17201d;strokeWidth=2;" vertex="1" parent="app">
+          <mxGeometry x="45" y="70" width="300" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="component-b" value="Component or service B&#xa;Responsibility" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#ffffff;strokeColor=#0f766e;fontColor=#17201d;strokeWidth=2;" vertex="1" parent="app">
+          <mxGeometry x="45" y="180" width="300" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="platform" value="Shared platform or data store" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="870" y="240" width="220" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-ui-app" value="uses" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="ui" target="component-a">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-component" value="calls or publishes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="app" source="component-a" target="component-b">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-app-platform" value="reads/writes or integrates" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="component-b" target="platform">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

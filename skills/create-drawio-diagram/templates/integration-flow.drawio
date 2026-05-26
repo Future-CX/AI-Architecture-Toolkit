@@ -1,0 +1,38 @@
+<mxfile host="65bd71144e">
+    <diagram id="integration-flow" name="Integration Flow">
+        <mxGraphModel dx="369" dy="718" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#fbfcfa" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" style="locked=1;" parent="0"/>
+                <mxCell id="title" value="Integration Flow" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontStyle=1;fontSize=24;fontColor=#17201d;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="40" width="360" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="producer" value="Producer&#xa;System or component" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#fff3c4;strokeColor=#b7791f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="220" width="190" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="integration" value="Integration pattern&#xa;API, event, batch, file, stream" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="410" y="220" width="270" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="consumer" value="Consumer&#xa;System or component" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="820" y="220" width="190" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="payload" value="Payload or canonical data object" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#ffffff;strokeColor=#d8dfda;fontColor=#17201d;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="440" y="390" width="230" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-producer-integration" value="trigger, frequency, protocol" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" parent="1" source="producer" target="integration" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-integration-consumer" value="delivery, retry, ownership" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" parent="1" source="integration" target="consumer" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="edge-integration-payload" value="carries" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;dashed=1;" parent="1" source="integration" target="payload" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="2nd layer" parent="0"/>
+                <mxCell id="3" value="Item on 2nd layer" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="2">
+                    <mxGeometry x="920" y="420" width="120" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
