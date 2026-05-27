@@ -21,7 +21,7 @@ After the clarification session, validate that `<private-lab-root>/GLOSSARY.md` 
 
 When this toolkit is used as a submodule, do not write generated solution architecture design files under `toolkit/solution-architectures/`. Run from the private lab root, or otherwise target the private lab root explicitly, so output goes to `<private-lab-root>/solution-architectures/L2-solution-architecture-<slug>/`.
 
-Use `templates/solution-architecture-design-template.md` as the output structure and follow the chapter writing guidance below when replacing placeholders. Replace each complete placeholder block with finished document content; do not leave placeholder names, placeholder guidance, or drafting instructions in the generated document. When Mermaid diagrams are created, store each diagram as a separate `.mmd` source file in the same folder as the solution architecture design document. For every `.mmd` file, also render a same-basename `.svg` file and embed the SVG in the document. When the user asks for Draw.io or editable diagrams, use `../create-drawio-diagram/SKILL.md` to create matching `.drawio` files from the diagram templates.
+Use `templates/solution-architecture-design-template.md` as the output structure and follow the chapter writing guidance below when replacing placeholders. Replace each complete placeholder block with finished document content; do not leave placeholder names, placeholder guidance, or drafting instructions in the generated document. Create every Draw.io diagram with `../create-drawio-diagram/SKILL.md` because it contains the required diagram instructions, style rules, and templates. Store each diagram as an editable `.drawio` file in the same folder as the solution architecture design document. Export a same-basename `.svg` file for every `.drawio` file that must be embedded, embed the SVG in the document, and link the `.drawio` source near the embedded SVG.
 
 ## Required Inputs
 
@@ -49,22 +49,21 @@ Use `templates/solution-architecture-design-template.md` as the output structure
    - General canonical data objects, ownership, source-of-truth, and lifecycle notes
    - Relationships between terms, applications, and data objects
 10. Create the technical document from `templates/solution-architecture-design-template.md`.
-11. Create separate Mermaid source files in the same output folder when the required architecture relationships are known:
-    - `capability-context.mmd` for the capability context diagram
-    - `application-component-view.mmd` for the application/component diagram
-    - `conceptual-data-model.mmd` for the data model or conceptual entity relationship diagram
-    - `integration-flow.mmd` for the integration flow or sequence diagram
-12. Render a same-basename SVG for each created Mermaid file in the same output folder:
+11. Use `../create-drawio-diagram/SKILL.md` to create separate Draw.io source files in the same output folder when the required architecture relationships are known:
+    - `capability-context.drawio` for the capability context diagram
+    - `application-component-view.drawio` for the application/component diagram
+    - `conceptual-data-model.drawio` for the data model or conceptual entity relationship diagram
+    - `integration-flow.drawio` for the integration flow or sequence diagram
+12. Export a same-basename SVG for each created Draw.io file in the same output folder:
     - `capability-context.svg`
     - `application-component-view.svg`
     - `conceptual-data-model.svg`
     - `integration-flow.svg`
-13. Embed each created `.svg` file in the `## Diagrams` section of `<slug>-architecture.md` using Markdown image syntax, and include a nearby source link to the matching `.mmd` file. Do not inline Mermaid diagram code in the design document unless the user explicitly asks for inline diagrams.
-14. If the user asks for Draw.io or editable diagrams, use `../create-drawio-diagram/SKILL.md` to create matching `.drawio` files in the same output folder. Export same-basename `.svg` files from Draw.io when the document needs embedded images, and link the `.drawio` source near each embedded SVG.
-15. Do not create placeholder `.mmd`, `.drawio`, or `.svg` files for unknown diagrams. Mark missing diagrams as assumptions or open questions in the design document.
-16. Record specific technical design choices in the document. If a choice is durable, hard to reverse, surprising without context, and based on a real trade-off, propose an ADR using `../architecture-decision-record/SKILL.md`.
-17. Mark unknowns as assumptions or open questions. Do not invent implementation facts.
-18. Use linked document titles as Markdown link labels whenever possible. For local Markdown files such as source capability overviews and target architecture documents, derive the title from the first `#` heading; otherwise use the filename without extension. Do not use generic labels such as "Target architecture" when a document title is available.
+13. Embed each created `.svg` file in the `## Diagrams` section of `<slug>-architecture.md` using Markdown image syntax, and include a nearby source link to the matching `.drawio` file.
+14. Do not create placeholder `.drawio` or `.svg` files for unknown diagrams. Mark missing diagrams as assumptions or open questions in the design document.
+15. Record specific technical design choices in the document. If a choice is durable, hard to reverse, surprising without context, and based on a real trade-off, propose an ADR using `../architecture-decision-record/SKILL.md`.
+16. Mark unknowns as assumptions or open questions. Do not invent implementation facts.
+17. Use linked document titles as Markdown link labels whenever possible. For local Markdown files such as source capability overviews and target architecture documents, derive the title from the first `#` heading; otherwise use the filename without extension. Do not use generic labels such as "Target architecture" when a document title is available.
 
 ## Chapter Writing Guidance
 
@@ -122,8 +121,8 @@ Write each chapter as implementation-oriented architecture guidance, not as a re
 
 ### Diagrams
 
-- Embed the rendered SVG for each diagram and provide a nearby link to the matching Mermaid source file.
-- When Draw.io is requested, create editable `.drawio` diagrams using `../create-drawio-diagram/SKILL.md` and provide a nearby link to each `.drawio` source.
+- Create editable `.drawio` diagrams using `../create-drawio-diagram/SKILL.md`; do not hand-roll Draw.io files outside that skill's instructions and templates.
+- Embed the exported SVG for each diagram and provide a nearby link to the matching `.drawio` source file.
 - Use diagrams only where they clarify boundaries, relationships, ownership, or sequence. Do not add decorative diagrams.
 - The capability context diagram should show actors, neighboring capabilities, and external dependencies.
 - The application/component view should show applications, services, components, platforms, and major responsibilities.
@@ -184,8 +183,7 @@ Each solution architecture design document must include:
 - Application and component architecture
 - Data model and data ownership
 - Data integrations and interface contracts
-- Mermaid `.mmd` source files and rendered `.svg` files in the same folder as the design document, with SVGs embedded in the document where enough detail is known
-- Draw.io `.drawio` files when the user asks for editable diagrams, with exported SVGs embedded in the document when needed
+- Draw.io `.drawio` source files and exported `.svg` files in the same folder as the design document, with SVGs embedded in the document where enough detail is known
 - Security, privacy, and compliance design
 - NFR and operational design
 - Technical design choices and trade-offs

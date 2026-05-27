@@ -37,15 +37,14 @@ When creating solution architecture designs, use the solution-architecture-desig
 
 Solution architecture design outputs belong under `solution-architectures/<slug>/` in the consuming repository, or under the private lab root when this toolkit is used as a submodule.
 
-When a solution architecture design creates Mermaid diagrams:
+When a solution architecture design creates diagrams:
 
-- Store each Mermaid source as a separate `.mmd` file beside the design document.
-- Render a same-basename `.svg` file for every `.mmd` file.
+- Store each Draw.io source as a separate `.drawio` file beside the design document.
+- Export a same-basename `.svg` file for every `.drawio` file when the diagram must be embedded.
 - Embed the `.svg` file in the design document.
-- Link the `.mmd` source near the embedded SVG.
-- Do not inline Mermaid code unless the user explicitly asks.
+- Link the `.drawio` source near the embedded SVG.
 
-When the user asks for Draw.io, diagrams.net, or editable architecture diagrams, use the create-drawio-diagram skill and its templates. Store generated `.drawio` files beside the document they support, and export same-basename `.svg` files when the diagram must be embedded.
+When creating any Draw.io diagram, use the create-drawio-diagram skill because it contains the diagram instructions, style rules, and templates. Store generated `.drawio` files beside the document they support, and export same-basename `.svg` files when the diagram must be embedded.
 
 When creating target architecture documents, use the target-architecture-document skill.
 

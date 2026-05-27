@@ -816,7 +816,7 @@
             <h3>Solution Architect Agent</h3>
             <p>
               Creates solution architecture designs from capability overviews,
-              records material ADRs, and embeds rendered Mermaid diagrams.
+              records material ADRs, and embeds rendered Draw.io diagrams.
             </p>
           </article>
           <article class="card">
@@ -902,7 +902,8 @@
               <h3>Solution architecture design</h3>
               <p>
                 Produce implementation-oriented solution designs with chapter
-                guidance, Mermaid sources, rendered SVGs, and linked ADRs.
+                guidance, editable Draw.io sources, rendered SVGs, and linked
+                ADRs.
               </p>
             </article>
             <article class="card">
@@ -1091,9 +1092,9 @@ python3 toolkit/skills/capability-overview/scripts/write-capability-overview.py 
             <article class="card">
               <h3>Rendered diagrams</h3>
               <p>
-                Mermaid <code>.mmd</code> sources and Draw.io
-                <code>.drawio</code> files paired with same-basename
-                <code>.svg</code> exports when embedded in design documents.
+                Editable Draw.io <code>.drawio</code> sources paired with
+                same-basename <code>.svg</code> exports when embedded in design
+                documents.
               </p>
             </article>
           </div>
@@ -1130,7 +1131,7 @@ python3 toolkit/skills/capability-overview/scripts/write-capability-overview.py 
 │   └── product/
 │       ├── product-data-architecture-design.md
 │       └── diagrams/
-│           ├── product-data-flow.mmd
+│           ├── product-data-flow.drawio
 │           └── product-data-flow.svg
 ├── solution-architectures/
 │   ├── L1-target-architecture-document/
@@ -1138,7 +1139,6 @@ python3 toolkit/skills/capability-overview/scripts/write-capability-overview.py 
 │   │   └── 07-phase-e-solution-building-blocks.md
 │   └── L2-solution-architecture-search/
 │       ├── search-architecture.md
-│       ├── solution-architecture.mmd
 │       ├── solution-architecture.drawio
 │       └── solution-architecture.svg
 ├── requirements/

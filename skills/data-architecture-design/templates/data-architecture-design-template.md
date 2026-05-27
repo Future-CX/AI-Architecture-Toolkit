@@ -23,7 +23,7 @@ Describe the data object, its business meaning, boundaries, aliases, and relatio
 
 ![{{DATA_OBJECT}} context](diagrams/{{DATA_OBJECT_SLUG}}-context.svg)
 
-Source: [{{DATA_OBJECT_SLUG}}-context.mmd](diagrams/{{DATA_OBJECT_SLUG}}-context.mmd)
+Source: [{{DATA_OBJECT_SLUG}}-context.drawio](diagrams/{{DATA_OBJECT_SLUG}}-context.drawio)
 
 ## Ownership and Source of Truth
 
@@ -39,7 +39,7 @@ Explain how the data object moves from source through transformations, storage, 
 
 ![{{DATA_OBJECT}} data flow](diagrams/{{DATA_OBJECT_SLUG}}-data-flow.svg)
 
-Source: [{{DATA_OBJECT_SLUG}}-data-flow.mmd](diagrams/{{DATA_OBJECT_SLUG}}-data-flow.mmd)
+Source: [{{DATA_OBJECT_SLUG}}-data-flow.drawio](diagrams/{{DATA_OBJECT_SLUG}}-data-flow.drawio)
 
 ## Integration Map
 
@@ -47,7 +47,7 @@ Summarize the integrations that produce, transform, enrich, replicate, or consum
 
 ![{{DATA_OBJECT}} integration map](diagrams/{{DATA_OBJECT_SLUG}}-integration-map.svg)
 
-Source: [{{DATA_OBJECT_SLUG}}-integration-map.mmd](diagrams/{{DATA_OBJECT_SLUG}}-integration-map.mmd)
+Source: [{{DATA_OBJECT_SLUG}}-integration-map.drawio](diagrams/{{DATA_OBJECT_SLUG}}-integration-map.drawio)
 
 | Integration          | Direction     | Pattern     | Purpose     | Design                                                      |
 | -------------------- | ------------- | ----------- | ----------- | ----------------------------------------------------------- |

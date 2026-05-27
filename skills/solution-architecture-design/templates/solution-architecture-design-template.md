@@ -84,22 +84,22 @@ Describe each API, event, file, batch, stream, or manual handoff. For each, stat
 ### Capability Context
 
 {{CAPABILITY_CONTEXT_DIAGRAM_REFERENCE:
-Embed capability-context.svg and link to capability-context.mmd when created. Show actors, neighboring capabilities, and external dependencies.}}
+Embed capability-context.svg and link to capability-context.drawio when created. Show actors, neighboring capabilities, and external dependencies.}}
 
 ### Application and Component View
 
 {{APPLICATION_COMPONENT_DIAGRAM_REFERENCE:
-Embed application-component-view.svg and link to application-component-view.mmd when created. Show applications, services, components, platforms, and major responsibilities.}}
+Embed application-component-view.svg and link to application-component-view.drawio when created. Show applications, services, components, platforms, and major responsibilities.}}
 
 ### Conceptual Data Model
 
 {{CONCEPTUAL_DATA_MODEL_DIAGRAM_REFERENCE:
-Embed conceptual-data-model.svg and link to conceptual-data-model.mmd when created. Show canonical data objects and meaningful relationships.}}
+Embed conceptual-data-model.svg and link to conceptual-data-model.drawio when created. Show canonical data objects and meaningful relationships.}}
 
 ### Integration Flow
 
 {{INTEGRATION_FLOW_DIAGRAM_REFERENCE:
-Embed integration-flow.svg and link to integration-flow.mmd when created. Show direction, trigger, protocol or pattern, and important sequencing.}}
+Embed integration-flow.svg and link to integration-flow.drawio when created. Show direction, trigger, protocol or pattern, and important sequencing.}}
 
 ## Security, Privacy, and Compliance
 

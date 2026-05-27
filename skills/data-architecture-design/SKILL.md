@@ -57,8 +57,8 @@ Do not write real-company data architecture details into this public toolkit rep
    - Data flow diagram from source through transformations to consumers
    - Integration map showing systems, interfaces, events, files, APIs, or batches
    - Optional conceptual data model when the object has important relationships
-9. When creating Mermaid diagram sources, create a same-basename `.svg` export and embed the SVG in the document. Keep both files in `diagrams/`.
-10. When editable diagrams are required, use `../create-drawio-diagram/SKILL.md` and store the `.drawio` source and `.svg` export in `diagrams/`.
+9. Create every Draw.io diagram with `../create-drawio-diagram/SKILL.md` because it contains the required diagram instructions, style rules, and templates. Store each editable `.drawio` source in `diagrams/`.
+10. Export a same-basename `.svg` file for each Draw.io diagram that must be embedded, embed the SVG in the document, and link the `.drawio` source near the embedded SVG.
 11. Link the data architecture design from Phase C of the target architecture:
    - Add it to the `## Data Architecture Designs` table in `05-phase-c-data-architecture.md` when section files exist.
    - Also update the assembled `target-architecture-document.md` when it exists.

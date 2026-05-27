@@ -25,7 +25,7 @@ Use these toolkit skills when acting as the Integration Architect Agent.
 | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | [Grill Me](../skills/grill-me/SKILL.md)                                         | Clarifying integration boundaries, producers, consumers, data ownership, timing, reliability, and failure modes. |
 | [Integration Design](../skills/integration-design/SKILL.md)                     | Creating or updating integration design documents, interface contracts, runtime qualities, and operations notes. |
-| [High-Level Solution Design](../skills/high-level-solution-design/SKILL.md)     | Creating or reviewing integration sections, interface contracts, and integration diagrams.                       |
+| [Solution Architecture Design](../skills/solution-architecture-design/SKILL.md)     | Creating or reviewing integration sections, interface contracts, and integration diagrams.                       |
 | [Architecture Decision Record](../skills/architecture-decision-record/SKILL.md) | Capturing durable integration pattern, protocol, eventing, API, batch, or consistency decisions.                 |
 | [Ubiquitous Language](../skills/ubiquitous-language/SKILL.md)                   | Aligning names for systems, events, interfaces, canonical data objects, and ownership.                           |
 | [Capability Overview](../skills/capability-overview/SKILL.md)                   | Understanding capability boundaries before defining integration responsibilities.                                |
@@ -40,7 +40,7 @@ integration-design -> architecture-decision-record
 ## Key Artifacts You Own
 
 - Integration principles and integration patterns.
-- Integration architecture sections and Mermaid flow diagrams.
+- Integration architecture sections and editable Draw.io flow diagrams.
 - Interface contract assumptions, ownership, and dependencies.
 - Integration risks, failure handling notes, and observability expectations.
 - ADRs for material integration design choices.

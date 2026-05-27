@@ -114,7 +114,7 @@ git commit -m "Update AI Architecture Toolkit submodule"
 | [Integration Architect Agent](agents/integration-architect.md) | Own integration principles and patterns, and support integration design across APIs, events, data flows, messaging, orchestration, and operational ownership. |
 | [Lead Developer Agent](agents/lead-developer.md) | Support implementation leadership by turning approved solution and integration designs into buildable, testable, operable software delivery plans. |
 | [Security Architect Agent](agents/security-architect.md) | Support security architecture by identifying threats, controls, privacy concerns, compliance constraints, and operational security requirements for architecture work. |
-| [Solution Architect Agent](agents/solution-architect.md) | Create solution architecture designs from capability overviews, record material ADRs, and embed rendered Mermaid diagrams. |
+| [Solution Architect Agent](agents/solution-architect.md) | Create solution architecture designs from capability overviews, record material ADRs, and embed rendered Draw.io diagrams. |
 
 ## Skills
 
@@ -126,7 +126,7 @@ git commit -m "Update AI Architecture Toolkit submodule"
 | [Grill Me](skills/grill-me/SKILL.md) | Challenge plans, assumptions, constraints, terminology, risks, and decisions until the design context is explicit. |
 | [Ubiquitous Language](skills/ubiquitous-language/SKILL.md) | Extract a shared glossary, flag ambiguous terms, and define canonical applications, data objects, and relationships. |
 | [Data Architecture Design](skills/data-architecture-design/SKILL.md) | Create data-object-specific architecture designs with data flow diagrams, integration traceability, ownership, lifecycle, quality, privacy, and Phase C linkage. |
-| [Solution Architecture Design](skills/solution-architecture-design/SKILL.md) | Write implementation-oriented solution designs with chapter guidance, Mermaid sources, rendered SVGs, and linked ADRs. |
+| [Solution Architecture Design](skills/solution-architecture-design/SKILL.md) | Write implementation-oriented solution designs with chapter guidance, editable Draw.io sources, rendered SVGs, and linked ADRs. |
 | [Integration Design](skills/integration-design/SKILL.md) | Create integration design documents for APIs, events, files, batches, messaging, and orchestration. |
 | [Create Draw.io Diagram](skills/create-drawio-diagram/SKILL.md) | Create editable Draw.io architecture diagrams from reusable templates for solution and target architecture documents. |
 | [To Epics](skills/to-epics/SKILL.md) | Break target architecture work into user-confirmed epics and list each epic in Phase E of the target architecture document. |
@@ -141,8 +141,7 @@ git commit -m "Update AI Architecture Toolkit submodule"
 - Data architecture designs under `data-architectures/<data-object>/`, linked from Phase C of the target architecture document.
 - User-confirmed epics under `requirements/<name-of-target-architecture>/`, listed in Phase E of the target architecture document.
 - Integration designs under `integrations/` using `int-0001-<data-object>-from-<source>-to-<destination>.md` numbering.
-- Mermaid `.mmd` diagram sources paired with same-basename `.svg` files embedded in design documents.
-- Editable Draw.io `.drawio` diagrams for stakeholders who need diagrams.net-compatible source files.
+- Editable Draw.io `.drawio` diagram sources paired with same-basename `.svg` files embedded in design documents.
 - ADRs linked from the technical design choices they support.
 - Private-lab glossary entries in `GLOSSARY.md`.
 - Architecture principle documents under `principles/`.
