@@ -1,13 +1,13 @@
-# L2 - {{CAPABILITY_NAME}} Architecture
+# L2 - {{APPLICATION_NAME}} Architecture
 
 | Field               | Value                                                                  |
 | ------------------- | ---------------------------------------------------------------------- |
+| Application Name    | {{APPLICATION_NAME}}                                                   |
 | Capability          | {{CAPABILITY_NAME}}                                                    |
 | Source overview     | [{{SOURCE_CAPABILITY_OVERVIEW_TITLE}}]({{SOURCE_CAPABILITY_OVERVIEW}}) |
 | Target architecture | [{{TARGET_ARCHITECTURE_TITLE}}]({{TARGET_ARCHITECTURE_LINK}})          |
 | Domain              | {{DOMAIN}}                                                             |
 | Owner(s)            | {{OWNERS}}                                                             |
-| Status              | {{STATUS}}                                                             |
 | Last update         | {{LAST_UPDATE}}                                                        |
 
 ## Table of Contents
@@ -30,12 +30,12 @@
 ## Architecture Summary
 
 {{ARCHITECTURE_SUMMARY:
-State the target solution in 3-6 paragraphs. Include the capability, business outcome, architectural approach, primary applications or components, key constraints, main design consequences, and decisions still needed. Avoid generic benefits or marketing language.}}
+State the target solution in 3-6 plain-language paragraphs for senior stakeholders. Mention the capability once as context, then focus on the application: what business outcome it enables, what changes for users or operations, the main architectural approach, key application ownership or impact, key constraints, main design consequences, and decisions still needed. Avoid generic benefits, marketing language, acronyms, and implementation jargon unless briefly explained.}}
 
 ## Capability Overview
 
 {{CAPABILITY_OVERVIEW:
-Link to the source capability overview. Summarize the capability boundary, upstream/downstream capabilities, triggering business events, expected outcomes, and source assumptions used. Call out source gaps or contradictions. Do not link ADRs here; ADR links belong in Technical Design Choices.}}
+Link to the source capability overview. Briefly summarize only the capability context needed to understand why this application architecture exists: business purpose, boundary, upstream/downstream business dependencies, triggering business events, expected outcomes, and source assumptions used. Keep this section short and avoid repeating the capability name elsewhere in the document unless needed for clarity. Call out source gaps or contradictions. Do not link ADRs here; ADR links belong in Technical Design Choices.}}
 
 ## Open Questions
 
@@ -62,12 +62,12 @@ List testable or reviewable assumptions. Move unresolved decisions to Open Quest
 ## Target Technical Implementation
 
 {{TARGET_TECHNICAL_IMPLEMENTATION:
-Describe the target runtime solution, including services, applications, platforms, deployment model, environments, operational ownership, lifecycle flows, and relevant technical standards or constraints.}}
+Describe the target runtime solution around the application, including services, components, platforms, deployment model, environments, operational ownership, lifecycle flows, and relevant technical standards or constraints.}}
 
 ## Application and Component Architecture
 
 {{APPLICATION_AND_COMPONENT_ARCHITECTURE:
-Identify applications, services, modules, integration components, user interfaces, and shared platforms. For each, describe responsibility, ownership, key dependencies, and whether it is new, changed, reused, or retired. Make component boundaries explicit.}}
+Identify the main application, supporting services, modules, integration components, user interfaces, and shared platforms. For each, describe responsibility, ownership, key dependencies, and whether it is new, changed, reused, or retired. Make component boundaries explicit.}}
 
 ## Data Model and Ownership
 

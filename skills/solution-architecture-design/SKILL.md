@@ -26,6 +26,7 @@ Use `templates/solution-architecture-design-template.md` as the output structure
 ## Required Inputs
 
 - Source capability overview path
+- Application name
 - Capability name and scope boundary
 - Applications and technical components involved
 - Data objects, ownership, lifecycle, and persistence needs
@@ -69,6 +70,8 @@ Use `templates/solution-architecture-design-template.md` as the output structure
 
 Write each chapter as implementation-oriented architecture guidance, not as a restatement of the capability overview. Prefer specific decisions, responsibilities, boundaries, data ownership, interfaces, constraints, and trade-offs. Use concise prose plus tables where comparison or accountability is clearer than paragraphs.
 
+The generated document should be application-centered. Use `Application Name` as the primary document anchor and title context. Use the capability as context in the `Architecture Summary` and `Capability Overview`, then shift the rest of the document to the application, components, data, integrations, operations, and delivery impact. Avoid repeating the capability name throughout the document unless it prevents ambiguity.
+
 ## Readability Guidance
 
 Make the document easy to read for both architects and delivery teams.
@@ -96,6 +99,7 @@ Make the document easy to read for both architects and delivery teams.
 - Include the key design consequences: what changes, what stays stable, what risk is reduced or introduced, and what must be decided next.
 - Do not include generic benefits or marketing language.
 - Keep the summary readable without the rest of the document. Avoid acronyms and implementation jargon unless they are expanded and briefly explained.
+- Mention the capability once as context, then focus on the application and its business impact.
 
 ### Capability Overview
 
@@ -108,6 +112,7 @@ Make the document easy to read for both architects and delivery teams.
 - Link to the source capability overview and identify the source sections, assumptions, or statements used.
 - Call out any gaps or contradictions found in the source overview.
 - Do not link ADRs from this section; ADR links belong in `Technical Design Choices`.
+- Keep this section short. After this section, avoid restating the capability and focus on the application architecture.
 
 ### Scope and Assumptions
 
@@ -118,13 +123,14 @@ Make the document easy to read for both architects and delivery teams.
 
 ### Target Technical Implementation
 
-- Describe the target runtime solution: main services, applications, platforms, deployment model, environments, and operational ownership.
+- Describe the target runtime solution around the application: main services, components, platforms, deployment model, environments, and operational ownership.
 - Explain build-versus-buy, reuse, replacement, and modernization choices where relevant.
 - Identify lifecycle flows from request or event through processing, persistence, integration, observability, and user or system outcome.
 - Include important technology standards, constraints, and version or platform assumptions when known.
 
 ### Application and Component Architecture
 
+- Treat this as the core of the document.
 - Identify each application, service, module, integration component, user interface, and shared platform involved.
 - For each component, describe responsibility, ownership, key dependencies, and whether it is new, changed, reused, or retired.
 - Make boundaries explicit: what each component owns, what it must not own, and where orchestration or business rules live.
