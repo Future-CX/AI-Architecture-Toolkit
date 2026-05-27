@@ -11,6 +11,14 @@ Use this skill when a design conversation produces a decision that should be rem
 
 When this toolkit is used as a submodule, do not write ADRs under `toolkit/adr/`. Run the command from the private repository root, or pass `--output-root <private-repo-root>`, so output goes to the consuming repository.
 
+ADR filenames must use this format:
+
+```text
+adr-<4-digits>-<slug>.md
+```
+
+Start at `adr-0001`. For new ADRs, inspect existing `adr/adr-*.md` files, choose the next available 4-digit number, and preserve gaps unless the user explicitly asks to renumber.
+
 ```sh
 python3 skills/architecture-decision-record/scripts/write-adr.py "Use Domain Events Between Ordering And Billing" \
   --summary "Ordering and Billing will communicate via domain events instead of synchronous HTTP. This reduces runtime coupling and supports independent deployment, accepting eventual consistency as a trade-off."
@@ -36,7 +44,7 @@ Create ADRs only when all three conditions are true:
 1. Confirm the decision, context, and selected option.
 2. Identify the meaningful alternatives that were rejected.
 3. Check whether the decision meets the ADR threshold.
-4. If it qualifies, write the ADR under the consuming repository's root `adr/` folder using `templates/adr-template.md`.
+4. If it qualifies, write the ADR under the consuming repository's root `adr/` folder using `templates/adr-template.md` and the `adr-<4-digits>-<slug>.md` filename format.
 5. Add or update the ADR in `adr/_adr-list.md` with a relative link, summary, and `last_updated` date.
 6. If it does not qualify, summarize the decision inline without creating an ADR.
 

@@ -14,18 +14,18 @@ Use `templates/integration-design-template.md` as the output structure. Replace 
 Store generated integration designs under the consuming repository's private lab root in `integrations/`.
 
 ```text
-integrations/INT-0001-<integration-slug>.md
+integrations/int-0001-<data-object>-from-<source>-to-<destination>.md
 integrations/_integrations-overview.md
 ```
 
-Each integration filename must start with `INT-`, then a 4-digit sequence number, then a slug:
+Each integration filename must start with `int-`, then a 4-digit sequence number, then the canonical data object, source, and destination:
 
 ```text
-INT-0001-order-submitted-event.md
-INT-0002-customer-profile-api.md
+int-0001-order-from-commerce-to-erp.md
+int-0002-customer-from-crm-to-commerce.md
 ```
 
-Start at `INT-0001`. For new files, inspect existing `integrations/INT-*.md` files, choose the next available 4-digit number, and preserve gaps unless the user explicitly asks to renumber.
+Start at `int-0001`. For new files, inspect existing `integrations/int-*.md` files, choose the next available 4-digit number, and preserve gaps unless the user explicitly asks to renumber.
 
 Do not write real-company integration details into this public toolkit repository.
 
@@ -34,6 +34,7 @@ Do not write real-company integration details into this public toolkit repositor
 - Integration name and business purpose
 - Source system or producer
 - Target system or consumer
+- Main canonical data object
 - Triggering event, process step, schedule, or user action
 - Integration pattern: synchronous API, event-driven, batch, file transfer, messaging, or orchestration
 - Payload, data object, schema, endpoint, topic, queue, file, or message contract
@@ -48,9 +49,12 @@ Do not write real-company integration details into this public toolkit repositor
 4. Validate terminology against `<private-lab-root>/GLOSSARY.md`. If important terms, applications, or data objects are missing or ambiguous, use `../ubiquitous-language/SKILL.md` to update the private lab glossary before writing the design.
 5. Determine the output path under `<private-lab-root>/integrations/`:
    - Create the folder if needed.
-   - Scan existing files matching `INT-[0-9][0-9][0-9][0-9]-*.md`.
+   - Scan existing files matching `int-[0-9][0-9][0-9][0-9]-*.md`.
    - Use the next available 4-digit sequence number, starting with `0001`.
-   - Derive `<integration-slug>` from the integration name.
+   - Derive `<data-object>` from the canonical data object being exchanged.
+   - Derive `<source>` from the source system or producer.
+   - Derive `<destination>` from the target system or consumer.
+   - Build the filename as `int-<4-digits>-<data-object>-from-<source>-to-<destination>.md`.
 6. Create or update the integration design from `templates/integration-design-template.md`.
 7. Populate `## Relevant Links` with every confirmed related document, including capability overview, target architecture, high-level solution design, epic, ADR, or other integration designs. Use the linked document name as the Markdown link label.
 8. Update `<private-lab-root>/integrations/_integrations-overview.md` with the integration name and description.
@@ -77,14 +81,14 @@ Maintain `<private-lab-root>/integrations/_integrations-overview.md` with this s
 ```md
 # Integrations Overview
 
-| Integration | Description |
-| --- | --- |
-| [{{INTEGRATION_NAME}}](INT-0001-{{INTEGRATION_SLUG}}.md) | {{INTEGRATION_DESCRIPTION}} |
+| Integration                                                                                           | Description                 |
+| ----------------------------------------------------------------------------------------------------- | --------------------------- |
+| [{{INTEGRATION_NAME}}](int-0001-{{DATA_OBJECT_SLUG}}-from-{{SOURCE_SLUG}}-to-{{DESTINATION_SLUG}}.md) | {{INTEGRATION_DESCRIPTION}} |
 ```
 
 When updating the overview:
 
-- Scan `integrations/INT-*.md` so the overview represents every integration design file.
+- Scan `integrations/int-*.md` so the overview represents every integration design file.
 - Use the integration document title or integration name as the link label.
 - Use the integration overview/purpose as the description.
 - Keep rows sorted by integration number.
@@ -95,6 +99,6 @@ When updating the overview:
 - Keep real-company integration designs in a private company lab repository.
 - Write integration design files to `<private-lab-root>/integrations/`, not inside this public toolkit repository.
 - Always update `<private-lab-root>/integrations/_integrations-overview.md` after creating or updating an integration design.
-- Do not renumber existing `INT-` files unless the user explicitly asks.
+- Do not renumber existing `int-` files unless the user explicitly asks.
 - Do not invent internal system names, endpoints, payload fields, credentials, keys, vendor-specific configuration, or non-public business context.
 - Use canonical glossary terms for business data objects and applications whenever possible.

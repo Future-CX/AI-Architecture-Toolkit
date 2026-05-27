@@ -2,4 +2,4 @@
 
 | Integration | Description |
 | --- | --- |
-| [{{INTEGRATION_NAME}}](INT-0001-{{INTEGRATION_SLUG}}.md) | {{INTEGRATION_DESCRIPTION}} |
+| [{{INTEGRATION_NAME}}](int-0001-{{DATA_OBJECT_SLUG}}-from-{{SOURCE_SLUG}}-to-{{DESTINATION_SLUG}}.md) | {{INTEGRATION_DESCRIPTION}} |

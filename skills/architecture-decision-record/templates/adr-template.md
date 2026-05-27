@@ -1,6 +1,6 @@
 # Architecture Decision Record Template
 
-ADRs live in the consuming repository's root `adr/` folder and use sequential numbering: `0001-slug.md`, `0002-slug.md`, etc.
+ADRs live in the consuming repository's root `adr/` folder and use sequential numbering: `adr-0001-slug.md`, `adr-0002-slug.md`, etc.
 
 Create the `adr/` directory lazily in the consuming repository root — only when the first ADR is needed.
 
@@ -24,7 +24,7 @@ Only include these when they add genuine value. Most ADRs won't need them.
 
 ## Numbering
 
-Scan `adr/` for the highest existing number and increment by one.
+Scan `adr/` for the highest existing `adr-<4-digits>-*.md` number and increment by one.
 
 ## When to offer an ADR
 
