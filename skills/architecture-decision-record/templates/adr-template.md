@@ -24,7 +24,7 @@ Only include these when they add genuine value. Most ADRs won't need them.
 
 ## Numbering
 
-Scan `adr/` for the highest existing `adr-<4-digits>-*.md` number and increment by one.
+Scan `adr/` for the highest existing `adr-<4-digits>-*.md` number and increment by one. If legacy `0001-*.md` ADRs already exist, include them when choosing the next number, but write new ADRs with the `adr-` prefix.
 
 ## When to offer an ADR
 

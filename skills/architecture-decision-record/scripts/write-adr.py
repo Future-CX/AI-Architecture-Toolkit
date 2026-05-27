@@ -19,11 +19,16 @@ def slugify(value: str) -> str:
 def next_adr_number(adr_dir: Path) -> int:
     highest = 0
     if adr_dir.exists():
-        for path in adr_dir.glob("adr-[0-9][0-9][0-9][0-9]-*.md"):
-            match = re.match(r"adr-(?P<number>[0-9]{4})-", path.name)
-            if not match:
-                continue
-            highest = max(highest, int(match.group("number")))
+        patterns = (
+            "adr-[0-9][0-9][0-9][0-9]-*.md",
+            "[0-9][0-9][0-9][0-9]-*.md",
+        )
+        for pattern in patterns:
+            for path in adr_dir.glob(pattern):
+                match = re.match(r"(?:adr-)?(?P<number>[0-9]{4})-", path.name)
+                if not match:
+                    continue
+                highest = max(highest, int(match.group("number")))
     return highest + 1
 
 

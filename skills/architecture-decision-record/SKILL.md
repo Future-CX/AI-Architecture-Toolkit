@@ -17,7 +17,7 @@ ADR filenames must use this format:
 adr-<4-digits>-<slug>.md
 ```
 
-Start at `adr-0001`. For new ADRs, inspect existing `adr/adr-*.md` files, choose the next available 4-digit number, and preserve gaps unless the user explicitly asks to renumber.
+Start at `adr-0001`. For new ADRs, inspect existing `adr/adr-*.md` files and any legacy `adr/0001-*.md` files, choose the next available 4-digit number, and preserve gaps unless the user explicitly asks to renumber.
 
 ```sh
 python3 skills/architecture-decision-record/scripts/write-adr.py "Use Domain Events Between Ordering And Billing" \
