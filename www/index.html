@@ -815,7 +815,7 @@
           <article class="card">
             <h3>Solution Architect Agent</h3>
             <p>
-              Creates high-level solution designs from capability overviews,
+              Creates solution architecture designs from capability overviews,
               records material ADRs, and embeds rendered Mermaid diagrams.
             </p>
           </article>
@@ -899,7 +899,7 @@
               </p>
             </article>
             <article class="card">
-              <h3>High-level solution design</h3>
+              <h3>Solution architecture design</h3>
               <p>
                 Produce implementation-oriented solution designs with chapter
                 guidance, Mermaid sources, rendered SVGs, and linked ADRs.
@@ -910,6 +910,14 @@
               <p>
                 Document APIs, events, files, batches, messaging, and
                 orchestration with contracts, failure handling, and operations.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Data architecture design</h3>
+              <p>
+                Create data-object-specific designs with data flow diagrams,
+                integration traceability, ownership, lifecycle, and Phase C
+                linkage.
               </p>
             </article>
             <article class="card">
@@ -1040,8 +1048,16 @@ python3 toolkit/skills/capability-overview/scripts/write-capability-overview.py 
             <article class="card">
               <h3>Solution architectures</h3>
               <p>
-                Target architecture and high-level solution design documents
+                Target architecture and solution architecture design documents
                 under <code>solution-architectures/</code>.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Data architecture designs</h3>
+              <p>
+                Data-object-specific designs under
+                <code>data-architectures/</code>, linked from Phase C of the
+                target architecture document.
               </p>
             </article>
             <article class="card">
@@ -1110,15 +1126,21 @@ python3 toolkit/skills/capability-overview/scripts/write-capability-overview.py 
 ├── integrations/
 │   ├── int-0001-products-from-PIM-to-Search.md
 │   └── int-0002-orders-from-commerce-to-erp.md
+├── data-architectures/
+│   └── product/
+│       ├── product-data-architecture-design.md
+│       └── diagrams/
+│           ├── product-data-flow.mmd
+│           └── product-data-flow.svg
 ├── solution-architectures/
 │   ├── L1-target-architecture-document/
 │   │   ├── target-architecture-document.md
 │   │   └── 07-phase-e-solution-building-blocks.md
-│   └── L2-solution-design-search/
+│   └── L2-solution-architecture-search/
 │       ├── search-architecture.md
-│       ├── solution-design.mmd
-│       ├── solution-design.drawio
-│       └── solution-design.svg
+│       ├── solution-architecture.mmd
+│       ├── solution-architecture.drawio
+│       └── solution-architecture.svg
 ├── requirements/
 │   └── target-architecture-document/
 │       └── improve-search-relevance.md

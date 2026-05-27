@@ -1,27 +1,27 @@
 ---
-name: high-level-solution-design
-description: Write high-level solution design documents from an existing capability overview, covering implementation design, applications, data model, integrations, diagrams, NFRs, and technical design choices. Use when the user asks to create, draft, or update a high-level solution design, capability architecture document, technical capability design, implementation architecture, or detailed technical design for a business capability.
+name: solution-architecture-design
+description: Write solution architecture design documents from an existing capability overview, covering implementation design, applications, data model, integrations, diagrams, NFRs, and technical design choices. Use when the user asks to create, draft, or update a solution architecture design, capability architecture document, technical capability design, implementation architecture, or detailed technical design for a business capability.
 ---
 
-# High-Level Solution Design
+# Solution Architecture Design
 
 ## Quick Start
 
 Assume the Solution Architect Agent role from `agents/solution-architect.md`: translate business needs into coherent application, data, integration, security, operational architecture, and implementation trade-offs.
 
-Write high-level solution design documents from an existing capability overview under the consuming repository's root `solution-architectures/<slug>/` folder.
+Write solution architecture design documents from an existing capability overview under the consuming repository's root `solution-architectures/<slug>/` folder.
 
-Read the source overview first from `capabilities/<capability-slug>/<capability-slug>.md`. Store the generated technical document as `solution-architectures/<slug>/<slug>-architecture.md`, where `<slug>` is derived from the high-level solution design document name.
+Read the source overview first from `capabilities/<capability-slug>/<capability-slug>.md`. Store the generated technical document as `solution-architectures/<slug>/<slug>-architecture.md`, where `<slug>` is derived from the solution architecture design document name.
 
 Before creating any output files, run a `grill-me` style clarification session using `../grill-me/SKILL.md`. Ask one question at a time until the capability boundary, source overview, systems, data, integrations, constraints, assumptions, terminology, and desired technical depth are clear enough to avoid avoidable misunderstanding.
 
 During that clarification session, use `../ubiquitous-language/SKILL.md` whenever terms are vague, overloaded, conflicting, or important enough to become shared domain language. Create or update `<private-lab-root>/GLOSSARY.md` inline as terms are clarified; do not batch glossary updates until the end. Do not write the glossary inside this public toolkit repository when working with real company context.
 
-After the clarification session, validate that `<private-lab-root>/GLOSSARY.md` was created or updated during the current run. If it was not created or updated, stop before generating high-level solution design files and ask the user to run the `grill-me` skill followed by the `ubiquitous-language` skill so the glossary is updated first.
+After the clarification session, validate that `<private-lab-root>/GLOSSARY.md` was created or updated during the current run. If it was not created or updated, stop before generating solution architecture design files and ask the user to run the `grill-me` skill followed by the `ubiquitous-language` skill so the glossary is updated first.
 
-When this toolkit is used as a submodule, do not write generated high-level solution design files under `toolkit/solution-architectures/`. Run from the private lab root, or otherwise target the private lab root explicitly, so output goes to `<private-lab-root>/solution-architectures/L2-solution-design-<slug>/`.
+When this toolkit is used as a submodule, do not write generated solution architecture design files under `toolkit/solution-architectures/`. Run from the private lab root, or otherwise target the private lab root explicitly, so output goes to `<private-lab-root>/solution-architectures/L2-solution-architecture-<slug>/`.
 
-Use `templates/high-level-solution-design-template.md` as the output structure and follow the chapter writing guidance below when replacing placeholders. Replace each complete placeholder block with finished document content; do not leave placeholder names, placeholder guidance, or drafting instructions in the generated document. When Mermaid diagrams are created, store each diagram as a separate `.mmd` source file in the same folder as the high-level solution design document. For every `.mmd` file, also render a same-basename `.svg` file and embed the SVG in the document. When the user asks for Draw.io or editable diagrams, use `../create-drawio-diagram/SKILL.md` to create matching `.drawio` files from the diagram templates.
+Use `templates/solution-architecture-design-template.md` as the output structure and follow the chapter writing guidance below when replacing placeholders. Replace each complete placeholder block with finished document content; do not leave placeholder names, placeholder guidance, or drafting instructions in the generated document. When Mermaid diagrams are created, store each diagram as a separate `.mmd` source file in the same folder as the solution architecture design document. For every `.mmd` file, also render a same-basename `.svg` file and embed the SVG in the document. When the user asks for Draw.io or editable diagrams, use `../create-drawio-diagram/SKILL.md` to create matching `.drawio` files from the diagram templates.
 
 ## Required Inputs
 
@@ -39,8 +39,8 @@ Use `templates/high-level-solution-design-template.md` as the output structure a
 2. Start with the `grill-me` clarification session and update `<private-lab-root>/GLOSSARY.md` with `ubiquitous-language` as terminology is clarified.
 3. Validate that `<private-lab-root>/GLOSSARY.md` was created or updated. If not, stop and ask the user to run `grill-me` and then `ubiquitous-language` before continuing.
 4. Locate and read the source capability overview from `capabilities/<capability-slug>/<capability-slug>.md`. If multiple matches exist, ask the user which overview to use.
-5. Derive the output path as `solution-architectures/<slug>/<slug>-architecture.md`, where `<slug>` is derived from the high-level solution design document name.
-6. Do not overwrite an existing high-level solution design document unless the user explicitly asks.
+5. Derive the output path as `solution-architectures/<slug>/<slug>-architecture.md`, where `<slug>` is derived from the solution architecture design document name.
+6. Do not overwrite an existing solution architecture design document unless the user explicitly asks.
 7. Extract the business objective, scope, applications, data involved, integrations, NFRs, risks, and future-state considerations from the capability overview.
 8. Use repository context where available to validate stated systems, integrations, standards, and existing design decisions.
 9. Update `<private-lab-root>/GLOSSARY.md` before or alongside drafting when the document introduces or changes:
@@ -48,7 +48,7 @@ Use `templates/high-level-solution-design-template.md` as the output structure a
    - Applications and the capabilities or functions they deliver
    - General canonical data objects, ownership, source-of-truth, and lifecycle notes
    - Relationships between terms, applications, and data objects
-10. Create the technical document from `templates/high-level-solution-design-template.md`.
+10. Create the technical document from `templates/solution-architecture-design-template.md`.
 11. Create separate Mermaid source files in the same output folder when the required architecture relationships are known:
     - `capability-context.mmd` for the capability context diagram
     - `application-component-view.mmd` for the application/component diagram
@@ -175,9 +175,9 @@ Write each chapter as implementation-oriented architecture guidance, not as a re
 
 ## Required Outputs
 
-Each high-level solution design document must include:
+Each solution architecture design document must include:
 
-- High-level solution design summary
+- Solution architecture design summary
 - Source capability overview reference
 - Scope and assumptions
 - Target technical implementation

@@ -5,7 +5,8 @@
 - [Target Architecture Document](target-architecture-document/SKILL.md) - Write capability-aligned target architecture documents using Preliminary Phase and Phase A-E architecture input.
 - [Grill Me](grill-me/SKILL.md) - Interview the user relentlessly about a plan or design until reaching shared understanding.
 - [Ubiquitous Language](ubiquitous-language/SKILL.md) - Extract a DDD-style ubiquitous language glossary, flag ambiguities, and propose canonical terms.
-- [High-Level Solution Design](high-level-solution-design/SKILL.md) - Write high-level solution design documents from existing capability overviews.
+- [Data Architecture Design](data-architecture-design/SKILL.md) - Create data-object-specific architecture designs with data flow diagrams, integration traceability, ownership, lifecycle, quality, privacy, and Phase C linkage.
+- [Solution Architecture Design](solution-architecture-design/SKILL.md) - Write solution architecture design documents from existing capability overviews.
 - [Integration Design](integration-design/SKILL.md) - Create integration design documents for APIs, events, files, batches, messaging, and orchestration.
 - [Create Draw.io Diagram](create-drawio-diagram/SKILL.md) - Create editable Draw.io architecture diagrams from reusable templates.
 - [To Epics](to-epics/SKILL.md) - Break target architecture work into user-confirmed epics and list each epic in Phase E of the target architecture document.

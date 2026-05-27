@@ -94,6 +94,12 @@ Describe the enterprise architecture context that frames the target architecture
 
 {{DATA_DOMAINS_AND_OWNERSHIP}}
 
+### Data Architecture Designs
+
+| Data Architecture Design | Data Object | Source of Truth | Description |
+| --- | --- | --- | --- |
+| _No linked data architecture designs yet._ |  |  |  |
+
 ### Integration Landscape
 
 {{INTEGRATION_LANDSCAPE}}

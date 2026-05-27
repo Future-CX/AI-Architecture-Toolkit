@@ -105,6 +105,7 @@ solution-architectures/<slug>/
 
 - Application landscape
 - Data domains and ownership
+- Linked data architecture designs for specific canonical data objects, left as `_No linked data architecture designs yet._` until the user explicitly creates them with `../data-architecture-design/SKILL.md`
 - Integration patterns
 - Reuse and rationalization opportunities
 
@@ -125,6 +126,7 @@ solution-architectures/<slug>/
 18. Assemble `target-architecture-document.md` from the section files using `templates/target-architecture-document-template.md` as the final document structure.
 19. Keep the section files as reviewable working artifacts. The assembled `target-architecture-document.md` is the final consolidated artifact.
 20. Leave the Phase E `Epics To Build` table empty until the user explicitly creates epics with `../to-epics/SKILL.md`. Generated epic files belong under `<private-lab-root>/requirements/<name-of-target-architecture>/`, not under the target architecture folder. Do not infer or create epics during target architecture drafting. Every epic requires a user-provided main capability.
+21. Leave the Phase C `Data Architecture Designs` table empty until the user explicitly creates data architecture designs with `../data-architecture-design/SKILL.md`. Generated data architecture design files belong under `<private-lab-root>/data-architectures/<data-object-slug>/`, not under the target architecture folder.
 
 ## Guardrails
 
@@ -132,4 +134,5 @@ solution-architectures/<slug>/
 - If using real company details, work in a private company lab repository and write outputs to that repository's `solution-architectures/` folder.
 - Do not invent specific enterprise facts. Mark unknowns as assumptions or open questions.
 - Prefer generic capability names unless the user is working in a private repository.
+- Do not create data architecture design documents automatically. Data architecture designs require an explicit target architecture link and canonical data object through the `data-architecture-design` skill.
 - Do not create epics automatically. Epics require explicit user-provided names, descriptions, and main capabilities through the `to-epics` skill.

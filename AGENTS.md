@@ -15,7 +15,7 @@ When creating or updating agents:
 
 Do not add company-confidential information, customer names, internal system names, proprietary architecture details, credentials, or non-public business context to this repository. Use a separate private company lab repository for real-world testing.
 
-Generated artifacts that contain real company context belong in a private company lab repository, not in this public toolkit. This includes real glossaries, ADRs, capability overviews, target architecture documents, high-level solution designs, diagrams, roadmaps, and review findings.
+Generated artifacts that contain real company context belong in a private company lab repository, not in this public toolkit. This includes real glossaries, ADRs, capability overviews, target architecture documents, solution architecture designs, diagrams, roadmaps, and review findings.
 
 Toolkit-aware scripts and agents should honor `.toolkitignore` when deciding what counts as active toolkit content.
 
@@ -33,11 +33,11 @@ Generated capability overviews belong under `capabilities/<slug>/` in the consum
 
 ## SOLUTION ARCHITECTURES
 
-When creating high-level solution designs, use the high-level-solution-design skill.
+When creating solution architecture designs, use the solution-architecture-design skill.
 
-High-level solution design outputs belong under `solution-architectures/<slug>/` in the consuming repository, or under the private lab root when this toolkit is used as a submodule.
+Solution architecture design outputs belong under `solution-architectures/<slug>/` in the consuming repository, or under the private lab root when this toolkit is used as a submodule.
 
-When a high-level solution design creates Mermaid diagrams:
+When a solution architecture design creates Mermaid diagrams:
 
 - Store each Mermaid source as a separate `.mmd` file beside the design document.
 - Render a same-basename `.svg` file for every `.mmd` file.

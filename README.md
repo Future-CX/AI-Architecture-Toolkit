@@ -23,16 +23,16 @@ For testing this public toolkit against real company context, use a separate pri
 ## How To Use The Toolkit
 
 1. Choose the agent that matches the work.
-   Use the agent files in `agents/` as role briefs for architecture conversations. For example, use the Enterprise Architect Agent for governance, principles, target architecture, and roadmap alignment; use the Solution Architect Agent for high-level solution design, technical choices, diagrams, and solution ADRs; or use the Integration Architect Agent for integration design.
+   Use the agent files in `agents/` as role briefs for architecture conversations. For example, use the Enterprise Architect Agent for governance, principles, target architecture, and roadmap alignment; use the Solution Architect Agent for solution architecture design, technical choices, diagrams, and solution ADRs; or use the Integration Architect Agent for integration design.
 
 2. Use skills for repeatable architecture tasks.
-   Skills in `skills/` define focused workflows. Use them when creating agents, writing principles, recording ADRs, producing capability overviews, drafting target architecture, creating high-level solution designs, hardening domain language, or stress-testing a plan.
+   Skills in `skills/` define focused workflows. Use them when creating agents, writing principles, recording ADRs, producing capability overviews, drafting target architecture, creating data architecture designs, creating solution architecture designs, hardening domain language, or stress-testing a plan.
 
 3. Start from templates.
    Use shared templates in `templates/` and skill-owned templates in `skills/*/templates/` to create consistent artifacts.
 
 4. Store generated artifacts in the matching folder.
-   Agent definitions belong in `agents/`, principles in `principles/`, generated capability overviews in `capabilities/`, solution architecture documents in `solution-architectures/`, epics in `requirements/<name-of-target-architecture>/`, private-lab glossaries in `GLOSSARY.md`, and ADRs in the location defined by the ADR skill.
+   Agent definitions belong in `agents/`, principles in `principles/`, generated capability overviews in `capabilities/`, solution architecture documents in `solution-architectures/`, data architecture designs in `data-architectures/<data-object>/`, epics in `requirements/<name-of-target-architecture>/`, private-lab glossaries in `GLOSSARY.md`, and ADRs in the location defined by the ADR skill.
 
 5. Keep public and private work separate.
    This repository should stay generic and public. Use a private company lab repository for real company context, internal system names, stakeholder details, generated company glossaries, and real architecture decisions.
@@ -114,7 +114,7 @@ git commit -m "Update AI Architecture Toolkit submodule"
 | [Integration Architect Agent](agents/integration-architect.md) | Own integration principles and patterns, and support integration design across APIs, events, data flows, messaging, orchestration, and operational ownership. |
 | [Lead Developer Agent](agents/lead-developer.md) | Support implementation leadership by turning approved solution and integration designs into buildable, testable, operable software delivery plans. |
 | [Security Architect Agent](agents/security-architect.md) | Support security architecture by identifying threats, controls, privacy concerns, compliance constraints, and operational security requirements for architecture work. |
-| [Solution Architect Agent](agents/solution-architect.md) | Create high-level solution designs from capability overviews, record material ADRs, and embed rendered Mermaid diagrams. |
+| [Solution Architect Agent](agents/solution-architect.md) | Create solution architecture designs from capability overviews, record material ADRs, and embed rendered Mermaid diagrams. |
 
 ## Skills
 
@@ -125,7 +125,8 @@ git commit -m "Update AI Architecture Toolkit submodule"
 | [Target Architecture Document](skills/target-architecture-document/SKILL.md) | Connect capabilities to strategy, business architecture, data, applications, integration, technology, and epics to build. |
 | [Grill Me](skills/grill-me/SKILL.md) | Challenge plans, assumptions, constraints, terminology, risks, and decisions until the design context is explicit. |
 | [Ubiquitous Language](skills/ubiquitous-language/SKILL.md) | Extract a shared glossary, flag ambiguous terms, and define canonical applications, data objects, and relationships. |
-| [High-Level Solution Design](skills/high-level-solution-design/SKILL.md) | Write implementation-oriented solution designs with chapter guidance, Mermaid sources, rendered SVGs, and linked ADRs. |
+| [Data Architecture Design](skills/data-architecture-design/SKILL.md) | Create data-object-specific architecture designs with data flow diagrams, integration traceability, ownership, lifecycle, quality, privacy, and Phase C linkage. |
+| [Solution Architecture Design](skills/solution-architecture-design/SKILL.md) | Write implementation-oriented solution designs with chapter guidance, Mermaid sources, rendered SVGs, and linked ADRs. |
 | [Integration Design](skills/integration-design/SKILL.md) | Create integration design documents for APIs, events, files, batches, messaging, and orchestration. |
 | [Create Draw.io Diagram](skills/create-drawio-diagram/SKILL.md) | Create editable Draw.io architecture diagrams from reusable templates for solution and target architecture documents. |
 | [To Epics](skills/to-epics/SKILL.md) | Break target architecture work into user-confirmed epics and list each epic in Phase E of the target architecture document. |
@@ -136,9 +137,10 @@ git commit -m "Update AI Architecture Toolkit submodule"
 ## What The Toolkit Creates
 
 - Capability overviews under `capabilities/`.
-- Target architecture and high-level solution design documents under `solution-architectures/`.
+- Target architecture and solution architecture design documents under `solution-architectures/`.
+- Data architecture designs under `data-architectures/<data-object>/`, linked from Phase C of the target architecture document.
 - User-confirmed epics under `requirements/<name-of-target-architecture>/`, listed in Phase E of the target architecture document.
-- Integration designs under `integrations/` using `INT-0001-<integration-slug>.md` numbering.
+- Integration designs under `integrations/` using `int-0001-<data-object>-from-<source>-to-<destination>.md` numbering.
 - Mermaid `.mmd` diagram sources paired with same-basename `.svg` files embedded in design documents.
 - Editable Draw.io `.drawio` diagrams for stakeholders who need diagrams.net-compatible source files.
 - ADRs linked from the technical design choices they support.

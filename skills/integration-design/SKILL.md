@@ -43,7 +43,7 @@ Do not write real-company integration details into this public toolkit repositor
 
 ## Workflow
 
-1. Ask which capability, target architecture, high-level solution design, epic, or ADR the integration supports.
+1. Ask which capability, target architecture, solution architecture design, epic, or ADR the integration supports.
 2. Ask for the source system, target system, business trigger, integration pattern, and business data involved when not already provided.
 3. Read related architecture documents when paths are provided.
 4. Validate terminology against `<private-lab-root>/GLOSSARY.md`. If important terms, applications, or data objects are missing or ambiguous, use `../ubiquitous-language/SKILL.md` to update the private lab glossary before writing the design.
@@ -56,10 +56,10 @@ Do not write real-company integration details into this public toolkit repositor
    - Derive `<destination>` from the target system or consumer.
    - Build the filename as `int-<4-digits>-<data-object>-from-<source>-to-<destination>.md`.
 6. Create or update the integration design from `templates/integration-design-template.md`.
-7. Populate `## Relevant Links` with every confirmed related document, including capability overview, target architecture, high-level solution design, epic, ADR, or other integration designs. Use the linked document name as the Markdown link label.
+7. Populate `## Relevant Links` with every confirmed related document, including capability overview, target architecture, solution architecture design, epic, ADR, or other integration designs. Use the linked document name as the Markdown link label.
 8. Update `<private-lab-root>/integrations/_integrations-overview.md` with the integration name and description.
 9. Capture unresolved facts as open questions rather than inventing payloads, endpoints, schemas, retry rules, owners, or service-level expectations.
-10. Link the integration design from the related target architecture, high-level solution design, capability overview, epic, or relevant links section when the related document exists and the user confirms the linkage. Whenever a link to the integration design is added to one of those documents, add the reciprocal link back to that document in the integration design's `## Relevant Links` section.
+10. Link the integration design from the related target architecture, solution architecture design, capability overview, epic, or relevant links section when the related document exists and the user confirms the linkage. Whenever a link to the integration design is added to one of those documents, add the reciprocal link back to that document in the integration design's `## Relevant Links` section.
 
 ## Writing Guidance
 
@@ -69,7 +69,7 @@ Do not write real-company integration details into this public toolkit repositor
 - Document idempotency, retries, ordering, dead-letter behavior, replay, timeout, and compensation where relevant.
 - Include observability details: logs, metrics, traces, alerts, dashboards, correlation IDs, and support runbooks.
 - Include security details: authentication, authorization, identity propagation, encryption, secrets, network trust boundary, audit logging, and data classification.
-- Keep relevant links bidirectional: if the integration design is linked from a target architecture, high-level solution design, or capability overview, also link that document from the integration design.
+- Keep relevant links bidirectional: if the integration design is linked from a target architecture, solution architecture design, or capability overview, also link that document from the integration design.
 - Use linked document names as relevant-link labels. For local Markdown files, derive the name from the first `#` heading; otherwise use the filename without extension. Do not use generic labels such as "Target architecture" when a document title is available.
 - Maintain `integrations/_integrations-overview.md` every time an integration design is created or updated. The overview must list each integration file with its integration name and description.
 - Mark unknown contract details as `TBD` or open questions.
