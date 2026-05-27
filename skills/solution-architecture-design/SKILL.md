@@ -69,12 +69,30 @@ Use `templates/solution-architecture-design-template.md` as the output structure
 
 Write each chapter as implementation-oriented architecture guidance, not as a restatement of the capability overview. Prefer specific decisions, responsibilities, boundaries, data ownership, interfaces, constraints, and trade-offs. Use concise prose plus tables where comparison or accountability is clearer than paragraphs.
 
+## Readability Guidance
+
+Make the document easy to read for both architects and delivery teams.
+
+- Start each major section with 2-4 plain-language sentences that explain the point of the section before adding details.
+- Use short paragraphs. Prefer 2-4 sentences per paragraph and avoid long blocks of text.
+- Use direct language. Prefer "The order service owns order status" over "Ownership of order status is facilitated by the order service."
+- Explain acronyms and specialist terms the first time they appear, unless they are already defined in `GLOSSARY.md`.
+- Use bullets for lists of responsibilities, assumptions, risks, controls, and open questions.
+- Use tables for repeated structures such as components, data objects, integrations, decisions, risks, and dependencies.
+- Keep table cells short. Move long explanations below the table as notes.
+- Put the most important conclusion first, then explain the reasoning.
+- Avoid vague architecture filler such as "robust", "seamless", "future-proof", "best practice", or "enterprise-grade" unless it is tied to a concrete requirement.
+- Prefer examples when a concept may be unclear, especially for data ownership, integration behavior, failure handling, and operational responsibility.
+- Split complex sections with `###` subheadings when a reader would otherwise have to scan more than 6-8 bullets or several paragraphs.
+- Write open questions as answerable questions with an owner or target audience when known.
+
 ### Architecture Summary
 
 - State the target solution in 3-6 paragraphs for senior stakeholders and delivery leads.
 - Name the capability, the business outcome, the main architectural approach, the primary applications or components, and the most important constraints.
 - Include the key design consequences: what changes, what stays stable, and what must be decided next.
 - Do not include generic benefits or marketing language.
+- Keep the summary readable without the rest of the document. Avoid acronyms unless they are expanded.
 
 ### Capability Overview
 
