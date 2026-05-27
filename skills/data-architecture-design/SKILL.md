@@ -76,7 +76,7 @@ Do not write real-company data architecture details into this public toolkit rep
 - Include privacy and security concerns such as classification, sensitive attributes, access controls, consent, residency, masking, encryption, and audit logging.
 - Keep relevant links bidirectional. If the data architecture design is linked from Target Architecture Phase C, link back to the target architecture from the data architecture design.
 - Use linked document names as link labels. For local Markdown files, derive the name from the first `#` heading; otherwise use the filename without extension.
-- Maintain `<private-lab-root>/GLOSSARY.md` while writing whenever the design introduces or changes domain terms, applications, canonical data objects, lifecycle states, integration names, ownership roles, or relationships.
+- Maintain `<private-lab-root>/GLOSSARY.md` while writing whenever the design introduces or changes domain terms, applications, canonical data objects, lifecycle states, integration names, ownership roles, relationships, jargon, deprecated terms, or words to avoid.
 
 ## Phase C Link Format
 

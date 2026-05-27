@@ -46,7 +46,7 @@ Do not write real-company integration details into this public toolkit repositor
 1. Ask which capability, target architecture, solution architecture design, epic, or ADR the integration supports.
 2. Ask for the source system, target system, business trigger, integration pattern, and business data involved when not already provided.
 3. Read related architecture documents when paths are provided.
-4. Validate terminology against `<private-lab-root>/GLOSSARY.md`. If important terms, applications, or data objects are missing or ambiguous, use `../ubiquitous-language/SKILL.md` to update the private lab glossary before writing the design.
+4. Validate terminology against `<private-lab-root>/GLOSSARY.md`. If important terms, applications, data objects, jargon, deprecated terms, or words to avoid are missing or ambiguous, use `../ubiquitous-language/SKILL.md` to update the private lab glossary before writing the design.
 5. Determine the output path under `<private-lab-root>/integrations/`:
    - Create the folder if needed.
    - Scan existing files matching `int-[0-9][0-9][0-9][0-9]-*.md`.

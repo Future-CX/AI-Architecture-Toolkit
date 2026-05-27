@@ -46,6 +46,7 @@ Use `templates/solution-architecture-design-template.md` as the output structure
 8. Use repository context where available to validate stated systems, integrations, standards, and existing design decisions.
 9. Update `<private-lab-root>/GLOSSARY.md` before or alongside drafting when the document introduces or changes:
    - Domain terms and aliases
+   - Jargon, deprecated terms, or words to avoid, captured in the glossary `## Jargon` section
    - Applications and the capabilities or functions they deliver
    - General canonical data objects, ownership, source-of-truth, and lifecycle notes
    - Relationships between terms, applications, and data objects

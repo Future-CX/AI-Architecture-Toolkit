@@ -15,6 +15,7 @@ Extract and formalize domain terminology from the current conversation into a co
    - Same word used for different concepts (ambiguity)
    - Different words used for the same concept (synonyms)
    - Vague or overloaded terms
+   - Jargon, deprecated terms, vendor-specific labels, or words the team wants to avoid
 3. **Propose a canonical glossary** with opinionated term choices
 4. **Write to `GLOSSARY.md`** in the working directory using the format below
 5. **Maintain the table of contents** immediately below `# Glossary`
@@ -34,6 +35,7 @@ Write a `GLOSSARY.md` file with this structure:
 - [Applications](#applications)
 - [Data objects](#data-objects)
 - [Relationships](#relationships)
+- [Jargon](#jargon)
 - [Flagged ambiguities](#flagged-ambiguities)
 
 ## Order lifecycle
@@ -72,6 +74,13 @@ Write a `GLOSSARY.md` file with this structure:
 - An **Invoice** belongs to exactly one **Customer**
 - An **Order** produces one or more **Invoices**
 
+## Jargon
+
+| Avoid this term | Preferred term | Reason |
+| --------------- | -------------- | ------ |
+| client          | **Customer**   | "Client" is used inconsistently for both customer organizations and API consumers. |
+| user account    | **User**       | "User account" mixes authentication identity with customer or account ownership. |
+
 ## Flagged ambiguities
 
 - "account" was used to mean both **Customer** and **User** — these are distinct concepts: a **Customer** places orders, while a **User** is an authentication identity that may or may not represent a **Customer**.
@@ -80,12 +89,14 @@ Write a `GLOSSARY.md` file with this structure:
 ## Rules
 
 - **Be opinionated.** When multiple words exist for the same concept, pick the best one and list the others as aliases to avoid.
+- **Maintain a Jargon section.** Capture words, phrases, vendor labels, acronyms, deprecated names, and overloaded terms the team should avoid in a dedicated `## Jargon` section. Use columns for `Avoid this term`, `Preferred term`, and `Reason`. The preferred term should link to or exactly match a canonical glossary term when possible. Use this section for broader "do not use this wording" guidance; use table-level `Aliases to avoid` for term-specific aliases.
 - **Flag conflicts explicitly.** If a term is used ambiguously in the conversation, call it out in the "Flagged ambiguities" section with a clear recommendation.
 - **Only include terms relevant for domain experts.** Skip the names of modules or classes unless they have meaning in the domain language.
 - **Keep definitions tight.** One sentence max. Define what it IS, not what it does.
 - **Show relationships.** Use bold term names and express cardinality where obvious.
 - **Only include domain terms.** Skip generic programming concepts (array, function, endpoint) unless they have domain-specific meaning.
 - **Maintain a table of contents.** Every time `GLOSSARY.md` is created or updated, rebuild the `## Table of Contents` section immediately below `# Glossary`. Include every main glossary section heading below the title, excluding `## Table of Contents` itself. Keep ToC entries in the same order as the sections appear in the document and link to the Markdown anchor, e.g. `[Data objects](#data-objects)`.
+- **Sort Jargon rows alphabetically.** In the `## Jargon` table, sort rows alphabetically by `Avoid this term`, ignoring case.
 - **Sort rows alphabetically.** In every glossary table, sort rows alphabetically by the value in the first column, ignoring Markdown bold markers and case.
 - **Group terms into multiple tables** when natural clusters emerge (e.g. by subdomain, lifecycle, or actor). Each group gets its own heading and table. If all terms belong to a single cohesive domain, one table is fine — don't force groupings.
 - **Maintain an Applications section.** List known applications in a dedicated `## Applications` section using columns for `Application`, `Definition`, and `Capabilities and functions delivered`. Keep application definitions short and business-facing. Use the combined delivery column to name supported business capabilities first, followed by dash-prefixed concrete functions the application performs.

@@ -64,6 +64,7 @@ solution-architectures/<slug>/
 5. Create the `solution-architectures/<slug>/` folder if needed.
 6. For every section below, update `<private-lab-root>/GLOSSARY.md` before or alongside the section when the section introduces or changes:
    - Domain terms and aliases
+   - Jargon, deprecated terms, or words to avoid, captured in the glossary `## Jargon` section
    - Applications and the capabilities or functions they deliver
    - General canonical data objects, ownership, source-of-truth, and lifecycle notes
    - Relationships between terms, applications, and data objects
