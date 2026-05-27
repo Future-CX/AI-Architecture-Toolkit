@@ -1,0 +1,55 @@
+<mxfile host="app.diagrams.net" modified="2026-05-27T00:00:00.000Z" agent="AI Architecture Toolkit" version="24.7.17">
+  <diagram id="data-architecture-diagram" name="Data Architecture">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#fbfcfa" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Data Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=24;fontColor=#17201d;" vertex="1" parent="1">
+          <mxGeometry x="60" y="40" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="source-system" value="Source system" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="70" y="170" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="canonical-data-object" value="Canonical data object" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#fff3c4;strokeColor=#b7791f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="470" y="150" width="250" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="data-owner" value="Data owner or steward" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="830" y="170" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="integration-or-pipeline" value="Integration or pipeline" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#e1d5e7;strokeColor=#7e5799;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="470" y="330" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="consumer-system" value="Consumer system" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="830" y="330" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="quality-governance" value="Quality, lineage, and governance" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#ffffff;strokeColor=#cbd5d1;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="200" y="500" width="310" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="privacy-security" value="Privacy, security, and retention" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#f8cecc;strokeColor=#a3433f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="650" y="500" width="310" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-source-data" value="creates or updates" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="source-system" target="canonical-data-object">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-owner-data" value="owns and governs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="data-owner" target="canonical-data-object">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-data-pipeline" value="flows through" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="canonical-data-object" target="integration-or-pipeline">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-pipeline-consumer" value="delivers to" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="integration-or-pipeline" target="consumer-system">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-quality-data" value="controls" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="quality-governance" target="canonical-data-object">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-security-data" value="protects" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="privacy-security" target="canonical-data-object">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="Replace these placeholders with the data object's source of truth, owner, lifecycle controls, integrations, consumers, and governance concerns." style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#ffffff;strokeColor=#cbd5d1;fontColor=#5d6964;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="680" width="730" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

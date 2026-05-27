@@ -1,0 +1,43 @@
+<mxfile host="app.diagrams.net" modified="2026-05-27T00:00:00.000Z" agent="AI Architecture Toolkit" version="24.7.17">
+  <diagram id="target-architecture-diagram" name="Target Architecture">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#fbfcfa" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Target Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=24;fontColor=#17201d;" vertex="1" parent="1">
+          <mxGeometry x="60" y="40" width="420" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="business-capabilities" value="Business capabilities" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="70" y="140" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="application-services" value="Application services" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="460" y="140" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="data-products" value="Data objects and products" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#fff3c4;strokeColor=#b7791f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="850" y="140" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="integration-platform" value="Integration platform and patterns" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#e1d5e7;strokeColor=#7e5799;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="270" y="340" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="technology-platform" value="Technology platform" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#f8cecc;strokeColor=#a3433f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="650" y="340" width="250" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-capability-application" value="realized by" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="business-capabilities" target="application-services">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-application-data" value="uses and governs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="application-services" target="data-products">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-integration-application" value="connects" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="integration-platform" target="application-services">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-technology-application" value="hosts and secures" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="technology-platform" target="application-services">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="Replace these placeholders with the target architecture's capabilities, applications, data objects, integrations, and platforms." style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#ffffff;strokeColor=#cbd5d1;fontColor=#5d6964;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="560" width="730" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

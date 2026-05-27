@@ -1,6 +1,6 @@
 ---
 name: create-drawio-diagram
-description: Create Draw.io diagrams from reusable architecture diagram templates and store editable `.drawio` files beside architecture documents. Use when the user asks for Draw.io, diagrams.net, editable architecture diagrams, or when a solution architecture workflow needs Draw.io versions of capability context, application component, conceptual data model, or integration flow diagrams.
+description: Create Draw.io diagrams from reusable architecture diagram templates and store editable `.drawio` files beside architecture documents. Use when the user asks for Draw.io, diagrams.net, editable architecture diagrams, or when an architecture workflow needs Draw.io versions of target architecture, solution architecture, data architecture, capability context, application component, conceptual data model, or integration flow diagrams.
 ---
 
 # Create Draw.io Diagram
@@ -16,6 +16,9 @@ Use this skill when a generated architecture document needs diagrams that stakeh
 Use these templates as starting points:
 
 - `templates/capability-context.drawio` for actors, neighboring capabilities, and external dependencies
+- `templates/target-architecture-diagram.drawio` for a simple target architecture overview across capabilities, applications, data, integrations, and technology
+- `templates/solution-architecture-diagram.drawio` for a simple solution architecture overview across channels, components, integrations, data stores, and external systems
+- `templates/data-architecture-diagram.drawio` for a simple data architecture overview across source systems, canonical data objects, owners, consumers, integrations, and governance
 - `templates/application-component-view.drawio` for applications, services, components, platforms, and responsibilities
 - `templates/conceptual-data-model.drawio` for canonical data objects and relationships
 - `templates/integration-flow.drawio` for producers, consumers, interfaces, triggers, protocols, and sequence
