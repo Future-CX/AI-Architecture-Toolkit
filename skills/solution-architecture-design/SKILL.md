@@ -88,11 +88,14 @@ Make the document easy to read for both architects and delivery teams.
 
 ### Architecture Summary
 
-- State the target solution in 3-6 paragraphs for senior stakeholders and delivery leads.
-- Name the capability, the business outcome, the main architectural approach, the primary applications or components, and the most important constraints.
-- Include the key design consequences: what changes, what stays stable, and what must be decided next.
+- Write for senior stakeholders first, including readers who are not deeply technical.
+- State the target solution in 3-6 plain-language paragraphs.
+- Start with the business outcome and what will change for the organization, customers, users, operations, or delivery teams.
+- Explain the main architectural approach in business-readable terms before naming technical components.
+- Name the primary applications or components only when they are important to understand ownership, impact, cost, risk, or delivery.
+- Include the key design consequences: what changes, what stays stable, what risk is reduced or introduced, and what must be decided next.
 - Do not include generic benefits or marketing language.
-- Keep the summary readable without the rest of the document. Avoid acronyms unless they are expanded.
+- Keep the summary readable without the rest of the document. Avoid acronyms and implementation jargon unless they are expanded and briefly explained.
 
 ### Capability Overview
 
