@@ -99,9 +99,13 @@ Make the document easy to read for both architects and delivery teams.
 
 ### Capability Overview
 
-- Summarize only the capability context needed to understand the design.
+- Write for senior stakeholders first, including readers who are not deeply technical.
+- Summarize only the capability context needed to understand why this solution architecture exists.
+- Start with the business purpose of the capability and the outcome it enables.
+- Explain the capability boundary in plain language: what is included, what is not included, and why that matters.
+- Describe upstream and downstream capabilities as business dependencies before naming technical systems.
+- Explain triggering business events and expected outcomes using business-readable examples when helpful.
 - Link to the source capability overview and identify the source sections, assumptions, or statements used.
-- Capture the capability boundary, upstream/downstream capabilities, triggering business events, and expected outcomes.
 - Call out any gaps or contradictions found in the source overview.
 - Do not link ADRs from this section; ADR links belong in `Technical Design Choices`.
 
