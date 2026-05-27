@@ -65,6 +65,7 @@ Use `templates/solution-architecture-design-template.md` as the output structure
 15. Record specific technical design choices in the document. If a choice is durable, hard to reverse, surprising without context, and based on a real trade-off, propose an ADR using `../architecture-decision-record/SKILL.md`.
 16. Mark unknowns as assumptions or open questions. Do not invent implementation facts.
 17. Use linked document titles as Markdown link labels whenever possible. For local Markdown files such as source capability overviews and target architecture documents, derive the title from the first `#` heading; otherwise use the filename without extension. Do not use generic labels such as "Target architecture" when a document title is available.
+18. In the metadata table, link the `Capability` value to the source capability overview using `{{SOURCE_CAPABILITY_OVERVIEW}}`. Use the capability name as the link label unless the user asks to use the source document title.
 
 ## Chapter Writing Guidance
 
