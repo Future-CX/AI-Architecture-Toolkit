@@ -71,7 +71,7 @@ Use `templates/solution-architecture-design-template.md` as the output structure
 
 Write each chapter as implementation-oriented architecture guidance, not as a restatement of the capability overview. Prefer specific decisions, responsibilities, boundaries, data ownership, interfaces, constraints, and trade-offs. Use concise prose plus tables where comparison or accountability is clearer than paragraphs.
 
-The generated document should be application-centered. Use `Application Name` as the primary document anchor and title context. Use the capability as context in the `Architecture Summary` and `Capability Overview`, then shift the rest of the document to the application, components, data, integrations, operations, and delivery impact. Avoid repeating the capability name throughout the document unless it prevents ambiguity.
+The generated document title must stay `L2 - {{CAPABILITY_NAME}} Solution Architecture`. The generated content should be application-centered: use `Application Name` as the primary implementation anchor in the body, while using the capability as context in the title, `Architecture Summary`, and `Capability Overview`. After that, shift the rest of the document to the application, components, data, integrations, operations, and delivery impact. Avoid repeating the capability name throughout the body unless it prevents ambiguity.
 
 ## Readability Guidance
 
