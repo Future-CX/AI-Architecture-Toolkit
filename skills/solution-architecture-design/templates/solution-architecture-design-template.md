@@ -1,4 +1,4 @@
-# L2 - {{APPLICATION_NAME}} Architecture
+# L2 - {{CAPABILITY_NAME}} Solution Architecture
 
 | Field               | Value                                                                  |
 | ------------------- | ---------------------------------------------------------------------- |
