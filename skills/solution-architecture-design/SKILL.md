@@ -140,10 +140,12 @@ Make the document easy to read for both architects and delivery teams.
 
 ### Data Model and Ownership
 
-- Define canonical business data objects, their meaning, owner or source of truth, lifecycle, and consumers.
-- Keep data objects business-level and general. Do not use vendor object names, table names, endpoint resources, or application-specific object names as canonical data objects.
-- Capture important relationships, identifiers, master/reference data, retention needs, privacy classification, and data quality responsibilities.
-- State where mappings are needed between canonical objects and application-specific representations.
+- Do not make the solution architecture the source of truth for the canonical data model.
+- Link to the relevant data architecture design when it exists. If it does not exist and the model is material, raise an open question or recommend creating one with `../data-architecture-design/SKILL.md`.
+- Summarize only the canonical data objects needed to understand this application.
+- Focus on how the application uses the canonical model: local persistence, read/write behavior, mappings, projections, indexes, caches, API payloads, event payloads, and application-specific representations.
+- State where the application maps canonical objects to local or vendor-specific structures.
+- Capture application-specific data ownership, lifecycle, privacy, quality, or retention implications without redefining the enterprise data model.
 
 ### Data Integrations and Interface Contracts
 

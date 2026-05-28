@@ -68,6 +68,7 @@ Do not write real-company data architecture details into this public toolkit rep
 ## Writing Guidance
 
 - Center the document on one canonical data object.
+- Treat the data architecture design as the source of truth for the canonical data model. Solution architecture documents should reference this model and describe application-specific usage, not redefine it.
 - Be explicit about source of truth, authoritative owner, allowed writers, and downstream consumers.
 - Identify data lifecycle states, create/update/delete behavior, retention, archival, purge, and audit requirements.
 - Describe data movement in business terms first, then technical integration details.

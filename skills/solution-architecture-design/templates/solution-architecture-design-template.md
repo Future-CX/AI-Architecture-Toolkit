@@ -71,7 +71,7 @@ Identify the main application, supporting services, modules, integration compone
 ## Data Model and Ownership
 
 {{DATA_MODEL_AND_OWNERSHIP:
-Define canonical business data objects, their meaning, owner or source of truth, lifecycle, consumers, relationships, identifiers, retention needs, privacy classification, and mappings to application-specific representations.}}
+Reference the relevant data architecture design when it exists. Summarize only the canonical data objects needed to understand this application. Focus on how the application uses the canonical model: local persistence, read/write behavior, mappings, projections, indexes, caches, API payloads, event payloads, and application-specific representations. Do not redefine the canonical data model here; raise an open question if a material data architecture design is missing.}}
 
 ## Data Integrations and Interface Contracts
 
