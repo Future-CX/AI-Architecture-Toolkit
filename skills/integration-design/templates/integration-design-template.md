@@ -1,8 +1,22 @@
 # Integration Design Template
 
+| Field | Value |
+| --- | --- |
+| Purpose | {{INTEGRATION_PURPOSE}} |
+| Source | {{SOURCE_SYSTEM}} |
+| Destination | {{DESTINATION_SYSTEM}} |
+| Data object | {{DATA_OBJECT}} |
+| Trigger | {{INTEGRATION_TRIGGER}} |
+| Pattern | {{INTEGRATION_PATTERN}} |
+| Open questions | {{OPEN_QUESTIONS_COUNT}} |
+
 ## Integration Overview
 
 Describe the integration purpose, source systems, target systems, and business process.
+
+## Open Questions
+
+A bullet list of open questions.
 
 ## Pattern
 
@@ -10,9 +24,9 @@ Synchronous API | Event-driven | Batch | File transfer | Messaging | Orchestrati
 
 ## Contract
 
-Document payloads, schemas, endpoints, topics, queues, protocols, and versioning.
+Document endpoints, examples payloads, schemas, topics, queues, protocols, and versioning.
 
-## Runtime Qualities
+## Integration Qualities
 
 Capture latency, throughput, ordering, reliability, idempotency, retries, and failure handling.
 
