@@ -2,6 +2,7 @@
 
 | Field | Value |
 | --- | --- |
+| Status | {{INTEGRATION_STATUS}} |
 | Purpose | {{INTEGRATION_PURPOSE}} |
 | Source | {{SOURCE_SYSTEM}} |
 | Destination | {{DESTINATION_SYSTEM}} |
