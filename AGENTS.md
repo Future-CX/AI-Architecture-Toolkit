@@ -19,6 +19,16 @@ Generated artifacts that contain real company context belong in a private compan
 
 Toolkit-aware scripts and agents should honor `.toolkitignore` when deciding what counts as active toolkit content.
 
+## READABILITY
+
+When creating stakeholder-facing documents:
+
+- Write in plain language for the intended audience.
+- Prefer short sentences, clear headings, and concrete trade-offs.
+- Avoid unnecessary technical jargon.
+- Explain acronyms and domain-specific terms when first used.
+- Make recommendations and decisions easy to find.
+
 ## PRINCIPLES
 
 When creating principles, use the write-a-principle skill.
