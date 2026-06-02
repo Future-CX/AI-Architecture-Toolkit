@@ -14,21 +14,13 @@
 
 {{EPIC_DESCRIPTION}}
 
-## Table of Contents
-
-- [Open Questions](#open-questions)
-- [Scope](#scope)
-- [Architecture Impact](#architecture-impact)
-- [Dependencies](#dependencies)
-- [Business Requirements](#business-requirements)
-- [Visual Design](#visual-design)
-- [Solution Design](#solution-design)
-- [Site Reliability Engineering](#site-reliability-engineering)
-- [Relevant Links](#relevant-links)
-
 ## Open Questions
 
 - {{OPEN_QUESTION}}
+
+### Decisions & Assumptions
+
+{{ASSUMPTIONS}}
 
 ## Business Requirements
 
@@ -43,10 +35,6 @@
 ### Out of Scope
 
 {{OUT_OF_SCOPE}}
-
-### Assumptions
-
-{{ASSUMPTIONS}}
 
 ## Architecture Impact
 

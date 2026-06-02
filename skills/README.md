@@ -6,6 +6,7 @@
 - [Grill Me](grill-me/SKILL.md) - Interview the user relentlessly about a plan or design until reaching shared understanding.
 - [Ubiquitous Language](ubiquitous-language/SKILL.md) - Extract a DDD-style ubiquitous language glossary, flag ambiguities, and propose canonical terms.
 - [Data Architecture Design](data-architecture-design/SKILL.md) - Create data-object-specific architecture designs with data flow diagrams, integration traceability, ownership, lifecycle, quality, privacy, and Phase C linkage.
+- [Problem To Solution](problem-to-solution/SKILL.md) - Create stakeholder-ready problem-to-solution briefs with problem framing, solution options, pros and cons, and a recommendation.
 - [Solution Architecture Design](solution-architecture-design/SKILL.md) - Write solution architecture design documents from existing capability overviews.
 - [Integration Design](integration-design/SKILL.md) - Create integration design documents for APIs, events, files, batches, messaging, and orchestration.
 - [Create Draw.io Diagram](create-drawio-diagram/SKILL.md) - Create editable Draw.io architecture diagrams from reusable templates.

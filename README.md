@@ -126,6 +126,7 @@ git commit -m "Update AI Architecture Toolkit submodule"
 | [Grill Me](skills/grill-me/SKILL.md) | Challenge plans, assumptions, constraints, terminology, risks, and decisions until the design context is explicit. |
 | [Ubiquitous Language](skills/ubiquitous-language/SKILL.md) | Extract a shared glossary, flag ambiguous terms, and define canonical applications, data objects, and relationships. |
 | [Data Architecture Design](skills/data-architecture-design/SKILL.md) | Create data-object-specific architecture designs with data flow diagrams, integration traceability, ownership, lifecycle, quality, privacy, and Phase C linkage. |
+| [Problem To Solution](skills/problem-to-solution/SKILL.md) | Create stakeholder-ready problem-to-solution briefs with problem framing, solution options, pros and cons, and a recommendation. |
 | [Solution Architecture Design](skills/solution-architecture-design/SKILL.md) | Write implementation-oriented solution designs with chapter guidance, editable Draw.io sources, rendered SVGs, and linked ADRs. |
 | [Integration Design](skills/integration-design/SKILL.md) | Create integration design documents for APIs, events, files, batches, messaging, and orchestration. |
 | [Create Draw.io Diagram](skills/create-drawio-diagram/SKILL.md) | Create editable Draw.io architecture diagrams from reusable templates for solution and target architecture documents. |
@@ -140,6 +141,7 @@ git commit -m "Update AI Architecture Toolkit submodule"
 - Target architecture and solution architecture design documents under `solution-architectures/`.
 - Data architecture designs under `data-architectures/<data-object>/`, linked from Phase C of the target architecture document.
 - User-confirmed epics under `requirements/<name-of-target-architecture>/`, listed in Phase E of the target architecture document.
+- Problem-to-solution briefs under `problem-to-solutions/` with problem framing, options, trade-offs, and recommendations for stakeholder decision-making.
 - Integration designs under `integrations/` using `int-0001-<data-object>-from-<source>-to-<destination>.md` numbering.
 - Editable Draw.io `.drawio` diagram sources paired with same-basename `.svg` files embedded in design documents.
 - ADRs linked from the technical design choices they support.
