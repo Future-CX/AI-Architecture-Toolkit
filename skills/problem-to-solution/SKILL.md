@@ -29,7 +29,7 @@ Do not write real-company decision context into this public toolkit repository.
 - Constraints, assumptions, and non-goals
 - Evaluation criteria
 - Candidate solution options
-- Recommendation and rationale
+- Recommendation and rationale after solution exploration is complete
 - ADR link when the solution is decided
 
 ## Workflow
@@ -40,21 +40,23 @@ Do not write real-company decision context into this public toolkit repository.
 4. Validate terminology against `<private-lab-root>/GLOSSARY.md` when the brief uses domain-specific applications, capabilities, data objects, or jargon. Use `../ubiquitous-language/SKILL.md` to clarify or update terminology before option brainstorming when important terms are missing, ambiguous, or overloaded.
 5. Use `../grill-me/SKILL.md` to pressure-test the problem framing, assumptions, constraints, stakeholder tensions, and evaluation criteria before settling on solution options.
 6. Brainstorm 2-5 realistic solution options. Include a "do nothing" or "defer" option only when it is a plausible decision path.
-7. Use `../grill-me/SKILL.md` again to challenge whether the options are meaningfully distinct, whether any option is a strawman, and whether a material option is missing.
-8. Evaluate each option against the same criteria so comparisons are fair and decision-ready.
-9. Write balanced pros and cons for each option. Avoid strawman alternatives.
-10. Recommend one option, or a staged combination, with clear rationale, trade-offs, and conditions for success.
-11. Create or update the problem-to-solution brief from `templates/problem-to-solution-template.md`.
-12. Capture unresolved facts as open questions rather than inventing costs, timelines, risk positions, or stakeholder preferences.
-13. When the user confirms the selected solution is decided, approved, or accepted, use `../architecture-decision-record/SKILL.md` to create an ADR for the decision.
-14. Link the created ADR from the top context table and `## Relevant Links` section of the problem-to-solution brief.
+7. Evaluate each option against the same criteria so comparisons are fair and decision-ready.
+8. Write balanced pros and cons for each option. Avoid strawman alternatives.
+9. Before writing a recommendation, use `../grill-me/SKILL.md` for a dedicated exploration review of all options, pros, cons, assumptions, missing alternatives, hidden constraints, and stakeholder trade-offs. Ask questions one at a time and wait for feedback before concluding the review.
+10. Revise the options, pros, cons, criteria, and open questions based on the grill-me session.
+11. Only after the grill-me exploration review is complete, recommend one option, or a staged combination, with clear rationale, trade-offs, and conditions for success.
+12. Create or update the problem-to-solution brief from `templates/problem-to-solution-template.md`.
+13. Capture unresolved facts as open questions rather than inventing costs, timelines, risk positions, or stakeholder preferences.
+14. When the user confirms the selected solution is decided, approved, or accepted, use `../architecture-decision-record/SKILL.md` to create an ADR for the decision.
+15. Link the created ADR from the top context table and `## Relevant Links` section of the problem-to-solution brief.
 
 ## Writing Guidance
 
 - Write for senior stakeholders: concise, explicit, and decision-oriented.
 - Separate facts from assumptions and inferred judgments.
 - State the decision in one sentence near the top.
-- Make the recommendation easy to find and hard to misread.
+- Do not write the recommendation until the grill-me exploration review has challenged the full set of options and trade-offs.
+- Once written, make the recommendation easy to find and hard to misread.
 - Put open questions directly under the top context table. Remove the section entirely when there are no open questions.
 - Before a solution is decided, use `TBD` for the ADR field. After the solution is decided, replace `TBD` with the created ADR link.
 - Keep options mutually distinct. If two options differ only in implementation detail, merge them or explain the real decision difference.
