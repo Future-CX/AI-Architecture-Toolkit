@@ -45,9 +45,9 @@ Use dashed connectors only for optional, informational, or payload relationships
 ## Layout Rules
 
 - Keep left-to-right flow for context, application, and integration diagrams.
+- Preserve the zones and relative positions in the selected template. Replace labels and duplicate nodes inside the same zone; do not collapse the diagram into a single vertical list.
 - Keep data models centered around canonical business data objects.
 - Prefer 80-120 px tall nodes for readability.
 - Avoid crossing connectors when a simple repositioning would remove the crossing.
 - Keep labels short and business-readable.
 - Do not use decorative colors outside the palette.
-

@@ -40,6 +40,21 @@ Do not introduce new colors unless the user explicitly asks for a palette change
 7. Do not invent systems, relationships, protocols, owners, or data flows. Mark unknowns as assumptions or open questions in the architecture document.
 8. If an image export is needed, export the Draw.io diagram to a same-basename `.svg` and embed the SVG in the architecture document with a nearby link to the `.drawio` source.
 
+## Capability Context Layout
+
+When using `templates/capability-overview.drawio`, preserve the template topology. The diagram is a context view, not an inventory list.
+
+- Place actors, teams, and channels in the left zone.
+- Place the target capability in the center as the primary green node.
+- Place upstream capabilities, source systems, triggers, and inputs above or upper-left of the target capability.
+- Place downstream capabilities, consuming systems, outcomes, and outputs below or lower-right of the target capability.
+- Place external dependencies, third parties, regulatory constraints, and vendor dependencies in the right zone.
+- Connect each node to the target capability with a concise relationship label.
+- Do not stack every actor, system, platform, and dependency in one vertical column.
+- Do not convert the target capability into a system dependency. Keep it visually distinct.
+- If a zone has more than three items, group related items into one business-readable node such as `Commerce platforms`, `Data and analytics platforms`, or `Operational stakeholders`, and list the detailed names in the document instead of crowding the diagram.
+- If the source content does not identify a relationship direction, keep the node out of the diagram and record the gap as an assumption or open question in the document.
+
 ## Output Rules
 
 - Store `.drawio` files beside the document they support.
