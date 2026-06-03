@@ -38,7 +38,7 @@ Do not introduce new colors unless the user explicitly asks for a palette change
 5. Keep labels business-readable and concise. Use notes in the surrounding architecture document for detail that would clutter the diagram.
 6. Keep canonical data object names general. Do not use vendor object names, table names, endpoint resources, or internal system names in this public repository.
 7. Do not invent systems, relationships, protocols, owners, or data flows. Mark unknowns as assumptions or open questions in the architecture document.
-8. If an image export is needed, export the Draw.io diagram to a same-basename `.svg` and embed the SVG in the architecture document with a nearby link to the `.drawio` source.
+8. If an image export is needed, export the Draw.io diagram to a same-basename `.svg` using the SVG export rules below, then embed the SVG in the architecture document with a nearby link to the `.drawio` source.
 
 ## Capability Context Layout
 
@@ -58,10 +58,21 @@ When using `templates/capability-overview.drawio`, preserve the template topolog
 - If a zone has more than three items, group related items into one business-readable node such as `Commerce platforms`, `Data and analytics platforms`, or `Operational stakeholders`, and list the detailed names in the document instead of crowding the diagram.
 - If the source content does not identify a relationship direction, keep the node out of the diagram and record the gap as an assumption or open question in the document.
 
+## SVG Export Rules
+
+Exported SVGs must preserve the exact colors from the `.drawio` source.
+
+- Export from the light-themed diagram using the diagram's explicit styles. Do not export from a dark-mode preview, themed preview, or editor mode that rewrites colors.
+- Keep the page background in the SVG. Do not export with transparent background when the diagram uses connector label backgrounds.
+- Do not post-process exported SVGs with CSS color filters, dark-mode transforms, image optimizers, or theme substitution.
+- Do not replace concrete hex colors with `currentColor`, CSS variables, inherited colors, or generated dark palette values.
+- Before embedding the SVG, inspect it visually against the `.drawio` source. If colors differ, regenerate the SVG before embedding it.
+
 ## Output Rules
 
 - Store `.drawio` files beside the document they support.
 - Prefer one diagram per file.
 - Use stable filenames that match the architecture section, such as `application-component-view.drawio`.
 - Keep generated diagrams editable in Draw.io. Do not replace them with static-only SVGs unless the user explicitly asks for export-only output.
+- Keep exported SVG colors identical to their `.drawio` source colors.
 - Keep this public toolkit free of company-confidential information.

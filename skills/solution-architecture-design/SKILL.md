@@ -54,7 +54,7 @@ Use `templates/solution-architecture-design-template.md` as the output structure
 11. Use `../create-drawio-diagram/SKILL.md` to create separate Draw.io source files in the same output folder when the required architecture relationships are known:
     - `capability-overview.drawio` for the capability overview diagram
     - `integration-flow.drawio` for the integration flow or sequence diagram
-12. Export a same-basename SVG for each created Draw.io file in the same output folder:
+12. Export a same-basename SVG for each created Draw.io file in the same output folder, using the SVG export rules in `../create-drawio-diagram/SKILL.md`:
     - `capability-overview.svg`
     - `integration-flow.svg`
 13. Embed each created `.svg` file in the relevant section of `<slug>-architecture.md` using Markdown image syntax. Do not add links to the matching `.drawio` source files in the document.
