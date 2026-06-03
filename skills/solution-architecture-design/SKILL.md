@@ -155,7 +155,7 @@ Make the document easy to read for both architects and delivery teams.
 - Create editable `.drawio` diagrams using `../create-drawio-diagram/SKILL.md`; do not hand-roll Draw.io files outside that skill's instructions and templates.
 - Embed the exported SVG for each diagram. Do not add `.drawio` source links to the document.
 - Use diagrams only where they clarify boundaries, relationships, ownership, or sequence. Do not add decorative diagrams.
-- The capability overview diagram should show actors, neighboring capabilities, and external dependencies.
+- The capability overview diagram should show actors, neighboring capabilities, and external dependencies while preserving the zone-based layout from `../create-drawio-diagram/templates/capability-overview.drawio`.
 - The integration flow should show direction, trigger, protocol or pattern, and important sequencing.
 
 ### Security, Privacy, and Compliance

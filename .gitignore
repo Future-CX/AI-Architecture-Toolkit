@@ -41,3 +41,4 @@ venv/
 tmp/
 temp/
 skills/write-a-principle/.DS_Store
+*.drawio.bkp
