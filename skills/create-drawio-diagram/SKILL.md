@@ -34,7 +34,7 @@ Do not introduce new colors unless the user explicitly asks for a palette change
 1. Confirm the diagram purpose and choose the closest template.
 2. Copy the template into the target architecture folder using a descriptive same-purpose filename, such as `capability-overview.drawio`.
 3. Replace placeholder labels with concrete architecture content from the source document, glossary, capability overview, or clarification session.
-4. Apply the standard colors and connector styles from `STYLE.md`.
+4. Apply the exact standard colors and connector styles from `STYLE.md`. Do not use dark theme variants, approximate colors, or inherited editor defaults.
 5. Keep labels business-readable and concise. Use notes in the surrounding architecture document for detail that would clutter the diagram.
 6. Keep canonical data object names general. Do not use vendor object names, table names, endpoint resources, or internal system names in this public repository.
 7. Do not invent systems, relationships, protocols, owners, or data flows. Mark unknowns as assumptions or open questions in the architecture document.
@@ -50,8 +50,11 @@ When using `templates/capability-overview.drawio`, preserve the template topolog
 - Place downstream capabilities, consuming systems, outcomes, and outputs below or lower-right of the target capability.
 - Place external dependencies, third parties, regulatory constraints, and vendor dependencies in the right zone.
 - Connect each node to the target capability with a concise relationship label.
+- Use light palette colors from `STYLE.md`: actors yellow, target capability green, upstream/downstream systems blue, and external dependencies red.
 - Do not stack every actor, system, platform, and dependency in one vertical column.
 - Do not convert the target capability into a system dependency. Keep it visually distinct.
+- Route actor connectors from the right side of actor nodes to the left side of the target capability, upstream connectors into the top of the target capability, downstream connectors out of the bottom, and external dependency connectors from the right side of the target capability.
+- When there are multiple nodes in one zone, stagger their connector lanes so labels and arrowheads do not overlap. Use explicit `mxPoint` waypoints where automatic routing creates overlap.
 - If a zone has more than three items, group related items into one business-readable node such as `Commerce platforms`, `Data and analytics platforms`, or `Operational stakeholders`, and list the detailed names in the document instead of crowding the diagram.
 - If the source content does not identify a relationship direction, keep the node out of the diagram and record the gap as an assumption or open question in the document.
 

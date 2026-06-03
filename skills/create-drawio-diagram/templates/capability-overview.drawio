@@ -22,16 +22,16 @@
         <mxCell id="external" value="External dependencies or constraints" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#f8cecc;strokeColor=#a3433f;fontColor=#17201d;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="880" y="250" width="200" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="edge-actor-capability" value="triggers or uses" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="actor" target="capability">
+        <mxCell id="edge-actor-capability" value="triggers or uses" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" edge="1" parent="1" source="actor" target="capability">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge-upstream-capability" value="provides input" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="upstream" target="capability">
+        <mxCell id="edge-upstream-capability" value="provides input" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" edge="1" parent="1" source="upstream" target="capability">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge-capability-downstream" value="produces outcome" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="capability" target="downstream">
+        <mxCell id="edge-capability-downstream" value="produces outcome" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" edge="1" parent="1" source="capability" target="downstream">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge-capability-external" value="depends on" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="capability" target="external">
+        <mxCell id="edge-capability-external" value="depends on" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" edge="1" parent="1" source="capability" target="external">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
