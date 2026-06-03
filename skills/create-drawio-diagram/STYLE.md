@@ -14,6 +14,7 @@ Use the exact hex values below. Do not darken, tint, theme, or approximate these
 | Application, platform, integration, or system dependency | `#dae8fc` | `#315f8f` | `#17201d` |
 | External dependency, risk, or constraint | `#f8cecc` | `#a3433f` | `#17201d` |
 | Neutral component, payload, or note | `#ffffff` | `#d8dfda` | `#17201d` |
+| Application name header | `#ffffff` | match component stroke | `#17201d` |
 | Connector | n/a | `#5d6964` | `#5d6964` |
 
 ## Shape Styles
@@ -25,6 +26,8 @@ rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fontColo
 ```
 
 Add the category fill and stroke from the palette to every architecture element. For example, an actor must include `fillColor=#fff3c4;strokeColor=#b7791f;fontColor=#17201d;`, and an application or platform dependency must include `fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;`.
+
+When a component, capability, system, or dependency is implemented by a named application, place the application name in a separate header box attached to the top of the component. Use the same width as the component, 30-40 px height, `fillColor=#ffffff`, the component's stroke color, `fontStyle=1`, and `fontColor=#17201d`. Keep the component's business-readable responsibility or capability name in the body below the header.
 
 Use swimlanes only for meaningful ownership or application boundaries:
 

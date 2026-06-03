@@ -51,6 +51,7 @@ When using `templates/capability-overview.drawio`, preserve the template topolog
 - Place external dependencies, third parties, regulatory constraints, and vendor dependencies in the right zone.
 - Connect each node to the target capability with a concise relationship label.
 - Use light palette colors from `STYLE.md`: actors yellow, target capability green, upstream/downstream systems blue, and external dependencies red.
+- When a node is backed by a named application, show the application name in a separate header box attached to the top of that node. Keep the node body focused on the business capability, component, dependency, or responsibility.
 - Do not stack every actor, system, platform, and dependency in one vertical column.
 - Do not convert the target capability into a system dependency. Keep it visually distinct.
 - Route actor connectors from the right side of actor nodes to the left side of the target capability, upstream connectors into the top of the target capability, downstream connectors out of the bottom, and external dependency connectors from the right side of the target capability.

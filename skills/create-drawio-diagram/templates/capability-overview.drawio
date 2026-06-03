@@ -34,8 +34,11 @@
         <mxCell id="edge-capability-external" edge="1" parent="1" source="capability" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="external" value="depends on">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="wtTJ4m9Lci7Y-lzfFHPa-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#0f766e;strokeWidth=2;align=center;verticalAlign=middle;spacing=12;arcSize=8;absoluteArcSize=1;fontFamily=Helvetica;fontSize=16;fontColor=#17201d;fontStyle=1;fillColor=light-dark(#45a165, #1d2c23);" value="Application Name" vertex="1">
+        <mxCell id="wtTJ4m9Lci7Y-lzfFHPa-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#0f766e;strokeWidth=2;align=center;verticalAlign=middle;spacing=12;arcSize=8;absoluteArcSize=1;fontFamily=Helvetica;fontSize=16;fontColor=#17201d;fontStyle=1;fillColor=#ffffff;" value="Application Name" vertex="1">
           <mxGeometry height="40" width="265" x="455" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="hzigCzCzZuQ-4PxgagW3-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#ffffff;strokeColor=#a3433f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Application Name" vertex="1">
+          <mxGeometry height="30" width="200" x="880" y="240" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
