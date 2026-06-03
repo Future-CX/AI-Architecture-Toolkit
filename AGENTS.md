@@ -23,11 +23,14 @@ Toolkit-aware scripts and agents should honor `.toolkitignore` when deciding wha
 
 When creating stakeholder-facing documents:
 
-- Write in plain language for the intended audience.
-- Prefer short sentences, clear headings, and concrete trade-offs.
-- Avoid unnecessary technical jargon.
-- Explain acronyms and domain-specific terms when first used.
-- Make recommendations and decisions easy to find.
+- Treat non-technical business stakeholders as the primary audience.
+- Start with the business outcome, the decision or recommendation, and the operational impact.
+- Use plain language first. Add technical detail only when it changes a decision, risk, cost, ownership, timeline, or support model.
+- Prefer short sentences, short paragraphs, clear headings, and concrete trade-offs.
+- Keep dense implementation detail in later sections, tables, or appendices after the stakeholder summary.
+- Avoid unnecessary technical jargon. Explain acronyms and domain-specific terms when first used.
+- Make recommendations, decisions, owners, risks, and open questions easy to find.
+- Before finishing, reread the opening sections and simplify any sentence that a business reader would need to parse twice.
 
 ## PRINCIPLES
 
