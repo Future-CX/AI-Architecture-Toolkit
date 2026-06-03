@@ -4,14 +4,14 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=24;fontColor=#17201d;" value="Capability Context" vertex="1">
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=24;fontColor=#17201d;" value="Capability Overview" vertex="1">
           <mxGeometry height="40" width="420" x="60" y="40" as="geometry" />
         </mxCell>
         <mxCell id="actor" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#fff3c4;strokeColor=#b7791f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Actors or channels" vertex="1">
           <mxGeometry height="80" width="180" x="70" y="250" as="geometry" />
         </mxCell>
         <mxCell id="capability" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;fontSize=16;strokeWidth=2;" value="Target capability" vertex="1">
-          <mxGeometry height="120" width="260" x="455" y="230" as="geometry" />
+          <mxGeometry height="120" width="265" x="455" y="230" as="geometry" />
         </mxCell>
         <mxCell id="upstream" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;strokeWidth=2;" value="Upstream inputs or sources" vertex="1">
           <mxGeometry height="80" width="260" x="455" y="100" as="geometry" />
@@ -34,7 +34,7 @@
         <mxCell id="edge-capability-external" edge="1" parent="1" source="capability" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="external" value="depends on">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="wtTJ4m9Lci7Y-lzfFHPa-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#0f766e;strokeWidth=2;align=center;verticalAlign=middle;spacing=12;arcSize=8;absoluteArcSize=1;fontFamily=Helvetica;fontSize=16;fontColor=#17201d;fontStyle=1;fillColor=light-dark(#45a165, #1d2c23);" value="" vertex="1">
+        <mxCell id="wtTJ4m9Lci7Y-lzfFHPa-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#0f766e;strokeWidth=2;align=center;verticalAlign=middle;spacing=12;arcSize=8;absoluteArcSize=1;fontFamily=Helvetica;fontSize=16;fontColor=#17201d;fontStyle=1;fillColor=light-dark(#45a165, #1d2c23);" value="Application Name" vertex="1">
           <mxGeometry height="40" width="265" x="455" y="230" as="geometry" />
         </mxCell>
       </root>
