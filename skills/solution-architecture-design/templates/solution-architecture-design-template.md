@@ -19,7 +19,6 @@
 - [Application and Component Architecture](#application-and-component-architecture)
 - [Data Model and Ownership](#data-model-and-ownership)
 - [Data Integrations and Interface Contracts](#data-integrations-and-interface-contracts)
-- [Diagrams](#diagrams)
 - [Security, Privacy, and Compliance](#security-privacy-and-compliance)
 - [NFR and Operational Design](#nfr-and-operational-design)
 - [Technical Design Choices](#technical-design-choices)
@@ -31,15 +30,18 @@
 {{ARCHITECTURE_SUMMARY:
 State the target solution in 3-6 plain-language paragraphs for senior stakeholders. Mention the capability once as context, then focus on the application: what business outcome it enables, what changes for users or operations, the main architectural approach, key application ownership or impact, key constraints, main design consequences, and decisions still needed. Avoid generic benefits, marketing language, acronyms, and implementation jargon unless briefly explained.}}
 
+## Open Questions
+
+{{OPEN_QUESTIONS:
+List unresolved decisions, missing facts, and review items that block or materially influence the design. Add owner or target audience where known.}}
+
 ## Capability Overview
 
 {{CAPABILITY_OVERVIEW:
 Link to the source capability overview. Briefly summarize only the capability context needed to understand why this application architecture exists: business purpose, boundary, upstream/downstream business dependencies, triggering business events, expected outcomes, and source assumptions used. Keep this section short and avoid repeating the capability name elsewhere in the document unless needed for clarity. Call out source gaps or contradictions. Do not link ADRs here; ADR links belong in Technical Design Choices.}}
 
-## Open Questions
-
-{{OPEN_QUESTIONS:
-List unresolved decisions, missing facts, and review items that block or materially influence the design. Add owner or target audience where known.}}
+{{CAPABILITY_CONTEXT_DIAGRAM_REFERENCE:
+Embed capability-overview.svg when created. Show actors, neighboring capabilities, and external dependencies.}}
 
 ## Scope and Assumptions
 
@@ -78,27 +80,8 @@ Reference the relevant data architecture design when it exists. Summarize only t
 {{DATA_INTEGRATIONS_AND_INTERFACE_CONTRACTS:
 Describe each API, event, file, batch, stream, or manual handoff. For each, state producer, consumer, payload or data object, trigger, frequency, protocol or pattern, ownership, error handling, retry/idempotency needs, and observability.}}
 
-## Diagrams
-
-### Capability Context
-
-{{CAPABILITY_CONTEXT_DIAGRAM_REFERENCE:
-Embed capability-context.svg and link to capability-context.drawio when created. Show actors, neighboring capabilities, and external dependencies.}}
-
-### Application and Component View
-
-{{APPLICATION_COMPONENT_DIAGRAM_REFERENCE:
-Embed application-component-view.svg and link to application-component-view.drawio when created. Show applications, services, components, platforms, and major responsibilities.}}
-
-### Conceptual Data Model
-
-{{CONCEPTUAL_DATA_MODEL_DIAGRAM_REFERENCE:
-Embed conceptual-data-model.svg and link to conceptual-data-model.drawio when created. Show canonical data objects and meaningful relationships.}}
-
-### Integration Flow
-
 {{INTEGRATION_FLOW_DIAGRAM_REFERENCE:
-Embed integration-flow.svg and link to integration-flow.drawio when created. Show direction, trigger, protocol or pattern, and important sequencing.}}
+Embed integration-flow.svg when created. Show direction, trigger, protocol or pattern, and important sequencing.}}
 
 ## Security, Privacy, and Compliance
 

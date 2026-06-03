@@ -21,7 +21,7 @@ After the clarification session, validate that `<private-lab-root>/GLOSSARY.md` 
 
 When this toolkit is used as a submodule, do not write generated solution architecture design files under `toolkit/solution-architectures/`. Run from the private lab root, or otherwise target the private lab root explicitly, so output goes to `<private-lab-root>/solution-architectures/L2-solution-architecture-<slug>/`.
 
-Use `templates/solution-architecture-design-template.md` as the output structure and follow the chapter writing guidance below when replacing placeholders. Replace each complete placeholder block with finished document content; do not leave placeholder names, placeholder guidance, or drafting instructions in the generated document. Create every Draw.io diagram with `../create-drawio-diagram/SKILL.md` because it contains the required diagram instructions, style rules, and templates. Store each diagram as an editable `.drawio` file in the same folder as the solution architecture design document. Export a same-basename `.svg` file for every `.drawio` file that must be embedded, embed the SVG in the document, and link the `.drawio` source near the embedded SVG.
+Use `templates/solution-architecture-design-template.md` as the output structure and follow the chapter writing guidance below when replacing placeholders. Replace each complete placeholder block with finished document content; do not leave placeholder names, placeholder guidance, or drafting instructions in the generated document. Create every Draw.io diagram with `../create-drawio-diagram/SKILL.md` because it contains the required diagram instructions, style rules, and templates. Store each diagram as an editable `.drawio` file in the same folder as the solution architecture design document. Export a same-basename `.svg` file for every `.drawio` file that must be embedded, and embed the SVG in the document.
 
 ## Required Inputs
 
@@ -52,16 +52,12 @@ Use `templates/solution-architecture-design-template.md` as the output structure
    - Relationships between terms, applications, and data objects
 10. Create the technical document from `templates/solution-architecture-design-template.md`.
 11. Use `../create-drawio-diagram/SKILL.md` to create separate Draw.io source files in the same output folder when the required architecture relationships are known:
-    - `capability-context.drawio` for the capability context diagram
-    - `application-component-view.drawio` for the application/component diagram
-    - `conceptual-data-model.drawio` for the data model or conceptual entity relationship diagram
+    - `capability-overview.drawio` for the capability overview diagram
     - `integration-flow.drawio` for the integration flow or sequence diagram
 12. Export a same-basename SVG for each created Draw.io file in the same output folder:
-    - `capability-context.svg`
-    - `application-component-view.svg`
-    - `conceptual-data-model.svg`
+    - `capability-overview.svg`
     - `integration-flow.svg`
-13. Embed each created `.svg` file in the `## Diagrams` section of `<slug>-architecture.md` using Markdown image syntax, and include a nearby source link to the matching `.drawio` file.
+13. Embed each created `.svg` file in the relevant section of `<slug>-architecture.md` using Markdown image syntax. Do not add links to the matching `.drawio` source files in the document.
 14. Do not create placeholder `.drawio` or `.svg` files for unknown diagrams. Mark missing diagrams as assumptions or open questions in the design document.
 15. Record specific technical design choices in the document. If a choice is durable, hard to reverse, surprising without context, and based on a real trade-off, propose an ADR using `../architecture-decision-record/SKILL.md`.
 16. Mark unknowns as assumptions or open questions. Do not invent implementation facts.
@@ -157,11 +153,9 @@ Make the document easy to read for both architects and delivery teams.
 ### Diagrams
 
 - Create editable `.drawio` diagrams using `../create-drawio-diagram/SKILL.md`; do not hand-roll Draw.io files outside that skill's instructions and templates.
-- Embed the exported SVG for each diagram and provide a nearby link to the matching `.drawio` source file.
+- Embed the exported SVG for each diagram. Do not add `.drawio` source links to the document.
 - Use diagrams only where they clarify boundaries, relationships, ownership, or sequence. Do not add decorative diagrams.
-- The capability context diagram should show actors, neighboring capabilities, and external dependencies.
-- The application/component view should show applications, services, components, platforms, and major responsibilities.
-- The conceptual data model should show canonical data objects and meaningful relationships.
+- The capability overview diagram should show actors, neighboring capabilities, and external dependencies.
 - The integration flow should show direction, trigger, protocol or pattern, and important sequencing.
 
 ### Security, Privacy, and Compliance

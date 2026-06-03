@@ -15,7 +15,7 @@ Use this skill when a generated architecture document needs diagrams that stakeh
 
 Use these templates as starting points:
 
-- `templates/capability-context.drawio` for actors, neighboring capabilities, and external dependencies
+- `templates/capability-overview.drawio` for actors, neighboring capabilities, and external dependencies
 - `templates/target-architecture-diagram.drawio` for a simple target architecture overview across capabilities, applications, data, integrations, and technology
 - `templates/solution-architecture-diagram.drawio` for a simple solution architecture overview across channels, components, integrations, data stores, and external systems
 - `templates/data-architecture-diagram.drawio` for a simple data architecture overview across source systems, canonical data objects, owners, consumers, integrations, and governance
@@ -32,7 +32,7 @@ Do not introduce new colors unless the user explicitly asks for a palette change
 ## Workflow
 
 1. Confirm the diagram purpose and choose the closest template.
-2. Copy the template into the target architecture folder using a descriptive same-purpose filename, such as `capability-context.drawio`.
+2. Copy the template into the target architecture folder using a descriptive same-purpose filename, such as `capability-overview.drawio`.
 3. Replace placeholder labels with concrete architecture content from the source document, glossary, capability overview, or clarification session.
 4. Apply the standard colors and connector styles from `STYLE.md`.
 5. Keep labels business-readable and concise. Use notes in the surrounding architecture document for detail that would clutter the diagram.

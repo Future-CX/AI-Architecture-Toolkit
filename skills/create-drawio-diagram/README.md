@@ -9,7 +9,7 @@ Use this skill when a solution architecture, target architecture, or data archit
 - [Target architecture diagram template](templates/target-architecture-diagram.drawio)
 - [Solution architecture diagram template](templates/solution-architecture-diagram.drawio)
 - [Data architecture diagram template](templates/data-architecture-diagram.drawio)
-- [Capability context template](templates/capability-context.drawio)
+- [Capability overview template](templates/capability-overview.drawio)
 - [Application component view template](templates/application-component-view.drawio)
 - [Conceptual data model template](templates/conceptual-data-model.drawio)
 - [Integration flow template](templates/integration-flow.drawio)
