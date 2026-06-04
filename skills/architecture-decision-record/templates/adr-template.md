@@ -9,6 +9,10 @@ Create the `adr/` directory lazily in the consuming repository root — only whe
 ```md
 # {Short title of the decision}
 
+| Field | Value |
+| --- | --- |
+| Confluence Link | {{CONFLUENCE_LINK}} |
+
 {1-3 sentences: what's the context, what did we decide, and why.}
 ```
 

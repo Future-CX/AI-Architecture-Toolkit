@@ -6,6 +6,7 @@
 | Scope | {{SCOPE}} |
 | Included Capabilities | {{INCLUDED_CAPABILITIES}} |
 | Primary Stakeholders | {{STAKEHOLDERS}} |
+| Confluence Link | {{CONFLUENCE_LINK}} |
 | Last Update | {{LAST_UPDATE}} |
 
 ## 1. Executive Summary

@@ -8,6 +8,7 @@
 | Application                  | {{APPLICATION}}                  |
 | Application Lifecycle Status | {{APPLICATION_LIFECYCLE_STATUS}} |
 | Owner(s)                     | {{OWNERS}}                       |
+| Confluence Link              | {{CONFLUENCE_LINK}}              |
 | Last Update                  | {{LAST_UPDATE}}                  |
 
 ## Business Objective

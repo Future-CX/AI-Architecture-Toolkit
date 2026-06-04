@@ -9,6 +9,7 @@
 | Data object | {{DATA_OBJECT}} |
 | Trigger | {{INTEGRATION_TRIGGER}} |
 | Pattern | {{INTEGRATION_PATTERN}} |
+| Confluence Link | {{CONFLUENCE_LINK}} |
 | Open questions | {{OPEN_QUESTIONS_COUNT}} |
 
 ## Integration Overview

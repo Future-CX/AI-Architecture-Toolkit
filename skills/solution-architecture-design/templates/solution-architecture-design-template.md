@@ -5,6 +5,7 @@
 | Application Name    | {{APPLICATION_NAME}}                                          |
 | Capability          | [{{CAPABILITY_NAME}}]({{SOURCE_CAPABILITY_OVERVIEW}})         |
 | Target architecture | [{{TARGET_ARCHITECTURE_TITLE}}]({{TARGET_ARCHITECTURE_LINK}}) |
+| Confluence Link     | {{CONFLUENCE_LINK}}                                           |
 | Domain              | {{DOMAIN}}                                                    |
 | Owner(s)            | {{OWNERS}}                                                    |
 | Last update         | {{LAST_UPDATE}}                                               |

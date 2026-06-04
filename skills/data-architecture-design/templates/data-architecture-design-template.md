@@ -7,6 +7,7 @@
 | Main Capability | [{{MAIN_CAPABILITY_TITLE}}]({{MAIN_CAPABILITY_LINK}}) |
 | Data Owner      | {{DATA_OWNER}}                                        |
 | Classification  | {{DATA_CLASSIFICATION}}                               |
+| Confluence Link | {{CONFLUENCE_LINK}}                                   |
 | Last Updated    | {{LAST_UPDATED}}                                      |
 
 ## Description

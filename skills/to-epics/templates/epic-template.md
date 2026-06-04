@@ -8,7 +8,7 @@
 | Target Architecture      | [{{TARGET_ARCHITECTURE_TITLE}}]({{TARGET_ARCHITECTURE_LINK}})           |
 | L2 Solution Architecture | [{{L2_SOLUTION_ARCHITECTURE_TITLE}}]({{L2_SOLUTION_ARCHITECTURE_LINK}}) |
 | Jira                     | [{{JIRA_TITLE}}]({{JIRA_REFERENCE}})                                    |
-| Confluence               | [{{CONFLUENCE_TITLE}}]({{CONFLUENCE_REFERENCE}})                        |
+| Confluence Link          | [{{CONFLUENCE_TITLE}}]({{CONFLUENCE_REFERENCE}})                        |
 
 ## Description
 
