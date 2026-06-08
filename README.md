@@ -129,6 +129,7 @@ git commit -m "Update AI Architecture Toolkit submodule"
 | [Problem To Solution](skills/problem-to-solution/SKILL.md) | Create stakeholder-ready problem-to-solution briefs with problem framing, solution options, pros and cons, and a recommendation. |
 | [Solution Architecture Design](skills/solution-architecture-design/SKILL.md) | Write implementation-oriented solution designs with chapter guidance, editable Draw.io sources, rendered SVGs, and linked ADRs. |
 | [Integration Design](skills/integration-design/SKILL.md) | Create integration design documents for APIs, events, files, batches, messaging, and orchestration. |
+| [Publish To Confluence](skills/publish-to-confluence/SKILL.md) | Publish markdown or HTML toolkit content to Confluence pages through the Confluence REST API. |
 | [Create Draw.io Diagram](skills/create-drawio-diagram/SKILL.md) | Create editable Draw.io architecture diagrams from reusable templates for solution and target architecture documents. |
 | [To Epics](skills/to-epics/SKILL.md) | Break target architecture work into user-confirmed epics and list each epic in Phase E of the target architecture document. |
 | [Capability Overview](skills/capability-overview/SKILL.md) | Write business capability overview documents under `capabilities/` from a preset template. |
