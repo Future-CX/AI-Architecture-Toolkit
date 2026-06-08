@@ -57,7 +57,7 @@ Use `--space-key <key>` when publishing to a different space for one run. If `.e
 3. Let the helper prompt for missing Confluence settings during the first interactive run.
 4. Use the first line of the document as the Confluence page title. A markdown heading like `# L2 - Promotions` becomes `L2 - Promotions`. The first line is not included in the published Confluence body.
 5. If the top metadata table contains `Confluence Link`, use the page ID from that link as the target page to update.
-6. If no Confluence page ID is found, give the user two options:
+6. If no Confluence page ID is found, stop immediately and ask the user which option they want before checking credentials, running a dry run, creating a page, updating a source file, or publishing. Do not choose for the user:
    - Ask for an existing `Confluence Link`. After the user provides it, update the source markdown first, then publish to that page.
    - Ask whether to create the page under the Confluence overview page. If the user chooses this, find the overview page, create a new child page, then update the source markdown with the returned `Confluence Link`.
 7. Use `--dry-run` first when the target page, parent page, or conversion output is uncertain.
@@ -73,7 +73,7 @@ When a top metadata table includes a `Confluence Link` row, the script extracts 
 
 For markdown publishing, a leading `Field` / `Value` metadata table is also removed from the Confluence body. The table can stay in the source file for toolkit tracking without being shown at the top of the published page.
 
-If no Confluence page ID is found, the script prompts the user before publishing. The user can provide an existing Confluence link, or choose to create the page as a child of the overview page. The overview page is found by title in the target space and defaults to `Overview`; override this with `--overview-title <title>`.
+If no Confluence page ID is found, the script always prompts the user to choose before credential loading, dry-run output, source updates, page creation, or publishing. The user can provide an existing Confluence link, or choose to create the page as a child of the overview page. The overview page is found by title in the target space and defaults to `Overview`; override this with `--overview-title <title>`.
 
 When the script creates a new child page, it writes the returned Confluence link back to the source markdown, regenerates the content, and updates the new page so the Confluence copy contains the link too.
 

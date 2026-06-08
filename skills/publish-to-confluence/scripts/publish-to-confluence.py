@@ -529,6 +529,15 @@ def main() -> int:
         raise SystemExit("Missing page title. Add a first line to the document or pass --title.")
     confluence_link = extract_confluence_link(raw)
     page_id = extract_page_id(confluence_link)
+    missing_page_action: str | None = None
+    if not page_id:
+        missing_page_action = prompt_for_missing_page_action()
+        if missing_page_action == "1":
+            confluence_link = prompt_for_confluence_link()
+            page_id = extract_page_id(confluence_link)
+            if not page_id:
+                raise SystemExit("Could not extract a page ID from the provided Confluence Link.")
+
     storage_html = read_content(raw, args.source, args.content_format)
     config = load_confluence_config(args.env_file, {"CONFLUENCE_SPACE_KEY": args.space_key})
     space_key = config["CONFLUENCE_SPACE_KEY"]
@@ -544,7 +553,7 @@ def main() -> int:
                     "confluence_link": confluence_link,
                     "parent_id": args.parent_id,
                     "overview_title": args.overview_title,
-                    "missing_page_options": [] if page_id else ["provide_confluence_link", "create_under_overview"],
+                    "missing_page_action": missing_page_action,
                     "body_bytes": len(storage_html.encode("utf-8")),
                 },
                 indent=2,
@@ -559,38 +568,30 @@ def main() -> int:
 
     try:
         if page_id:
+            if missing_page_action == "1":
+                raw = update_confluence_link(raw, confluence_link or "")
+                args.source.write_text(raw, encoding="utf-8")
+                storage_html = read_content(raw, args.source, args.content_format)
             page = get_page(base_url, auth_header, page_id)
             response = update_page(base_url, auth_header, page, title, storage_html)
+            if missing_page_action == "1":
+                print(f"Updated source markdown with Confluence Link: {args.source}")
             print(f"Updated Confluence page {response.get('id')}: {page_url(base_url, response)}")
         else:
-            choice = prompt_for_missing_page_action()
-            if choice == "1":
-                confluence_link = prompt_for_confluence_link()
-                raw = update_confluence_link(raw, confluence_link)
-                args.source.write_text(raw, encoding="utf-8")
-                page_id = extract_page_id(confluence_link)
-                if not page_id:
-                    raise SystemExit("Could not extract a page ID from the provided Confluence Link.")
-                storage_html = read_content(raw, args.source, args.content_format)
-                page = get_page(base_url, auth_header, page_id)
-                response = update_page(base_url, auth_header, page, title, storage_html)
-                print(f"Updated source markdown with Confluence Link: {args.source}")
-                print(f"Updated Confluence page {response.get('id')}: {page_url(base_url, response)}")
-            else:
-                overview_page = find_page(base_url, auth_header, space_key, args.overview_title)
-                if not overview_page:
-                    raise SystemExit(
-                        f"Could not find overview page '{args.overview_title}' in Confluence space {space_key}."
-                    )
-                created = create_page(base_url, auth_header, space_key, title, storage_html, overview_page["id"])
-                confluence_link = page_url(base_url, created)
-                raw = update_confluence_link(raw, confluence_link)
-                args.source.write_text(raw, encoding="utf-8")
-                storage_html = read_content(raw, args.source, args.content_format)
-                page = get_page(base_url, auth_header, created["id"])
-                response = update_page(base_url, auth_header, page, title, storage_html)
-                print(f"Updated source markdown with Confluence Link: {args.source}")
-                print(f"Created Confluence page {response.get('id')}: {page_url(base_url, response)}")
+            overview_page = find_page(base_url, auth_header, space_key, args.overview_title)
+            if not overview_page:
+                raise SystemExit(
+                    f"Could not find overview page '{args.overview_title}' in Confluence space {space_key}."
+                )
+            created = create_page(base_url, auth_header, space_key, title, storage_html, overview_page["id"])
+            confluence_link = page_url(base_url, created)
+            raw = update_confluence_link(raw, confluence_link)
+            args.source.write_text(raw, encoding="utf-8")
+            storage_html = read_content(raw, args.source, args.content_format)
+            page = get_page(base_url, auth_header, created["id"])
+            response = update_page(base_url, auth_header, page, title, storage_html)
+            print(f"Updated source markdown with Confluence Link: {args.source}")
+            print(f"Created Confluence page {response.get('id')}: {page_url(base_url, response)}")
     except ConfluenceError as exc:
         print(str(exc), file=sys.stderr)
         return 1
