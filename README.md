@@ -121,20 +121,18 @@ git commit -m "Update AI Architecture Toolkit submodule"
 | Skill | Purpose |
 | --- | --- |
 | [Architecture Decision Record](skills/architecture-decision-record/SKILL.md) | Record durable architecture decisions as concise ADRs when choices are hard to reverse and based on real trade-offs. |
-| [Create An Agent](skills/create-an-agent/SKILL.md) | Create architecture agent definitions under `agents/` from a preset template. |
 | [Target Architecture Document](skills/target-architecture-document/SKILL.md) | Connect capabilities to strategy, business architecture, data, applications, integration, technology, and epics to build. |
 | [Grill Me](skills/grill-me/SKILL.md) | Challenge plans, assumptions, constraints, terminology, risks, and decisions until the design context is explicit. |
 | [Ubiquitous Language](skills/ubiquitous-language/SKILL.md) | Extract a shared glossary, flag ambiguous terms, and define canonical applications, data objects, and relationships. |
-| [Data Architecture Design](skills/data-architecture-design/SKILL.md) | Create data-object-specific architecture designs with data flow diagrams, integration traceability, ownership, lifecycle, quality, privacy, and Phase C linkage. |
 | [Problem To Solution](skills/problem-to-solution/SKILL.md) | Create stakeholder-ready problem-to-solution briefs with problem framing, solution options, pros and cons, and a recommendation. |
 | [Solution Architecture Design](skills/solution-architecture-design/SKILL.md) | Write implementation-oriented solution designs with chapter guidance, editable Draw.io sources, rendered SVGs, and linked ADRs. |
+| [Data Architecture Design](skills/data-architecture-design/SKILL.md) | Create data-object-specific architecture designs with data flow diagrams, integration traceability, ownership, lifecycle, quality, privacy, and Phase C linkage. |
 | [Integration Design](skills/integration-design/SKILL.md) | Create integration design documents for APIs, events, files, batches, messaging, and orchestration. |
-| [Publish To Confluence](skills/publish-to-confluence/SKILL.md) | Publish markdown or HTML toolkit content to Confluence pages through the Confluence REST API. |
 | [Create Draw.io Diagram](skills/create-drawio-diagram/SKILL.md) | Create editable Draw.io architecture diagrams from reusable templates for solution and target architecture documents. |
 | [To Epics](skills/to-epics/SKILL.md) | Break target architecture work into user-confirmed epics and list each epic in Phase E of the target architecture document. |
 | [Capability Overview](skills/capability-overview/SKILL.md) | Write business capability overview documents under `capabilities/` from a preset template. |
 | [Write A Principle](skills/write-a-principle/SKILL.md) | Draft architecture principle documents with identifiers, rationale, consequences, and reviewable guidance. |
-| [Create A Skill](skills/create-a-skill/SKILL.md) | Create reusable skills with progressive disclosure, templates, scripts, and clear trigger guidance. |
+| [Publish To Confluence](skills/publish-to-confluence/SKILL.md) | Publish markdown or HTML toolkit content to Confluence pages through the Confluence REST API. |
 
 ## What The Toolkit Creates
 
