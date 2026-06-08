@@ -21,6 +21,7 @@ Start at `adr-0001`. For new ADRs, inspect existing `adr/adr-*.md` files and any
 
 ```sh
 python3 skills/architecture-decision-record/scripts/write-adr.py "Use Domain Events Between Ordering And Billing" \
+  --status accepted \
   --summary "Ordering and Billing will communicate via domain events instead of synchronous HTTP. This reduces runtime coupling and supports independent deployment, accepting eventual consistency as a trade-off."
 ```
 
@@ -28,10 +29,18 @@ When running from a private lab repo that contains this toolkit as a submodule:
 
 ```sh
 python3 toolkit/skills/architecture-decision-record/scripts/write-adr.py "Use Domain Events Between Ordering And Billing" \
+  --status accepted \
   --summary "Ordering and Billing will communicate via domain events instead of synchronous HTTP. This reduces runtime coupling and supports independent deployment, accepting eventual consistency as a trade-off."
 ```
 
-Each generated ADR is also added to `adr/_adr-list.md` using a markdown table with `name`, `description`, and `last_updated` columns. Create `_adr-list.md` when it does not exist. Keep rows sorted alphabetically by ADR title.
+Each generated ADR is also added to `adr/_adr-overview.md` using a markdown table with `name`, `status`, `description`, and `last_updated` columns. Create `_adr-overview.md` when it does not exist. Keep rows sorted alphabetically by ADR title.
+
+Status values use colored icons in the overview:
+
+- `proposed` renders as `🟡 proposed`
+- `accepted` renders as `🟢 accepted`
+- `deprecated` renders as `🔴 deprecated`
+- `superseded` renders as `⚫ superseded`
 
 Create ADRs only when all three conditions are true:
 
@@ -43,11 +52,15 @@ Create ADRs only when all three conditions are true:
 
 1. Confirm the decision, context, and selected option.
 2. Identify the meaningful alternatives that were rejected.
-3. Check whether the decision meets the ADR threshold.
-4. If it qualifies, write the ADR under the consuming repository's root `adr/` folder using `templates/adr-template.md` and the `adr-<4-digits>-<slug>.md` filename format.
-5. Add or update the ADR in `adr/_adr-list.md` with a relative link, summary, and `last_updated` date.
-6. If it does not qualify, summarize the decision inline without creating an ADR.
+3. When rejected alternatives are worth remembering, include a `Considered Options` section with the options listed as bullets first, followed by a comparison table. Use options as columns and include rows for Architecture Fit, Company Fit, Effort, and Complexity.
+4. Add a `Recommendation` section after `Considered Options` that names the preferred option and explains why it is stronger than the alternatives.
+5. Check whether the decision meets the ADR threshold.
+6. If it qualifies, write the ADR under the consuming repository's root `adr/` folder using `templates/adr-template.md` and the `adr-<4-digits>-<slug>.md` filename format.
+7. Add or update the ADR in `adr/_adr-overview.md` with a relative link, status with colored icon, summary, and `last_updated` date.
+8. If it does not qualify, summarize the decision inline without creating an ADR.
 
 ## Format
 
 Use [ADR template](templates/adr-template.md) for file location, numbering, structure, and optional sections.
+
+Use [ADR overview template](templates/adr-overview-template.md) for the `adr/_adr-overview.md` table structure.

@@ -23,8 +23,31 @@ That's it. An ADR can be a single paragraph. The value is in recording _that_ a 
 Only include these when they add genuine value. Most ADRs won't need them.
 
 - **Status** frontmatter (`proposed | accepted | deprecated | superseded by ADR-NNNN`) — useful when decisions are revisited
-- **Considered Options** — only when the rejected alternatives are worth remembering
+- **Considered Options** — only when the rejected alternatives are worth remembering. List the options as bullets first, then add a comparison table with one column per option and rows for Architecture Fit, Company Fit, Effort, and Complexity.
 - **Consequences** — only when non-obvious downstream effects need to be called out
+
+### Considered Options Format
+
+Use this structure when the ADR includes considered options:
+
+```md
+## Considered Options
+
+- Option 1: {{OPTION_1_NAME}}
+- Option 2: {{OPTION_2_NAME}}
+- Option 3: {{OPTION_3_NAME}}
+
+| Criteria | Option 1: {{OPTION_1_NAME}} | Option 2: {{OPTION_2_NAME}} | Option 3: {{OPTION_3_NAME}} |
+| --- | --- | --- | --- |
+| Architecture Fit | {{OPTION_1_ARCHITECTURE_FIT}} | {{OPTION_2_ARCHITECTURE_FIT}} | {{OPTION_3_ARCHITECTURE_FIT}} |
+| Company Fit | {{OPTION_1_COMPANY_FIT}} | {{OPTION_2_COMPANY_FIT}} | {{OPTION_3_COMPANY_FIT}} |
+| Effort | {{OPTION_1_EFFORT}} | {{OPTION_2_EFFORT}} | {{OPTION_3_EFFORT}} |
+| Complexity | {{OPTION_1_COMPLEXITY}} | {{OPTION_2_COMPLEXITY}} | {{OPTION_3_COMPLEXITY}} |
+
+## Recommendation
+
+Recommend {{PREFERRED_OPTION}} because {{WHY_THIS_OPTION_IS_PREFERRED}}. Explain the trade-offs that make this option stronger than the alternatives, including the architecture fit, company fit, effort, complexity, and any consequences the decision owner should accept.
+```
 
 ## Numbering
 

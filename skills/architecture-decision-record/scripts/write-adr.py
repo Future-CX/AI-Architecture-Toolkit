@@ -8,6 +8,13 @@ import re
 from datetime import date
 from pathlib import Path
 
+STATUS_ICONS = {
+    "proposed": "🟡 proposed",
+    "accepted": "🟢 accepted",
+    "deprecated": "🔴 deprecated",
+    "superseded": "⚫ superseded",
+}
+
 
 def slugify(value: str) -> str:
     slug = re.sub(r"[^a-z0-9]+", "-", value.strip().lower()).strip("-")
@@ -36,56 +43,82 @@ def escape_table_cell(value: str) -> str:
     return value.replace("|", "\\|").replace("\n", " ").strip()
 
 
-def parse_index_table(existing: str) -> dict[str, dict[str, str]]:
+def normalize_status(value: str) -> str:
+    cleaned = re.sub(r"^[^\w]+", "", value).strip().lower()
+    return cleaned if cleaned in STATUS_ICONS else "accepted"
+
+
+def status_label(status: str) -> str:
+    return STATUS_ICONS[normalize_status(status)]
+
+
+def parse_overview_table(existing: str) -> dict[str, dict[str, str]]:
     rows: dict[str, dict[str, str]] = {}
     for line in existing.splitlines():
         stripped = line.strip()
         if not stripped.startswith("|") or stripped.startswith("| ---"):
             continue
         cells = [cell.strip() for cell in stripped.strip("|").split("|")]
-        if len(cells) != 3 or cells[0].lower() == "name":
+        if len(cells) not in {3, 4} or cells[0].lower() == "name":
             continue
         match = re.match(r"\[(?P<name>[^\]]+)\]\((?P<filename>[^)]+)\)", cells[0])
         if not match:
             continue
+        if len(cells) == 4:
+            status = normalize_status(cells[1])
+            description = cells[2].replace("\\|", "|")
+            last_updated = cells[3]
+        else:
+            status = "accepted"
+            description = cells[1].replace("\\|", "|")
+            last_updated = cells[2]
         rows[match.group("filename")] = {
             "name": match.group("name"),
             "filename": match.group("filename"),
-            "description": cells[1].replace("\\|", "|"),
-            "last_updated": cells[2],
+            "status": status,
+            "description": description,
+            "last_updated": last_updated,
         }
     return rows
 
 
-def render_index_table(title: str, rows: dict[str, dict[str, str]]) -> str:
+def render_overview_table(title: str, rows: dict[str, dict[str, str]]) -> str:
     sorted_rows = sorted(rows.values(), key=lambda row: row["name"].lower())
     lines = [
         f"# {title}",
         "",
-        "| name | description | last_updated |",
-        "| --- | --- | --- |",
+        "| name | status | description | last_updated |",
+        "| --- | --- | --- | --- |",
     ]
     for row in sorted_rows:
         lines.append(
             f"| [{escape_table_cell(row['name'])}]({row['filename']}) | "
+            f"{escape_table_cell(status_label(row.get('status', 'accepted')))} | "
             f"{escape_table_cell(row['description'])} | "
             f"{escape_table_cell(row['last_updated'])} |"
         )
     return "\n".join(lines) + "\n"
 
 
-def update_adr_list(adr_dir: Path, title: str, filename: str, description: str) -> Path:
-    adr_list = adr_dir / "_adr-list.md"
-    existing = adr_list.read_text(encoding="utf-8") if adr_list.exists() else ""
-    rows = parse_index_table(existing)
+def update_adr_overview(adr_dir: Path, title: str, filename: str, status: str, description: str) -> Path:
+    adr_overview = adr_dir / "_adr-overview.md"
+    legacy_list = adr_dir / "_adr-list.md"
+    if adr_overview.exists():
+        existing = adr_overview.read_text(encoding="utf-8")
+    elif legacy_list.exists():
+        existing = legacy_list.read_text(encoding="utf-8")
+    else:
+        existing = ""
+    rows = parse_overview_table(existing)
     rows[filename] = {
         "name": title,
         "filename": filename,
+        "status": normalize_status(status),
         "description": description,
         "last_updated": date.today().isoformat(),
     }
-    adr_list.write_text(render_index_table("ADR List", rows), encoding="utf-8")
-    return adr_list
+    adr_overview.write_text(render_overview_table("ADR Overview", rows), encoding="utf-8")
+    return adr_overview
 
 
 def parse_args() -> argparse.Namespace:
@@ -95,6 +128,12 @@ def parse_args() -> argparse.Namespace:
         "--summary",
         required=True,
         help="One to three sentences describing the context, decision, and reason.",
+    )
+    parser.add_argument(
+        "--status",
+        choices=sorted(STATUS_ICONS),
+        default="accepted",
+        help="ADR status shown in _adr-overview.md. Defaults to accepted.",
     )
     parser.add_argument(
         "--output-root",
@@ -120,9 +159,9 @@ def main() -> None:
 
     adr_dir.mkdir(parents=True, exist_ok=True)
     target.write_text(content + "\n", encoding="utf-8")
-    adr_list = update_adr_list(adr_dir, args.title.strip(), target.name, args.summary.strip())
+    adr_overview = update_adr_overview(adr_dir, args.title.strip(), target.name, args.status, args.summary.strip())
     print(target)
-    print(adr_list)
+    print(adr_overview)
 
 
 if __name__ == "__main__":
