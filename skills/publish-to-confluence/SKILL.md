@@ -55,7 +55,7 @@ Use `--space-key <key>` when publishing to a different space for one run. If `.e
 1. Confirm the source file is safe to publish to the target Confluence space.
 2. Run the helper from the private lab root, or pass `--env-file` pointing to the private repo's local `.env`.
 3. Let the helper prompt for missing Confluence settings during the first interactive run.
-4. Use the first line of the document as the Confluence page title. A markdown heading like `# L2 - Promotions` becomes `L2 - Promotions`.
+4. Use the first line of the document as the Confluence page title. A markdown heading like `# L2 - Promotions` becomes `L2 - Promotions`. The first line is not included in the published Confluence body.
 5. If the top metadata table contains `Confluence Link`, use the page ID from that link as the target page to update.
 6. If no Confluence page ID is found, give the user two options:
    - Ask for an existing `Confluence Link`. After the user provides it, update the source markdown first, then publish to that page.
@@ -67,9 +67,11 @@ Use `--space-key <key>` when publishing to a different space for one run. If `.e
 
 ## Behavior
 
-The script uses `--title` when provided. Otherwise, it derives the page title from the first non-empty line of the source document.
+The script uses `--title` when provided. Otherwise, it derives the page title from the first non-empty line of the source document. For markdown publishing, the first non-empty line is removed from the Confluence body so the page title does not appear twice.
 
 When a top metadata table includes a `Confluence Link` row, the script extracts the page ID from URLs such as `https://example.atlassian.net/wiki/spaces/ARCH/pages/677838849/L2+-+Promotions` and updates that page directly. In that example, the page ID is `677838849`.
+
+For markdown publishing, a leading `Field` / `Value` metadata table is also removed from the Confluence body. The table can stay in the source file for toolkit tracking without being shown at the top of the published page.
 
 If no Confluence page ID is found, the script prompts the user before publishing. The user can provide an existing Confluence link, or choose to create the page as a child of the overview page. The overview page is found by title in the target space and defaults to `Overview`; override this with `--overview-title <title>`.
 

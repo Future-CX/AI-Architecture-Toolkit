@@ -241,6 +241,49 @@ def markdown_to_html(markdown_text: str) -> str:
         return simple_markdown_to_html(markdown_text)
 
 
+def prepare_markdown_for_publish(markdown_text: str) -> str:
+    lines = markdown_text.splitlines()
+    first_content_index = next((index for index, line in enumerate(lines) if line.strip()), None)
+    if first_content_index is None:
+        return markdown_text
+
+    output = lines[:first_content_index] + lines[first_content_index + 1 :]
+    metadata_start = next((index for index, line in enumerate(output) if line.strip()), None)
+    if metadata_start is None:
+        return "\n".join(output).strip() + "\n"
+
+    metadata_end = top_metadata_table_end(output, metadata_start)
+    if metadata_end is not None:
+        output = output[:metadata_start] + output[metadata_end:]
+
+    return "\n".join(output).strip() + "\n"
+
+
+def top_metadata_table_end(lines: list[str], start: int) -> int | None:
+    if start + 1 >= len(lines):
+        return None
+    header = table_cells(lines[start])
+    separator = table_cells(lines[start + 1])
+    if [cell.lower() for cell in header[:2]] != ["field", "value"]:
+        return None
+    if len(separator) < 2 or not all(re.fullmatch(r":?-{3,}:?", cell) for cell in separator[:2]):
+        return None
+
+    end = start + 2
+    while end < len(lines) and lines[end].strip().startswith("|"):
+        end += 1
+    while end < len(lines) and not lines[end].strip():
+        end += 1
+    return end
+
+
+def table_cells(line: str) -> list[str]:
+    stripped = line.strip()
+    if not stripped.startswith("|"):
+        return []
+    return [cell.strip() for cell in stripped.strip("|").split("|")]
+
+
 def simple_markdown_to_html(markdown_text: str) -> str:
     lines = markdown_text.splitlines()
     output: list[str] = []
@@ -337,10 +380,10 @@ def read_content(raw: str, path: Path, content_format: str) -> str:
     if content_format == "html":
         return raw
     if content_format == "markdown":
-        return markdown_to_html(raw)
+        return markdown_to_html(prepare_markdown_for_publish(raw))
     if path.suffix.lower() in {".html", ".htm"}:
         return raw
-    return markdown_to_html(raw)
+    return markdown_to_html(prepare_markdown_for_publish(raw))
 
 
 def extract_title(raw: str) -> str | None:
