@@ -12,6 +12,7 @@ Create the `adr/` directory lazily in the consuming repository root — only whe
 | Field | Value |
 | --- | --- |
 | Confluence Link | {{CONFLUENCE_LINK}} |
+| Last Update | {{LAST_UPDATE}} |
 
 {1-3 sentences: what's the context, what did we decide, and why.}
 ```

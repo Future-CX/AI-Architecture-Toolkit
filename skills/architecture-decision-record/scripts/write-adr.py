@@ -84,8 +84,14 @@ def parse_overview_table(existing: str) -> dict[str, dict[str, str]]:
 
 def render_overview_table(title: str, rows: dict[str, dict[str, str]]) -> str:
     sorted_rows = sorted(rows.values(), key=lambda row: row["name"].lower())
+    today = date.today().isoformat()
     lines = [
         f"# {title}",
+        "",
+        "| Field | Value |",
+        "| --- | --- |",
+        "| Confluence Link | {{CONFLUENCE_LINK}} |",
+        f"| Last Update | {today} |",
         "",
         "| name | status | description | last_updated |",
         "| --- | --- | --- | --- |",

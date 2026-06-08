@@ -9,6 +9,8 @@
 | ADR | {{ADR_LINK}} |
 | Confidence | {{CONFIDENCE_LEVEL}} |
 | Decision needed by | {{DECISION_DATE_OR_MILESTONE}} |
+| Confluence Link | {{CONFLUENCE_LINK}} |
+| Last Update | {{LAST_UPDATE}} |
 
 ## Open Questions
 

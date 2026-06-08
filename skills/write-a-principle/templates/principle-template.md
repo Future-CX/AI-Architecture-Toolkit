@@ -1,5 +1,10 @@
 # {{PRINCIPLE_NAME}}
 
+| Field | Value |
+| --- | --- |
+| Confluence Link | {{CONFLUENCE_LINK}} |
+| Last Update | {{LAST_UPDATE}} |
+
 ## Intent
 
 {{INTENT}}
