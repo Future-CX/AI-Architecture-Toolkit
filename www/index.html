@@ -691,30 +691,40 @@
         }
 
         .architecture-map {
-          min-height: 640px;
+          display: grid;
+          gap: 10px;
+          min-height: 0;
+          padding: 14px;
+        }
+
+        .map-title {
+          position: static;
+          display: grid;
+          gap: 4px;
+          margin-bottom: 6px;
+          font-size: 11px;
+          line-height: 1.35;
         }
 
         .map-node {
-          left: 22px;
-          right: 22px;
-          width: auto;
-        }
-
-        .node-agents {
-          top: 72px;
-        }
-
-        .node-skills {
-          top: 186px;
-        }
-
-        .node-templates {
-          top: 300px;
-        }
-
-        .node-governance {
-          top: 414px;
+          position: relative;
+          left: auto;
+          right: auto;
+          top: auto;
           bottom: auto;
+          width: auto;
+          padding: 18px;
+        }
+
+        .map-node strong {
+          margin-bottom: 8px;
+          font-size: 18px;
+          line-height: 1.2;
+        }
+
+        .map-node span {
+          font-size: 15px;
+          line-height: 1.45;
         }
 
         .map-line {
@@ -733,6 +743,29 @@
         footer a {
           display: inline-block;
           margin-top: 12px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .architecture-map {
+          gap: 8px;
+          padding: 12px;
+        }
+
+        .map-title {
+          font-size: 10px;
+        }
+
+        .map-node {
+          padding: 16px;
+        }
+
+        .map-node strong {
+          font-size: 17px;
+        }
+
+        .map-node span {
+          font-size: 14px;
         }
       }
     </style>
@@ -870,27 +903,6 @@
             <p>
               Owns integration principles and patterns for APIs, events, data
               flows, reliability, observability, and integration ownership.
-            </p>
-          </article>
-          <article class="card">
-            <h3>API Governance Agent</h3>
-            <p>
-              Reviews API contracts for naming, versioning, security, lifecycle
-              risk, and developer experience.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Architecture Review Board Agent</h3>
-            <p>
-              Prepares review findings, tracks decisions, and checks alignment
-              with principles and guardrails.
-            </p>
-          </article>
-          <article class="card">
-            <h3>Security Architect Agent</h3>
-            <p>
-              Identifies threats, controls, privacy concerns, compliance
-              constraints, and operational security requirements.
             </p>
           </article>
           <article class="card">
