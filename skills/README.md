@@ -9,6 +9,7 @@
 - [Problem To Solution](problem-to-solution/SKILL.md) - Create stakeholder-ready problem-to-solution briefs with problem framing, solution options, pros and cons, and a recommendation.
 - [Solution Architecture Design](solution-architecture-design/SKILL.md) - Write solution architecture design documents from existing capability overviews.
 - [Integration Design](integration-design/SKILL.md) - Create integration design documents for APIs, events, files, batches, messaging, and orchestration.
+- [Publish To Confluence](publish-to-confluence/SKILL.md) - Publish markdown or HTML toolkit content to Confluence pages through the Confluence REST API.
 - [Create Draw.io Diagram](create-drawio-diagram/SKILL.md) - Create editable Draw.io architecture diagrams from reusable templates.
 - [To Epics](to-epics/SKILL.md) - Break target architecture work into user-confirmed epics and list each epic in Phase E of the target architecture document.
 - [Capability Overview](capability-overview/SKILL.md) - Write business capability overview documents under `capabilities/` from a preset template.
