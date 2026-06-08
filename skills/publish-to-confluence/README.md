@@ -18,7 +18,7 @@ python3 skills/publish-to-confluence/scripts/publish-to-confluence.py solution-a
 
 Run the script from the consuming private repo root. It loads Confluence settings from that repo's `.env`; when values are missing, it prompts for them and stores them there. `--space-key` is optional after `CONFLUENCE_SPACE_KEY` has been stored.
 
-The page title defaults to the document's first line. For markdown publishing, that first line and the leading `Field` / `Value` metadata table are not included in the Confluence page body. If the top metadata table has a `Confluence Link` row, the script extracts the page ID from that URL and updates the matching page directly.
+The page title for new pages defaults to the document's first line. Existing pages keep their current Confluence title when updated. For markdown publishing, that first line and the leading `Field` / `Value` metadata table are not included in the Confluence page body. If the top metadata table has a `Confluence Link` row, the script extracts the page ID from that URL and updates the matching page directly.
 
 When no page ID is found, the script always prompts for either an existing Confluence link or permission to create a new child page under the overview page before credential loading, dry-run output, source updates, page creation, or publishing. The overview page title defaults to `Overview` and can be changed with `--overview-title`.
 

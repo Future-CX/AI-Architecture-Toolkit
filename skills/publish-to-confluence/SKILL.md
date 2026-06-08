@@ -67,7 +67,7 @@ Use `--space-key <key>` when publishing to a different space for one run. If `.e
 
 ## Behavior
 
-The script uses `--title` when provided. Otherwise, it derives the page title from the first non-empty line of the source document. For markdown publishing, the first non-empty line is removed from the Confluence body so the page title does not appear twice.
+The script uses `--title` when creating a new page. Otherwise, it derives the new page title from the first non-empty line of the source document. When updating an existing page from a `Confluence Link`, the script preserves the existing Confluence page title and does not rename it. For markdown publishing, the first non-empty line is removed from the Confluence body so the page title does not appear twice.
 
 When a top metadata table includes a `Confluence Link` row, the script extracts the page ID from URLs such as `https://example.atlassian.net/wiki/spaces/ARCH/pages/677838849/L2+-+Promotions` and updates that page directly. In that example, the page ID is `677838849`.
 

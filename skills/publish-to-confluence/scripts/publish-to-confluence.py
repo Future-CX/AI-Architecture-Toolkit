@@ -213,7 +213,6 @@ def update_page(
     base_url: str,
     auth_header: str,
     page: dict[str, Any],
-    title: str,
     storage_html: str,
 ) -> dict[str, Any]:
     page_id = page["id"]
@@ -221,7 +220,7 @@ def update_page(
     payload = {
         "id": page_id,
         "type": "page",
-        "title": title,
+        "title": page["title"],
         "version": {"number": current_version + 1},
         "body": {"storage": {"value": storage_html, "representation": "storage"}},
     }
@@ -573,7 +572,7 @@ def main() -> int:
                 args.source.write_text(raw, encoding="utf-8")
                 storage_html = read_content(raw, args.source, args.content_format)
             page = get_page(base_url, auth_header, page_id)
-            response = update_page(base_url, auth_header, page, title, storage_html)
+            response = update_page(base_url, auth_header, page, storage_html)
             if missing_page_action == "1":
                 print(f"Updated source markdown with Confluence Link: {args.source}")
             print(f"Updated Confluence page {response.get('id')}: {page_url(base_url, response)}")
@@ -589,7 +588,7 @@ def main() -> int:
             args.source.write_text(raw, encoding="utf-8")
             storage_html = read_content(raw, args.source, args.content_format)
             page = get_page(base_url, auth_header, created["id"])
-            response = update_page(base_url, auth_header, page, title, storage_html)
+            response = update_page(base_url, auth_header, page, storage_html)
             print(f"Updated source markdown with Confluence Link: {args.source}")
             print(f"Created Confluence page {response.get('id')}: {page_url(base_url, response)}")
     except ConfluenceError as exc:
