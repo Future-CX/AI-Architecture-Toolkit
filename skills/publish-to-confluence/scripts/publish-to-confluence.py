@@ -240,6 +240,103 @@ def markdown_to_html(markdown_text: str) -> str:
         return simple_markdown_to_html(markdown_text)
 
 
+def rewrite_markdown_file_links(markdown_text: str, source_path: Path) -> str:
+    source_dir = source_path.resolve().parent
+    output: list[str] = []
+    in_code = False
+
+    for line in markdown_text.splitlines():
+        if line.strip().startswith("```"):
+            in_code = not in_code
+            output.append(line)
+            continue
+        if in_code:
+            output.append(line)
+            continue
+        output.append(rewrite_markdown_file_links_in_line(line, source_dir))
+
+    trailing_newline = "\n" if markdown_text.endswith("\n") else ""
+    return "\n".join(output) + trailing_newline
+
+
+def rewrite_markdown_file_links_in_line(line: str, source_dir: Path) -> str:
+    link_pattern = re.compile(r"(?<!!)\[([^\]]+)\]\(([^)]+)\)")
+
+    def replace_link(match: re.Match[str]) -> str:
+        label = match.group(1)
+        destination = match.group(2).strip()
+        target = markdown_link_path(destination)
+        if not target or not is_local_markdown_path(target):
+            return match.group(0)
+
+        target_path = (source_dir / urllib.parse.unquote(target.path)).resolve()
+        confluence_link = extract_top_metadata_confluence_link(target_path)
+        if not confluence_link:
+            return label
+
+        return f"[{label}]({confluence_link})"
+
+    return link_pattern.sub(replace_link, line)
+
+
+def markdown_link_path(destination: str) -> urllib.parse.ParseResult | None:
+    if not destination:
+        return None
+    if destination.startswith("<") and ">" in destination:
+        destination = destination[1 : destination.index(">")]
+    else:
+        destination = destination.split()[0]
+    parsed = urllib.parse.urlparse(destination)
+    if parsed.scheme or parsed.netloc:
+        return None
+    return parsed
+
+
+def is_local_markdown_path(target: urllib.parse.ParseResult) -> bool:
+    if not target.path:
+        return False
+    return Path(target.path).suffix.lower() == ".md"
+
+
+def extract_top_metadata_confluence_link(path: Path) -> str | None:
+    if not path.is_file():
+        return None
+    try:
+        raw = path.read_text(encoding="utf-8")
+    except OSError:
+        return None
+
+    lines = raw.splitlines()
+    start = next((index for index, line in enumerate(lines) if line.strip()), None)
+    if start is None:
+        return None
+
+    heading = re.match(r"^#{1,6}\s+", lines[start].strip())
+    metadata_start = next((index for index in range(start + 1, len(lines)) if lines[index].strip()), None)
+    if not heading:
+        metadata_start = start
+    if metadata_start is None:
+        return None
+
+    metadata_end = top_metadata_table_end(lines, metadata_start)
+    if metadata_end is None:
+        return None
+
+    for line in lines[metadata_start + 2 : metadata_end]:
+        cells = table_cells(line)
+        if len(cells) < 2:
+            continue
+        field = re.sub(r"\s+", " ", cells[0]).strip().lower()
+        if field != "confluence link":
+            continue
+        value = cells[1].strip()
+        if not value or value.startswith("{{"):
+            return None
+        markdown_link = re.search(r"\[[^\]]+\]\(([^)]+)\)", value)
+        return markdown_link.group(1).strip() if markdown_link else value
+    return None
+
+
 def prepare_markdown_for_publish(markdown_text: str) -> str:
     lines = markdown_text.splitlines()
     first_content_index = next((index for index, line in enumerate(lines) if line.strip()), None)
@@ -379,10 +476,12 @@ def read_content(raw: str, path: Path, content_format: str) -> str:
     if content_format == "html":
         return raw
     if content_format == "markdown":
-        return markdown_to_html(prepare_markdown_for_publish(raw))
+        prepared = prepare_markdown_for_publish(raw)
+        return markdown_to_html(rewrite_markdown_file_links(prepared, path))
     if path.suffix.lower() in {".html", ".htm"}:
         return raw
-    return markdown_to_html(prepare_markdown_for_publish(raw))
+    prepared = prepare_markdown_for_publish(raw)
+    return markdown_to_html(rewrite_markdown_file_links(prepared, path))
 
 
 def extract_title(raw: str) -> str | None:

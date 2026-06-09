@@ -73,6 +73,8 @@ When a top metadata table includes a `Confluence Link` row, the script extracts 
 
 For markdown publishing, a leading `Field` / `Value` metadata table is also removed from the Confluence body. The table can stay in the source file for toolkit tracking without being shown at the top of the published page.
 
+For markdown publishing, links to local `.md` files are rewritten before conversion. The script resolves each local markdown link relative to the source file, reads the linked file's top `Field` / `Value` metadata table, and replaces the markdown file target with that file's `Confluence Link`. If the linked file does not exist or has no usable top-table `Confluence Link`, the published body keeps the link text as plain text and does not create a Confluence link.
+
 If no Confluence page ID is found, the script always prompts the user to choose before credential loading, dry-run output, source updates, page creation, or publishing. The user can provide an existing Confluence link, or choose to create the page as a child of the overview page. The overview page is found by title in the target space and defaults to `Overview`; override this with `--overview-title <title>`.
 
 When the script creates a new child page, it writes the returned Confluence link back to the source markdown, regenerates the content, and updates the new page so the Confluence copy contains the link too.
