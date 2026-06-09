@@ -18,8 +18,6 @@ Describe the integration purpose, source systems, target systems, and business p
 
 ![{{INTEGRATION_NAME}} integration diagram]({{INTEGRATION_DIAGRAM_SVG}})
 
-[Edit the Draw.io source]({{INTEGRATION_DIAGRAM_DRAWIO}})
-
 ## Open Questions
 
 A bullet list of open questions.
