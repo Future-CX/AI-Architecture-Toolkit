@@ -79,6 +79,8 @@ Use dashed connectors only for optional, informational, or payload relationships
 - Route connectors on separate orthogonal lanes. Do not let two connectors share the same horizontal or vertical segment when their labels or arrowheads would overlap.
 - Do not route connectors through nodes, node labels, edge labels, or arrowheads.
 - Place connector labels on clear line segments with enough whitespace around the label. If labels collide, move the label position or reroute the connector with explicit waypoints.
+- For integration design diagrams, reserve connector lanes between components and between layer bands. Place components far enough apart that connectors can route around them without crossing through component bodies or application headers.
+- Connector labels must not overlap components, application headers, layer labels, arrowheads, or other connector labels. If a label cannot fit cleanly on the connector, shorten the label and capture the detail in the document.
 - Avoid crossing connectors when repositioning nodes or adding waypoints would remove the crossing.
 - Keep labels short and business-readable.
 - Do not use decorative colors outside the palette.

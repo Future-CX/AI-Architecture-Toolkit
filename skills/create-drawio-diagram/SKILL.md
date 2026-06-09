@@ -71,6 +71,10 @@ When using `templates/integration-design.drawio`, preserve the vertical layer st
 - Show every confirmed component needed to understand how data or commands move from source to destination.
 - Show the integration path by connecting components across layers. Route connectors clearly between layers and between peer components when needed.
 - Use concise connector labels for trigger, protocol, contract, routing, transformation, retry, acknowledgement, or ownership details.
+- Route every connector around components, not through components. Use explicit orthogonal `mxPoint` waypoints whenever Draw.io automatic routing would cross a component, component header, layer label, or another connector label.
+- Put connector labels on open horizontal or vertical lane segments with clear whitespace. Do not place connector text on top of components, application headers, layer labels, arrowheads, or other connector labels.
+- Use separate routing lanes for parallel or crossing flows. Stagger vertical lanes and horizontal lanes so no two connectors share the same segment when their labels or arrowheads would collide.
+- For dense integration diagrams, widen the diagram, increase layer heights, or move components farther apart before exporting. Do not accept an SVG where connectors or connector labels overlap components.
 - Use the neutral payload node for canonical business data objects, messages, files, or events that would otherwise clutter component labels.
 - Duplicate nodes inside a layer when the design has multiple components in that layer. Keep related components aligned so readers can trace each integration path through the layers.
 - If the source content does not identify a component layer, use the neutral component style and record the categorization as an assumption or open question in the integration design.
@@ -85,6 +89,7 @@ Exported SVGs must preserve the exact colors from the `.drawio` source.
 - Do not post-process exported SVGs with CSS color filters, dark-mode transforms, image optimizers, or theme substitution.
 - Do not replace concrete hex colors with `currentColor`, CSS variables, inherited colors, or generated dark palette values.
 - Before embedding the SVG, inspect it visually against the `.drawio` source. If colors differ, regenerate the SVG before embedding it.
+- Before embedding an integration design SVG, inspect connector routing and labels. Regenerate the `.drawio` with wider spacing or explicit waypoints if any connector or connector label overlaps a component, component header, layer label, arrowhead, or other label.
 
 ## Output Rules
 
