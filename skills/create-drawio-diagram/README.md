@@ -2,7 +2,7 @@
 
 Create editable Draw.io diagrams from reusable architecture templates.
 
-Use this skill when a solution architecture, target architecture, or data architecture document needs stakeholder-editable `.drawio` diagrams. Templates cover target architecture overviews, solution architecture overviews, data architecture overviews, capability context, application/component views, conceptual data models, and integration flows.
+Use this skill when a solution architecture, target architecture, data architecture, or integration design document needs stakeholder-editable `.drawio` diagrams. Templates cover target architecture overviews, solution architecture overviews, data architecture overviews, capability context, application/component views, conceptual data models, integration design component maps, and integration flows.
 
 - [SKILL.md](SKILL.md)
 - [Style guide](STYLE.md)
@@ -12,4 +12,5 @@ Use this skill when a solution architecture, target architecture, or data archit
 - [Capability overview template](templates/capability-overview.drawio)
 - [Application component view template](templates/application-component-view.drawio)
 - [Conceptual data model template](templates/conceptual-data-model.drawio)
+- [Integration design template](templates/integration-design.drawio)
 - [Integration flow template](templates/integration-flow.drawio)

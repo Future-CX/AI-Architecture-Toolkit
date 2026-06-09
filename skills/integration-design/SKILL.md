@@ -57,11 +57,18 @@ Do not write real-company integration details into this public toolkit repositor
    - Derive `<destination>` from the target system or consumer.
    - Build the filename as `int-<4-digits>-<data-object>-from-<source>-to-<destination>.md`.
 6. Create or update the integration design from `templates/integration-design-template.md`.
-7. Populate the top context table with concise concrete values so agents can understand the integration status, purpose, source, destination, data object, trigger, pattern, and open-question count without reading the full document.
-8. Populate `## Relevant Links` with every confirmed related document, including capability overview, target architecture, solution architecture design, epic, ADR, or other integration designs. Use the linked document name as the Markdown link label.
-9. Update `<private-lab-root>/integrations/_integrations-overview.md` with the integration identifier, name, status, description, and count of open questions in the integration design.
-10. Capture unresolved facts as open questions rather than inventing payloads, endpoints, schemas, retry rules, owners, or service-level expectations.
-11. Link the integration design from the related target architecture, solution architecture design, capability overview, epic, or relevant links section when the related document exists and the user confirms the linkage. Whenever a link to the integration design is added to one of those documents, add the reciprocal link back to that document in the integration design's `## Relevant Links` section.
+7. After writing the `## Integration Overview` description, create a visual integration diagram:
+   - Use the `create-drawio-diagram` skill and its `templates/integration-design.drawio` template.
+   - Store the `.drawio` file beside the integration design document.
+   - Use the same basename as the integration design Markdown file. For example, `int-0001-product-from-pim-to-commerce.md`, `int-0001-product-from-pim-to-commerce.drawio`, and `int-0001-product-from-pim-to-commerce.svg`.
+   - Populate the diagram with the integration's confirmed source, destination, intermediate components, layer placement, application headers, payloads, and connector labels.
+   - Export the `.drawio` file to a same-basename `.svg`.
+   - Embed the `.svg` in the integration design's `## Integration Diagram` section and link the `.drawio` source directly below the image.
+8. Populate the top context table with concise concrete values so agents can understand the integration status, purpose, source, destination, data object, trigger, pattern, and open-question count without reading the full document.
+9. Populate `## Relevant Links` with every confirmed related document, including capability overview, target architecture, solution architecture design, epic, ADR, or other integration designs. Use the linked document name as the Markdown link label.
+10. Update `<private-lab-root>/integrations/_integrations-overview.md` with the integration identifier, name, status, description, and count of open questions in the integration design.
+11. Capture unresolved facts as open questions rather than inventing payloads, endpoints, schemas, retry rules, owners, or service-level expectations.
+12. Link the integration design from the related target architecture, solution architecture design, capability overview, epic, or relevant links section when the related document exists and the user confirms the linkage. Whenever a link to the integration design is added to one of those documents, add the reciprocal link back to that document in the integration design's `## Relevant Links` section.
 
 ## Writing Guidance
 
@@ -72,6 +79,7 @@ Do not write real-company integration details into this public toolkit repositor
 - Document idempotency, retries, ordering, dead-letter behavior, replay, timeout, and compensation where relevant.
 - Include observability details: logs, metrics, traces, alerts, dashboards, correlation IDs, and support runbooks.
 - Include security details: authentication, authorization, identity propagation, encryption, secrets, network trust boundary, audit logging, and data classification.
+- Include an editable Draw.io integration diagram and a rendered same-basename SVG in every integration design. The diagram should visually summarize the integration after the `## Integration Overview` section, not replace the contract, quality, security, or operations detail.
 - Keep relevant links bidirectional: if the integration design is linked from a target architecture, solution architecture design, or capability overview, also link that document from the integration design.
 - Use linked document names as relevant-link labels. For local Markdown files, derive the name from the first `#` heading; otherwise use the filename without extension. Do not use generic labels such as "Target architecture" when a document title is available.
 - Maintain `integrations/_integrations-overview.md` every time an integration design is created or updated. The overview must list each integration file with its identifier, integration name, status, description, and count of open questions.

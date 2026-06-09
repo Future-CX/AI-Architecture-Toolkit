@@ -1,0 +1,89 @@
+<mxfile host="Electron" agent="AI Architecture Toolkit">
+  <diagram id="product-data-pim-to-commerce" name="Product Data PIM to Commerce">
+    <mxGraphModel dx="1258" dy="936" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1000" background="#fbfcfa" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontStyle=1;fontSize=24;fontColor=#17201d;" value="Product Data Integration: PIM to Commerce" vertex="1">
+          <mxGeometry height="40" width="650" x="60" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="public-internet-layer" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=1;fillColor=#fee9e8;strokeColor=none;fontColor=#17201d;strokeWidth=2;" value="Public Internet" vertex="1">
+          <mxGeometry height="140" width="1050" x="60" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="frontend-layer" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=1;fillColor=#fffbe2;strokeColor=none;fontColor=#17201d;strokeWidth=2;" value="Frontend" vertex="1">
+          <mxGeometry height="140" width="1050" x="60" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="engagement-layer" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=1;fillColor=#def9ea;strokeColor=none;fontColor=#17201d;strokeWidth=2;" value="Engagement" vertex="1">
+          <mxGeometry height="140" width="1050" x="60" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="integration-layer" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=1;fillColor=#f5f5f5;strokeColor=none;fontColor=#17201d;strokeWidth=2;" value="Integration" vertex="1">
+          <mxGeometry height="140" width="1050" x="60" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="enterprise-foundation-layer" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=1;fillColor=#e8f1ff;strokeColor=none;fontColor=#17201d;strokeWidth=2;" value="Enterprise Foundation (Backoffice)" vertex="1">
+          <mxGeometry height="140" width="1050" x="60" y="700" as="geometry" />
+        </mxCell>
+        <mxCell id="pim-header" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;" value="inRiver" vertex="1">
+          <mxGeometry height="15" width="230" x="180" y="755" as="geometry" />
+        </mxCell>
+        <mxCell id="pim" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="PIM&#xa;Product information source" vertex="1">
+          <mxGeometry height="50" width="230" x="180" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="dam-header" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;" value="Bynder" vertex="1">
+          <mxGeometry height="15" width="230" x="470" y="755" as="geometry" />
+        </mxCell>
+        <mxCell id="dam" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="DAM&#xa;Product image source" vertex="1">
+          <mxGeometry height="50" width="230" x="470" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="azure-service-bus-header" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;" value="Azure Service Bus" vertex="1">
+          <mxGeometry height="15" width="230" x="470" y="605" as="geometry" />
+        </mxCell>
+        <mxCell id="azure-service-bus" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Service Bus&#xa;Product data topic or queue" vertex="1">
+          <mxGeometry height="50" width="230" x="470" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="commerce-header" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;" value="Commercetools" vertex="1">
+          <mxGeometry height="15" width="230" x="760" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="ecommerce" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Commerce&#xa;Consumes product data" vertex="1">
+          <mxGeometry height="50" width="230" x="760" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="pdp" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#fff3c4;strokeColor=#b7791f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="PDP&#xa;Product detail page" vertex="1">
+          <mxGeometry height="60" width="230" x="760" y="305" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-pim-bus" edge="1" parent="1" source="pim" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="azure-service-bus" value="publishes product updates">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="295" y="830" />
+              <mxPoint x="930" y="830" />
+              <mxPoint x="930" y="640" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-bus-ecommerce" edge="1" parent="1" source="azure-service-bus" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="ecommerce" value="receives product data">
+          <mxGeometry relative="1" x="-0.4" y="60" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="570" y="490" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge-commerce-pdp" edge="1" parent="1" source="ecommerce" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="pdp" value="provides product data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-bus-dam" edge="1" parent="1" source="azure-service-bus" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="dam" value="delivers product data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge-dam-pdp" edge="1" parent="1" source="dam" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="pdp" value="delivers product images">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1040" y="790" />
+              <mxPoint x="1040" y="335" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#ffffff;strokeColor=#d8dfda;fontColor=#5d6964;dashed=1;strokeWidth=2;" value="Example only. Replace PIM, Service Bus, Commerce, application names, and payload labels with confirmed names, contracts, ownership, retry behavior, and monitoring details in a real integration design." vertex="1">
+          <mxGeometry height="60" width="750" x="210" y="880" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

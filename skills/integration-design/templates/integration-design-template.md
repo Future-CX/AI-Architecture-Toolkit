@@ -1,20 +1,24 @@
 # Integration Design Template
 
-| Field | Value |
-| --- | --- |
-| Status | {{INTEGRATION_STATUS}} |
-| Purpose | {{INTEGRATION_PURPOSE}} |
-| Source | {{SOURCE_SYSTEM}} |
-| Destination | {{DESTINATION_SYSTEM}} |
-| Data object | {{DATA_OBJECT}} |
-| Trigger | {{INTEGRATION_TRIGGER}} |
-| Pattern | {{INTEGRATION_PATTERN}} |
-| Confluence Link | {{CONFLUENCE_LINK}} |
-| Open questions | {{OPEN_QUESTIONS_COUNT}} |
+| Field           | Value                    |
+| --------------- | ------------------------ |
+| Status          | {{INTEGRATION_STATUS}}   |
+| Purpose         | {{INTEGRATION_PURPOSE}}  |
+| Source          | {{SOURCE_SYSTEM}}        |
+| Destination     | {{DESTINATION_SYSTEM}}   |
+| Data object     | {{DATA_OBJECT}}          |
+| Trigger         | {{INTEGRATION_TRIGGER}}  |
+| Pattern         | {{INTEGRATION_PATTERN}}  |
+| Confluence Link | {{CONFLUENCE_LINK}}      |
+| Open questions  | {{OPEN_QUESTIONS_COUNT}} |
 
 ## Integration Overview
 
 Describe the integration purpose, source systems, target systems, and business process.
+
+![{{INTEGRATION_NAME}} integration diagram]({{INTEGRATION_DIAGRAM_SVG}})
+
+[Edit the Draw.io source]({{INTEGRATION_DIAGRAM_DRAWIO}})
 
 ## Open Questions
 

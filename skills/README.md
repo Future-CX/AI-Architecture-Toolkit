@@ -8,7 +8,7 @@
 - [Solution Architecture Design](solution-architecture-design/SKILL.md) - Write solution architecture design documents from existing capability overviews.
 - [Data Architecture Design](data-architecture-design/SKILL.md) - Create data-object-specific architecture designs with data flow diagrams, integration traceability, ownership, lifecycle, quality, privacy, and Phase C linkage.
 - [Integration Design](integration-design/SKILL.md) - Create integration design documents for APIs, events, files, batches, messaging, and orchestration.
-- [Create Draw.io Diagram](create-drawio-diagram/SKILL.md) - Create editable Draw.io architecture diagrams from reusable templates.
+- [Create Draw.io Diagram](create-drawio-diagram/SKILL.md) - Create editable Draw.io architecture diagrams from reusable templates for architecture and integration design documents.
 - [To Epics](to-epics/SKILL.md) - Break target architecture work into user-confirmed epics and list each epic in Phase E of the target architecture document.
 - [Capability Overview](capability-overview/SKILL.md) - Write business capability overview documents under `capabilities/` from a preset template.
 - [Write A Principle](write-a-principle/SKILL.md) - Write architecture principle documents under `principles/` from a preset template.

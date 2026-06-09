@@ -1,6 +1,6 @@
 ---
 name: create-drawio-diagram
-description: Create Draw.io diagrams from reusable architecture diagram templates and store editable `.drawio` files beside architecture documents. Use when the user asks for Draw.io, diagrams.net, editable architecture diagrams, or when an architecture workflow needs Draw.io versions of target architecture, solution architecture, data architecture, capability context, application component, conceptual data model, or integration flow diagrams.
+description: Create Draw.io diagrams from reusable architecture diagram templates and store editable `.drawio` files beside architecture documents. Use when the user asks for Draw.io, diagrams.net, editable architecture diagrams, or when an architecture workflow needs Draw.io versions of target architecture, solution architecture, data architecture, capability context, application component, conceptual data model, integration design, or integration flow diagrams.
 ---
 
 # Create Draw.io Diagram
@@ -21,6 +21,7 @@ Use these templates as starting points:
 - `templates/data-architecture-diagram.drawio` for a simple data architecture overview across source systems, canonical data objects, owners, consumers, integrations, and governance
 - `templates/application-component-view.drawio` for applications, services, components, platforms, and responsibilities
 - `templates/conceptual-data-model.drawio` for canonical data objects and relationships
+- `templates/integration-design.drawio` for component maps organized in vertical layers: Public Internet, Frontend, Engagement, Integration, and Enterprise Foundation (Backoffice)
 - `templates/integration-flow.drawio` for producers, consumers, interfaces, triggers, protocols, and sequence
 
 ## Style Rules
@@ -51,13 +52,29 @@ When using `templates/capability-overview.drawio`, preserve the template topolog
 - Place external dependencies, third parties, regulatory constraints, and vendor dependencies in the right zone.
 - Connect each node to the target capability with a concise relationship label.
 - Use light palette colors from `STYLE.md`: actors yellow, target capability green, upstream/downstream systems blue, and external dependencies red.
-- When a node is backed by a named application, show the application name in a separate header box attached to the top of that node. Keep the node body focused on the business capability, component, dependency, or responsibility.
+- When a node is backed by a named application, show only the application name in a separate 10 px high header box attached to the top of that node. Use the Application name header style from `STYLE.md`, make the header as wide as the component, and put capability names, component names, dependencies, and responsibilities in the node body. If the application name is unknown, omit the header.
 - Do not stack every actor, system, platform, and dependency in one vertical column.
 - Do not convert the target capability into a system dependency. Keep it visually distinct.
 - Route actor connectors from the right side of actor nodes to the left side of the target capability, upstream connectors into the top of the target capability, downstream connectors out of the bottom, and external dependency connectors from the right side of the target capability.
 - When there are multiple nodes in one zone, stagger their connector lanes so labels and arrowheads do not overlap. Use explicit `mxPoint` waypoints where automatic routing creates overlap.
 - If a zone has more than three items, group related items into one business-readable node such as `Commerce platforms`, `Data and analytics platforms`, or `Operational stakeholders`, and list the detailed names in the document instead of crowding the diagram.
 - If the source content does not identify a relationship direction, keep the node out of the diagram and record the gap as an assumption or open question in the document.
+
+## Integration Design Layout
+
+When using `templates/integration-design.drawio`, preserve the vertical layer structure. The diagram is a layered component map for an integration design, not a sequence diagram, endpoint catalog, or source-to-destination column layout.
+
+- Place components inside the corresponding layer band, ordered from top to bottom: Public Internet, Frontend, Engagement Services, Integration, and Enterprise Foundation (Backoffice).
+- Use plain colored rectangles for layer bands, not Draw.io swimlanes. Keep layer labels left-aligned and top-aligned. Use the layer's own color for the layer rectangle fill and stroke.
+- Leave clear top and bottom padding around components inside each layer band.
+- Keep components as the main diagram elements. Use the exact layer colors from `STYLE.md` to classify each component: Public Internet light red, Frontend light yellow, Engagement light green, Integration light grey, and Enterprise Foundation (Backoffice) light blue.
+- Show every confirmed component needed to understand how data or commands move from source to destination.
+- Show the integration path by connecting components across layers. Route connectors clearly between layers and between peer components when needed.
+- Use concise connector labels for trigger, protocol, contract, routing, transformation, retry, acknowledgement, or ownership details.
+- Use the neutral payload node for canonical business data objects, messages, files, or events that would otherwise clutter component labels.
+- Duplicate nodes inside a layer when the design has multiple components in that layer. Keep related components aligned so readers can trace each integration path through the layers.
+- If the source content does not identify a component layer, use the neutral component style and record the categorization as an assumption or open question in the integration design.
+- Do not add real-company system names, internal endpoints, topics, queues, payload fields, credentials, or proprietary integration details to this public repository.
 
 ## SVG Export Rules
 
