@@ -73,6 +73,8 @@ Use dashed connectors only for optional, informational, or payload relationships
 
 - Keep left-to-right flow for context and application diagrams. For integration design diagrams, place components in vertical architecture layers from top to bottom: Public Internet, Frontend, Engagement, Integration, and Enterprise Foundation (Backoffice).
 - Preserve the zones and relative positions in the selected template. Replace labels and duplicate nodes inside the same zone; do not collapse the diagram into a single vertical list.
+- Canvas size is flexible. For integration design diagrams, increase `pageWidth` and `pageHeight` whenever the default template size would force cramped components, overlapping connectors, clipped labels, or crowded layer bands.
+- Integration layer bands are flexible. Increase each layer band's width and height independently so its components, labels, and routing lanes have enough whitespace.
 - In integration design diagrams, leave clear top and bottom padding around components inside each layer band.
 - Keep data models centered around canonical business data objects.
 - Prefer 80-120 px tall nodes for readability.

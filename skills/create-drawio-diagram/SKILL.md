@@ -66,6 +66,8 @@ When using `templates/integration-design.drawio`, preserve the vertical layer st
 
 - Place components inside the corresponding layer band, ordered from top to bottom: Public Internet, Frontend, Engagement Services, Integration, and Enterprise Foundation (Backoffice).
 - Use plain colored rectangles for layer bands, not Draw.io swimlanes. Keep layer labels left-aligned and top-aligned. Use the layer fill color with no stroke.
+- Treat the canvas as flexible. Increase `pageWidth`, `pageHeight`, and the layer-band rectangle sizes as needed so all components, routing lanes, connector labels, and notes fit cleanly.
+- Treat every layer band as flexible in width and height. Grow a layer wider for additional horizontal component lanes, and grow it taller for stacked components or extra connector routing space.
 - Leave clear top and bottom padding around components inside each layer band.
 - Keep components as the main diagram elements. Use the exact layer colors from `STYLE.md` to classify each component: Public Internet light red, Frontend light yellow, Engagement light green, Integration light grey, and Enterprise Foundation (Backoffice) light blue.
 - Show every confirmed component needed to understand how data or commands move from source to destination.
@@ -74,7 +76,7 @@ When using `templates/integration-design.drawio`, preserve the vertical layer st
 - Route every connector around components, not through components. Use explicit orthogonal `mxPoint` waypoints whenever Draw.io automatic routing would cross a component, component header, layer label, or another connector label.
 - Put connector labels on open horizontal or vertical lane segments with clear whitespace. Do not place connector text on top of components, application headers, layer labels, arrowheads, or other connector labels.
 - Use separate routing lanes for parallel or crossing flows. Stagger vertical lanes and horizontal lanes so no two connectors share the same segment when their labels or arrowheads would collide.
-- For dense integration diagrams, widen the diagram, increase layer heights, or move components farther apart before exporting. Do not accept an SVG where connectors or connector labels overlap components.
+- For dense integration diagrams, widen the canvas, increase layer widths and heights, or move components farther apart before exporting. Do not accept an SVG where connectors or connector labels overlap components.
 - Do not add separate data-contract, payload, message, or file boxes to integration design diagrams. Keep contract and payload details in connector labels when short, and put detailed contract information in the integration design document.
 - Do not add monitoring, reconciliation, run-status, failed-record, stale-index, alerting, dashboard, or support components to integration design diagrams. Capture observability, reconciliation, and support details in the integration design document instead.
 - Duplicate nodes inside a layer when the design has multiple components in that layer. Keep related components aligned so readers can trace each integration path through the layers.
