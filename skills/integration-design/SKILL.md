@@ -65,7 +65,7 @@ Do not write real-company integration details into this public toolkit repositor
    - Route connectors on clear orthogonal lanes. No connector or connector label may overlap a component, application header, layer label, arrowhead, or another connector label.
    - If the diagram is crowded, increase canvas width, increase layer height, spread components apart, shorten connector labels, or add explicit Draw.io waypoints before exporting.
    - Export the `.drawio` file to a same-basename `.svg`.
-   - Embed the `.svg` in the integration design's `## Integration Diagram` section and link the `.drawio` source directly below the image.
+   - Embed the `.svg` in the integration design's `## Integration Diagram` section.
 8. Populate the top context table with concise concrete values so agents can understand the integration status, purpose, source, destination, data object, trigger, pattern, and open-question count without reading the full document.
 9. Populate `## Relevant Links` with every confirmed related document, including capability overview, target architecture, solution architecture design, epic, ADR, or other integration designs. Use the linked document name as the Markdown link label.
 10. Update `<private-lab-root>/integrations/_integrations-overview.md` with the integration identifier, name, status, description, and count of open questions in the integration design.
