@@ -79,7 +79,7 @@ Do not write real-company integration details into this public toolkit repositor
 - Identify producer, consumer, owner, protocol, contract, trigger, frequency, payload, and versioning.
 - Call out source-of-truth and canonical data object ownership.
 - Document idempotency, retries, ordering, dead-letter behavior, replay, timeout, and compensation where relevant.
-- Include observability details: logs, metrics, traces, alerts, dashboards, correlation IDs, and support runbooks.
+- Include observability details: logs, metrics, traces, alerts, dashboards, correlation IDs, and support ownership.
 - Include security details: authentication, authorization, identity propagation, encryption, secrets, network trust boundary, audit logging, and data classification.
 - Include an editable Draw.io integration diagram and a rendered same-basename SVG in every integration design. The diagram should visually summarize the integration after the `## Integration Overview` section, not replace the contract, quality, security, or operations detail.
 - Visually inspect the rendered SVG before embedding. If connectors or connector labels overlap components, headers, labels, or arrowheads, revise the `.drawio` layout and export again.
