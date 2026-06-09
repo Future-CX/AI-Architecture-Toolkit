@@ -22,6 +22,8 @@ The page title for new pages defaults to the document's first line. Existing pag
 
 During markdown publishing, local links to other `.md` files are replaced with the linked file's top-table `Confluence Link`. If no usable Confluence link is found, the published page keeps only the link text and does not create a Confluence link.
 
+Local markdown image references, including SVG diagrams, are uploaded to the Confluence page as attachments and rewritten to Confluence attachment image macros. Existing same-filename attachments are updated with a new version.
+
 When no page ID is found, the script always prompts for either an existing Confluence link or permission to create a new child page under the overview page before credential loading, dry-run output, source updates, page creation, or publishing. The overview page title defaults to `Overview` and can be changed with `--overview-title`.
 
 Use `--dry-run` to inspect the request without writing to Confluence.

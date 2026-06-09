@@ -8,6 +8,7 @@ import base64
 import getpass
 import html
 import json
+import mimetypes
 import os
 import re
 import sys
@@ -19,6 +20,7 @@ from typing import Any
 
 
 API_PREFIX = "/rest/api"
+LOCAL_IMAGE_EXTENSIONS = {".apng", ".avif", ".gif", ".jpg", ".jpeg", ".png", ".svg", ".webp"}
 CONFLUENCE_ENV_KEYS = (
     "CONFLUENCE_BASE_URL",
     "CONFLUENCE_EMAIL",
@@ -162,6 +164,136 @@ def request_json(
         raise ConfluenceError(f"{method} {url} failed: {exc.reason}") from exc
 
 
+def request_multipart(
+    base_url: str,
+    auth_header: str,
+    method: str,
+    path: str,
+    fields: dict[str, str],
+    file_field: str,
+    file_path: Path,
+) -> dict[str, Any]:
+    boundary = f"----ai-architecture-toolkit-{os.urandom(8).hex()}"
+    body_parts: list[bytes] = []
+
+    for name, value in fields.items():
+        body_parts.append(f"--{boundary}\r\n".encode("utf-8"))
+        body_parts.append(f'Content-Disposition: form-data; name="{name}"\r\n\r\n'.encode("utf-8"))
+        body_parts.append(value.encode("utf-8"))
+        body_parts.append(b"\r\n")
+
+    filename = file_path.name
+    content_type = mimetypes.guess_type(filename)[0] or "application/octet-stream"
+    body_parts.append(f"--{boundary}\r\n".encode("utf-8"))
+    body_parts.append(
+        (
+            f'Content-Disposition: form-data; name="{file_field}"; filename="{filename}"\r\n'
+            f"Content-Type: {content_type}\r\n\r\n"
+        ).encode("utf-8")
+    )
+    body_parts.append(file_path.read_bytes())
+    body_parts.append(b"\r\n")
+    body_parts.append(f"--{boundary}--\r\n".encode("utf-8"))
+    data = b"".join(body_parts)
+
+    url = f"{base_url.rstrip('/')}{path}"
+    request = urllib.request.Request(
+        url,
+        data=data,
+        headers={
+            "Authorization": auth_header,
+            "Accept": "application/json",
+            "Content-Type": f"multipart/form-data; boundary={boundary}",
+            "X-Atlassian-Token": "no-check",
+        },
+        method=method,
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=120) as response:
+            body = response.read().decode("utf-8")
+            return json.loads(body) if body else {}
+    except urllib.error.HTTPError as exc:
+        detail = exc.read().decode("utf-8", errors="replace")
+        raise ConfluenceError(f"{method} {url} failed with HTTP {exc.code}: {detail}") from exc
+    except urllib.error.URLError as exc:
+        raise ConfluenceError(f"{method} {url} failed: {exc.reason}") from exc
+
+
+def find_attachment(
+    base_url: str,
+    auth_header: str,
+    page_id: str,
+    filename: str,
+) -> dict[str, Any] | None:
+    query = urllib.parse.urlencode({"filename": filename, "limit": "1"})
+    response = request_json(
+        base_url,
+        auth_header,
+        "GET",
+        f"{API_PREFIX}/content/{page_id}/child/attachment?{query}",
+    )
+    results = response.get("results", [])
+    return results[0] if results else None
+
+
+def add_attachment(
+    base_url: str,
+    auth_header: str,
+    page_id: str,
+    file_path: Path,
+) -> dict[str, Any]:
+    return request_multipart(
+        base_url,
+        auth_header,
+        "POST",
+        f"{API_PREFIX}/content/{page_id}/child/attachment",
+        {"minorEdit": "true"},
+        "file",
+        file_path,
+    )
+
+
+def update_attachment_data(
+    base_url: str,
+    auth_header: str,
+    page_id: str,
+    attachment_id: str,
+    file_path: Path,
+) -> dict[str, Any]:
+    return request_multipart(
+        base_url,
+        auth_header,
+        "POST",
+        f"{API_PREFIX}/content/{page_id}/child/attachment/{attachment_id}/data",
+        {"minorEdit": "true"},
+        "file",
+        file_path,
+    )
+
+
+def upload_attachment(
+    base_url: str,
+    auth_header: str,
+    page_id: str,
+    file_path: Path,
+) -> dict[str, Any]:
+    existing = find_attachment(base_url, auth_header, page_id, file_path.name)
+    if existing:
+        return update_attachment_data(base_url, auth_header, page_id, existing["id"], file_path)
+    return add_attachment(base_url, auth_header, page_id, file_path)
+
+
+def upload_attachments(
+    base_url: str,
+    auth_header: str,
+    page_id: str,
+    attachments: list[Path],
+) -> None:
+    for attachment in attachments:
+        upload_attachment(base_url, auth_header, page_id, attachment)
+        print(f"Uploaded attachment to Confluence page {page_id}: {attachment.name}")
+
+
 def find_page(
     base_url: str,
     auth_header: str,
@@ -279,6 +411,80 @@ def rewrite_markdown_file_links_in_line(line: str, source_dir: Path) -> str:
     return link_pattern.sub(replace_link, line)
 
 
+def collect_local_markdown_images(markdown_text: str, source_path: Path) -> list[Path]:
+    source_dir = source_path.resolve().parent
+    images: list[Path] = []
+    seen: set[Path] = set()
+    filenames: dict[str, Path] = {}
+    in_code = False
+
+    for line in markdown_text.splitlines():
+        if line.strip().startswith("```"):
+            in_code = not in_code
+            continue
+        if in_code:
+            continue
+        for match in re.finditer(r"!\[[^\]]*\]\(([^)]+)\)", line):
+            target = markdown_link_path(match.group(1).strip())
+            if not target or not is_local_image_path(target):
+                continue
+            image_path = (source_dir / urllib.parse.unquote(target.path)).resolve()
+            if image_path in seen:
+                continue
+            if not image_path.is_file():
+                raise SystemExit(f"Referenced image does not exist: {image_path}")
+            existing = filenames.get(image_path.name)
+            if existing and existing != image_path:
+                raise SystemExit(
+                    "Confluence page attachments require unique filenames. "
+                    f"Both {existing} and {image_path} are referenced as {image_path.name}."
+                )
+            filenames[image_path.name] = image_path
+            seen.add(image_path)
+            images.append(image_path)
+    return images
+
+
+def rewrite_markdown_images_to_confluence(markdown_text: str, source_path: Path) -> str:
+    source_dir = source_path.resolve().parent
+    output: list[str] = []
+    in_code = False
+
+    for line in markdown_text.splitlines():
+        if line.strip().startswith("```"):
+            in_code = not in_code
+            output.append(line)
+            continue
+        if in_code:
+            output.append(line)
+            continue
+        output.append(rewrite_markdown_images_to_confluence_in_line(line, source_dir))
+
+    trailing_newline = "\n" if markdown_text.endswith("\n") else ""
+    return "\n".join(output) + trailing_newline
+
+
+def rewrite_markdown_images_to_confluence_in_line(line: str, source_dir: Path) -> str:
+    image_pattern = re.compile(r"!\[([^\]]*)\]\(([^)]+)\)")
+
+    def replace_image(match: re.Match[str]) -> str:
+        alt_text = match.group(1).strip()
+        destination = match.group(2).strip()
+        target = markdown_link_path(destination)
+        if not target or not is_local_image_path(target):
+            return match.group(0)
+
+        image_path = (source_dir / urllib.parse.unquote(target.path)).resolve()
+        title = alt_text or image_path.stem.replace("-", " ").replace("_", " ")
+        return (
+            '<ac:image ac:alt="' + html.escape(title, quote=True) + '">'
+            '<ri:attachment ri:filename="' + html.escape(image_path.name, quote=True) + '" />'
+            "</ac:image>"
+        )
+
+    return image_pattern.sub(replace_image, line)
+
+
 def markdown_link_path(destination: str) -> urllib.parse.ParseResult | None:
     if not destination:
         return None
@@ -296,6 +502,12 @@ def is_local_markdown_path(target: urllib.parse.ParseResult) -> bool:
     if not target.path:
         return False
     return Path(target.path).suffix.lower() == ".md"
+
+
+def is_local_image_path(target: urllib.parse.ParseResult) -> bool:
+    if not target.path:
+        return False
+    return Path(target.path).suffix.lower() in LOCAL_IMAGE_EXTENSIONS
 
 
 def extract_top_metadata_confluence_link(path: Path) -> str | None:
@@ -423,6 +635,12 @@ def simple_markdown_to_html(markdown_text: str) -> str:
             close_lists()
             continue
 
+        if stripped.startswith("<ac:image") and stripped.endswith("</ac:image>"):
+            flush_paragraph()
+            close_lists()
+            output.append(stripped)
+            continue
+
         heading = re.match(r"^(#{1,6})\s+(.+)$", stripped)
         if heading:
             flush_paragraph()
@@ -477,11 +695,21 @@ def read_content(raw: str, path: Path, content_format: str) -> str:
         return raw
     if content_format == "markdown":
         prepared = prepare_markdown_for_publish(raw)
+        prepared = rewrite_markdown_images_to_confluence(prepared, path)
         return markdown_to_html(rewrite_markdown_file_links(prepared, path))
     if path.suffix.lower() in {".html", ".htm"}:
         return raw
     prepared = prepare_markdown_for_publish(raw)
+    prepared = rewrite_markdown_images_to_confluence(prepared, path)
     return markdown_to_html(rewrite_markdown_file_links(prepared, path))
+
+
+def should_process_markdown_images(path: Path, content_format: str) -> bool:
+    if content_format == "html":
+        return False
+    if content_format == "markdown":
+        return True
+    return path.suffix.lower() not in {".html", ".htm"}
 
 
 def extract_title(raw: str) -> str | None:
@@ -637,6 +865,11 @@ def main() -> int:
                 raise SystemExit("Could not extract a page ID from the provided Confluence Link.")
 
     storage_html = read_content(raw, args.source, args.content_format)
+    attachments = (
+        collect_local_markdown_images(prepare_markdown_for_publish(raw), args.source)
+        if should_process_markdown_images(args.source, args.content_format)
+        else []
+    )
     config = load_confluence_config(args.env_file, {"CONFLUENCE_SPACE_KEY": args.space_key})
     space_key = config["CONFLUENCE_SPACE_KEY"]
 
@@ -653,6 +886,7 @@ def main() -> int:
                     "overview_title": args.overview_title,
                     "missing_page_action": missing_page_action,
                     "body_bytes": len(storage_html.encode("utf-8")),
+                    "attachments": [str(path) for path in attachments],
                 },
                 indent=2,
             )
@@ -670,7 +904,13 @@ def main() -> int:
                 raw = update_confluence_link(raw, confluence_link or "")
                 args.source.write_text(raw, encoding="utf-8")
                 storage_html = read_content(raw, args.source, args.content_format)
+                attachments = (
+                    collect_local_markdown_images(prepare_markdown_for_publish(raw), args.source)
+                    if should_process_markdown_images(args.source, args.content_format)
+                    else []
+                )
             page = get_page(base_url, auth_header, page_id)
+            upload_attachments(base_url, auth_header, page_id, attachments)
             response = update_page(base_url, auth_header, page, storage_html)
             if missing_page_action == "1":
                 print(f"Updated source markdown with Confluence Link: {args.source}")
@@ -686,6 +926,12 @@ def main() -> int:
             raw = update_confluence_link(raw, confluence_link)
             args.source.write_text(raw, encoding="utf-8")
             storage_html = read_content(raw, args.source, args.content_format)
+            attachments = (
+                collect_local_markdown_images(prepare_markdown_for_publish(raw), args.source)
+                if should_process_markdown_images(args.source, args.content_format)
+                else []
+            )
+            upload_attachments(base_url, auth_header, created["id"], attachments)
             page = get_page(base_url, auth_header, created["id"])
             response = update_page(base_url, auth_header, page, storage_html)
             print(f"Updated source markdown with Confluence Link: {args.source}")

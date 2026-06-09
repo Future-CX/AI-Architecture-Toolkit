@@ -26,6 +26,7 @@ python3 toolkit/skills/publish-to-confluence/scripts/publish-to-confluence.py ou
 - `CONFLUENCE_EMAIL` and `CONFLUENCE_API_TOKEN` for Confluence Cloud basic authentication.
 - `CONFLUENCE_SPACE_KEY` for the default Confluence publishing space.
 - A source `.md`, `.html`, or `.htm` file.
+- Any local image files referenced by markdown image syntax, such as `![Diagram](diagram.svg)`.
 - A page title in the first line of the source document.
 - Optional overview page title. Defaults to `Overview`.
 
@@ -62,8 +63,9 @@ Use `--space-key <key>` when publishing to a different space for one run. If `.e
    - Ask whether to create the page under the Confluence overview page. If the user chooses this, find the overview page, create a new child page, then update the source markdown with the returned `Confluence Link`.
 7. Use `--dry-run` first when the target page, parent page, or conversion output is uncertain.
 8. Prefer `--overview-title <title>` when the overview page is not named `Overview`.
-9. Publish with the helper script.
-10. Record the returned page URL and page ID in the working notes or handoff summary.
+9. When the markdown references local images or SVG files, make sure those files exist beside the markdown or at the referenced relative path before publishing.
+10. Publish with the helper script.
+11. Record the returned page URL and page ID in the working notes or handoff summary.
 
 ## Behavior
 
@@ -74,6 +76,8 @@ When a top metadata table includes a `Confluence Link` row, the script extracts 
 For markdown publishing, a leading `Field` / `Value` metadata table is also removed from the Confluence body. The table can stay in the source file for toolkit tracking without being shown at the top of the published page.
 
 For markdown publishing, links to local `.md` files are rewritten before conversion. The script resolves each local markdown link relative to the source file, reads the linked file's top `Field` / `Value` metadata table, and replaces the markdown file target with that file's `Confluence Link`. If the linked file does not exist or has no usable top-table `Confluence Link`, the published body keeps the link text as plain text and does not create a Confluence link.
+
+For markdown publishing, local image references such as `![Diagram](diagram.svg)` or `![Screenshot](images/screen.png)` are uploaded to the target Confluence page as attachments. The published page body is rewritten to use Confluence attachment image macros so the images render from the page attachments. If an attachment with the same filename already exists on the page, the script uploads a new attachment version. Missing local image files stop the publish.
 
 If no Confluence page ID is found, the script always prompts the user to choose before credential loading, dry-run output, source updates, page creation, or publishing. The user can provide an existing Confluence link, or choose to create the page as a child of the overview page. The overview page is found by title in the target space and defaults to `Overview`; override this with `--overview-title <title>`.
 
