@@ -1,26 +1,26 @@
 <mxfile host="65bd71144e">
     <diagram id="integration-design" name="Integration Design">
-        <mxGraphModel dx="917" dy="863" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1000" background="#fbfcfa" math="0" shadow="0">
+        <mxGraphModel dx="1387" dy="1162" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1000" background="#fbfcfa" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="title" value="Integration Design" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontStyle=1;fontSize=24;fontColor=#17201d;" parent="1" vertex="1">
                     <mxGeometry x="60" y="40" width="420" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="public-internet-layer" value="Public Internet" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=1;fillColor=#fee9e8;strokeColor=none;fontColor=#17201d;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="60" y="100" width="1050" height="140" as="geometry"/>
+                <mxCell id="public-internet-layer" value="Public Internet" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=0;fillColor=#fee9e8;strokeColor=none;fontColor=#17201d;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="100" width="1740" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="frontend-layer" value="Frontend" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=1;fillColor=#fffbe2;strokeColor=none;fontColor=#17201d;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="60" y="250" width="1050" height="140" as="geometry"/>
+                <mxCell id="frontend-layer" value="Frontend" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=0;fillColor=#fffbe2;strokeColor=none;fontColor=#17201d;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="250" width="1740" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="engagement-layer" value="Engagement Services" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=1;fillColor=#def9ea;strokeColor=none;fontColor=#17201d;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="60" y="400" width="1050" height="140" as="geometry"/>
+                <mxCell id="engagement-layer" value="Engagement Services" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=0;fillColor=#def9ea;strokeColor=none;fontColor=#17201d;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="400" width="1740" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="integration-layer" value="Integration" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=1;fillColor=#f5f5f5;strokeColor=none;fontColor=#17201d;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="60" y="550" width="1050" height="140" as="geometry"/>
+                <mxCell id="integration-layer" value="Integration" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=0;fillColor=#f5f5f5;strokeColor=none;fontColor=#17201d;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="550" width="1740" height="140" as="geometry"/>
                 </mxCell>
-                <mxCell id="enterprise-foundation-layer" value="Enterprise Foundation &lt;br&gt;(Backoffice)" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=1;fillColor=#e8f1ff;strokeColor=none;fontColor=#17201d;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="60" y="700" width="1050" height="140" as="geometry"/>
+                <mxCell id="enterprise-foundation-layer" value="Enterprise Foundation &lt;br&gt;(Backoffice)" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=0;fillColor=#e8f1ff;strokeColor=none;fontColor=#17201d;strokeWidth=2;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="700" width="1740" height="140" as="geometry"/>
                 </mxCell>
                 <mxCell id="public-entry" value="Public Internet component&#xa;User, partner, device, or endpoint" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#f8cecc;strokeColor=#000000;fontColor=#17201d;fontStyle=1;strokeWidth=2;" parent="1" vertex="1">
                     <mxGeometry x="170" y="155" width="220" height="60" as="geometry"/>
@@ -69,9 +69,6 @@
                 </mxCell>
                 <mxCell id="edge-integration-foundation" value="deliver, retry, acknowledge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=default;labelBackgroundColor=default;labelBorderColor=none;strokeWidth=2;" parent="1" source="integration-orchestration" target="foundation-component" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
-                </mxCell>
-                <mxCell id="note" value="Place every confirmed component inside its layer. Duplicate component boxes within a layer when the integration has multiple channels, services, integration hops, or backoffice systems." style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#ffffff;strokeColor=#d8dfda;fontColor=#5d6964;dashed=1;strokeWidth=2;" parent="1" vertex="1">
-                    <mxGeometry x="210" y="880" width="750" height="60" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
