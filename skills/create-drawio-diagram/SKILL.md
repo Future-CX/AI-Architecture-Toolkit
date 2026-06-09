@@ -75,7 +75,7 @@ When using `templates/integration-design.drawio`, preserve the vertical layer st
 - Put connector labels on open horizontal or vertical lane segments with clear whitespace. Do not place connector text on top of components, application headers, layer labels, arrowheads, or other connector labels.
 - Use separate routing lanes for parallel or crossing flows. Stagger vertical lanes and horizontal lanes so no two connectors share the same segment when their labels or arrowheads would collide.
 - For dense integration diagrams, widen the diagram, increase layer heights, or move components farther apart before exporting. Do not accept an SVG where connectors or connector labels overlap components.
-- Use the neutral payload node for canonical business data objects, messages, files, or events that would otherwise clutter component labels.
+- Do not add separate data-contract, payload, message, or file boxes to integration design diagrams. Keep contract and payload details in connector labels when short, and put detailed contract information in the integration design document.
 - Duplicate nodes inside a layer when the design has multiple components in that layer. Keep related components aligned so readers can trace each integration path through the layers.
 - If the source content does not identify a component layer, use the neutral component style and record the categorization as an assumption or open question in the integration design.
 - Do not add real-company system names, internal endpoints, topics, queues, payload fields, credentials, or proprietary integration details to this public repository.

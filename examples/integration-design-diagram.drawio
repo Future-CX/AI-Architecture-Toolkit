@@ -80,7 +80,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="note" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#ffffff;strokeColor=#d8dfda;fontColor=#5d6964;dashed=1;strokeWidth=2;" value="Example only. Replace PIM, Service Bus, Commerce, application names, and payload labels with confirmed names, contracts, ownership, retry behavior, and monitoring details in a real integration design." vertex="1">
+        <mxCell id="note" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#ffffff;strokeColor=#d8dfda;fontColor=#5d6964;dashed=1;strokeWidth=2;" value="Example only. Replace PIM, Service Bus, Commerce, application names, and connector labels with confirmed names, contracts, ownership, retry behavior, and monitoring details in a real integration design." vertex="1">
           <mxGeometry height="60" width="750" x="210" y="880" as="geometry" />
         </mxCell>
       </root>

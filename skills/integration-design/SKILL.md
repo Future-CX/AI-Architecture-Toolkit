@@ -61,7 +61,8 @@ Do not write real-company integration details into this public toolkit repositor
    - Use the `create-drawio-diagram` skill and its `templates/integration-design.drawio` template.
    - Store the `.drawio` file beside the integration design document.
    - Use the same basename as the integration design Markdown file. For example, `int-0001-product-from-pim-to-commerce.md`, `int-0001-product-from-pim-to-commerce.drawio`, and `int-0001-product-from-pim-to-commerce.svg`.
-   - Populate the diagram with the integration's confirmed source, destination, intermediate components, layer placement, application headers, payloads, and connector labels.
+   - Populate the diagram with the integration's confirmed source, destination, intermediate components, layer placement, application headers, and connector labels.
+   - Do not add separate data-contract, payload, message, or file boxes to the diagram. Capture detailed contract and payload information in the `## Contract` section instead.
    - Route connectors on clear orthogonal lanes. No connector or connector label may overlap a component, application header, layer label, arrowhead, or another connector label.
    - If the diagram is crowded, increase canvas width, increase layer height, spread components apart, shorten connector labels, or add explicit Draw.io waypoints before exporting.
    - Export the `.drawio` file to a same-basename `.svg`.
