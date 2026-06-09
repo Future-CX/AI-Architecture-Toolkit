@@ -65,7 +65,7 @@ When using `templates/capability-overview.drawio`, preserve the template topolog
 When using `templates/integration-design.drawio`, preserve the vertical layer structure. The diagram is a layered component map for an integration design, not a sequence diagram, endpoint catalog, or source-to-destination column layout.
 
 - Place components inside the corresponding layer band, ordered from top to bottom: Public Internet, Frontend, Engagement Services, Integration, and Enterprise Foundation (Backoffice).
-- Use plain colored rectangles for layer bands, not Draw.io swimlanes. Keep layer labels left-aligned and top-aligned. Use the layer's own color for the layer rectangle fill and stroke.
+- Use plain colored rectangles for layer bands, not Draw.io swimlanes. Keep layer labels left-aligned and top-aligned. Use the layer fill color with no stroke.
 - Leave clear top and bottom padding around components inside each layer band.
 - Keep components as the main diagram elements. Use the exact layer colors from `STYLE.md` to classify each component: Public Internet light red, Frontend light yellow, Engagement light green, Integration light grey, and Enterprise Foundation (Backoffice) light blue.
 - Show every confirmed component needed to understand how data or commands move from source to destination.
