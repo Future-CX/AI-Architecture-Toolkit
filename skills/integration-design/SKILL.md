@@ -75,6 +75,7 @@ Do not write real-company integration details into this public toolkit repositor
    - Leave enough horizontal room for labeled connectors: at least 160 px between connected component edges, or 220 px for longer connector labels.
    - Treat the canvas and layer bands as flexible. If the diagram is crowded, increase canvas width or height, increase layer width or height, spread components apart, shorten connector labels, or add explicit Draw.io waypoints before exporting.
    - Export the `.drawio` file to a same-basename `.svg`.
+   - Run the create-drawio-diagram SVG sanitizer on the exported SVG so it uses `color-scheme: light`, has no `light-dark(...)` values, and includes a light background.
    - Embed the `.svg` directly in `## Integration Overview` using the relative path `diagrams/<same-basename>.svg`.
 10. Populate `## Relevant Links` with every confirmed related document, including capability overview, target architecture, solution architecture design, epic, ADR, or other integration designs. Use the linked document name as the Markdown link label.
 11. Update `<private-lab-root>/integrations/_integrations-overview.md` with the integration identifier, name, status, description, and count of open questions in the integration design.
