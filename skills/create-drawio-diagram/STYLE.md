@@ -76,7 +76,8 @@ Use dashed connectors only for optional, informational, or payload relationships
 - Canvas size is flexible. For integration design diagrams, increase `pageWidth` and `pageHeight` whenever the default template size would force cramped components, overlapping connectors, clipped labels, or crowded layer bands.
 - Integration layer bands are flexible. Increase each layer band's width and height independently so its components, labels, and routing lanes have enough whitespace.
 - In integration design diagrams, leave clear top and bottom padding around components inside each layer band.
-- In integration design diagrams, use a left-biased layout. Keep the first component column near the left content margin and grow the diagram to the right as the flow progresses. Avoid large unused left-side whitespace unless it is needed for incoming connector lanes.
+- In integration design diagrams, use a left-aligned layout. Place the first meaningful component column 60-120 px from the left edge of the layer band, after the layer label area. Grow the diagram to the right as the flow progresses. Do not center components in a layer when there is unused space on the left.
+- If a layer has only one component, keep it aligned to the same left component grid unless a specific incoming or outgoing connector lane requires a different x-position. Documented routing need is the only reason to leave large unused left-side whitespace.
 - Align components to a visible grid. Components in the same layer should share a baseline where possible, and components in the same end-to-end flow should share x-positions across layers where that improves traceability.
 - Keep data models centered around canonical business data objects.
 - Prefer 80-120 px tall nodes for readability.

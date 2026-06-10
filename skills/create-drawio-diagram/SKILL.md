@@ -91,10 +91,12 @@ When using `templates/integration-design.drawio`, preserve the vertical layer st
 Exported SVGs must preserve the exact colors from the `.drawio` source.
 
 - Export from the light-themed diagram using the diagram's explicit styles. Do not export from a dark-mode preview, themed preview, or editor mode that rewrites colors.
-- Keep the page background in the SVG. Do not export with transparent background when the diagram uses connector label backgrounds.
+- Keep the page background in the SVG. Exported SVGs must have a white or light page background from the source diagram, normally `#fbfcfa`. Do not export with transparent background.
+- Treat a dark, black, transparent, or theme-inverted SVG background as a failed export. Re-export from the light-themed `.drawio` source with an explicit page background before embedding or publishing.
 - Do not post-process exported SVGs with CSS color filters, dark-mode transforms, image optimizers, or theme substitution.
 - Do not replace concrete hex colors with `currentColor`, CSS variables, inherited colors, or generated dark palette values.
 - Before embedding the SVG, inspect it visually against the `.drawio` source. If colors differ, regenerate the SVG before embedding it.
+- Before embedding the SVG, inspect the exported background. Regenerate the `.drawio` or export if the SVG background is not white/light.
 - Before embedding an integration design SVG, inspect connector routing and labels. Regenerate the `.drawio` with wider spacing or explicit waypoints if any connector or connector label overlaps a component, component header, layer label, arrowhead, or other label.
 - Before embedding an integration design SVG, inspect alignment and spacing. Regenerate the `.drawio` if the diagram has large unused left-side whitespace, components appear unnecessarily centered, labeled connectors have cramped horizontal space, or any connector crosses through a component.
 
