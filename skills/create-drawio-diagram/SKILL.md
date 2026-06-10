@@ -93,6 +93,8 @@ Exported SVGs must preserve the exact colors from the `.drawio` source.
 - Export from the light-themed diagram using the diagram's explicit styles. Do not export from a dark-mode preview, themed preview, or editor mode that rewrites colors.
 - Keep the page background in the SVG. Exported SVGs must have a white or light page background from the source diagram, normally `#fbfcfa`. Do not export with transparent background.
 - Treat a dark, black, transparent, or theme-inverted SVG background as a failed export. Re-export from the light-themed `.drawio` source with an explicit page background before embedding or publishing.
+- Exported SVGs must use `color-scheme: light` only. Treat `color-scheme: light dark`, `color-scheme: dark`, missing explicit light color scheme, or `light-dark(...)` as failed exports. These Draw.io-generated CSS values can make Confluence, browsers, or dark-mode previews render the diagram with inverted/dark colors.
+- Before embedding or publishing, inspect the SVG text for `color-scheme` and `light-dark(`. If `color-scheme` is not explicitly light-only, or if `light-dark(` is present, regenerate or sanitize the SVG so all colors are fixed explicit hex values and the background remains white/light.
 - Do not post-process exported SVGs with CSS color filters, dark-mode transforms, image optimizers, or theme substitution.
 - Do not replace concrete hex colors with `currentColor`, CSS variables, inherited colors, or generated dark palette values.
 - Before embedding the SVG, inspect it visually against the `.drawio` source. If colors differ, regenerate the SVG before embedding it.
