@@ -59,15 +59,16 @@ Do not write real-company integration details into this public toolkit repositor
 6. Create or update the integration design from `templates/integration-design-template.md`.
 7. After writing the `## Integration Overview` description, create a visual integration diagram:
    - Use the `create-drawio-diagram` skill and its `templates/integration-design.drawio` template.
-   - Store the `.drawio` file beside the integration design document.
-   - Use the same basename as the integration design Markdown file. For example, `int-0001-product-from-pim-to-commerce.md`, `int-0001-product-from-pim-to-commerce.drawio`, and `int-0001-product-from-pim-to-commerce.svg`.
+   - Create a `diagrams/` subfolder in the same folder as the integration design document.
+   - Store the `.drawio` file and exported `.svg` file in that `diagrams/` subfolder.
+   - Use the same basename as the integration design Markdown file. For example, `int-0001-product-from-pim-to-commerce.md`, `diagrams/int-0001-product-from-pim-to-commerce.drawio`, and `diagrams/int-0001-product-from-pim-to-commerce.svg`.
    - Populate the diagram with the integration's confirmed source, destination, intermediate components, layer placement, application headers, and connector labels.
    - Do not add separate data-contract, payload, message, or file boxes to the diagram. Capture detailed contract and payload information in the `## Contract` section instead.
    - Do not add monitoring, reconciliation, run-status, failed-record, stale-index, alerting, dashboard, or support components to the diagram. Capture those details in `## Security and Operations` instead.
    - Route connectors on clear orthogonal lanes. No connector or connector label may overlap a component, application header, layer label, arrowhead, or another connector label.
    - Treat the canvas and layer bands as flexible. If the diagram is crowded, increase canvas width or height, increase layer width or height, spread components apart, shorten connector labels, or add explicit Draw.io waypoints before exporting.
    - Export the `.drawio` file to a same-basename `.svg`.
-   - Embed the `.svg` in the integration design's `## Integration Diagram` section.
+   - Embed the `.svg` in the integration design's `## Integration Diagram` section using the relative path `diagrams/<same-basename>.svg`.
 8. Populate the top context table with concise concrete values so agents can understand the integration status, purpose, source, destination, data object, trigger, pattern, and open-question count without reading the full document.
 9. Populate `## Relevant Links` with every confirmed related document, including capability overview, target architecture, solution architecture design, epic, ADR, or other integration designs. Use the linked document name as the Markdown link label.
 10. Update `<private-lab-root>/integrations/_integrations-overview.md` with the integration identifier, name, status, description, and count of open questions in the integration design.
@@ -83,7 +84,7 @@ Do not write real-company integration details into this public toolkit repositor
 - Document idempotency, retries, ordering, dead-letter behavior, replay, timeout, and compensation where relevant.
 - Include observability details: logs, metrics, traces, alerts, dashboards, correlation IDs, and support ownership.
 - Include security details: authentication, authorization, identity propagation, encryption, secrets, network trust boundary, audit logging, and data classification.
-- Include an editable Draw.io integration diagram and a rendered same-basename SVG in every integration design. The diagram should visually summarize the integration after the `## Integration Overview` section, not replace the contract, quality, security, or operations detail.
+- Include an editable Draw.io integration diagram and a rendered same-basename SVG in every integration design. Store both files in a `diagrams/` subfolder next to the integration design. The diagram should visually summarize the integration after the `## Integration Overview` section, not replace the contract, quality, security, or operations detail.
 - Visually inspect the rendered SVG before embedding. If connectors or connector labels overlap components, headers, labels, or arrowheads, revise the `.drawio` layout and export again.
 - Keep relevant links bidirectional: if the integration design is linked from a target architecture, solution architecture design, or capability overview, also link that document from the integration design.
 - Use linked document names as relevant-link labels. For local Markdown files, derive the name from the first `#` heading; otherwise use the filename without extension. Do not use generic labels such as "Target architecture" when a document title is available.

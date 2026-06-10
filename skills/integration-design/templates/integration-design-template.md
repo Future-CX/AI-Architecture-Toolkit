@@ -16,7 +16,7 @@
 
 Describe the integration purpose, source systems, target systems, and business process.
 
-![{{INTEGRATION_NAME}} integration diagram]({{INTEGRATION_DIAGRAM_SVG}})
+![{{INTEGRATION_NAME}} integration diagram](diagrams/{{INTEGRATION_DIAGRAM_SVG}})
 
 ## Open Questions
 
