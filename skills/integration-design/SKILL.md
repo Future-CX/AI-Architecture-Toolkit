@@ -71,6 +71,8 @@ Do not write real-company integration details into this public toolkit repositor
    - Do not add separate data-contract, payload, message, or file boxes to the diagram. Capture detailed contract and payload information in the `## Contract` section instead.
    - Do not add monitoring, reconciliation, run-status, failed-record, stale-index, alerting, dashboard, or support components to the diagram. Capture those details in `## Security and Operations` instead.
    - Route connectors on clear orthogonal lanes. No connector or connector label may overlap a component, application header, layer label, arrowhead, or another connector label.
+   - Prefer vertical flow columns for direct layer-to-layer paths. Place related components above and below each other and connect them top-to-bottom where space allows.
+   - Use horizontal placement for peer components, branches, alternatives, fan-out/fan-in paths, or same-layer handoffs, not for a simple linear layer-to-layer path.
    - Use a left-biased component layout: start components near the left content margin and grow the canvas to the right as more components or connector lanes are needed.
    - Leave enough horizontal room for labeled connectors: at least 160 px between connected component edges, or 220 px for longer connector labels.
    - Treat the canvas and layer bands as flexible. If the diagram is crowded, increase canvas width or height, increase layer width or height, spread components apart, shorten connector labels, or add explicit Draw.io waypoints before exporting.

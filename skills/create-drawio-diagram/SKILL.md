@@ -71,10 +71,13 @@ When using `templates/integration-design.drawio`, preserve the vertical layer st
 - Leave clear top and bottom padding around components inside each layer band.
 - Align components toward the left side of the canvas by default. Start the first meaningful component column close to the layer content area, then place later components to the right as the integration progresses. Do not center the whole diagram when there is unused space on the left.
 - Use a consistent component grid across layers: align related components by x-position when they participate in the same flow, and align peer components on the same baseline inside a layer.
+- Prefer vertical flow columns for linear integrations across layers. When a component in one layer directly calls, publishes to, or consumes from a component in another layer, place the related components above and below each other on the same x-position where space allows.
+- Use horizontal placement primarily for peer components in the same layer, branching alternatives, fan-out/fan-in paths, or same-layer handoffs. Do not force a left-to-right stair-step layout when a top-to-bottom column would be clearer.
 - Keep components as the main diagram elements. Use the exact layer colors from `STYLE.md` to classify each component: Public Internet light red, Frontend light yellow, Engagement light green, Integration light grey, and Enterprise Foundation (Backoffice) light blue.
 - Show every confirmed component needed to understand how data or commands move from source to destination.
 - Show the integration path by connecting components across layers. Route connectors clearly between layers and between peer components when needed.
 - Use concise connector labels for trigger, protocol, contract, routing, transformation, retry, acknowledgement, or ownership details.
+- For cross-layer flows, connect components from bottom-to-top or top-to-bottom using straight vertical orthogonal connectors whenever possible. Use side connectors only when vertical routing would cross another component or label.
 - Route every connector around components, not through components. Use explicit orthogonal `mxPoint` waypoints whenever Draw.io automatic routing would cross a component, component header, layer label, or another connector label.
 - Put connector labels on open horizontal or vertical lane segments with clear whitespace. Do not place connector text on top of components, application headers, layer labels, arrowheads, or other connector labels.
 - Leave at least 160 px of horizontal space between two components connected by a labeled connector. If the connector label is longer than 24 characters, leave at least 220 px, shorten the label, or route the label onto a longer empty segment.

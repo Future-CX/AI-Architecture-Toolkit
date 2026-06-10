@@ -79,10 +79,13 @@ Use dashed connectors only for optional, informational, or payload relationships
 - In integration design diagrams, use a left-aligned layout. Place the first meaningful component column 60-120 px from the left edge of the layer band, after the layer label area. Grow the diagram to the right as the flow progresses. Do not center components in a layer when there is unused space on the left.
 - If a layer has only one component, keep it aligned to the same left component grid unless a specific incoming or outgoing connector lane requires a different x-position. Documented routing need is the only reason to leave large unused left-side whitespace.
 - Align components to a visible grid. Components in the same layer should share a baseline where possible, and components in the same end-to-end flow should share x-positions across layers where that improves traceability.
+- For integration design diagrams, prefer vertical columns for direct cross-layer flows. Place source, intermediary, and destination components above each other when they are part of the same linear path.
+- Use horizontal spacing for components only when they are peers, alternatives, branches, fan-out/fan-in targets, or same-layer handoffs. A simple layer-to-layer path should normally read top-to-bottom, not as a diagonal stair-step.
 - Keep data models centered around canonical business data objects.
 - Prefer 80-120 px tall nodes for readability.
 - Route connectors on separate orthogonal lanes. Do not let two connectors share the same horizontal or vertical segment when their labels or arrowheads would overlap.
 - Do not route connectors through nodes, node labels, edge labels, or arrowheads.
+- For cross-layer flow connectors, prefer top-to-bottom vertical orthogonal lines from the bottom center of the upstream component to the top center of the downstream component. Use side ports and horizontal jogs only to avoid collisions.
 - Place connector labels on clear line segments with enough whitespace around the label. If labels collide, move the label position or reroute the connector with explicit waypoints.
 - For integration design diagrams, reserve connector lanes between components and between layer bands. Place components far enough apart that connectors can route around them without crossing through component bodies or application headers.
 - For labeled connectors between adjacent components, reserve at least 160 px of horizontal space between component edges. For labels longer than 24 characters, reserve at least 220 px or shorten the label and capture detail in the document.
