@@ -69,12 +69,15 @@ When using `templates/integration-design.drawio`, preserve the vertical layer st
 - Treat the canvas as flexible. Increase `pageWidth`, `pageHeight`, and the layer-band rectangle sizes as needed so all components, routing lanes, connector labels, and notes fit cleanly.
 - Treat every layer band as flexible in width and height. Grow a layer wider for additional horizontal component lanes, and grow it taller for stacked components or extra connector routing space.
 - Leave clear top and bottom padding around components inside each layer band.
+- Align components toward the left side of the canvas by default. Start the first meaningful component column close to the layer content area, then place later components to the right as the integration progresses. Do not center the whole diagram when there is unused space on the left.
+- Use a consistent component grid across layers: align related components by x-position when they participate in the same flow, and align peer components on the same baseline inside a layer.
 - Keep components as the main diagram elements. Use the exact layer colors from `STYLE.md` to classify each component: Public Internet light red, Frontend light yellow, Engagement light green, Integration light grey, and Enterprise Foundation (Backoffice) light blue.
 - Show every confirmed component needed to understand how data or commands move from source to destination.
 - Show the integration path by connecting components across layers. Route connectors clearly between layers and between peer components when needed.
 - Use concise connector labels for trigger, protocol, contract, routing, transformation, retry, acknowledgement, or ownership details.
 - Route every connector around components, not through components. Use explicit orthogonal `mxPoint` waypoints whenever Draw.io automatic routing would cross a component, component header, layer label, or another connector label.
 - Put connector labels on open horizontal or vertical lane segments with clear whitespace. Do not place connector text on top of components, application headers, layer labels, arrowheads, or other connector labels.
+- Leave at least 160 px of horizontal space between two components connected by a labeled connector. If the connector label is longer than 24 characters, leave at least 220 px, shorten the label, or route the label onto a longer empty segment.
 - Use separate routing lanes for parallel or crossing flows. Stagger vertical lanes and horizontal lanes so no two connectors share the same segment when their labels or arrowheads would collide.
 - For dense integration diagrams, widen the canvas, increase layer widths and heights, or move components farther apart before exporting. Do not accept an SVG where connectors or connector labels overlap components.
 - Do not add separate data-contract, payload, message, or file boxes to integration design diagrams. Keep contract and payload details in connector labels when short, and put detailed contract information in the integration design document.
@@ -93,6 +96,7 @@ Exported SVGs must preserve the exact colors from the `.drawio` source.
 - Do not replace concrete hex colors with `currentColor`, CSS variables, inherited colors, or generated dark palette values.
 - Before embedding the SVG, inspect it visually against the `.drawio` source. If colors differ, regenerate the SVG before embedding it.
 - Before embedding an integration design SVG, inspect connector routing and labels. Regenerate the `.drawio` with wider spacing or explicit waypoints if any connector or connector label overlaps a component, component header, layer label, arrowhead, or other label.
+- Before embedding an integration design SVG, inspect alignment and spacing. Regenerate the `.drawio` if the diagram has large unused left-side whitespace, components appear unnecessarily centered, labeled connectors have cramped horizontal space, or any connector crosses through a component.
 
 ## Output Rules
 

@@ -76,12 +76,15 @@ Use dashed connectors only for optional, informational, or payload relationships
 - Canvas size is flexible. For integration design diagrams, increase `pageWidth` and `pageHeight` whenever the default template size would force cramped components, overlapping connectors, clipped labels, or crowded layer bands.
 - Integration layer bands are flexible. Increase each layer band's width and height independently so its components, labels, and routing lanes have enough whitespace.
 - In integration design diagrams, leave clear top and bottom padding around components inside each layer band.
+- In integration design diagrams, use a left-biased layout. Keep the first component column near the left content margin and grow the diagram to the right as the flow progresses. Avoid large unused left-side whitespace unless it is needed for incoming connector lanes.
+- Align components to a visible grid. Components in the same layer should share a baseline where possible, and components in the same end-to-end flow should share x-positions across layers where that improves traceability.
 - Keep data models centered around canonical business data objects.
 - Prefer 80-120 px tall nodes for readability.
 - Route connectors on separate orthogonal lanes. Do not let two connectors share the same horizontal or vertical segment when their labels or arrowheads would overlap.
 - Do not route connectors through nodes, node labels, edge labels, or arrowheads.
 - Place connector labels on clear line segments with enough whitespace around the label. If labels collide, move the label position or reroute the connector with explicit waypoints.
 - For integration design diagrams, reserve connector lanes between components and between layer bands. Place components far enough apart that connectors can route around them without crossing through component bodies or application headers.
+- For labeled connectors between adjacent components, reserve at least 160 px of horizontal space between component edges. For labels longer than 24 characters, reserve at least 220 px or shorten the label and capture detail in the document.
 - Connector labels must not overlap components, application headers, layer labels, arrowheads, or other connector labels. If a label cannot fit cleanly on the connector, shorten the label and capture the detail in the document.
 - Avoid crossing connectors when repositioning nodes or adding waypoints would remove the crossing.
 - Keep labels short and business-readable.
