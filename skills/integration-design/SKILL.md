@@ -57,7 +57,12 @@ Do not write real-company integration details into this public toolkit repositor
    - Derive `<destination>` from the target system or consumer.
    - Build the filename as `int-<4-digits>-<data-object>-from-<source>-to-<destination>.md`.
 6. Create or update the integration design from `templates/integration-design-template.md`.
-7. After writing the `## Integration Overview` description, create a visual integration diagram:
+7. Populate the top metadata table with document tracking values only:
+   - `Confluence Link`: use the existing page link, or `TBD` until the document is published.
+   - `Last Update`: use the current date in `YYYY-MM-DD` format.
+   - `Open questions`: use the count of unresolved bullets in `## Open Questions`.
+8. Populate the `## Integration Overview` table with concise concrete values so agents can understand the integration status, purpose, source, destination, data object, trigger, pattern, and open-question count without reading the full document.
+9. After writing the `## Integration Overview` table and description, create a visual integration diagram:
    - Use the `create-drawio-diagram` skill and its `templates/integration-design.drawio` template.
    - Create a `diagrams/` subfolder in the same folder as the integration design document.
    - Store the `.drawio` file and exported `.svg` file in that `diagrams/` subfolder.
@@ -70,23 +75,23 @@ Do not write real-company integration details into this public toolkit repositor
    - Leave enough horizontal room for labeled connectors: at least 160 px between connected component edges, or 220 px for longer connector labels.
    - Treat the canvas and layer bands as flexible. If the diagram is crowded, increase canvas width or height, increase layer width or height, spread components apart, shorten connector labels, or add explicit Draw.io waypoints before exporting.
    - Export the `.drawio` file to a same-basename `.svg`.
-   - Embed the `.svg` in the integration design's `## Integration Diagram` section using the relative path `diagrams/<same-basename>.svg`.
-8. Populate the top context table with concise concrete values so agents can understand the integration status, purpose, source, destination, data object, trigger, pattern, and open-question count without reading the full document.
-9. Populate `## Relevant Links` with every confirmed related document, including capability overview, target architecture, solution architecture design, epic, ADR, or other integration designs. Use the linked document name as the Markdown link label.
-10. Update `<private-lab-root>/integrations/_integrations-overview.md` with the integration identifier, name, status, description, and count of open questions in the integration design.
-11. Capture unresolved facts as open questions rather than inventing payloads, endpoints, schemas, retry rules, owners, or service-level expectations.
-12. Link the integration design from the related target architecture, solution architecture design, capability overview, epic, or relevant links section when the related document exists and the user confirms the linkage. Whenever a link to the integration design is added to one of those documents, add the reciprocal link back to that document in the integration design's `## Relevant Links` section.
+   - Embed the `.svg` directly in `## Integration Overview` using the relative path `diagrams/<same-basename>.svg`.
+10. Populate `## Relevant Links` with every confirmed related document, including capability overview, target architecture, solution architecture design, epic, ADR, or other integration designs. Use the linked document name as the Markdown link label.
+11. Update `<private-lab-root>/integrations/_integrations-overview.md` with the integration identifier, name, status, description, and count of open questions in the integration design.
+12. Capture unresolved facts as open questions rather than inventing payloads, endpoints, schemas, retry rules, owners, or service-level expectations.
+13. Link the integration design from the related target architecture, solution architecture design, capability overview, epic, or relevant links section when the related document exists and the user confirms the linkage. Whenever a link to the integration design is added to one of those documents, add the reciprocal link back to that document in the integration design's `## Relevant Links` section.
 
 ## Writing Guidance
 
 - Prefer concrete interface details over generic integration principles.
-- Keep the top context table short and factual. Use `TBD` for unknown fields, and mirror unresolved items in `## Open Questions`.
+- Keep the top metadata table limited to `Confluence Link`, `Last Update`, and `Open questions`.
+- Keep the `## Integration Overview` fact table short and factual. Use `TBD` for unknown fields, and mirror unresolved items in `## Open Questions`.
 - Identify producer, consumer, owner, protocol, contract, trigger, frequency, payload, and versioning.
 - Call out source-of-truth and canonical data object ownership.
 - Document idempotency, retries, ordering, dead-letter behavior, replay, timeout, and compensation where relevant.
 - Include observability details: logs, metrics, traces, alerts, dashboards, correlation IDs, and support ownership.
 - Include security details: authentication, authorization, identity propagation, encryption, secrets, network trust boundary, audit logging, and data classification.
-- Include an editable Draw.io integration diagram and a rendered same-basename SVG in every integration design. Store both files in a `diagrams/` subfolder next to the integration design. The diagram should visually summarize the integration after the `## Integration Overview` section, not replace the contract, quality, security, or operations detail.
+- Include an editable Draw.io integration diagram and a rendered same-basename SVG in every integration design. Store both files in a `diagrams/` subfolder next to the integration design. The diagram should visually summarize the integration inside the `## Integration Overview` section, after the overview fact table and description, and should not replace the contract, quality, security, or operations detail.
 - Visually inspect the rendered SVG before embedding. If the SVG has a dark, black, transparent, or theme-inverted background, if the SVG source does not use `color-scheme: light` only, or if the SVG source contains `light-dark(...)`, re-export or sanitize it so it uses fixed explicit hex colors and a white/light page background. If connectors or connector labels overlap components, headers, labels, or arrowheads, if connectors cross through components, if labeled connectors are cramped, or if the diagram is unnecessarily centered with large unused left-side whitespace, revise the `.drawio` layout and export again.
 - Keep relevant links bidirectional: if the integration design is linked from a target architecture, solution architecture design, or capability overview, also link that document from the integration design.
 - Use linked document names as relevant-link labels. For local Markdown files, derive the name from the first `#` heading; otherwise use the filename without extension. Do not use generic labels such as "Target architecture" when a document title is available.
@@ -95,22 +100,29 @@ Do not write real-company integration details into this public toolkit repositor
 
 ## Integrations Overview
 
-Maintain `<private-lab-root>/integrations/_integrations-overview.md` with this structure:
+Maintain `<private-lab-root>/integrations/_integrations-overview.md` from `templates/integrations-overview-template.md` with this structure:
 
 ```md
 # Integrations Overview
 
-| Identifier                     | Integration                                                                                           | Status                 | Description                 | Open Questions            |
-| ------------------------------ | ----------------------------------------------------------------------------------------------------- | ---------------------- | --------------------------- | ------------------------: |
-| {{INTEGRATION_IDENTIFIER}}     | [{{INTEGRATION_NAME}}](int-0001-{{DATA_OBJECT_SLUG}}-from-{{SOURCE_SLUG}}-to-{{DESTINATION_SLUG}}.md) | {{INTEGRATION_STATUS}} | {{INTEGRATION_DESCRIPTION}} | {{OPEN_QUESTIONS_COUNT}} |
+| Field | Value |
+| --- | --- |
+| Confluence Link | {{CONFLUENCE_LINK}} |
+| Last Update | {{LAST_UPDATE}} |
+
+| Identifier | Integration | Status | Description | Open Questions |
+| --- | --- | --- | --- | ---: |
+| {{INTEGRATION_IDENTIFIER}} | [{{INTEGRATION_NAME}}](int-0001-{{DATA_OBJECT_SLUG}}-from-{{SOURCE_SLUG}}-to-{{DESTINATION_SLUG}}.md) | {{INTEGRATION_STATUS}} | {{INTEGRATION_DESCRIPTION}} | {{OPEN_QUESTIONS_COUNT}} |
 ```
 
 When updating the overview:
 
 - Scan `integrations/int-*.md` so the overview represents every integration design file.
+- Keep the overview metadata table at the top with `Confluence Link` and `Last Update`.
+- Set `Last Update` to the current date in `YYYY-MM-DD` format whenever the overview is regenerated.
 - Use the `int-0001` prefix from each integration filename as the identifier.
 - Use the integration document title or integration name as the link label.
-- Use the `Status` value from the integration design's top context table. Use `TBD` when the field is absent or unknown.
+- Use the `Status` value from the integration design's `## Integration Overview` table. Use `TBD` when the field is absent or unknown.
 - Use the integration overview/purpose as the description.
 - Count Markdown bullets in each integration document's `## Open Questions` section. Use `0` when the section is absent, empty, or explicitly says there are no open questions.
 - Keep rows sorted by integration number.

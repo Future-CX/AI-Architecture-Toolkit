@@ -2,17 +2,22 @@
 
 | Field           | Value                    |
 | --------------- | ------------------------ |
-| Status          | {{INTEGRATION_STATUS}}   |
-| Purpose         | {{INTEGRATION_PURPOSE}}  |
-| Source          | {{SOURCE_SYSTEM}}        |
-| Destination     | {{DESTINATION_SYSTEM}}   |
-| Data object     | {{DATA_OBJECT}}          |
-| Trigger         | {{INTEGRATION_TRIGGER}}  |
-| Pattern         | {{INTEGRATION_PATTERN}}  |
 | Confluence Link | {{CONFLUENCE_LINK}}      |
+| Last Update     | {{LAST_UPDATE}}          |
 | Open questions  | {{OPEN_QUESTIONS_COUNT}} |
 
 ## Integration Overview
+
+| Field          | Value                    |
+| -------------- | ------------------------ |
+| Status         | {{INTEGRATION_STATUS}}   |
+| Purpose        | {{INTEGRATION_PURPOSE}}  |
+| Source         | {{SOURCE_SYSTEM}}        |
+| Destination    | {{DESTINATION_SYSTEM}}   |
+| Data object    | {{DATA_OBJECT}}          |
+| Trigger        | {{INTEGRATION_TRIGGER}}  |
+| Pattern        | {{INTEGRATION_PATTERN}}  |
+| Open questions | {{OPEN_QUESTIONS_COUNT}} |
 
 Describe the integration purpose, source systems, target systems, and business process.
 
