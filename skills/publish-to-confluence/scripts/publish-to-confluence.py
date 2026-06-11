@@ -11,6 +11,7 @@ import json
 import mimetypes
 import os
 import re
+import subprocess
 import sys
 import urllib.error
 import urllib.parse
@@ -21,6 +22,7 @@ from typing import Any
 
 API_PREFIX = "/rest/api"
 LOCAL_IMAGE_EXTENSIONS = {".apng", ".avif", ".gif", ".jpg", ".jpeg", ".png", ".svg", ".webp"}
+LOCAL_DIAGRAM_EXTENSIONS = {".drawio", ".svg"}
 CONFLUENCE_ENV_KEYS = (
     "CONFLUENCE_BASE_URL",
     "CONFLUENCE_EMAIL",
@@ -485,6 +487,55 @@ def rewrite_markdown_images_to_confluence_in_line(line: str, source_dir: Path) -
     return image_pattern.sub(replace_image, line)
 
 
+def collect_local_markdown_diagram_links(markdown_text: str, source_path: Path) -> list[Path]:
+    source_dir = source_path.resolve().parent
+    diagrams: list[Path] = []
+    seen: set[Path] = set()
+    in_code = False
+
+    for line in markdown_text.splitlines():
+        if line.strip().startswith("```"):
+            in_code = not in_code
+            continue
+        if in_code:
+            continue
+        for match in re.finditer(r"(?<!!)\[[^\]]+\]\(([^)]+)\)", line):
+            target = markdown_link_path(match.group(1).strip())
+            if not target or not target.path:
+                continue
+            if Path(target.path).suffix.lower() not in LOCAL_DIAGRAM_EXTENSIONS:
+                continue
+            diagram_path = (source_dir / urllib.parse.unquote(target.path)).resolve()
+            if diagram_path in seen or not diagram_path.exists():
+                continue
+            seen.add(diagram_path)
+            diagrams.append(diagram_path)
+    return diagrams
+
+
+def collect_publish_git_paths(raw: str, source_path: Path, content_format: str) -> list[Path]:
+    paths: list[Path] = [source_path.resolve()]
+    seen = set(paths)
+    if should_process_markdown_images(source_path, content_format):
+        prepared = prepare_markdown_for_publish(raw)
+        for path in collect_local_markdown_images(prepared, source_path):
+            if path not in seen:
+                seen.add(path)
+                paths.append(path)
+            if path.suffix.lower() == ".svg":
+                drawio_path = path.with_suffix(".drawio")
+                if drawio_path.exists():
+                    resolved_drawio = drawio_path.resolve()
+                    if resolved_drawio not in seen:
+                        seen.add(resolved_drawio)
+                        paths.append(resolved_drawio)
+        for path in collect_local_markdown_diagram_links(prepared, source_path):
+            if path not in seen:
+                seen.add(path)
+                paths.append(path)
+    return paths
+
+
 def markdown_link_path(destination: str) -> urllib.parse.ParseResult | None:
     if not destination:
         return None
@@ -891,6 +942,108 @@ def prompt_for_confluence_link() -> str:
         print("Enter a Confluence page URL containing a page ID.")
 
 
+def git_repo_root(start: Path) -> Path | None:
+    result = subprocess.run(
+        ["git", "rev-parse", "--show-toplevel"],
+        cwd=start,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if result.returncode != 0:
+        return None
+    root = result.stdout.strip()
+    return Path(root) if root else None
+
+
+def git_relative_paths(repo_root: Path, paths: list[Path]) -> list[str]:
+    relative_paths: list[str] = []
+    seen: set[str] = set()
+    for path in paths:
+        try:
+            relative = path.resolve().relative_to(repo_root).as_posix()
+        except ValueError:
+            continue
+        if relative not in seen:
+            seen.add(relative)
+            relative_paths.append(relative)
+    return relative_paths
+
+
+def git_status_lines(repo_root: Path, relative_paths: list[str]) -> list[str]:
+    if not relative_paths:
+        return []
+    result = subprocess.run(
+        ["git", "status", "--porcelain", "--untracked-files=normal", "--", *relative_paths],
+        cwd=repo_root,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if result.returncode != 0:
+        raise SystemExit(result.stderr.strip() or "Could not check Git status before publishing.")
+    return [line for line in result.stdout.splitlines() if line.strip()]
+
+
+def prompt_and_maybe_commit_publish_changes(repo_root: Path, relative_paths: list[str], status_lines: list[str]) -> None:
+    if not status_lines:
+        return
+    if not sys.stdin.isatty():
+        raise SystemExit(
+            "Open Git changes were found in the document or linked diagrams. "
+            "Run interactively to choose whether to commit them, or pass --skip-git-check."
+        )
+
+    print("Open Git changes were found in the document or linked diagrams:")
+    for line in status_lines:
+        print(f"  {line}")
+
+    choice = input("Commit these files before publishing? [y/N]: ").strip().lower()
+    if choice not in {"y", "yes"}:
+        print("Skipping Git commit before publishing.")
+        return
+
+    message = ""
+    while not message:
+        message = input("Git commit message: ").strip()
+        if not message:
+            print("Enter a non-empty commit message.")
+
+    add_result = subprocess.run(
+        ["git", "add", "--", *relative_paths],
+        cwd=repo_root,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if add_result.returncode != 0:
+        raise SystemExit(add_result.stderr.strip() or "Could not stage files before publishing.")
+
+    commit_result = subprocess.run(
+        ["git", "commit", "-m", message, "--", *relative_paths],
+        cwd=repo_root,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if commit_result.returncode != 0:
+        detail = commit_result.stderr.strip() or commit_result.stdout.strip()
+        raise SystemExit(detail or "Could not commit files before publishing.")
+    print(commit_result.stdout.strip())
+
+
+def check_publish_git_changes(raw: str, source_path: Path, content_format: str, skip_git_check: bool) -> None:
+    if skip_git_check:
+        return
+    repo_root = git_repo_root(source_path.resolve().parent)
+    if repo_root is None:
+        return
+    paths = collect_publish_git_paths(raw, source_path, content_format)
+    relative_paths = git_relative_paths(repo_root, paths)
+    status_lines = git_status_lines(repo_root, relative_paths)
+    prompt_and_maybe_commit_publish_changes(repo_root, relative_paths, status_lines)
+
+
 def page_url(base_url: str, response: dict[str, Any]) -> str:
     links = response.get("_links", {})
     webui = links.get("webui")
@@ -926,6 +1079,11 @@ def parse_args() -> argparse.Namespace:
         help="How to interpret the source file. Defaults to auto.",
     )
     parser.add_argument("--dry-run", action="store_true", help="Print intended action without writing.")
+    parser.add_argument(
+        "--skip-git-check",
+        action="store_true",
+        help="Skip the pre-publish Git change check for the source document and linked diagrams.",
+    )
     return parser.parse_args()
 
 
@@ -948,7 +1106,11 @@ def main() -> int:
             page_id = extract_page_id(confluence_link)
             if not page_id:
                 raise SystemExit("Could not extract a page ID from the provided Confluence Link.")
+            raw = update_confluence_link(raw, confluence_link)
+            args.source.write_text(raw, encoding="utf-8")
 
+    if not args.dry_run:
+        check_publish_git_changes(raw, args.source, args.content_format, args.skip_git_check)
     storage_html = read_content(raw, args.source, args.content_format)
     attachments = (
         collect_local_markdown_images(prepare_markdown_for_publish(raw), args.source)
@@ -985,15 +1147,6 @@ def main() -> int:
 
     try:
         if page_id:
-            if missing_page_action == "1":
-                raw = update_confluence_link(raw, confluence_link or "")
-                args.source.write_text(raw, encoding="utf-8")
-                storage_html = read_content(raw, args.source, args.content_format)
-                attachments = (
-                    collect_local_markdown_images(prepare_markdown_for_publish(raw), args.source)
-                    if should_process_markdown_images(args.source, args.content_format)
-                    else []
-                )
             page = get_page(base_url, auth_header, page_id)
             upload_attachments(base_url, auth_header, page_id, attachments)
             response = update_page(base_url, auth_header, page, storage_html)

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import importlib.util
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -79,6 +80,39 @@ class MarkdownTableConversionTests(unittest.TestCase):
         self.assertIn("<th>Option</th>", html)
         self.assertIn("<td>Lower risk</td>", html)
         self.assertNotIn("Confluence Link", html)
+
+    def test_collect_publish_git_paths_includes_source_svg_drawio_and_linked_drawio(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp_dir:
+            root = Path(tmp_dir)
+            source = root / "int-0001-order-from-commerce-to-erp.md"
+            svg = root / "diagrams" / "int-0001-order-from-commerce-to-erp.svg"
+            drawio = root / "diagrams" / "int-0001-order-from-commerce-to-erp.drawio"
+            linked_drawio = root / "diagrams" / "detail.drawio"
+            svg.parent.mkdir()
+            source.write_text("", encoding="utf-8")
+            svg.write_text("<svg />", encoding="utf-8")
+            drawio.write_text("<mxfile />", encoding="utf-8")
+            linked_drawio.write_text("<mxfile />", encoding="utf-8")
+            raw = "\n".join(
+                [
+                    "# Order Integration",
+                    "",
+                    "![Integration diagram](diagrams/int-0001-order-from-commerce-to-erp.svg)",
+                    "[Draw.io source](diagrams/detail.drawio)",
+                ]
+            )
+
+            paths = publish_to_confluence.collect_publish_git_paths(raw, source, "markdown")
+
+            self.assertEqual(
+                paths,
+                [
+                    source.resolve(),
+                    svg.resolve(),
+                    drawio.resolve(),
+                    linked_drawio.resolve(),
+                ],
+            )
 
 
 if __name__ == "__main__":
