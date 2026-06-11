@@ -80,13 +80,21 @@ Do not write real-company integration details into this public toolkit repositor
    - Run the create-drawio-diagram SVG sanitizer on the exported SVG so it uses `color-scheme: light`, has no `light-dark(...)` values, and includes a light background.
    - Embed the `.svg` directly in `## Integration Overview` using the relative path `diagrams/<same-basename>.svg`.
 10. Populate `## Relevant Links` with every confirmed related document, including capability overview, target architecture, solution architecture design, epic, ADR, or other integration designs. Use the linked document name as the Markdown link label.
-11. Update `<private-lab-root>/integrations/_integrations-overview.md` with the integration identifier, name, status, description, and count of open questions in the integration design.
-12. Capture unresolved facts as open questions rather than inventing payloads, endpoints, schemas, retry rules, owners, or service-level expectations.
-13. Link the integration design from the related target architecture, solution architecture design, capability overview, epic, or relevant links section when the related document exists and the user confirms the linkage. Whenever a link to the integration design is added to one of those documents, add the reciprocal link back to that document in the integration design's `## Relevant Links` section.
+11. Run the glossary compliance gate before finishing the integration design:
+   - Read `<private-lab-root>/GLOSSARY.md`.
+   - In the Glossary, find the `Jargon` section and its Avoid list.
+   - Search the generated integration design Markdown for each avoided word or phrase.
+   - Replace avoided wording with the preferred glossary term when one is available.
+   - If no preferred term is available, rewrite the sentence in plain language or add an open question rather than leaving the avoided wording in the design.
+   - Repeat the search after edits until no avoided terms remain, except inside explicit glossary references or quoted source text.
+12. Update `<private-lab-root>/integrations/_integrations-overview.md` with the integration identifier, name, status, description, and count of open questions in the integration design.
+13. Capture unresolved facts as open questions rather than inventing payloads, endpoints, schemas, retry rules, owners, or service-level expectations.
+14. Link the integration design from the related target architecture, solution architecture design, capability overview, epic, or relevant links section when the related document exists and the user confirms the linkage. Whenever a link to the integration design is added to one of those documents, add the reciprocal link back to that document in the integration design's `## Relevant Links` section.
 
 ## Writing Guidance
 
 - Prefer concrete interface details over generic integration principles.
+- Enforce the Glossary `Jargon` section's Avoid list. Do not finish an integration design while avoided words or phrases remain in generated prose, headings, tables, diagram labels, or connector labels unless they are quoted source text or explicit glossary references.
 - Keep the top metadata table limited to `Confluence Link`, `Last Update`, and `Open questions`.
 - Keep the `## Integration Overview` fact table short and factual. Use `TBD` for unknown fields, and mirror unresolved items in `## Open Questions`.
 - Identify producer, consumer, owner, protocol, contract, trigger, frequency, payload, and versioning.
