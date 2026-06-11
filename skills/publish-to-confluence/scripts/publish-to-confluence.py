@@ -589,7 +589,75 @@ def table_cells(line: str) -> list[str]:
     stripped = line.strip()
     if not stripped.startswith("|"):
         return []
-    return [cell.strip() for cell in stripped.strip("|").split("|")]
+    if stripped.endswith("|"):
+        stripped = stripped[:-1]
+    if stripped.startswith("|"):
+        stripped = stripped[1:]
+
+    cells: list[str] = []
+    cell: list[str] = []
+    escaped = False
+    for char in stripped:
+        if escaped:
+            cell.append(char)
+            escaped = False
+            continue
+        if char == "\\":
+            escaped = True
+            continue
+        if char == "|":
+            cells.append("".join(cell).strip())
+            cell.clear()
+            continue
+        cell.append(char)
+    if escaped:
+        cell.append("\\")
+    cells.append("".join(cell).strip())
+    return cells
+
+
+def is_markdown_table_separator(line: str) -> bool:
+    cells = table_cells(line)
+    return bool(cells) and all(re.fullmatch(r":?-{3,}:?", cell.strip()) for cell in cells)
+
+
+def is_markdown_table_start(lines: list[str], index: int) -> bool:
+    if index + 1 >= len(lines):
+        return False
+    header = table_cells(lines[index])
+    separator = table_cells(lines[index + 1])
+    return bool(header) and len(separator) >= len(header) and is_markdown_table_separator(lines[index + 1])
+
+
+def simple_markdown_table_to_html(lines: list[str], start: int) -> tuple[str, int]:
+    header = table_cells(lines[start])
+    column_count = len(header)
+    body_rows: list[list[str]] = []
+    index = start + 2
+
+    while index < len(lines):
+        stripped = lines[index].strip()
+        if not stripped or not stripped.startswith("|"):
+            break
+        cells = table_cells(lines[index])
+        if not cells:
+            break
+        normalized = cells[:column_count] + [""] * max(0, column_count - len(cells))
+        body_rows.append(normalized)
+        index += 1
+
+    output = ["<table>", "<thead>", "<tr>"]
+    output.extend(f"<th>{inline_markdown(cell)}</th>" for cell in header)
+    output.extend(["</tr>", "</thead>"])
+    if body_rows:
+        output.append("<tbody>")
+        for row in body_rows:
+            output.append("<tr>")
+            output.extend(f"<td>{inline_markdown(cell)}</td>" for cell in row)
+            output.append("</tr>")
+        output.append("</tbody>")
+    output.append("</table>")
+    return "\n".join(output), index
 
 
 def simple_markdown_to_html(markdown_text: str) -> str:
@@ -615,7 +683,9 @@ def simple_markdown_to_html(markdown_text: str) -> str:
             output.append("</ol>")
             in_ol = False
 
-    for line in lines:
+    index = 0
+    while index < len(lines):
+        line = lines[index]
         stripped = line.strip()
         if stripped.startswith("```"):
             if in_code:
@@ -626,19 +696,30 @@ def simple_markdown_to_html(markdown_text: str) -> str:
                 flush_paragraph()
                 close_lists()
                 in_code = True
+            index += 1
             continue
         if in_code:
             code_lines.append(line)
+            index += 1
             continue
         if not stripped:
             flush_paragraph()
             close_lists()
+            index += 1
             continue
 
         if stripped.startswith("<ac:image") and stripped.endswith("</ac:image>"):
             flush_paragraph()
             close_lists()
             output.append(stripped)
+            index += 1
+            continue
+
+        if is_markdown_table_start(lines, index):
+            flush_paragraph()
+            close_lists()
+            table_html, index = simple_markdown_table_to_html(lines, index)
+            output.append(table_html)
             continue
 
         heading = re.match(r"^(#{1,6})\s+(.+)$", stripped)
@@ -647,6 +728,7 @@ def simple_markdown_to_html(markdown_text: str) -> str:
             close_lists()
             level = len(heading.group(1))
             output.append(f"<h{level}>{inline_markdown(heading.group(2))}</h{level}>")
+            index += 1
             continue
 
         unordered = re.match(r"^[-*]\s+(.+)$", stripped)
@@ -659,6 +741,7 @@ def simple_markdown_to_html(markdown_text: str) -> str:
                 output.append("<ul>")
                 in_ul = True
             output.append(f"<li>{inline_markdown(unordered.group(1))}</li>")
+            index += 1
             continue
 
         ordered = re.match(r"^\d+[.]\s+(.+)$", stripped)
@@ -671,9 +754,11 @@ def simple_markdown_to_html(markdown_text: str) -> str:
                 output.append("<ol>")
                 in_ol = True
             output.append(f"<li>{inline_markdown(ordered.group(1))}</li>")
+            index += 1
             continue
 
         paragraph.append(stripped)
+        index += 1
 
     flush_paragraph()
     close_lists()
