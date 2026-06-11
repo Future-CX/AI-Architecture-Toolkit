@@ -33,7 +33,16 @@ Synchronous API | Event-driven | Batch | File transfer | Messaging | Orchestrati
 
 ## Contract
 
-Document endpoints, examples payloads, schemas, topics, queues, protocols, and versioning.
+Document endpoints, example payloads, schemas, topics, queues, protocols, and versioning.
+
+Place sample API payloads in fenced `javascript` code blocks so comments can explain important fields:
+
+```javascript
+{
+  // Explain business meaning, ownership, or mapping rules where useful.
+  "exampleField": "example value"
+}
+```
 
 ## Integration Qualities
 

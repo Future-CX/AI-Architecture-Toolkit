@@ -98,6 +98,7 @@ Do not write real-company integration details into this public toolkit repositor
 - Keep the top metadata table limited to `Confluence Link`, `Last Update`, and `Open questions`.
 - Keep the `## Integration Overview` fact table short and factual. Use `TBD` for unknown fields, and mirror unresolved items in `## Open Questions`.
 - Identify producer, consumer, owner, protocol, contract, trigger, frequency, payload, and versioning.
+- Place every sample API payload in a fenced code block with `javascript` as the language tag, even when the payload is JSON-shaped, because `javascript` blocks allow explanatory comments. Do not put sample payloads in Markdown tables, `json` code blocks, or untyped code blocks.
 - Call out source-of-truth and canonical data object ownership.
 - Document idempotency, retries, ordering, dead-letter behavior, replay, timeout, and compensation where relevant.
 - Include observability details: logs, metrics, traces, alerts, dashboards, correlation IDs, and support ownership.
