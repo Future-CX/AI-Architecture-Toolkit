@@ -4,9 +4,11 @@
 from __future__ import annotations
 
 import importlib.util
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 SCRIPT_PATH = Path(__file__).with_name("publish-to-confluence.py")
@@ -113,6 +115,37 @@ class MarkdownTableConversionTests(unittest.TestCase):
                     linked_drawio.resolve(),
                 ],
             )
+
+    def test_git_status_lines_scopes_to_publish_related_paths(self) -> None:
+        completed = subprocess.CompletedProcess(
+            args=["git"],
+            returncode=0,
+            stdout=" M docs/design.md\n?? diagrams/context.drawio\n",
+            stderr="",
+        )
+
+        with mock.patch.object(publish_to_confluence.subprocess, "run", return_value=completed) as run:
+            lines = publish_to_confluence.git_status_lines(
+                Path("/repo"),
+                ["docs/design.md", "diagrams/context.drawio"],
+            )
+
+        run.assert_called_once_with(
+            [
+                "git",
+                "status",
+                "--porcelain",
+                "--untracked-files=normal",
+                "--",
+                "docs/design.md",
+                "diagrams/context.drawio",
+            ],
+            cwd=Path("/repo"),
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertEqual(lines, [" M docs/design.md", "?? diagrams/context.drawio"])
 
 
 if __name__ == "__main__":

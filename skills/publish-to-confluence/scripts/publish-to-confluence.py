@@ -956,6 +956,22 @@ def git_repo_root(start: Path) -> Path | None:
     return Path(root) if root else None
 
 
+def git_status_lines(repo_root: Path, relative_paths: list[str] | None = None) -> list[str]:
+    command = ["git", "status", "--porcelain", "--untracked-files=normal"]
+    if relative_paths:
+        command.extend(["--", *relative_paths])
+    result = subprocess.run(
+        command,
+        cwd=repo_root,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if result.returncode != 0:
+        raise SystemExit(result.stderr.strip() or "Could not check Git status before publishing.")
+    return [line for line in result.stdout.splitlines() if line.strip()]
+
+
 def git_relative_paths(repo_root: Path, paths: list[Path]) -> list[str]:
     relative_paths: list[str] = []
     seen: set[str] = set()
@@ -970,37 +986,27 @@ def git_relative_paths(repo_root: Path, paths: list[Path]) -> list[str]:
     return relative_paths
 
 
-def git_status_lines(repo_root: Path, relative_paths: list[str]) -> list[str]:
-    if not relative_paths:
-        return []
-    result = subprocess.run(
-        ["git", "status", "--porcelain", "--untracked-files=normal", "--", *relative_paths],
-        cwd=repo_root,
-        text=True,
-        capture_output=True,
-        check=False,
-    )
-    if result.returncode != 0:
-        raise SystemExit(result.stderr.strip() or "Could not check Git status before publishing.")
-    return [line for line in result.stdout.splitlines() if line.strip()]
-
-
-def prompt_and_maybe_commit_publish_changes(repo_root: Path, relative_paths: list[str], status_lines: list[str]) -> None:
+def prompt_and_maybe_commit_publish_changes(
+    repo_root: Path,
+    relative_paths: list[str],
+    status_lines: list[str],
+    context: str,
+) -> None:
     if not status_lines:
         return
     if not sys.stdin.isatty():
         raise SystemExit(
-            "Open Git changes were found in the document or linked diagrams. "
+            f"Open Git changes were found in the source document or linked images and diagrams {context}. "
             "Run interactively to choose whether to commit them, or pass --skip-git-check."
         )
 
-    print("Open Git changes were found in the document or linked diagrams:")
+    print(f"Open Git changes were found in the source document or linked images and diagrams {context}:")
     for line in status_lines:
         print(f"  {line}")
 
-    choice = input("Commit these files before publishing? [y/N]: ").strip().lower()
+    choice = input("Commit these publish-related files now? [y/N]: ").strip().lower()
     if choice not in {"y", "yes"}:
-        print("Skipping Git commit before publishing.")
+        print("Skipping Git commit.")
         return
 
     message = ""
@@ -1041,7 +1047,19 @@ def check_publish_git_changes(raw: str, source_path: Path, content_format: str, 
     paths = collect_publish_git_paths(raw, source_path, content_format)
     relative_paths = git_relative_paths(repo_root, paths)
     status_lines = git_status_lines(repo_root, relative_paths)
-    prompt_and_maybe_commit_publish_changes(repo_root, relative_paths, status_lines)
+    prompt_and_maybe_commit_publish_changes(repo_root, relative_paths, status_lines, "before publishing")
+
+
+def check_post_publish_git_changes(raw: str, source_path: Path, content_format: str, skip_git_check: bool) -> None:
+    if skip_git_check:
+        return
+    repo_root = git_repo_root(source_path.resolve().parent)
+    if repo_root is None:
+        return
+    paths = collect_publish_git_paths(raw, source_path, content_format)
+    relative_paths = git_relative_paths(repo_root, paths)
+    status_lines = git_status_lines(repo_root, relative_paths)
+    prompt_and_maybe_commit_publish_changes(repo_root, relative_paths, status_lines, "after publishing")
 
 
 def page_url(base_url: str, response: dict[str, Any]) -> str:
@@ -1082,7 +1100,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--skip-git-check",
         action="store_true",
-        help="Skip the pre-publish Git change check for the source document and linked diagrams.",
+        help="Skip the pre- and post-publish Git change checks for the source document and linked images or diagrams.",
     )
     return parser.parse_args()
 
@@ -1177,6 +1195,7 @@ def main() -> int:
     except ConfluenceError as exc:
         print(str(exc), file=sys.stderr)
         return 1
+    check_post_publish_git_changes(raw, args.source, args.content_format, args.skip_git_check)
     return 0
 
 
