@@ -990,6 +990,8 @@ def git_repo_root(start: Path) -> Path | None:
 
 
 def git_status_lines(repo_root: Path, relative_paths: list[str] | None = None) -> list[str]:
+    if relative_paths == []:
+        return []
     command = ["git", "status", "--porcelain", "--untracked-files=normal"]
     if relative_paths:
         command.extend(["--", *relative_paths])
@@ -1079,7 +1081,11 @@ def check_publish_git_changes(raw: str, source_path: Path, content_format: str, 
         return
     paths = collect_publish_git_paths(raw, source_path, content_format)
     relative_paths = git_relative_paths(repo_root, paths)
+    if not relative_paths:
+        return
     status_lines = git_status_lines(repo_root, relative_paths)
+    if not status_lines:
+        return
     prompt_and_maybe_commit_publish_changes(repo_root, relative_paths, status_lines, "before publishing")
 
 
@@ -1091,7 +1097,11 @@ def check_post_publish_git_changes(raw: str, source_path: Path, content_format: 
         return
     paths = collect_publish_git_paths(raw, source_path, content_format)
     relative_paths = git_relative_paths(repo_root, paths)
+    if not relative_paths:
+        return
     status_lines = git_status_lines(repo_root, relative_paths)
+    if not status_lines:
+        return
     prompt_and_maybe_commit_publish_changes(repo_root, relative_paths, status_lines, "after publishing")
 
 

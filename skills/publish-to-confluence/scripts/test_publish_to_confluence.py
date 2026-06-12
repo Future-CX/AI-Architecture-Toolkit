@@ -177,6 +177,36 @@ class MarkdownTableConversionTests(unittest.TestCase):
         )
         self.assertEqual(lines, [" M docs/design.md", "?? diagrams/context.drawio"])
 
+    def test_git_status_lines_empty_scope_does_not_check_worktree(self) -> None:
+        with mock.patch.object(publish_to_confluence.subprocess, "run") as run:
+            lines = publish_to_confluence.git_status_lines(Path("/repo"), [])
+
+        run.assert_not_called()
+        self.assertEqual(lines, [])
+
+    def test_commit_prompt_is_skipped_when_git_status_is_empty(self) -> None:
+        with mock.patch.object(publish_to_confluence, "prompt_and_maybe_commit_publish_changes") as prompt:
+            with mock.patch.object(publish_to_confluence, "git_repo_root", return_value=Path("/repo")):
+                with mock.patch.object(
+                    publish_to_confluence,
+                    "collect_publish_git_paths",
+                    return_value=[Path("/repo/docs/design.md")],
+                ):
+                    with mock.patch.object(
+                        publish_to_confluence,
+                        "git_relative_paths",
+                        return_value=["docs/design.md"],
+                    ):
+                        with mock.patch.object(publish_to_confluence, "git_status_lines", return_value=[]):
+                            publish_to_confluence.check_publish_git_changes(
+                                "# Design",
+                                Path("/repo/docs/design.md"),
+                                "markdown",
+                                False,
+                            )
+
+        prompt.assert_not_called()
+
 
 if __name__ == "__main__":
     unittest.main()
