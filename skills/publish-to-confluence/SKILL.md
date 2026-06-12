@@ -89,6 +89,8 @@ When the script creates a new child page, it writes the returned Confluence link
 
 Markdown conversion uses the optional `markdown` package when installed. Without it, the script falls back to a small built-in converter for headings, paragraphs, pipe tables, lists, links, inline code, fenced code blocks, and bold text. For highly formatted documents, convert to storage-safe HTML before publishing.
 
+Fenced markdown code blocks are converted to Confluence `code` macros. A language hint such as ```` ```python ```` is carried into the macro language parameter when present.
+
 Use `--content-format html` to publish HTML directly, or `--content-format markdown` to force markdown conversion.
 
 ## Script

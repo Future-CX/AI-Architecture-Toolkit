@@ -83,6 +83,36 @@ class MarkdownTableConversionTests(unittest.TestCase):
         self.assertIn("<td>Lower risk</td>", html)
         self.assertNotIn("Confluence Link", html)
 
+    def test_markdown_code_block_renders_as_confluence_code_macro(self) -> None:
+        markdown = "\n".join(
+            [
+                "```",
+                "line <one>",
+                "line & two",
+                "```",
+            ]
+        )
+
+        html = publish_to_confluence.markdown_to_html(markdown)
+
+        self.assertIn('<ac:structured-macro ac:name="code">', html)
+        self.assertIn("<ac:plain-text-body><![CDATA[line <one>\nline & two]]></ac:plain-text-body>", html)
+        self.assertNotIn("<pre><code>", html)
+
+    def test_markdown_code_block_keeps_language_hint(self) -> None:
+        markdown = "\n".join(
+            [
+                "```python",
+                "print('hello')",
+                "```",
+            ]
+        )
+
+        html = publish_to_confluence.markdown_to_html(markdown)
+
+        self.assertIn('<ac:parameter ac:name="language">python</ac:parameter>', html)
+        self.assertIn("<ac:plain-text-body><![CDATA[print('hello')]]></ac:plain-text-body>", html)
+
     def test_collect_publish_git_paths_includes_source_svg_drawio_and_linked_drawio(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
             root = Path(tmp_dir)

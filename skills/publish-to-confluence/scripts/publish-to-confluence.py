@@ -365,13 +365,38 @@ def markdown_to_html(markdown_text: str) -> str:
     try:
         import markdown  # type: ignore
 
-        return markdown.markdown(
+        html_text = markdown.markdown(
             markdown_text,
             extensions=["extra", "sane_lists", "tables", "toc"],
             output_format="html5",
         )
     except ImportError:
-        return simple_markdown_to_html(markdown_text)
+        html_text = simple_markdown_to_html(markdown_text)
+    return convert_html_code_blocks_to_confluence_macros(html_text)
+
+
+def convert_html_code_blocks_to_confluence_macros(html_text: str) -> str:
+    code_block_pattern = re.compile(
+        r"<pre><code(?:\s+class=\"language-([^\"]+)\")?>(.*?)</code></pre>",
+        re.DOTALL,
+    )
+
+    def replace_code_block(match: re.Match[str]) -> str:
+        language = match.group(1)
+        code = html.unescape(match.group(2))
+        return confluence_code_macro(code, language)
+
+    return code_block_pattern.sub(replace_code_block, html_text)
+
+
+def confluence_code_macro(code: str, language: str | None = None) -> str:
+    cdata = code.replace("]]>", "]]]]><![CDATA[>")
+    parts = ['<ac:structured-macro ac:name="code">']
+    if language:
+        parts.append(f'<ac:parameter ac:name="language">{html.escape(language)}</ac:parameter>')
+    parts.append(f"<ac:plain-text-body><![CDATA[{cdata}]]></ac:plain-text-body>")
+    parts.append("</ac:structured-macro>")
+    return "".join(parts)
 
 
 def rewrite_markdown_file_links(markdown_text: str, source_path: Path) -> str:
@@ -719,6 +744,11 @@ def simple_markdown_to_html(markdown_text: str) -> str:
     in_ol = False
     in_code = False
     code_lines: list[str] = []
+    code_language: str | None = None
+
+    def code_block_html() -> str:
+        class_attribute = f' class="language-{html.escape(code_language)}"' if code_language else ""
+        return f"<pre><code{class_attribute}>{html.escape(chr(10).join(code_lines))}</code></pre>"
 
     def flush_paragraph() -> None:
         if paragraph:
@@ -740,12 +770,15 @@ def simple_markdown_to_html(markdown_text: str) -> str:
         stripped = line.strip()
         if stripped.startswith("```"):
             if in_code:
-                output.append(f"<pre><code>{html.escape(chr(10).join(code_lines))}</code></pre>")
+                output.append(code_block_html())
                 code_lines.clear()
+                code_language = None
                 in_code = False
             else:
                 flush_paragraph()
                 close_lists()
+                language_hint = stripped[3:].strip()
+                code_language = language_hint.split()[0] if language_hint else None
                 in_code = True
             index += 1
             continue
@@ -814,7 +847,7 @@ def simple_markdown_to_html(markdown_text: str) -> str:
     flush_paragraph()
     close_lists()
     if in_code:
-        output.append(f"<pre><code>{html.escape(chr(10).join(code_lines))}</code></pre>")
+        output.append(code_block_html())
     return "\n".join(output)
 
 
