@@ -59,6 +59,8 @@ When using `templates/capability-overview.drawio`, preserve the template topolog
 - Do not stack every actor, system, platform, and dependency in one vertical column.
 - Do not convert the target capability into a system dependency. Keep it visually distinct.
 - Route actor connectors from the right side of actor nodes to the left side of the target capability, data-provider connectors from bottom nodes into the bottom of the target capability, consumer connectors from the top of the target capability to top nodes, and external dependency connectors from the right side of the target capability.
+- Use orthogonal connectors for capability context diagrams. Do not use diagonal straight-line connectors when an orthogonal route can keep labels and arrowheads clearer.
+- Leave generous vertical space between the top consumer row, the target capability, and the bottom data-provider row so connector labels do not sit on top of nodes or each other.
 - When there are multiple nodes in one zone, stagger their connector lanes so labels and arrowheads do not overlap. Use explicit `mxPoint` waypoints where automatic routing creates overlap.
 - If a zone has many items, widen the canvas and spread nodes across the zone before grouping. Group only when the source content does not provide enough detail to keep the nodes meaningful or the diagram would become unreadable even after widening.
 - If the source content does not identify a relationship direction, keep the node out of the diagram and record the gap as an assumption or open question in the document.

@@ -14,6 +14,12 @@ from pathlib import Path
 SKILL_DIR = Path(__file__).resolve().parents[1]
 DRAWIO_TEMPLATE = SKILL_DIR / "templates" / "capability-overview.drawio"
 DEFAULT_BASENAME = "capability-overview"
+TOP_NODE_Y = 105
+CAPABILITY_Y = 320
+ACTOR_START_Y = 255
+EXTERNAL_Y = 330
+BOTTOM_HEADER_Y = 575
+BOTTOM_NODE_Y = 585
 
 ACTOR_STYLE = "rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#fff3c4;strokeColor=#b7791f;fontColor=#17201d;fontStyle=1;strokeWidth=2;"
 CAPABILITY_STYLE = "rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;fontSize=16;strokeWidth=2;"
@@ -202,7 +208,7 @@ def write_capability_drawio(
     outcome_items = diagram_items(outcomes, "Outcome to confirm")
     max_items = max(len(actor_items), len(input_items), len(outcome_items))
     page_width = max(1169, 360 + max(len(input_items), len(outcome_items)) * 245)
-    page_height = max(827, 570 + max_items * 100)
+    page_height = max(950, 700 + max_items * 100)
     graph_model.set("pageWidth", str(page_width))
     graph_model.set("pageHeight", str(page_height))
 
@@ -232,7 +238,7 @@ def write_capability_drawio(
             geometry = cell.find("mxGeometry")
             if geometry is not None:
                 geometry.set("x", str((page_width - 265) // 2))
-                geometry.set("y", "250")
+                geometry.set("y", str(CAPABILITY_Y))
                 geometry.set("width", "265")
                 geometry.set("height", "120")
 
@@ -244,7 +250,7 @@ def write_capability_drawio(
 
     for index, stakeholder in enumerate(actor_items):
         node_id = f"actor-{index + 1}"
-        y = 185 + index * 105
+        y = ACTOR_START_Y + index * 105
         add_cell(root_cell, node_id, stakeholder, ACTOR_STYLE, actor_x, y, 190, 75)
         add_edge(root_cell, f"edge-{node_id}-capability", node_id, "capability", "triggers or uses")
 
@@ -252,14 +258,14 @@ def write_capability_drawio(
         node_id = f"input-{index + 1}"
         x = input_start_x + index * 245
         if provider.application:
-            add_cell(root_cell, f"{node_id}-app", provider.application, APP_HEADER_STYLE, x, 455, 210, 10)
-        add_cell(root_cell, node_id, provider.label, SYSTEM_STYLE, x, 465, 210, 75)
+            add_cell(root_cell, f"{node_id}-app", provider.application, APP_HEADER_STYLE, x, BOTTOM_HEADER_Y, 210, 10)
+        add_cell(root_cell, node_id, provider.label, SYSTEM_STYLE, x, BOTTOM_NODE_Y, 210, 75)
         add_edge(root_cell, f"edge-{node_id}-capability", node_id, "capability", "provides input")
 
     for index, outcome in enumerate(outcome_items):
         node_id = f"outcome-{index + 1}"
         x = outcome_start_x + index * 245
-        add_cell(root_cell, node_id, outcome, SYSTEM_STYLE, x, 105, 210, 75)
+        add_cell(root_cell, node_id, outcome, SYSTEM_STYLE, x, TOP_NODE_Y, 210, 75)
         add_edge(root_cell, f"edge-capability-{node_id}", "capability", node_id, "gets data")
 
     add_cell(
@@ -268,7 +274,7 @@ def write_capability_drawio(
         f"Constraints and risks<br>{diagram_list(constraints, 'To be confirmed', limit=3)}",
         EXTERNAL_STYLE,
         external_x,
-        260,
+        EXTERNAL_Y,
         220,
         100,
     )
@@ -341,8 +347,14 @@ def svg_app_header(x: int, y: int, width: int, label: str) -> str:
 def svg_connector(x1: int, y1: int, x2: int, y2: int, label: str) -> str:
     mid_x = (x1 + x2) // 2
     mid_y = (y1 + y2) // 2 - 8
+    if abs(x2 - x1) >= abs(y2 - y1):
+        points = [(x1, y1), (mid_x, y1), (mid_x, y2), (x2, y2)]
+    else:
+        route_y = (y1 + y2) // 2
+        points = [(x1, y1), (x1, route_y), (x2, route_y), (x2, y2)]
+    point_value = " ".join(f"{x},{y}" for x, y in points)
     return (
-        f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="#5d6964" stroke-width="2" '
+        f'<polyline points="{point_value}" fill="none" stroke="#5d6964" stroke-width="2" '
         'marker-end="url(#arrow)"/>'
         f'<rect x="{mid_x - 62}" y="{mid_y - 14}" width="124" height="20" fill="#fbfcfa"/>'
         f'<text x="{mid_x}" y="{mid_y}" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" '
@@ -365,9 +377,9 @@ def write_capability_svg(
     external_label = f"Constraints and risks<br>{diagram_list(constraints, 'To be confirmed', limit=2)}"
     max_items = max(len(actor_items), len(input_items), len(outcome_items))
     page_width = max(1169, 360 + max(len(input_items), len(outcome_items)) * 245)
-    page_height = max(827, 570 + max_items * 100)
+    page_height = max(950, 700 + max_items * 100)
     capability_x = (page_width - 265) // 2
-    capability_y = 250
+    capability_y = CAPABILITY_Y
     actor_x = 70
     input_start_x = max(360, capability_x - ((len(input_items) * 245 - 25) // 2))
     outcome_start_x = max(360, capability_x - ((len(outcome_items) * 245 - 25) // 2))
@@ -376,7 +388,7 @@ def write_capability_svg(
     actor_nodes = []
     actor_edges = []
     for index, stakeholder in enumerate(actor_items):
-        y = 185 + index * 105
+        y = ACTOR_START_Y + index * 105
         actor_nodes.append(svg_box(actor_x, y, 190, 75, "#fff3c4", "#b7791f", stakeholder, bold=True, wrap_width=20))
         actor_edges.append(svg_connector(actor_x + 190, y + 38, capability_x, capability_y + 60, "triggers or uses"))
 
@@ -385,16 +397,16 @@ def write_capability_svg(
     for index, provider in enumerate(input_items):
         x = input_start_x + index * 245
         if provider.application:
-            input_nodes.append(svg_app_header(x, 455, 210, provider.application))
-        input_nodes.append(svg_box(x, 465, 210, 75, "#dae8fc", "#315f8f", provider.label, wrap_width=22))
-        input_edges.append(svg_connector(x + 105, 465, capability_x + 132, capability_y + 120, "provides input"))
+            input_nodes.append(svg_app_header(x, BOTTOM_HEADER_Y, 210, provider.application))
+        input_nodes.append(svg_box(x, BOTTOM_NODE_Y, 210, 75, "#dae8fc", "#315f8f", provider.label, wrap_width=22))
+        input_edges.append(svg_connector(x + 105, BOTTOM_NODE_Y, capability_x + 132, capability_y + 120, "provides input"))
 
     outcome_nodes = []
     outcome_edges = []
     for index, outcome in enumerate(outcome_items):
         x = outcome_start_x + index * 245
-        outcome_nodes.append(svg_box(x, 105, 210, 75, "#dae8fc", "#315f8f", outcome, wrap_width=22))
-        outcome_edges.append(svg_connector(capability_x + 132, capability_y, x + 105, 180, "gets data"))
+        outcome_nodes.append(svg_box(x, TOP_NODE_Y, 210, 75, "#dae8fc", "#315f8f", outcome, wrap_width=22))
+        outcome_edges.append(svg_connector(capability_x + 132, capability_y, x + 105, TOP_NODE_Y + 75, "gets data"))
 
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{page_width}" height="{page_height}" viewBox="0 0 {page_width} {page_height}" style="color-scheme: light; background: #fbfcfa;">
 <defs>
@@ -408,11 +420,11 @@ def write_capability_svg(
 {svg_box(capability_x, capability_y, 265, 120, "#d9eadf", "#0f766e", target_label, font_size=16, bold=True)}
 {"".join(input_nodes)}
 {"".join(outcome_nodes)}
-{svg_box(external_x, 260, 220, 100, "#f8cecc", "#a3433f", external_label, wrap_width=24)}
+{svg_box(external_x, EXTERNAL_Y, 220, 100, "#f8cecc", "#a3433f", external_label, wrap_width=24)}
 {"".join(actor_edges)}
 {"".join(input_edges)}
 {"".join(outcome_edges)}
-{svg_connector(capability_x + 265, capability_y + 60, external_x, 310, "depends on")}
+{svg_connector(capability_x + 265, capability_y + 60, external_x, EXTERNAL_Y + 50, "depends on")}
 </svg>
 '''
     target.write_text(svg, encoding="utf-8")
