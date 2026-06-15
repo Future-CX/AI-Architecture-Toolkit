@@ -4,8 +4,10 @@
 from __future__ import annotations
 
 import argparse
+import re
 import textwrap
 import xml.etree.ElementTree as ET
+from dataclasses import dataclass
 from pathlib import Path
 
 
@@ -19,18 +21,106 @@ SYSTEM_STYLE = "rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#dae8fc;st
 EXTERNAL_STYLE = "rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#f8cecc;strokeColor=#a3433f;fontColor=#17201d;strokeWidth=2;"
 APP_HEADER_STYLE = "rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;spacing=0;strokeWidth=2;"
 CONNECTOR_STYLE = "edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;"
+ACTOR_GROUP_HEADINGS = {
+    "actors",
+    "actors or channels",
+    "stakeholder",
+    "stakeholders",
+    "stakeholders and users",
+    "users",
+    "users and stakeholders",
+}
+INPUT_PROVIDER_HEADINGS = {
+    "data",
+    "data object",
+    "data objects",
+    "data provider",
+    "data providers",
+    "input",
+    "input provider",
+    "input providers",
+    "inputs",
+    "main data object",
+    "main data objects",
+    "source",
+    "source system",
+    "source systems",
+    "systems",
+    "systems that deliver data",
+}
+
+
+@dataclass(frozen=True)
+class DataProviderNode:
+    application: str | None
+    label: str
+
+
+def split_label_items(value: str) -> list[str]:
+    normalized = value.replace("<br>", "\n").replace("<br/>", "\n").replace("<br />", "\n")
+    parts = re.split(r"[\n;]+", normalized)
+    cleaned = []
+    for part in parts:
+        item = re.sub(r"^\s*[-*]\s+", "", part).strip().rstrip(".")
+        if item:
+            cleaned.append(item)
+    return cleaned
+
+
+def capability_label(value: str) -> str:
+    items = split_label_items(value)
+    return items[0] if items else value.strip()
 
 
 def diagram_list(items: list[str], fallback: str, limit: int = 3) -> str:
-    cleaned = [item.strip().rstrip(".") for item in items if item.strip()]
+    cleaned = [item for value in items for item in split_label_items(value)]
     if not cleaned:
         return fallback
     return "<br>".join(cleaned[:limit])
 
 
-def diagram_items(items: list[str], fallback: str) -> list[str]:
-    cleaned = [item.strip().rstrip(".") for item in items if item.strip()]
+def diagram_items(items: list[str], fallback: str, ignored_headings: set[str] | None = None) -> list[str]:
+    ignored = ignored_headings or set()
+    cleaned = []
+    for value in items:
+        for item in split_label_items(value):
+            if item.lower() not in ignored:
+                cleaned.append(item)
     return cleaned if cleaned else [fallback]
+
+
+def split_inline_provider(value: str) -> tuple[str, str] | None:
+    for separator in (" -> ", "=>", " | ", ": "):
+        if separator in value:
+            application, label = value.split(separator, 1)
+            application = application.strip()
+            label = label.strip()
+            if application and label:
+                return application, label
+    return None
+
+
+def data_provider_nodes(items: list[str], fallback: str) -> list[DataProviderNode]:
+    nodes: list[DataProviderNode] = []
+    for value in items:
+        parts = [
+            item
+            for item in split_label_items(value)
+            if item.lower() not in INPUT_PROVIDER_HEADINGS
+        ]
+        if not parts:
+            continue
+        if len(parts) == 1:
+            inline = split_inline_provider(parts[0])
+            if inline:
+                nodes.append(DataProviderNode(application=inline[0], label=inline[1]))
+            else:
+                nodes.append(DataProviderNode(application=parts[0], label="Data provider"))
+            continue
+        application = parts[0]
+        for label in parts[1:]:
+            nodes.append(DataProviderNode(application=application, label=label))
+    return nodes if nodes else [DataProviderNode(application=None, label=fallback)]
 
 
 def remove_cells(root: ET.Element, cell_ids: set[str]) -> None:
@@ -106,8 +196,9 @@ def write_capability_drawio(
     if graph_model is None or root_cell is None:
         raise ValueError(f"Invalid Draw.io template: {DRAWIO_TEMPLATE}")
 
-    actor_items = diagram_items(stakeholders, "Stakeholders to confirm")
-    input_items = diagram_items(input_providers, "Input provider to confirm")
+    target_label = capability_label(capability_name)
+    actor_items = diagram_items(stakeholders, "Stakeholders to confirm", ACTOR_GROUP_HEADINGS)
+    input_items = data_provider_nodes(input_providers, "Data provider to confirm")
     outcome_items = diagram_items(outcomes, "Outcome to confirm")
     max_items = max(len(actor_items), len(input_items), len(outcome_items))
     page_width = max(1169, 360 + max(len(input_items), len(outcome_items)) * 245)
@@ -134,9 +225,9 @@ def write_capability_drawio(
     )
     for cell in root.iter("mxCell"):
         if cell.attrib.get("id") == "title":
-            cell.set("value", f"{capability_name} Context")
+            cell.set("value", f"{target_label} Context")
         if cell.attrib.get("id") == "capability":
-            cell.set("value", capability_name)
+            cell.set("value", target_label)
             cell.set("style", CAPABILITY_STYLE)
             geometry = cell.find("mxGeometry")
             if geometry is not None:
@@ -160,15 +251,16 @@ def write_capability_drawio(
     for index, provider in enumerate(input_items):
         node_id = f"input-{index + 1}"
         x = input_start_x + index * 245
-        add_cell(root_cell, f"{node_id}-app", provider, APP_HEADER_STYLE, x, 105, 210, 10)
-        add_cell(root_cell, node_id, "Input provider", SYSTEM_STYLE, x, 115, 210, 75)
+        if provider.application:
+            add_cell(root_cell, f"{node_id}-app", provider.application, APP_HEADER_STYLE, x, 455, 210, 10)
+        add_cell(root_cell, node_id, provider.label, SYSTEM_STYLE, x, 465, 210, 75)
         add_edge(root_cell, f"edge-{node_id}-capability", node_id, "capability", "provides input")
 
     for index, outcome in enumerate(outcome_items):
         node_id = f"outcome-{index + 1}"
         x = outcome_start_x + index * 245
-        add_cell(root_cell, node_id, outcome, SYSTEM_STYLE, x, 455, 210, 75)
-        add_edge(root_cell, f"edge-capability-{node_id}", "capability", node_id, "produces outcome")
+        add_cell(root_cell, node_id, outcome, SYSTEM_STYLE, x, 105, 210, 75)
+        add_edge(root_cell, f"edge-capability-{node_id}", "capability", node_id, "gets data")
 
     add_cell(
         root_cell,
@@ -266,8 +358,9 @@ def write_capability_svg(
     outcomes: list[str],
     constraints: list[str],
 ) -> None:
-    actor_items = diagram_items(stakeholders, "Stakeholders to confirm")
-    input_items = diagram_items(input_providers, "Input provider to confirm")
+    target_label = capability_label(capability_name)
+    actor_items = diagram_items(stakeholders, "Stakeholders to confirm", ACTOR_GROUP_HEADINGS)
+    input_items = data_provider_nodes(input_providers, "Data provider to confirm")
     outcome_items = diagram_items(outcomes, "Outcome to confirm")
     external_label = f"Constraints and risks<br>{diagram_list(constraints, 'To be confirmed', limit=2)}"
     max_items = max(len(actor_items), len(input_items), len(outcome_items))
@@ -291,16 +384,17 @@ def write_capability_svg(
     input_edges = []
     for index, provider in enumerate(input_items):
         x = input_start_x + index * 245
-        input_nodes.append(svg_app_header(x, 105, 210, provider))
-        input_nodes.append(svg_box(x, 115, 210, 75, "#dae8fc", "#315f8f", "Input provider", wrap_width=22))
-        input_edges.append(svg_connector(x + 105, 190, capability_x + 132, capability_y, "provides input"))
+        if provider.application:
+            input_nodes.append(svg_app_header(x, 455, 210, provider.application))
+        input_nodes.append(svg_box(x, 465, 210, 75, "#dae8fc", "#315f8f", provider.label, wrap_width=22))
+        input_edges.append(svg_connector(x + 105, 465, capability_x + 132, capability_y + 120, "provides input"))
 
     outcome_nodes = []
     outcome_edges = []
     for index, outcome in enumerate(outcome_items):
         x = outcome_start_x + index * 245
-        outcome_nodes.append(svg_box(x, 455, 210, 75, "#dae8fc", "#315f8f", outcome, wrap_width=22))
-        outcome_edges.append(svg_connector(capability_x + 132, capability_y + 120, x + 105, 455, "produces outcome"))
+        outcome_nodes.append(svg_box(x, 105, 210, 75, "#dae8fc", "#315f8f", outcome, wrap_width=22))
+        outcome_edges.append(svg_connector(capability_x + 132, capability_y, x + 105, 180, "gets data"))
 
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{page_width}" height="{page_height}" viewBox="0 0 {page_width} {page_height}" style="color-scheme: light; background: #fbfcfa;">
 <defs>
@@ -309,9 +403,9 @@ def write_capability_svg(
 </marker>
 </defs>
 <rect width="100%" height="100%" fill="#fbfcfa" pointer-events="none"/>
-<text x="60" y="70" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#17201d">{svg_text(capability_name)} Context</text>
+<text x="60" y="70" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#17201d">{svg_text(target_label)} Context</text>
 {"".join(actor_nodes)}
-{svg_box(capability_x, capability_y, 265, 120, "#d9eadf", "#0f766e", capability_name, font_size=16, bold=True)}
+{svg_box(capability_x, capability_y, 265, 120, "#d9eadf", "#0f766e", target_label, font_size=16, bold=True)}
 {"".join(input_nodes)}
 {"".join(outcome_nodes)}
 {svg_box(external_x, 260, 220, 100, "#f8cecc", "#a3433f", external_label, wrap_width=24)}

@@ -46,19 +46,19 @@ Do not introduce new colors unless the user explicitly asks for a palette change
 When using `templates/capability-overview.drawio`, preserve the template topology. The diagram is a context view, not an inventory list.
 
 - Place actors, teams, and channels in the left zone.
-- Place the target capability in the center as the primary green node.
-- Place upstream capabilities, source systems, triggers, and inputs above or upper-left of the target capability.
-- Place downstream capabilities, consuming systems, outcomes, and outputs below or lower-right of the target capability.
+- Place the target capability in the center as the primary green node. The target capability node label must be only the capability name, such as `CRM`; do not list features, workspaces, screens, data products, roles, baselines, or responsibilities inside the target capability node.
+- Place systems or capabilities that deliver data to the target capability below the target capability.
+- Place systems or capabilities that get data from the target capability above the target capability.
 - Place external dependencies, third parties, regulatory constraints, and vendor dependencies in the right zone.
 - Connect each node to the target capability with a concise relationship label.
 - Use light palette colors from `STYLE.md`: actors yellow, target capability green, upstream/downstream systems blue, and external dependencies red.
 - When a node is backed by a named application, show only the application name in a separate 10 px high header box attached to the top of that node. Use the Application name header style from `STYLE.md`, make the header as wide as the component, and put capability names, component names, dependencies, and responsibilities in the node body. If the application name is unknown, omit the header.
-- Show each confirmed stakeholder, user group, actor, or channel as a separate actor node. Do not collapse stakeholders and users into one list box.
-- Show each confirmed input provider, source system, upstream capability, trigger, or input component as a separate upstream node. When the application name is known, put that application name in the node's application header.
-- Show each confirmed produced outcome, downstream consumer, or related capability as a separate downstream node. Do not collapse produced outcomes into one list box.
+- Show each confirmed stakeholder, user group, actor, or channel as a separate actor node. Do not collapse stakeholders and users into one list box, and do not create a wrapper node titled `Stakeholders and users`.
+- Show components that provide data to the target capability as separate bottom nodes per main data object and/or contributing capability. When several data objects come from one application or source system, create one node per data object and repeat the application name in the node's application header. Do not collapse multiple main data objects into one provider box.
+- Show each confirmed produced outcome, downstream consumer, or related capability as a separate top consumer node. Do not collapse produced outcomes into one list box.
 - Do not stack every actor, system, platform, and dependency in one vertical column.
 - Do not convert the target capability into a system dependency. Keep it visually distinct.
-- Route actor connectors from the right side of actor nodes to the left side of the target capability, upstream connectors into the top of the target capability, downstream connectors out of the bottom, and external dependency connectors from the right side of the target capability.
+- Route actor connectors from the right side of actor nodes to the left side of the target capability, data-provider connectors from bottom nodes into the bottom of the target capability, consumer connectors from the top of the target capability to top nodes, and external dependency connectors from the right side of the target capability.
 - When there are multiple nodes in one zone, stagger their connector lanes so labels and arrowheads do not overlap. Use explicit `mxPoint` waypoints where automatic routing creates overlap.
 - If a zone has many items, widen the canvas and spread nodes across the zone before grouping. Group only when the source content does not provide enough detail to keep the nodes meaningful or the diagram would become unreadable even after widening.
 - If the source content does not identify a relationship direction, keep the node out of the diagram and record the gap as an assumption or open question in the document.
@@ -72,13 +72,15 @@ python3 skills/create-drawio-diagram/scripts/write-capability-context-diagram.py
   --output-dir capabilities/order-management \
   --stakeholder "Customer service" \
   --stakeholder "Operations" \
-  --input-provider "ERP" \
-  --input-provider "Commerce platform" \
+  --input-provider $'ERP\nCustomer order\nCustomer account' \
+  --input-provider "Commerce platform: Cart checkout event" \
   --outcome "Inventory Management" \
   --constraint "Order status is fragmented across systems."
 ```
 
 By default, the helper creates `capability-overview.drawio` and `capability-overview.svg` in the output directory. Use `--basename <name>` when a different same-basename pair is needed.
+
+For `--input-provider`, pass either a single application or source system name, an inline `Application: Data object` value, or a multiline block where the first line is the application/source system and each later line is a main data object or contributing capability. Multiline blocks generate one bottom node per later line.
 
 The helper also accepts compatibility aliases for upstream capability workflows:
 
