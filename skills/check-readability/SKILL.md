@@ -38,10 +38,23 @@ Provide:
 6. Jargon terms with plain-language alternatives.
 7. Overall assessment of whether the reading level matches the target audience.
 
+For the score and grade lines, use this format:
+
+- `Flesch Reading Ease: <score> <marker> [<textual description>; target 50-60]`
+- `Grade estimate: <number> <marker> [<textual description>]`
+
+Do not output `Grade estimate` as a bare number. Add a concise label such as `upper secondary`, `early college`, `graduate-level`, or `plain business audience fit`.
+
+Use colored status markers when the output format supports color, and always include the text label so the result still works in plain text:
+
+- `<span style="color: #15803d">[GREEN]</span>` for metrics that meet the target.
+- `<span style="color: #b45309">[AMBER]</span>` for metrics that are close to the target but need review.
+- `<span style="color: #b91c1c">[RED]</span>` for metrics that miss the target and need revision.
+
 ## Guidance
 
 - If the user provides a target audience, judge against that audience. Otherwise assume non-technical business stakeholders.
-- Always output the target audience and Flesch-Kincaid score, even when the score is estimated.
+- Always output the target audience, Flesch-Kincaid score, and grade estimate, even when the score is estimated.
 - Treat glossary `Jargon` terms as project-specific avoid terms. Flag them even when they might be common in the wider industry.
 - When a glossary `Jargon` entry includes a preferred alternative or explanation, use that wording in suggested rewrites.
 - Keep feedback practical and specific. Prefer rewritten examples over abstract advice.
