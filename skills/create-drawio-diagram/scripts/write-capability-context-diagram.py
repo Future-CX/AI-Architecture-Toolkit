@@ -20,6 +20,11 @@ ACTOR_START_Y = 255
 EXTERNAL_Y = 330
 BOTTOM_HEADER_Y = 575
 BOTTOM_NODE_Y = 585
+ACTOR_WIDTH = 190
+NODE_WIDTH = 210
+NODE_HEIGHT = 75
+CAPABILITY_WIDTH = 265
+CAPABILITY_HEIGHT = 120
 
 ACTOR_STYLE = "rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#fff3c4;strokeColor=#b7791f;fontColor=#17201d;fontStyle=1;strokeWidth=2;"
 CAPABILITY_STYLE = "rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;fontSize=16;strokeWidth=2;"
@@ -170,7 +175,20 @@ def add_cell(
     )
 
 
-def add_edge(root_cell: ET.Element, edge_id: str, source: str, target: str, label: str) -> None:
+def relative_port(position: int, start: int, size: int) -> float:
+    return min(1.0, max(0.0, (position - start) / size))
+
+
+def add_edge(
+    root_cell: ET.Element,
+    edge_id: str,
+    source: str,
+    target: str,
+    label: str,
+    *,
+    points: list[tuple[int, int]] | None = None,
+    style_suffix: str = "",
+) -> None:
     edge = ET.SubElement(
         root_cell,
         "mxCell",
@@ -179,12 +197,23 @@ def add_edge(root_cell: ET.Element, edge_id: str, source: str, target: str, labe
             "edge": "1",
             "parent": "1",
             "source": source,
-            "style": CONNECTOR_STYLE,
+            "style": CONNECTOR_STYLE + style_suffix,
             "target": target,
             "value": label,
         },
     )
-    ET.SubElement(edge, "mxGeometry", {"relative": "1", "as": "geometry"})
+    geometry = ET.SubElement(edge, "mxGeometry", {"relative": "1", "as": "geometry"})
+    if points:
+        array = ET.SubElement(geometry, "Array", {"as": "points"})
+        for x, y in points:
+            ET.SubElement(array, "mxPoint", {"x": str(x), "y": str(y)})
+
+
+def distributed_port(index: int, count: int, start: int, size: int, padding: int = 34) -> int:
+    if count <= 1:
+        return start + size // 2
+    usable = size - padding * 2
+    return start + padding + round((usable * index) / (count - 1))
 
 
 def write_capability_drawio(
@@ -239,34 +268,69 @@ def write_capability_drawio(
             if geometry is not None:
                 geometry.set("x", str((page_width - 265) // 2))
                 geometry.set("y", str(CAPABILITY_Y))
-                geometry.set("width", "265")
-                geometry.set("height", "120")
+                geometry.set("width", str(CAPABILITY_WIDTH))
+                geometry.set("height", str(CAPABILITY_HEIGHT))
 
-    capability_x = (page_width - 265) // 2
+    capability_x = (page_width - CAPABILITY_WIDTH) // 2
+    capability_center_y = CAPABILITY_Y + CAPABILITY_HEIGHT // 2
     actor_x = 70
     input_start_x = max(360, capability_x - ((len(input_items) * 245 - 25) // 2))
     outcome_start_x = max(360, capability_x - ((len(outcome_items) * 245 - 25) // 2))
     external_x = page_width - 290
+    actor_lane_x = capability_x - 70
+    input_bus_y = BOTTOM_NODE_Y - 55
+    outcome_bus_y = TOP_NODE_Y + NODE_HEIGHT + 55
 
     for index, stakeholder in enumerate(actor_items):
         node_id = f"actor-{index + 1}"
         y = ACTOR_START_Y + index * 105
-        add_cell(root_cell, node_id, stakeholder, ACTOR_STYLE, actor_x, y, 190, 75)
-        add_edge(root_cell, f"edge-{node_id}-capability", node_id, "capability", "triggers or uses")
+        actor_center_y = y + NODE_HEIGHT // 2
+        add_cell(root_cell, node_id, stakeholder, ACTOR_STYLE, actor_x, y, ACTOR_WIDTH, NODE_HEIGHT)
+        add_edge(
+            root_cell,
+            f"edge-{node_id}-capability",
+            node_id,
+            "capability",
+            "triggers or uses",
+            points=[(actor_lane_x, actor_center_y), (actor_lane_x, capability_center_y)],
+            style_suffix=f"exitX=1;exitY=0.5;entryX=0;entryY={relative_port(capability_center_y, CAPABILITY_Y, CAPABILITY_HEIGHT):.2f};",
+        )
 
     for index, provider in enumerate(input_items):
         node_id = f"input-{index + 1}"
         x = input_start_x + index * 245
+        source_x = x + NODE_WIDTH // 2
+        target_x = distributed_port(index, len(input_items), capability_x, CAPABILITY_WIDTH)
+        target_port = relative_port(target_x, capability_x, CAPABILITY_WIDTH)
         if provider.application:
-            add_cell(root_cell, f"{node_id}-app", provider.application, APP_HEADER_STYLE, x, BOTTOM_HEADER_Y, 210, 10)
-        add_cell(root_cell, node_id, provider.label, SYSTEM_STYLE, x, BOTTOM_NODE_Y, 210, 75)
-        add_edge(root_cell, f"edge-{node_id}-capability", node_id, "capability", "provides input")
+            add_cell(root_cell, f"{node_id}-app", provider.application, APP_HEADER_STYLE, x, BOTTOM_HEADER_Y, NODE_WIDTH, 10)
+        add_cell(root_cell, node_id, provider.label, SYSTEM_STYLE, x, BOTTOM_NODE_Y, NODE_WIDTH, NODE_HEIGHT)
+        add_edge(
+            root_cell,
+            f"edge-{node_id}-capability",
+            node_id,
+            "capability",
+            "provides input" if index == 0 else "",
+            points=[(source_x, input_bus_y), (target_x, input_bus_y)],
+            style_suffix=f"exitX=0.5;exitY=0;entryX={target_port:.2f};entryY=1;",
+        )
 
     for index, outcome in enumerate(outcome_items):
         node_id = f"outcome-{index + 1}"
         x = outcome_start_x + index * 245
-        add_cell(root_cell, node_id, outcome, SYSTEM_STYLE, x, TOP_NODE_Y, 210, 75)
-        add_edge(root_cell, f"edge-capability-{node_id}", "capability", node_id, "gets data")
+        source_x = distributed_port(index, len(outcome_items), capability_x, CAPABILITY_WIDTH)
+        source_port = relative_port(source_x, capability_x, CAPABILITY_WIDTH)
+        target_x = x + NODE_WIDTH // 2
+        add_cell(root_cell, node_id, outcome, SYSTEM_STYLE, x, TOP_NODE_Y, NODE_WIDTH, NODE_HEIGHT)
+        add_edge(
+            root_cell,
+            f"edge-capability-{node_id}",
+            "capability",
+            node_id,
+            "gets data" if index == 0 else "",
+            points=[(source_x, outcome_bus_y), (target_x, outcome_bus_y)],
+            style_suffix=f"exitX={source_port:.2f};exitY=0;entryX=0.5;entryY=1;",
+        )
 
     add_cell(
         root_cell,
@@ -278,7 +342,14 @@ def write_capability_drawio(
         220,
         100,
     )
-    add_edge(root_cell, "edge-capability-external", "capability", "external", "depends on")
+    add_edge(
+        root_cell,
+        "edge-capability-external",
+        "capability",
+        "external",
+        "depends on",
+        style_suffix="exitX=1;exitY=0.5;entryX=0;entryY=0.5;",
+    )
     tree.write(target, encoding="utf-8", xml_declaration=False)
 
 
@@ -344,20 +415,19 @@ def svg_app_header(x: int, y: int, width: int, label: str) -> str:
     )
 
 
-def svg_connector(x1: int, y1: int, x2: int, y2: int, label: str) -> str:
-    mid_x = (x1 + x2) // 2
-    mid_y = (y1 + y2) // 2 - 8
-    if abs(x2 - x1) >= abs(y2 - y1):
-        points = [(x1, y1), (mid_x, y1), (mid_x, y2), (x2, y2)]
-    else:
-        route_y = (y1 + y2) // 2
-        points = [(x1, y1), (x1, route_y), (x2, route_y), (x2, y2)]
+def svg_connector(points: list[tuple[int, int]], label: str = "", label_point: tuple[int, int] | None = None) -> str:
     point_value = " ".join(f"{x},{y}" for x, y in points)
-    return (
+    connector = (
         f'<polyline points="{point_value}" fill="none" stroke="#5d6964" stroke-width="2" '
         'marker-end="url(#arrow)"/>'
-        f'<rect x="{mid_x - 62}" y="{mid_y - 14}" width="124" height="20" fill="#fbfcfa"/>'
-        f'<text x="{mid_x}" y="{mid_y}" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" '
+    )
+    if not label:
+        return connector
+    label_x, label_y = label_point or points[len(points) // 2]
+    return (
+        connector
+        + f'<rect x="{label_x - 62}" y="{label_y - 14}" width="124" height="20" fill="#fbfcfa"/>'
+        + f'<text x="{label_x}" y="{label_y}" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" '
         f'font-size="12" fill="#5d6964">{svg_text(label)}</text>'
     )
 
@@ -378,35 +448,77 @@ def write_capability_svg(
     max_items = max(len(actor_items), len(input_items), len(outcome_items))
     page_width = max(1169, 360 + max(len(input_items), len(outcome_items)) * 245)
     page_height = max(950, 700 + max_items * 100)
-    capability_x = (page_width - 265) // 2
+    capability_x = (page_width - CAPABILITY_WIDTH) // 2
     capability_y = CAPABILITY_Y
     actor_x = 70
     input_start_x = max(360, capability_x - ((len(input_items) * 245 - 25) // 2))
     outcome_start_x = max(360, capability_x - ((len(outcome_items) * 245 - 25) // 2))
     external_x = page_width - 290
+    capability_center_y = capability_y + CAPABILITY_HEIGHT // 2
+    actor_lane_x = capability_x - 70
+    input_bus_y = BOTTOM_NODE_Y - 55
+    outcome_bus_y = TOP_NODE_Y + NODE_HEIGHT + 55
 
     actor_nodes = []
     actor_edges = []
     for index, stakeholder in enumerate(actor_items):
         y = ACTOR_START_Y + index * 105
-        actor_nodes.append(svg_box(actor_x, y, 190, 75, "#fff3c4", "#b7791f", stakeholder, bold=True, wrap_width=20))
-        actor_edges.append(svg_connector(actor_x + 190, y + 38, capability_x, capability_y + 60, "triggers or uses"))
+        actor_center_y = y + NODE_HEIGHT // 2
+        actor_nodes.append(svg_box(actor_x, y, ACTOR_WIDTH, NODE_HEIGHT, "#fff3c4", "#b7791f", stakeholder, bold=True, wrap_width=20))
+        actor_edges.append(
+            svg_connector(
+                [
+                    (actor_x + ACTOR_WIDTH, actor_center_y),
+                    (actor_lane_x, actor_center_y),
+                    (actor_lane_x, capability_center_y),
+                    (capability_x, capability_center_y),
+                ],
+                "triggers or uses",
+                (actor_lane_x - 18, actor_center_y - 10),
+            )
+        )
 
     input_nodes = []
     input_edges = []
     for index, provider in enumerate(input_items):
         x = input_start_x + index * 245
+        source_x = x + NODE_WIDTH // 2
+        target_x = distributed_port(index, len(input_items), capability_x, CAPABILITY_WIDTH)
         if provider.application:
-            input_nodes.append(svg_app_header(x, BOTTOM_HEADER_Y, 210, provider.application))
-        input_nodes.append(svg_box(x, BOTTOM_NODE_Y, 210, 75, "#dae8fc", "#315f8f", provider.label, wrap_width=22))
-        input_edges.append(svg_connector(x + 105, BOTTOM_NODE_Y, capability_x + 132, capability_y + 120, "provides input"))
+            input_nodes.append(svg_app_header(x, BOTTOM_HEADER_Y, NODE_WIDTH, provider.application))
+        input_nodes.append(svg_box(x, BOTTOM_NODE_Y, NODE_WIDTH, NODE_HEIGHT, "#dae8fc", "#315f8f", provider.label, wrap_width=22))
+        input_edges.append(
+            svg_connector(
+                [
+                    (source_x, BOTTOM_NODE_Y),
+                    (source_x, input_bus_y),
+                    (target_x, input_bus_y),
+                    (target_x, capability_y + CAPABILITY_HEIGHT),
+                ],
+                "provides input" if index == 0 else "",
+                ((source_x + target_x) // 2, input_bus_y - 10),
+            )
+        )
 
     outcome_nodes = []
     outcome_edges = []
     for index, outcome in enumerate(outcome_items):
         x = outcome_start_x + index * 245
-        outcome_nodes.append(svg_box(x, TOP_NODE_Y, 210, 75, "#dae8fc", "#315f8f", outcome, wrap_width=22))
-        outcome_edges.append(svg_connector(capability_x + 132, capability_y, x + 105, TOP_NODE_Y + 75, "gets data"))
+        source_x = distributed_port(index, len(outcome_items), capability_x, CAPABILITY_WIDTH)
+        target_x = x + NODE_WIDTH // 2
+        outcome_nodes.append(svg_box(x, TOP_NODE_Y, NODE_WIDTH, NODE_HEIGHT, "#dae8fc", "#315f8f", outcome, wrap_width=22))
+        outcome_edges.append(
+            svg_connector(
+                [
+                    (source_x, capability_y),
+                    (source_x, outcome_bus_y),
+                    (target_x, outcome_bus_y),
+                    (target_x, TOP_NODE_Y + NODE_HEIGHT),
+                ],
+                "gets data" if index == 0 else "",
+                ((source_x + target_x) // 2, outcome_bus_y - 10),
+            )
+        )
 
     svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{page_width}" height="{page_height}" viewBox="0 0 {page_width} {page_height}" style="color-scheme: light; background: #fbfcfa;">
 <defs>
@@ -417,14 +529,14 @@ def write_capability_svg(
 <rect width="100%" height="100%" fill="#fbfcfa" pointer-events="none"/>
 <text x="60" y="70" font-family="Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="#17201d">{svg_text(target_label)} Context</text>
 {"".join(actor_nodes)}
-{svg_box(capability_x, capability_y, 265, 120, "#d9eadf", "#0f766e", target_label, font_size=16, bold=True)}
+{svg_box(capability_x, capability_y, CAPABILITY_WIDTH, CAPABILITY_HEIGHT, "#d9eadf", "#0f766e", target_label, font_size=16, bold=True)}
 {"".join(input_nodes)}
 {"".join(outcome_nodes)}
 {svg_box(external_x, EXTERNAL_Y, 220, 100, "#f8cecc", "#a3433f", external_label, wrap_width=24)}
 {"".join(actor_edges)}
 {"".join(input_edges)}
 {"".join(outcome_edges)}
-{svg_connector(capability_x + 265, capability_y + 60, external_x, EXTERNAL_Y + 50, "depends on")}
+{svg_connector([(capability_x + CAPABILITY_WIDTH, capability_center_y), (external_x, capability_center_y)], "depends on", ((capability_x + CAPABILITY_WIDTH + external_x) // 2, capability_center_y - 10))}
 </svg>
 '''
     target.write_text(svg, encoding="utf-8")
