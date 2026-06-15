@@ -74,6 +74,15 @@ Run from the private lab root, this creates `capabilities/order-management/order
 7. Add or update the generated capability in `<workspace-root>/capabilities/_capability-list.md` with a relative link to `<slug>/<slug>.md`, description, and `last_updated` date.
 8. If the toolkit is mounted as `toolkit/` in a private lab repo, write the generated capability overview to the private lab root, not to `toolkit/capabilities/`.
 9. Keep company-confidential details out of the public toolkit repository; use a private company lab repo for real company content.
+10. Run the readability and glossary compliance gate before finishing:
+
+- Read `<private-lab-root>/GLOSSARY.md`.
+- In the Glossary, find the `Jargon` section and its Avoid list.
+- Search the generated capability overview Markdown for each avoided word or phrase.
+- Replace avoided wording with the preferred glossary term when one is available.
+- If no preferred term is available, rewrite the sentence in plain language or add an open question rather than leaving the avoided wording in the overview.
+- Repeat the search after edits until no avoided terms remain, except inside explicit glossary references or quoted source text.
+- Reread the opening sections and simplify any sentence that a non-technical business reader would need to parse twice.
 
 ## Required Outputs
 
@@ -81,19 +90,35 @@ Each capability overview must include:
 
 - Capability definition
 - Business outcome
+- Main Business Features
 - Scope
 - Inputs/outputs
-- Actors
 - Processes supported
 - Applications involved
 - Application lifecycle management
 - Data involved
 - Integrations
-- KPIs
+- Potential KPIs
 - NFR considerations
 - Risks
 - Maturity assessment
 - Future-state considerations
+
+## Readability Guidance
+
+Capability overviews are for non-technical business readers. Architects and delivery teams should get enough context to act, but the document must be understandable to a reader without technical training and must start from business outcomes, ownership, impact, trade-offs, risks, and open questions.
+
+Use the `check-readability` skill in `../check-readability/SKILL.md` before finishing a capability overview. Treat the target audience as non-technical business stakeholders unless the user gives a different audience.
+
+The capability overview is not complete until the readability check passes these capability-specific expectations:
+
+- The opening sections put the business outcome, operational impact, scope, trade-offs, risks, and open questions before implementation detail.
+- Glossary `Jargon` terms from `Glossary.md` or `GLOSSARY.md` are removed from generated prose, headings, tables, and diagram labels unless they are quoted source text or explicit glossary references.
+- Preferred glossary terms are used exactly when the glossary gives one. If a preferred term is missing or unclear, use plain language and capture the terminology gap as an open question.
+- Acronyms are spelled out the first time they appear unless the expanded form would be misleading or the term is already defined in the glossary.
+- Vague architecture filler such as "robust", "seamless", "future-proof", "best practice", or "enterprise-grade" is removed unless tied to a concrete requirement, KPI, risk, cost, owner, or decision.
+- Long table cells are moved into notes or the relevant section when they make ownership, scope, risks, KPIs, or decisions hard to scan.
+- Open questions are written as answerable questions with an owner or target audience when known.
 
 ## Template
 
