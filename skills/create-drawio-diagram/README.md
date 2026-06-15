@@ -8,6 +8,7 @@ After exporting a Draw.io diagram to SVG, run `scripts/sanitize-drawio-svg.py <d
 
 - [SKILL.md](SKILL.md)
 - [Style guide](STYLE.md)
+- [Capability context diagram helper](scripts/write-capability-context-diagram.py)
 - [Target architecture diagram template](templates/target-architecture-diagram.drawio)
 - [Solution architecture diagram template](templates/solution-architecture-diagram.drawio)
 - [Data architecture diagram template](templates/data-architecture-diagram.drawio)

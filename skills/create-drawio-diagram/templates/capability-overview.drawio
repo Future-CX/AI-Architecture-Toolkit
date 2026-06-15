@@ -1,25 +1,25 @@
 <mxfile host="Electron" agent="AI Architecture Toolkit">
   <diagram id="capability-context" name="Capability Context">
-    <mxGraphModel dx="1006" dy="748" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#fbfcfa" math="0" shadow="0">
+    <mxGraphModel dx="1255" dy="752" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#fbfcfa" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=24;fontColor=#17201d;" value="Capability Overview" vertex="1">
           <mxGeometry height="40" width="420" x="60" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="actor" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#fff3c4;strokeColor=#b7791f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Actors or channels" vertex="1">
+        <mxCell id="actor" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#fff3c4;strokeColor=#b7791f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Actors or channels" vertex="1">
           <mxGeometry height="80" width="180" x="70" y="250" as="geometry" />
         </mxCell>
-        <mxCell id="capability" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;fontSize=16;strokeWidth=2;" value="Target capability" vertex="1">
+        <mxCell id="capability" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;fontSize=16;strokeWidth=2;" value="Target capability" vertex="1">
           <mxGeometry height="120" width="265" x="455" y="230" as="geometry" />
         </mxCell>
-        <mxCell id="upstream" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;strokeWidth=2;" value="Upstream inputs or sources" vertex="1">
-          <mxGeometry height="80" width="260" x="455" y="100" as="geometry" />
+        <mxCell id="upstream" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;strokeWidth=2;" value="Upstream inputs or sources" vertex="1">
+          <mxGeometry height="80" width="265" x="455" y="440" as="geometry" />
         </mxCell>
-        <mxCell id="downstream" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;strokeWidth=2;" value="Downstream outcomes or consumers" vertex="1">
-          <mxGeometry height="80" width="260" x="455" y="410" as="geometry" />
+        <mxCell id="downstream" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;strokeWidth=2;" value="Downstream outcomes or consumers" vertex="1">
+          <mxGeometry height="80" width="265" x="455" y="60" as="geometry" />
         </mxCell>
-        <mxCell id="external" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#f8cecc;strokeColor=#a3433f;fontColor=#17201d;strokeWidth=2;" value="External dependencies or constraints" vertex="1">
+        <mxCell id="external" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#f8cecc;strokeColor=#a3433f;fontColor=#17201d;strokeWidth=2;" value="External dependencies or constraints" vertex="1">
           <mxGeometry height="80" width="200" x="880" y="250" as="geometry" />
         </mxCell>
         <mxCell id="edge-actor-capability" edge="1" parent="1" source="actor" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="capability" value="triggers or uses">
@@ -28,17 +28,23 @@
         <mxCell id="edge-upstream-capability" edge="1" parent="1" source="upstream" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="capability" value="provides input">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge-capability-downstream" edge="1" parent="1" source="capability" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="downstream" value="produces outcome">
+        <mxCell id="edge-capability-downstream" edge="1" parent="1" source="capability" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="downstream" value="produces outcome">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="edge-capability-external" edge="1" parent="1" source="capability" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="external" value="depends on">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="wtTJ4m9Lci7Y-lzfFHPa-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#0f766e;strokeWidth=2;align=center;verticalAlign=middle;spacing=12;arcSize=8;absoluteArcSize=1;fontFamily=Helvetica;fontSize=16;fontColor=#17201d;fontStyle=1;fillColor=#ffffff;" value="Application Name" vertex="1">
-          <mxGeometry height="40" width="265" x="455" y="230" as="geometry" />
+        <mxCell id="wtTJ4m9Lci7Y-lzfFHPa-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;spacing=0;strokeWidth=2;" value="Application Name" vertex="1">
+          <mxGeometry height="10" width="265" x="455" y="230" as="geometry" />
         </mxCell>
-        <mxCell id="hzigCzCzZuQ-4PxgagW3-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;absoluteArcSize=1;spacing=12;fillColor=#ffffff;strokeColor=#a3433f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Application Name" vertex="1">
-          <mxGeometry height="30" width="200" x="880" y="240" as="geometry" />
+        <mxCell id="hzigCzCzZuQ-4PxgagW3-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;spacing=0;strokeWidth=2;" value="Application Name" vertex="1">
+          <mxGeometry height="10" width="200" x="880" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="hzigCzCzZuQ-4PxgagW3-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;spacing=0;strokeWidth=2;" value="Application Name" vertex="1">
+          <mxGeometry height="10" width="265" x="455" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="hzigCzCzZuQ-4PxgagW3-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;spacing=0;strokeWidth=2;" value="Application Name" vertex="1">
+          <mxGeometry height="10" width="265" x="455" y="430" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -53,12 +53,38 @@ When using `templates/capability-overview.drawio`, preserve the template topolog
 - Connect each node to the target capability with a concise relationship label.
 - Use light palette colors from `STYLE.md`: actors yellow, target capability green, upstream/downstream systems blue, and external dependencies red.
 - When a node is backed by a named application, show only the application name in a separate 10 px high header box attached to the top of that node. Use the Application name header style from `STYLE.md`, make the header as wide as the component, and put capability names, component names, dependencies, and responsibilities in the node body. If the application name is unknown, omit the header.
+- Show each confirmed stakeholder, user group, actor, or channel as a separate actor node. Do not collapse stakeholders and users into one list box.
+- Show each confirmed input provider, source system, upstream capability, trigger, or input component as a separate upstream node. When the application name is known, put that application name in the node's application header.
+- Show each confirmed produced outcome, downstream consumer, or related capability as a separate downstream node. Do not collapse produced outcomes into one list box.
 - Do not stack every actor, system, platform, and dependency in one vertical column.
 - Do not convert the target capability into a system dependency. Keep it visually distinct.
 - Route actor connectors from the right side of actor nodes to the left side of the target capability, upstream connectors into the top of the target capability, downstream connectors out of the bottom, and external dependency connectors from the right side of the target capability.
 - When there are multiple nodes in one zone, stagger their connector lanes so labels and arrowheads do not overlap. Use explicit `mxPoint` waypoints where automatic routing creates overlap.
-- If a zone has more than three items, group related items into one business-readable node such as `Commerce platforms`, `Data and analytics platforms`, or `Operational stakeholders`, and list the detailed names in the document instead of crowding the diagram.
+- If a zone has many items, widen the canvas and spread nodes across the zone before grouping. Group only when the source content does not provide enough detail to keep the nodes meaningful or the diagram would become unreadable even after widening.
 - If the source content does not identify a relationship direction, keep the node out of the diagram and record the gap as an assumption or open question in the document.
+
+## Capability Context Helper
+
+Use `scripts/write-capability-context-diagram.py` when a workflow needs to generate both an editable `.drawio` source and a same-basename `.svg` for a capability context diagram.
+
+```sh
+python3 skills/create-drawio-diagram/scripts/write-capability-context-diagram.py "Order Management" \
+  --output-dir capabilities/order-management \
+  --stakeholder "Customer service" \
+  --stakeholder "Operations" \
+  --input-provider "ERP" \
+  --input-provider "Commerce platform" \
+  --outcome "Inventory Management" \
+  --constraint "Order status is fragmented across systems."
+```
+
+By default, the helper creates `capability-overview.drawio` and `capability-overview.svg` in the output directory. Use `--basename <name>` when a different same-basename pair is needed.
+
+The helper also accepts compatibility aliases for upstream capability workflows:
+
+- `--existing-system` as an alias for `--input-provider`
+- `--related-capability` as an alias for `--outcome`
+- `--pain-point` as an alias for `--constraint`
 
 ## Integration Design Layout
 
