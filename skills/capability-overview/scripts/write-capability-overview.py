@@ -13,7 +13,7 @@ from pathlib import Path
 
 TEMPLATE = Path(__file__).resolve().parents[1] / "templates" / "capability-overview-template.md"
 DIAGRAM_SCRIPT = Path(__file__).resolve().parents[2] / "create-drawio-diagram" / "scripts" / "write-capability-context-diagram.py"
-DIAGRAM_BASENAME = "capability-overview"
+DIAGRAM_SUFFIX = "capability-overview"
 
 
 def strip_capability_suffix(name: str) -> str:
@@ -122,6 +122,7 @@ def extend_repeated_args(command: list[str], flag: str, values: list[str]) -> No
 
 def write_capability_diagram(
     output_dir: Path,
+    diagram_basename: str,
     capability_name: str,
     stakeholders: list[str],
     existing_systems: list[str],
@@ -135,7 +136,7 @@ def write_capability_diagram(
         "--output-dir",
         str(output_dir),
         "--basename",
-        DIAGRAM_BASENAME,
+        diagram_basename,
     ]
     extend_repeated_args(command, "--stakeholder", stakeholders)
     extend_repeated_args(command, "--input-provider", existing_systems)
@@ -171,12 +172,14 @@ def main() -> None:
     capabilities_dir = output_root / "capabilities"
     capability_dir = capabilities_dir / capability_slug
     target = capability_dir / f"{capability_slug}.md"
+    diagram_basename = f"{capability_slug}-{DIAGRAM_SUFFIX}"
 
     if target.exists() and not args.force:
         raise SystemExit(f"Refusing to overwrite existing file: {target}")
 
     replacements = {
         "{{CAPABILITY_NAME}}": capability_name,
+        "{{CAPABILITY_DIAGRAM_SVG}}": f"{diagram_basename}.svg",
         "{{CAPABILITY_DESCRIPTION}}": paragraph(args.business_objective),
         "{{CAPABILITY_DEFINITION}}": f"{capability_name} is the business capability responsible for achieving the stated objective within the {args.domain.strip()} domain.",
         "{{DOMAIN}}": paragraph(args.domain),
@@ -213,10 +216,11 @@ def main() -> None:
         rendered = rendered.replace(token, value)
 
     capability_dir.mkdir(parents=True, exist_ok=True)
-    drawio_target = capability_dir / f"{DIAGRAM_BASENAME}.drawio"
-    svg_target = capability_dir / f"{DIAGRAM_BASENAME}.svg"
+    drawio_target = capability_dir / f"{diagram_basename}.drawio"
+    svg_target = capability_dir / f"{diagram_basename}.svg"
     write_capability_diagram(
         capability_dir,
+        diagram_basename,
         capability_name,
         args.stakeholder,
         args.existing_system,

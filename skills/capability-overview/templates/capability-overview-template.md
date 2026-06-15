@@ -29,7 +29,7 @@ _Indicate how critical the capability is to competitive advantage or transformat
 
 {{STRATEGIC_IMPORTANCE}}
 
-![Capability context diagram](capability-overview.svg)
+![Capability context diagram]({{CAPABILITY_DIAGRAM_SVG}})
 
 ## Main Business Features
 
