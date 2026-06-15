@@ -1,6 +1,6 @@
 # Capability Overview
 
-Write business capability overview documents under the consuming repository's root `capabilities/<slug>/` folder using a preset markdown template.
+Write business capability overview documents under the consuming repository's root `capabilities/<slug>/` folder using a preset markdown template. The helper also creates an editable `capability-overview.drawio` context diagram, exports `capability-overview.svg`, and embeds the SVG in the generated overview.
 
 Before any files are created or the helper script is run, the workflow must run a `grill-me` style clarification session and update the private lab root `GLOSSARY.md` with `ubiquitous-language` as terms are clarified. If `GLOSSARY.md` was not created or updated afterwards, stop and ask the user to run `grill-me` followed by `ubiquitous-language`.
 

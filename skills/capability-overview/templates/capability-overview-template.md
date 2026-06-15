@@ -29,6 +29,14 @@ _Indicate how critical the capability is to competitive advantage or transformat
 
 {{STRATEGIC_IMPORTANCE}}
 
+![Capability context diagram](capability-overview.svg)
+
+## Main Business Features
+
+_Summarize the primary business features this capability provides._
+
+{{MAIN_BUSINESS_FEATURES}}
+
 ## Scope
 
 _Define what is included and excluded within the capability boundary._

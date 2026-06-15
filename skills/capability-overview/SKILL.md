@@ -70,11 +70,13 @@ Run from the private lab root, this creates `capabilities/order-management/order
 3. Convert the capability name to `<workspace-root>/capabilities/<slug>/<slug>.md`, removing a redundant leading or trailing word `Capability` from the slug.
 4. Derive the outputs from the inputs and any available repository context.
 5. Use `templates/capability-overview-template.md` as the output structure.
-6. Do not overwrite an existing capability file unless the user explicitly asks.
-7. Add or update the generated capability in `<workspace-root>/capabilities/_capability-list.md` with a relative link to `<slug>/<slug>.md`, description, and `last_updated` date.
-8. If the toolkit is mounted as `toolkit/` in a private lab repo, write the generated capability overview to the private lab root, not to `toolkit/capabilities/`.
-9. Keep company-confidential details out of the public toolkit repository; use a private company lab repo for real company content.
-10. Run the readability and glossary compliance gate before finishing:
+6. Use `../create-drawio-diagram/SKILL.md` and `../create-drawio-diagram/templates/capability-overview.drawio` to create `capability-overview.drawio` beside the generated overview.
+7. Export or create a same-basename `capability-overview.svg`, sanitize it according to the Draw.io SVG export rules, and embed it in the capability overview just above `Main Business Features`. Link the `.drawio` source near the embedded SVG.
+8. Do not overwrite an existing capability file unless the user explicitly asks.
+9. Add or update the generated capability in `<workspace-root>/capabilities/_capability-list.md` with a relative link to `<slug>/<slug>.md`, description, and `last_updated` date.
+10. If the toolkit is mounted as `toolkit/` in a private lab repo, write the generated capability overview to the private lab root, not to `toolkit/capabilities/`.
+11. Keep company-confidential details out of the public toolkit repository; use a private company lab repo for real company content.
+12. Run the readability and glossary compliance gate before finishing:
 
 - Read `<private-lab-root>/GLOSSARY.md`.
 - In the Glossary, find the `Jargon` section and its Avoid list.
@@ -90,6 +92,7 @@ Each capability overview must include:
 
 - Capability definition
 - Business outcome
+- Capability context diagram as editable `.drawio` and embedded `.svg`
 - Main Business Features
 - Scope
 - Inputs/outputs
