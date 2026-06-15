@@ -131,13 +131,13 @@ git commit -m "Update AI Architecture Toolkit submodule"
 | [Integration Design](skills/integration-design/SKILL.md) | Create integration design documents for APIs, events, files, batches, messaging, and orchestration. |
 | [Create Draw.io Diagram](skills/create-drawio-diagram/SKILL.md) | Create editable Draw.io architecture diagrams from reusable templates for solution, target, data, and integration design documents. |
 | [To Epics](skills/to-epics/SKILL.md) | Break target architecture work into user-confirmed epics and list each epic in Phase E of the target architecture document. |
-| [Capability Overview](skills/capability-overview/SKILL.md) | Write business capability overview documents under `capabilities/` from a preset template. |
+| [Capability Overview](skills/capability-overview/SKILL.md) | Write business capability overview documents with embedded Draw.io context diagrams under `capabilities/`. |
 | [Write A Principle](skills/write-a-principle/SKILL.md) | Draft architecture principle documents with identifiers, rationale, consequences, and reviewable guidance. |
 | [Publish To Confluence](skills/publish-to-confluence/SKILL.md) | Publish markdown or HTML toolkit content to Confluence pages through the Confluence REST API. |
 
 ## What The Toolkit Creates
 
-- Capability overviews under `capabilities/`.
+- Capability overviews under `capabilities/`, with editable Draw.io context diagrams and embedded SVG exports.
 - Target architecture and solution architecture design documents under `solution-architectures/`.
 - Data architecture designs under `data-architectures/<data-object>/`, linked from Phase C of the target architecture document.
 - User-confirmed epics under `requirements/<name-of-target-architecture>/`, listed in Phase E of the target architecture document.

@@ -11,6 +11,6 @@
 - [Integration Design](integration-design/SKILL.md) - Create integration design documents for APIs, events, files, batches, messaging, and orchestration.
 - [Create Draw.io Diagram](create-drawio-diagram/SKILL.md) - Create editable Draw.io architecture diagrams from reusable templates for architecture and integration design documents.
 - [To Epics](to-epics/SKILL.md) - Break target architecture work into user-confirmed epics and list each epic in Phase E of the target architecture document.
-- [Capability Overview](capability-overview/SKILL.md) - Write business capability overview documents under `capabilities/` from a preset template.
+- [Capability Overview](capability-overview/SKILL.md) - Write business capability overview documents with embedded Draw.io context diagrams under `capabilities/`.
 - [Write A Principle](write-a-principle/SKILL.md) - Write architecture principle documents under `principles/` from a preset template.
 - [Publish To Confluence](publish-to-confluence/SKILL.md) - Publish markdown or HTML toolkit content to Confluence pages through the Confluence REST API.
