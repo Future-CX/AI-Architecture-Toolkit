@@ -125,6 +125,7 @@ git commit -m "Update AI Architecture Toolkit submodule"
 | [Grill Me](skills/grill-me/SKILL.md) | Challenge plans, assumptions, constraints, terminology, risks, and decisions until the design context is explicit. |
 | [Ubiquitous Language](skills/ubiquitous-language/SKILL.md) | Extract a shared glossary, flag ambiguous terms, and define canonical applications, data objects, and relationships. |
 | [Problem To Solution](skills/problem-to-solution/SKILL.md) | Create stakeholder-ready problem-to-solution briefs with problem framing, solution options, pros and cons, and a recommendation. |
+| [Check Readability](skills/check-readability/SKILL.md) | Review stakeholder-facing content for reading level, long sentences, passive voice, dense paragraphs, and unexplained jargon. |
 | [Solution Architecture Design](skills/solution-architecture-design/SKILL.md) | Write implementation-oriented solution designs with chapter guidance, editable Draw.io sources, rendered SVGs, and linked ADRs. |
 | [Data Architecture Design](skills/data-architecture-design/SKILL.md) | Create data-object-specific architecture designs with data flow diagrams, integration traceability, ownership, lifecycle, quality, privacy, and Phase C linkage. |
 | [Integration Design](skills/integration-design/SKILL.md) | Create integration design documents for APIs, events, files, batches, messaging, and orchestration. |
