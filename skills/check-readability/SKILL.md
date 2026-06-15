@@ -45,11 +45,11 @@ For the score and grade lines, use this format:
 
 Do not output `Grade estimate` as a bare number. Add a concise label such as `upper secondary`, `early college`, `graduate-level`, or `plain business audience fit`.
 
-Use colored status markers when the output format supports color, and always include the text label so the result still works in plain text:
+Use plain Unicode status markers. Do not use HTML, CSS, or inline styles because they may be shown literally:
 
-- `<span style="color: #15803d">[GREEN]</span>` for metrics that meet the target.
-- `<span style="color: #b45309">[AMBER]</span>` for metrics that are close to the target but need review.
-- `<span style="color: #b91c1c">[RED]</span>` for metrics that miss the target and need revision.
+- `🟢 ` for metrics that meet the target.
+- `🟡 ` for metrics that are close to the target but need review.
+- `🔴 ` for metrics that miss the target and need revision.
 
 ## Guidance
 
