@@ -113,6 +113,54 @@ class MarkdownTableConversionTests(unittest.TestCase):
         self.assertIn('<ac:parameter ac:name="language">python</ac:parameter>', html)
         self.assertIn("<ac:plain-text-body><![CDATA[print('hello')]]></ac:plain-text-body>", html)
 
+    def test_markdown_html_anchor_renders_as_confluence_anchor_macro(self) -> None:
+        markdown = "\n".join(
+            [
+                "# Principles",
+                "",
+                "- [ARCH001 - Architecture principles are leading](#arch001)",
+                "",
+                "<a id=\"arch001\"></a>",
+                "",
+                "## ARCH001 - Architecture principles are leading",
+            ]
+        )
+
+        html = publish_to_confluence.read_content(markdown, Path("principles.md"), "markdown")
+
+        self.assertIn(
+            '<ac:link ac:anchor="arch001"><ac:plain-text-link-body><![CDATA[ARCH001 - Architecture principles are leading]]></ac:plain-text-link-body></ac:link>',
+            html,
+        )
+        self.assertIn(
+            '<ac:structured-macro ac:name="anchor"><ac:parameter ac:name="">arch001</ac:parameter></ac:structured-macro>',
+            html,
+        )
+        self.assertNotIn("&lt;a id", html)
+        self.assertNotIn('<a href="#arch001">', html)
+
+    def test_html_anchor_renders_as_confluence_anchor_macro(self) -> None:
+        raw_html = "\n".join(
+            [
+                '<p><a href="#arch001">ARCH001 - Architecture principles are leading</a></p>',
+                '<p><a id="arch001"></a></p>',
+                "<h2>ARCH001 - Architecture principles are leading</h2>",
+            ]
+        )
+
+        html = publish_to_confluence.read_content(raw_html, Path("principles.html"), "html")
+
+        self.assertIn(
+            '<ac:link ac:anchor="arch001"><ac:plain-text-link-body><![CDATA[ARCH001 - Architecture principles are leading]]></ac:plain-text-link-body></ac:link>',
+            html,
+        )
+        self.assertIn(
+            '<ac:structured-macro ac:name="anchor"><ac:parameter ac:name="">arch001</ac:parameter></ac:structured-macro>',
+            html,
+        )
+        self.assertNotIn('<a href="#arch001">', html)
+        self.assertNotIn('<a id="arch001"', html)
+
     def test_collect_publish_git_paths_includes_source_svg_drawio_and_linked_drawio(self) -> None:
         with tempfile.TemporaryDirectory() as tmp_dir:
             root = Path(tmp_dir)

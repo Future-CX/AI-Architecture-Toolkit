@@ -24,6 +24,8 @@ During markdown publishing, local links to other `.md` files are replaced with t
 
 Local markdown image references, including SVG diagrams, are uploaded to the Confluence page as attachments and rewritten to Confluence attachment image macros. Existing same-filename attachments are updated with a new version.
 
+Same-page anchors are rewritten to Confluence storage format. Markdown links like `[ARCH001](#arch001)` become Confluence anchor links, and raw anchors like `<a id="arch001"></a>` become Confluence anchor macros so they do not appear as plain text on the page.
+
 When no page ID is found, the script always prompts for either an existing Confluence link or permission to create a new child page under the overview page before credential loading, dry-run output, source updates, page creation, or publishing. The overview page title defaults to `Overview` and can be changed with `--overview-title`.
 
 Use `--dry-run` to inspect the request without writing to Confluence.

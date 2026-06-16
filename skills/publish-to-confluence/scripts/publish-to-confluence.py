@@ -372,7 +372,75 @@ def markdown_to_html(markdown_text: str) -> str:
         )
     except ImportError:
         html_text = simple_markdown_to_html(markdown_text)
-    return convert_html_code_blocks_to_confluence_macros(html_text)
+    return prepare_confluence_storage_html(convert_html_code_blocks_to_confluence_macros(html_text))
+
+
+def prepare_confluence_storage_html(html_text: str) -> str:
+    html_text = convert_escaped_html_anchors_to_confluence_macros(html_text)
+    html_text = convert_html_anchors_to_confluence_macros(html_text)
+    html_text = convert_hash_links_to_confluence_anchor_links(html_text)
+    return html_text
+
+
+def convert_escaped_html_anchors_to_confluence_macros(html_text: str) -> str:
+    escaped_anchor_pattern = re.compile(
+        r"(?:<p>\s*)?&lt;a\s+[^&]*?(?:id|name)=&quot;([^&]+)&quot;[^&]*?&gt;\s*&lt;/a&gt;(?:\s*</p>)?",
+        re.IGNORECASE,
+    )
+
+    return escaped_anchor_pattern.sub(
+        lambda match: confluence_anchor_macro(html.unescape(match.group(1))),
+        html_text,
+    )
+
+
+def convert_html_anchors_to_confluence_macros(html_text: str) -> str:
+    anchor_pattern = re.compile(
+        r"(?:<p>\s*)?<a\s+[^>]*?(?:id|name)=[\"']([^\"']+)[\"'][^>]*>\s*</a>(?:\s*</p>)?",
+        re.IGNORECASE,
+    )
+
+    return anchor_pattern.sub(
+        lambda match: confluence_anchor_macro(html.unescape(match.group(1))),
+        html_text,
+    )
+
+
+def convert_hash_links_to_confluence_anchor_links(html_text: str) -> str:
+    hash_link_pattern = re.compile(
+        r"<a\s+href=[\"']#([^\"']+)[\"']>(.*?)</a>",
+        re.IGNORECASE | re.DOTALL,
+    )
+
+    def replace_hash_link(match: re.Match[str]) -> str:
+        anchor = html.unescape(match.group(1))
+        label = match.group(2)
+        return confluence_anchor_link(anchor, label)
+
+    return hash_link_pattern.sub(replace_hash_link, html_text)
+
+
+def confluence_anchor_macro(anchor: str) -> str:
+    escaped_anchor = html.escape(anchor.strip(), quote=True)
+    return (
+        '<ac:structured-macro ac:name="anchor">'
+        f'<ac:parameter ac:name="">{escaped_anchor}</ac:parameter>'
+        "</ac:structured-macro>"
+    )
+
+
+def confluence_anchor_link(anchor: str, label_html: str) -> str:
+    escaped_anchor = html.escape(anchor.strip(), quote=True)
+    if "<" in label_html and ">" in label_html:
+        return f'<ac:link ac:anchor="{escaped_anchor}"><ac:link-body>{label_html}</ac:link-body></ac:link>'
+
+    label = html.unescape(label_html)
+    cdata_label = label.replace("]]>", "]]]]><![CDATA[>")
+    return (
+        f'<ac:link ac:anchor="{escaped_anchor}">'
+        f"<ac:plain-text-link-body><![CDATA[{cdata_label}]]></ac:plain-text-link-body>"
+        "</ac:link>"
+    )
 
 
 def convert_html_code_blocks_to_confluence_macros(html_text: str) -> str:
@@ -861,13 +929,13 @@ def inline_markdown(text: str) -> str:
 
 def read_content(raw: str, path: Path, content_format: str) -> str:
     if content_format == "html":
-        return raw
+        return prepare_confluence_storage_html(raw)
     if content_format == "markdown":
         prepared = prepare_markdown_for_publish(raw)
         prepared = rewrite_markdown_images_to_confluence(prepared, path)
         return markdown_to_html(rewrite_markdown_file_links(prepared, path))
     if path.suffix.lower() in {".html", ".htm"}:
-        return raw
+        return prepare_confluence_storage_html(raw)
     prepared = prepare_markdown_for_publish(raw)
     prepared = rewrite_markdown_images_to_confluence(prepared, path)
     return markdown_to_html(rewrite_markdown_file_links(prepared, path))
