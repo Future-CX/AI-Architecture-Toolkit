@@ -1,24 +1,24 @@
 ---
 name: assess-solution
-description: Assess a proposed or existing solution against architecture principles and a selected capability overview or solution architecture design. Use when the user asks to review, assess, self-assess, validate, or score a solution against principles, capability fit, or an existing solution design.
+description: Interview the user to assess a proposed or existing solution against architecture principles and a selected capability overview or solution architecture design. Use when the user asks to review, assess, self-assess, validate, or score a solution against principles, capability fit, or an existing solution design.
 ---
 
 # Assess Solution
 
 ## Quick Start
 
-Assess a proposed or existing solution against:
+Run an interview-based assessment of a proposed or existing solution against:
 
 1. The architecture principles available in `principles/`.
 2. One user-selected baseline:
    - A capability overview under `capabilities/<slug>/`.
    - A solution architecture design under `solution-architectures/<slug>/`.
 
-If the user has not identified the capability overview or solution design, ask which one to use before starting the assessment. If multiple candidate files match, list the candidates and ask the user to choose one.
+If the user has not identified the capability overview or solution design, ask which one to use before starting the assessment. Use the selected baseline and principles to ask focused questions. Do not produce the final report until the user has answered the interview topics and confirmed that the assessment evidence is complete enough.
 
 ## Required Inputs
 
-- Solution description, proposal, implementation notes, or path to an existing solution document.
+- Solution description, proposal, implementation notes, or path to an existing solution document, gathered or confirmed through the interview.
 - Solution supplier, vendor, product company, or implementation partner when the solution depends on an external company.
 - Customer references, case studies, testimonials, analyst notes, or reference-call findings when available.
 - Assessment baseline: one capability overview or one solution architecture design.
@@ -27,45 +27,22 @@ If the user has not identified the capability overview or solution design, ask w
 
 ## Workflow
 
-1. Confirm the solution to assess. If the solution is only described in conversation, summarize it back before scoring.
-2. Ask the user whether to assess against a capability overview or a solution architecture design when the baseline is not explicit.
-3. Locate and read the selected baseline document. Do not assess against both unless the user asks.
-4. Locate and read architecture principles from `principles/`. If the folder or relevant principles are missing, ask the user to provide the principle documents or continue with only the selected baseline.
-5. Extract the baseline expectations:
+1. Start in interview mode. Ask one question at a time and do not generate the final assessment until the interview is complete.
+2. Confirm the solution, supplier, and whether to assess against a capability overview or solution architecture design when the baseline is not explicit.
+3. Locate and read the selected baseline and architecture principles. If multiple baselines match, ask the user to choose one.
+4. Extract baseline expectations to build the interview plan:
    - Business outcome and scope boundary.
    - Main business features or requirements, users, processes, data, integrations, systems, and dependencies.
    - Security, privacy, compliance, non-functional, operational, and lifecycle expectations.
    - Explicit risks, assumptions, constraints, open questions, and design decisions.
-6. Extract the solution claims:
-   - What the solution changes or introduces.
-   - Components, applications, data, integrations, deployment, operations, ownership, and migration approach.
-   - Supplier, vendor, product company, or implementation partner involved.
-   - Decisions, assumptions, constraints, known gaps, and unresolved questions.
-7. Assess the solution supplier when a supplier is named:
-   - General company information relevant to architecture and delivery decisions.
-   - Product or service fit for the selected capability or solution design.
-   - Company strengths, such as domain fit, product maturity, ecosystem, support model, implementation capability, security posture, or roadmap alignment.
-   - Company cautions, such as lock-in, commercial dependency, unclear roadmap, limited local support, integration limits, data residency, compliance gaps, or operational maturity concerns.
-   - Evidence gaps that need vendor due diligence, reference checks, procurement review, security review, or legal review.
-8. Assess customer references when available:
-   - Other customers or comparable organizations using the solution.
-   - Their use case, industry, scale, geography, and similarity to the current context.
-   - Reported experience, recommendation, benefits, limitations, implementation effort, support quality, and operational lessons.
-   - Whether the reference is public, supplier-provided, independently verified, or based on a direct reference call.
-   - Evidence gaps where the reference is too vague, not comparable, outdated, or unverifiable.
-9. Assess principle alignment. For each relevant principle, mark:
-   - `Aligned` when the solution clearly supports the principle.
-   - `Partly aligned` when the intent is right but evidence, scope, or controls are incomplete.
-   - `Misaligned` when the solution conflicts with the principle.
-   - `Not enough evidence` when the solution does not provide enough information to judge.
-10. Assess architectural fit:
-   - Fit to business outcome and scope.
-   - Coverage of required users, processes, data, integrations, and systems.
-   - Consistency with architecture decisions, constraints, and target-state direction.
-   - Target architecture, principle, integration, security, privacy, resilience, observability, and support alignment.
-11. Create a simple 5-star scorecard using the required scorecard categories. Use half stars only when the evidence supports a clear midpoint.
-12. Identify gaps, risks, trade-offs, and open questions. Do not invent missing facts.
-13. Give a practical recommendation:
+5. Interview the user for each main business feature or requirement. Ask for fit, evidence, known gaps, user impact, operational impact, and required action.
+6. Interview the user on each assessment topic: ease of use, other features, integrations, target architecture alignment, principle alignment, supplier, references, price indication, risks, constraints, and open questions.
+7. After each topic, summarize captured facts, assumptions, missing evidence, and follow-up questions. Ask follow-ups when answers are vague or unsupported.
+8. Before writing the report, summarize the evidence collected and ask the user to confirm whether to proceed or answer remaining questions.
+9. Assess principle alignment using `Aligned`, `Partly aligned`, `Misaligned`, or `Not enough evidence`.
+10. Create the simple 5-star scorecard using the required categories. Use half stars only when the evidence supports a clear midpoint.
+11. Identify gaps, risks, trade-offs, and open questions. Do not invent missing facts.
+12. Give a practical recommendation:
     - `Proceed` when only minor issues remain.
     - `Proceed with conditions` when risks or gaps need tracked mitigation.
     - `Revise before approval` when material conflicts or missing decisions remain.
