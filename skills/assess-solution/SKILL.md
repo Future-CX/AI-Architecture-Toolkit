@@ -38,9 +38,9 @@ If the user has not identified the capability overview or solution design, ask w
 5. Interview the user for each main business feature or requirement. Ask for fit, evidence, known gaps, user impact, operational impact, and required action.
 6. Interview the user on each assessment topic: ease of use, other features, integrations, target architecture alignment, principle alignment, supplier, references, price indication, risks, constraints, and open questions.
 7. After each topic, summarize captured facts, assumptions, missing evidence, and follow-up questions. Ask follow-ups when answers are vague or unsupported.
-8. Before writing the report, summarize the evidence collected and ask the user to confirm whether to proceed or answer remaining questions.
+8. Before writing the report or scorecard, summarize the evidence collected and ask the user to confirm whether to proceed or answer remaining questions.
 9. Assess principle alignment using `Aligned`, `Partly aligned`, `Misaligned`, or `Not enough evidence`.
-10. Create the simple 5-star scorecard using the required categories. Use half stars only when the evidence supports a clear midpoint.
+10. Create the simple 5-star scorecard only after the interview is complete and the user has confirmed there is enough evidence. Use half stars only when the evidence supports a clear midpoint.
 11. Identify gaps, risks, trade-offs, and open questions. Do not invent missing facts.
 12. Give a practical recommendation:
     - `Proceed` when only minor issues remain.
@@ -71,6 +71,6 @@ Use concise, stakeholder-readable Markdown:
 - Treat missing evidence as an assessment result, not as permission to guess.
 - For supplier commentary, use neutral language and distinguish known facts from market perception, assumptions, or missing due diligence.
 - For references, identify the source and comparability. Do not present supplier marketing claims as independent customer experience.
-- Keep the scorecard easy to scan. Do not add extra scorecard categories unless the user asks.
+- Keep the scorecard easy to scan. Do not create, draft, preview, or estimate scorecard ratings before the interview is complete. Do not add extra scorecard categories unless the user asks.
 - Prefer concrete remediation actions over generic advice.
 - Keep company-confidential solution details out of this public toolkit repository. Assess real company solutions in a private company lab repository.
