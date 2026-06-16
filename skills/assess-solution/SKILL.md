@@ -52,16 +52,18 @@ If the user has not identified the capability overview or solution design, ask w
 
 Use concise, stakeholder-readable Markdown:
 
-1. `Assessment Summary` - decision recommendation, main reason, and operational impact.
-2. `Assessment Baseline` - linked capability overview or solution architecture design, plus principle source used.
-3. `Scorecard` - simple 5-star table with only these rows: `Ease of Use`, `Main Business Features Fit`, `Other Features Provided`, `Integrations`, and `Architecture Fit`. Include `Price Indication` and `Overall` rows when the information is available. Show whole-star ratings only, for example `★★★★☆`; if nuance is needed, write it in the evidence note. In evidence notes, italicize negative or critical clauses, for example `*Mobile was not shown.*`
-4. `Main Business Features` - use one heading per business requirement found in the capability overview or solution design. Under each heading, use separate paragraphs labelled `**Baseline fit:**`, `**Insight:**`, `**Gap:**`, and `**Recommended action:**`.
-5. `Architectural Fit` - technical insights with subsections: `Target Architecture Alignment` for target-state fit and constraints, `Principle Alignment` for principle rating, evidence, and required change, and `Integration Alignment` for interfaces, dependencies, contracts, data flow, error handling, observability, and ownership.
-6. `Solution Supplier` - general company information, strengths, cautions, and due diligence needs.
-7. `References` - other customers using the solution, their context, recommendation or experience, relevance, and evidence quality.
-8. `Risks and Trade-offs` - material risks, impact, mitigation, and owner when known.
-9. `Open Questions` - answerable questions needed to complete the assessment.
-10. `Recommendation` - proceed status, conditions, and next actions.
+1. Metadata table at the top:
+   `| Field | Value |`, `| --- | --- |`, `| Confluence Link | Not published yet |`, `| Last Update | <today's date> |`.
+2. `Assessment Summary` - decision recommendation, main reason, and operational impact.
+3. `Assessment Baseline` - linked capability overview or solution architecture design, plus principle source used.
+4. `Scorecard` - simple 5-star table with only these rows: `Ease of Use`, `Main Business Features Fit`, `Other Features Provided`, `Integrations`, and `Architecture Fit`. Include `Price Indication` and `Overall` rows when the information is available. Show whole-star ratings only, for example `★★★★☆`; if nuance is needed, write it in the evidence note. In evidence notes, italicize negative or critical clauses, for example `*Mobile was not shown.*`
+5. `Main Business Features` - use one heading per business requirement found in the capability overview or solution design. Under each heading, use separate paragraphs labelled `**Baseline fit:**`, `**Insight:**`, `**Gap:**`, and `**Recommended action:**`.
+6. `Architectural Fit` - technical insights with subsections: `Target Architecture Alignment` for target-state fit and constraints, `Principle Alignment` for principle rating, evidence, and required change, and `Integration Alignment` for interfaces, dependencies, contracts, data flow, error handling, observability, and ownership.
+7. `Solution Supplier` - general company information, strengths, cautions, and due diligence needs.
+8. `References` - other customers using the solution, their context, recommendation or experience, relevance, and evidence quality.
+9. `Risks and Trade-offs` - material risks, impact, mitigation, and owner when known.
+10. `Open Questions` - answerable questions needed to complete the assessment.
+11. `Recommendation` - proceed status, conditions, and next actions.
 
 ## Guidance
 
