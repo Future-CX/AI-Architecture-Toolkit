@@ -37,10 +37,10 @@ If the user has not identified the capability overview or solution design, ask w
    - Explicit risks, assumptions, constraints, open questions, and design decisions.
 5. Interview the user for each main business feature or requirement. Ask for fit, evidence, known gaps, user impact, operational impact, and required action.
 6. Interview the user on each assessment topic: ease of use, other features, integrations, target architecture alignment, principle alignment, supplier, references, price indication, risks, constraints, and open questions.
-7. After each topic, summarize captured facts, assumptions, missing evidence, and follow-up questions. Ask follow-ups when answers are vague or unsupported.
+7. After each topic, summarize captured facts, assumptions, missing evidence, and follow-up questions. Ask follow-ups when answers are vague or unsupported. When there is a strong evidence-based suggestion, include it with the question and ask the user to confirm, correct, or reject it.
 8. Before writing the report or scorecard, summarize the evidence collected and ask the user to confirm whether to proceed or answer remaining questions.
 9. Assess principle alignment using `Aligned`, `Partly aligned`, `Misaligned`, or `Not enough evidence`.
-10. Create the simple 5-star scorecard only after the interview is complete and the user has confirmed there is enough evidence. Use half stars only when the evidence supports a clear midpoint.
+10. Create the simple 5-star scorecard only after the interview is complete and the user has confirmed there is enough evidence. Use whole stars only; do not use half-star symbols.
 11. Identify gaps, risks, trade-offs, and open questions. Do not invent missing facts.
 12. Give a practical recommendation:
     - `Proceed` when only minor issues remain.
@@ -54,8 +54,8 @@ Use concise, stakeholder-readable Markdown:
 
 1. `Assessment Summary` - decision recommendation, main reason, and operational impact.
 2. `Assessment Baseline` - linked capability overview or solution architecture design, plus principle source used.
-3. `Scorecard` - simple 5-star table with only these rows: `Ease of Use`, `Main Business Features Fit`, `Other Features Provided`, `Integrations`, and `Architecture Fit`. Include `Price Indication` and `Overall` rows when the information is available. Show ratings as stars, for example `★★★★☆` or `★★★½☆`, and add one short evidence note per row.
-4. `Main Business Features` - use one heading per business requirement found in the capability overview or solution design. Under each heading, summarize baseline fit, insight, gap, and recommended action.
+3. `Scorecard` - simple 5-star table with only these rows: `Ease of Use`, `Main Business Features Fit`, `Other Features Provided`, `Integrations`, and `Architecture Fit`. Include `Price Indication` and `Overall` rows when the information is available. Show whole-star ratings only, for example `★★★★☆`; if nuance is needed, write it in the evidence note. In evidence notes, italicize negative or critical clauses, for example `*Mobile was not shown.*`
+4. `Main Business Features` - use one heading per business requirement found in the capability overview or solution design. Under each heading, use separate paragraphs labelled `- **Baseline fit:**`, `- **Insight:**`, `- **Gap:**`, and `- **Recommended action:**`.
 5. `Architectural Fit` - technical insights with subsections: `Target Architecture Alignment` for target-state fit and constraints, `Principle Alignment` for principle rating, evidence, and required change, and `Integration Alignment` for interfaces, dependencies, contracts, data flow, error handling, observability, and ownership.
 6. `Solution Supplier` - general company information, strengths, cautions, and due diligence needs.
 7. `References` - other customers using the solution, their context, recommendation or experience, relevance, and evidence quality.
@@ -69,6 +69,7 @@ Use concise, stakeholder-readable Markdown:
 - Keep the assessment evidence-based. Cite source sections or filenames where possible.
 - Separate facts from assumptions.
 - Treat missing evidence as an assessment result, not as permission to guess.
+- During the interview, offer strong suggestions when the baseline, principles, or prior answers clearly support them. Label suggestions as suggestions, not facts, until the user confirms them.
 - For supplier commentary, use neutral language and distinguish known facts from market perception, assumptions, or missing due diligence.
 - For references, identify the source and comparability. Do not present supplier marketing claims as independent customer experience.
 - Keep the scorecard easy to scan. Do not create, draft, preview, or estimate scorecard ratings before the interview is complete. Do not add extra scorecard categories unless the user asks.
