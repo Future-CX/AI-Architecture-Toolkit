@@ -112,6 +112,31 @@ class MarkdownTableConversionTests(unittest.TestCase):
         self.assertIn("<td>Lower risk</td>", html)
         self.assertNotIn("Confluence Link", html)
 
+    def test_read_content_makes_markdown_tables_full_width_for_confluence(self) -> None:
+        raw = "\n".join(
+            [
+                "# Architecture Decision",
+                "",
+                "| Option | Impact |",
+                "| --- | --- |",
+                "| A | Lower cost |",
+            ]
+        )
+
+        html = publish_to_confluence.read_content(raw, Path("decision.md"), "markdown")
+
+        self.assertIn('<table data-layout="full-width" style="width: 100%;">', html)
+
+    def test_read_content_makes_html_tables_full_width_for_confluence(self) -> None:
+        raw = '<table data-layout="default" style="width: 48%; color: red;"><tbody><tr><td>A</td></tr></tbody></table>'
+
+        html = publish_to_confluence.read_content(raw, Path("decision.html"), "html")
+
+        self.assertIn('data-layout="full-width"', html)
+        self.assertIn('style="width: 100%; color: red;"', html)
+        self.assertNotIn('data-layout="default"', html)
+        self.assertNotIn("width: 48%", html)
+
     def test_markdown_code_block_renders_as_confluence_code_macro(self) -> None:
         markdown = "\n".join(
             [

@@ -83,6 +83,8 @@ For markdown publishing, local image references such as `![Diagram](diagram.svg)
 
 Markdown or HTML same-page anchors are rewritten to Confluence storage format. Links such as `[ARCH001](#arch001)` become Confluence anchor links, and raw anchors such as `<a id="arch001"></a>` or `<a name="arch001"></a>` become Confluence anchor macros instead of visible plain text.
 
+Markdown or HTML tables are rewritten with Confluence full-width table layout attributes so wide stakeholder-facing tables use the available page width after publishing.
+
 Before a real publish, the script checks Git for open changes to the source document, embedded local image or SVG diagram files, same-basename `.drawio` files for embedded SVG diagrams, and local Markdown links to `.drawio` or `.svg` diagrams. If any of those files have open changes, the script asks whether to commit those publish-related files before publishing. Choosing yes prompts for a commit message and commits only those publish-related files. Choosing no skips the commit and continues. After a successful publish, the script checks those files again and asks the same commit question only when Git reports remaining changes for those files. Use `--skip-git-check` only for automation where this prompt is intentionally bypassed.
 
 If no Confluence page ID is found, the script always prompts the user to choose before credential loading, dry-run output, source updates, page creation, or publishing. The user can provide an existing Confluence link, or choose to create the page as a child of the overview page. The overview page is found by title in the target space and defaults to `Overview`; override this with `--overview-title <title>`.

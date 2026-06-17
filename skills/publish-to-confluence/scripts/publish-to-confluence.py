@@ -376,10 +376,59 @@ def markdown_to_html(markdown_text: str) -> str:
 
 
 def prepare_confluence_storage_html(html_text: str) -> str:
+    html_text = make_confluence_tables_full_width(html_text)
     html_text = convert_escaped_html_anchors_to_confluence_macros(html_text)
     html_text = convert_html_anchors_to_confluence_macros(html_text)
     html_text = convert_hash_links_to_confluence_anchor_links(html_text)
     return html_text
+
+
+def make_confluence_tables_full_width(html_text: str) -> str:
+    table_pattern = re.compile(r"<table(?P<attrs>[^>]*)>", re.IGNORECASE)
+
+    def replace_table(match: re.Match[str]) -> str:
+        attrs = match.group("attrs") or ""
+        if re.search(r"\sdata-layout=", attrs, re.IGNORECASE):
+            attrs = re.sub(
+                r"\sdata-layout=([\"']).*?\1",
+                ' data-layout="full-width"',
+                attrs,
+                flags=re.IGNORECASE,
+            )
+        else:
+            attrs += ' data-layout="full-width"'
+
+        if re.search(r"\sstyle=", attrs, re.IGNORECASE):
+            attrs = re.sub(
+                r"\sstyle=([\"'])(.*?)\1",
+                lambda style_match: full_width_style_attribute(style_match),
+                attrs,
+                flags=re.IGNORECASE | re.DOTALL,
+            )
+        else:
+            attrs += ' style="width: 100%;"'
+
+        return f"<table{attrs}>"
+
+    return table_pattern.sub(replace_table, html_text)
+
+
+def full_width_style_attribute(match: re.Match[str]) -> str:
+    quote = match.group(1)
+    style = match.group(2).strip()
+    declarations = [declaration.strip() for declaration in style.split(";") if declaration.strip()]
+    has_width = False
+    normalized: list[str] = []
+    for declaration in declarations:
+        if re.match(r"width\s*:", declaration, re.IGNORECASE):
+            normalized.append("width: 100%")
+            has_width = True
+        else:
+            normalized.append(declaration)
+    if not has_width:
+        normalized.append("width: 100%")
+    style = "; ".join(normalized) + ";"
+    return f' style={quote}{style}{quote}'
 
 
 def convert_escaped_html_anchors_to_confluence_macros(html_text: str) -> str:
