@@ -89,7 +89,7 @@ If no Confluence page ID is found, the script always prompts the user to choose 
 
 When the script creates a new child page, it writes the returned Confluence link back to the source markdown, regenerates the content, and updates the new page so the Confluence copy contains the link too.
 
-Markdown conversion uses the optional `markdown` package when installed. Without it, the script falls back to a small built-in converter for headings, paragraphs, pipe tables, lists, links, inline code, fenced code blocks, and bold text. For highly formatted documents, convert to storage-safe HTML before publishing.
+Markdown conversion uses the optional `markdown` package when installed. Without it, the script falls back to a small built-in converter for headings, paragraphs, pipe tables, lists, links, inline code, fenced code blocks, bold text, and italic text. For highly formatted documents, convert to storage-safe HTML before publishing.
 
 Fenced markdown code blocks are converted to Confluence `code` macros. A language hint such as ```` ```python ```` is carried into the macro language parameter when present.
 

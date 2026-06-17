@@ -921,9 +921,20 @@ def simple_markdown_to_html(markdown_text: str) -> str:
 
 def inline_markdown(text: str) -> str:
     escaped = html.escape(text)
-    escaped = re.sub(r"`([^`]+)`", r"<code>\1</code>", escaped)
+    code_spans: list[str] = []
+
+    def stash_code_span(match: re.Match[str]) -> str:
+        code_spans.append(f"<code>{match.group(1)}</code>")
+        return f"\x00CODE{len(code_spans) - 1}\x00"
+
+    escaped = re.sub(r"`([^`]+)`", stash_code_span, escaped)
     escaped = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", escaped)
+    escaped = re.sub(r"(?<!\w)__([^_]+)__(?!\w)", r"<strong>\1</strong>", escaped)
+    escaped = re.sub(r"(?<!\w)_([^_]+)_(?!\w)", r"<em>\1</em>", escaped)
+    escaped = re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", r"<em>\1</em>", escaped)
     escaped = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2">\1</a>', escaped)
+    for index, code_span in enumerate(code_spans):
+        escaped = escaped.replace(f"\x00CODE{index}\x00", code_span)
     return escaped
 
 

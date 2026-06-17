@@ -53,6 +53,35 @@ class MarkdownTableConversionTests(unittest.TestCase):
         self.assertIn('<a href="https://example.atlassian.net/wiki/spaces/ARCH">Confluence</a>', html)
         self.assertIn("<code>system-id</code> and <strong>owned</strong>", html)
 
+    def test_simple_fallback_converter_supports_underscore_italic_text(self) -> None:
+        markdown = "\n".join(
+            [
+                "_BidIQ looks promising for Bidfood, especially for Account Managers and User Management._",
+                "",
+                "_The safest next step is a phased approach, but only if BidIQ still looks suitable as the broader CRM platform._",
+            ]
+        )
+
+        html = publish_to_confluence.simple_markdown_to_html(markdown)
+
+        self.assertIn(
+            "<p><em>BidIQ looks promising for Bidfood, especially for Account Managers and User Management.</em></p>",
+            html,
+        )
+        self.assertIn(
+            "<p><em>The safest next step is a phased approach, but only if BidIQ still looks suitable as the broader CRM platform.</em></p>",
+            html,
+        )
+        self.assertNotIn("_BidIQ", html)
+
+    def test_simple_fallback_converter_keeps_underscores_inside_words_and_code(self) -> None:
+        markdown = "`user_id` should stay literal while _priority_ is emphasized."
+
+        html = publish_to_confluence.simple_markdown_to_html(markdown)
+
+        self.assertIn("<code>user_id</code>", html)
+        self.assertIn("<em>priority</em>", html)
+
     def test_table_cells_keep_escaped_pipe_inside_cell(self) -> None:
         cells = publish_to_confluence.table_cells("| Name | A \\| B |")
 
