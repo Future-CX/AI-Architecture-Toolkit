@@ -11,6 +11,10 @@
 | Confluence Link              | {{CONFLUENCE_LINK}}              |
 | Last Update                  | {{LAST_UPDATE}}                  |
 
+## Short Summary
+
+_{{SHORT_SUMMARY}}_
+
 ## Business Objective
 
 _Describe the business value or outcome the capability is intended to support._

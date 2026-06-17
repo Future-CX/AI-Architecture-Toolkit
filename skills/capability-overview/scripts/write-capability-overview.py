@@ -49,6 +49,12 @@ def paragraph(value: str, fallback: str = "TBD") -> str:
     return cleaned if cleaned else fallback
 
 
+def short_summary(capability_name: str, business_objective: str) -> str:
+    objective = paragraph(business_objective).rstrip(".")
+    readable_objective = objective[:1].lower() + objective[1:] if objective else objective
+    return f"{capability_name} focuses on the following outcome: {readable_objective}."
+
+
 def inline_list(items: list[str], fallback: str = "TBD") -> str:
     cleaned = [item.strip() for item in items if item.strip()]
     return ", ".join(cleaned) if cleaned else fallback
@@ -187,6 +193,7 @@ def main() -> None:
         "{{APPLICATION_LIFECYCLE_STATUS}}": "TBD",
         "{{OWNERS}}": inline_list(args.stakeholder),
         "{{LAST_UPDATE}}": date.today().isoformat(),
+        "{{SHORT_SUMMARY}}": short_summary(capability_name, args.business_objective),
         "{{BUSINESS_OBJECTIVE}}": paragraph(args.business_objective),
         "{{BUSINESS_OUTCOME}}": "TBD: Define the measurable business outcome this capability should enable.",
         "{{STRATEGIC_IMPORTANCE}}": paragraph(args.strategic_importance),

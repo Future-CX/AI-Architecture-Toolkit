@@ -91,6 +91,7 @@ Run from the private lab root, this creates `capabilities/order-management/order
 Each capability overview must include:
 
 - Capability definition
+- Short Summary in italic text above Business Objective
 - Business outcome
 - Capability context diagram as editable `.drawio` and embedded `.svg`
 - Main Business Features
@@ -111,10 +112,11 @@ Each capability overview must include:
 
 Capability overviews are for non-technical business readers. Architects and delivery teams should get enough context to act, but the document must be understandable to a reader without technical training and must start from business outcomes, ownership, impact, trade-offs, risks, and open questions.
 
-Use the `check-readability` skill in `../check-readability/SKILL.md` before finishing a capability overview. Treat the target audience as non-technical business stakeholders unless the user gives a different audience.
+Use the `check-readability` skill in `../check-readability/SKILL.md` before finishing a capability overview. Treat the target audience as non-technical business stakeholders unless the user gives a different audience. Aim for a Flesch Reading Ease score of 40 or higher; revise the generated overview before finishing if the score is below 40.
 
 The capability overview is not complete until the readability check passes these capability-specific expectations:
 
+- Flesch Reading Ease is 40 or higher, or any lower score is explicitly justified because required names, legal terms, or quoted source text make the target impractical.
 - The opening sections put the business outcome, operational impact, scope, trade-offs, risks, and open questions before implementation detail.
 - Glossary `Jargon` terms from `Glossary.md` or `GLOSSARY.md` are removed from generated prose, headings, tables, and diagram labels unless they are quoted source text or explicit glossary references.
 - Preferred glossary terms are used exactly when the glossary gives one. If a preferred term is missing or unclear, use plain language and capture the terminology gap as an open question.
