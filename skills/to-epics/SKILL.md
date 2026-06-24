@@ -36,7 +36,7 @@ Use the target architecture folder name as `<name-of-target-architecture>` unles
         └── target-architecture-document.md
 ```
 
-Use `templates/epic-template.md` for the epic file.
+Use `templates/epic-template.md` for the epic file. Preserve the two opening tables: the document metadata table first, followed by the `Epic Overview` table.
 
 ## Workflow
 
@@ -79,7 +79,7 @@ Use `templates/epic-template.md` for the epic file.
    - Check the epic name, description, main capability, scope terms, application names, data objects, integrations, and business requirements against the glossary.
    - If `GLOSSARY.md` is missing, or if important terms are missing, ambiguous, or inconsistent, use `../ubiquitous-language/SKILL.md` to create or update `<private-lab-root>/GLOSSARY.md` before creating the epic.
    - Do not write real-company terminology into this public toolkit repository; update the private lab root glossary.
-8. Create `requirements/<name-of-target-architecture>/<epic-slug>.md` from the template. Do not overwrite an existing epic unless the user explicitly asks to update it.
+8. Create `requirements/<name-of-target-architecture>/<epic-slug>.md` from the template. Preserve the document metadata table and the `Epic Overview` table. Do not overwrite an existing epic unless the user explicitly asks to update it.
 9. Update the target architecture linkage:
    - Add or update the `## Epics To Build` table in `07-phase-e-solution-building-blocks.md` when that file exists.
    - Add or update the `### Epics To Build` table in the Phase E section of `target-architecture-document.md`.
@@ -92,6 +92,8 @@ Keep the epic useful for delivery planning while preserving architecture traceab
 
 Include:
 
+- Document metadata table.
+- Epic Overview table with epic, phase, main capability, target architecture, L2 solution architecture, Jira, and Confluence references.
 - User-provided name and description, unchanged except for minor formatting.
 - User-provided phase, unchanged except for minor formatting.
 - User-provided main capability, unchanged except for minor formatting.

@@ -1,5 +1,14 @@
 # {{DATA_OBJECT}} Data Architecture Design
 
+| Field             | Value                    |
+| ----------------- | ------------------------ |
+| Confluence Link   | {{CONFLUENCE_LINK}}      |
+| Last Update       | {{LAST_UPDATE}}          |
+| Open questions    | {{OPEN_QUESTIONS_COUNT}} |
+| Readability Score | TBD                      |
+
+## Data Architecture Overview
+
 | Field           | Value                                                 |
 | --------------- | ----------------------------------------------------- |
 | Data Object     | {{DATA_OBJECT}}                                       |
@@ -7,8 +16,10 @@
 | Main Capability | [{{MAIN_CAPABILITY_TITLE}}]({{MAIN_CAPABILITY_LINK}}) |
 | Data Owner      | {{DATA_OWNER}}                                        |
 | Classification  | {{DATA_CLASSIFICATION}}                               |
-| Confluence Link | {{CONFLUENCE_LINK}}                                   |
-| Last Updated    | {{LAST_UPDATED}}                                      |
+
+## Short Summary
+
+_{{SHORT_SUMMARY}}_
 
 ## Description
 

@@ -56,11 +56,8 @@ Do not write real-company integration details into this public toolkit repositor
    - Derive `<source>` from the source system or producer.
    - Derive `<destination>` from the target system or consumer.
    - Build the filename as `int-<4-digits>-<data-object>-from-<source>-to-<destination>.md`.
-6. Create or update the integration design from `templates/integration-design-template.md`.
-7. Populate the top metadata table with document tracking values only:
-   - `Confluence Link`: use the existing page link, or `TBD` until the document is published.
-   - `Last Update`: use the current date in `YYYY-MM-DD` format.
-   - `Open questions`: use the count of unresolved bullets in `## Open Questions`.
+6. Create or update the integration design from `templates/integration-design-template.md`. Preserve the two opening tables: the document metadata table first, followed by the `Integration Overview` table.
+7. Populate the top metadata table with document tracking values from the template.
 8. Populate the `## Integration Overview` table with concise concrete values so agents can understand the integration status, purpose, source, destination, data object, trigger, pattern, and open-question count without reading the full document.
 9. After writing the `## Integration Overview` table and description, create a visual integration diagram:
    - Use the `create-drawio-diagram` skill and its `templates/integration-design.drawio` template.
@@ -95,7 +92,7 @@ Do not write real-company integration details into this public toolkit repositor
 
 - Prefer concrete interface details over generic integration principles.
 - Enforce the Glossary `Jargon` section's Avoid list. Do not finish an integration design while avoided words or phrases remain in generated prose, headings, tables, diagram labels, or connector labels unless they are quoted source text or explicit glossary references.
-- Keep the top metadata table limited to `Confluence Link`, `Last Update`, and `Open questions`.
+- Start with the document metadata table, then the `## Integration Overview` fact table.
 - Keep the `## Integration Overview` fact table short and factual. Use `TBD` for unknown fields, and mirror unresolved items in `## Open Questions`.
 - Identify producer, consumer, owner, protocol, contract, trigger, frequency, payload, and versioning.
 - Place every sample API payload in a fenced code block with `javascript` as the language tag, even when the payload is JSON-shaped, because `javascript` blocks allow explanatory comments. Do not put sample payloads in Markdown tables, `json` code blocks, or untyped code blocks.

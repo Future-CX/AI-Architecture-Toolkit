@@ -1,5 +1,14 @@
 # {{CAPABILITY_NAME}}
 
+| Field             | Value                    |
+| ----------------- | ------------------------ |
+| Confluence Link   | {{CONFLUENCE_LINK}}      |
+| Last Update       | {{LAST_UPDATE}}          |
+| Open questions    | {{OPEN_QUESTIONS_COUNT}} |
+| Readability Score | TBD                      |
+
+## Data Architecture Overview
+
 | Field                        | Value                            |
 | ---------------------------- | -------------------------------- |
 | Name                         | {{CAPABILITY_NAME}}              |
@@ -8,8 +17,6 @@
 | Application                  | {{APPLICATION}}                  |
 | Application Lifecycle Status | {{APPLICATION_LIFECYCLE_STATUS}} |
 | Owner(s)                     | {{OWNERS}}                       |
-| Confluence Link              | {{CONFLUENCE_LINK}}              |
-| Last Update                  | {{LAST_UPDATE}}                  |
 
 ## Short Summary
 

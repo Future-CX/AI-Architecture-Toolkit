@@ -21,7 +21,7 @@ After the clarification session, validate that `<private-lab-root>/GLOSSARY.md` 
 
 When this toolkit is used as a submodule, do not write generated solution architecture design files under `toolkit/solution-architectures/`. Run from the private lab root, or otherwise target the private lab root explicitly, so output goes to `<private-lab-root>/solution-architectures/L2-solution-architecture-<slug>/`.
 
-Use `templates/solution-architecture-design-template.md` as the output structure and follow the chapter writing guidance below when replacing placeholders. Replace each complete placeholder block with finished document content; do not leave placeholder names, placeholder guidance, or drafting instructions in the generated document. Create every Draw.io diagram with `../create-drawio-diagram/SKILL.md` because it contains the required diagram instructions, style rules, and templates. Store each diagram as an editable `.drawio` file in the same folder as the solution architecture design document. Export a same-basename `.svg` file for every `.drawio` file that must be embedded, and embed the SVG in the document.
+Use `templates/solution-architecture-design-template.md` as the output structure and follow the chapter writing guidance below when replacing placeholders. Preserve the two opening tables: the document metadata table first, followed by the `Solution Architecture Overview` table. Replace each complete placeholder block with finished document content; do not leave placeholder names, placeholder guidance, or drafting instructions in the generated document. Create every Draw.io diagram with `../create-drawio-diagram/SKILL.md` because it contains the required diagram instructions, style rules, and templates. Store each diagram as an editable `.drawio` file in the same folder as the solution architecture design document. Export a same-basename `.svg` file for every `.drawio` file that must be embedded, and embed the SVG in the document.
 
 ## Required Inputs
 
@@ -32,7 +32,7 @@ Use `templates/solution-architecture-design-template.md` as the output structure
 - Data objects, ownership, lifecycle, and persistence needs
 - Data integrations, APIs, events, files, batches, and upstream/downstream dependencies
 - Non-functional requirements, security, privacy, observability, resilience, and operations constraints
-- Technical standards, technology choices, assumptions, risks, and open decisions
+- Domain, owners, technical standards, technology choices, assumptions, risks, and open decisions
 
 ## Workflow
 
@@ -50,7 +50,7 @@ Use `templates/solution-architecture-design-template.md` as the output structure
    - Applications and the capabilities or functions they deliver
    - General canonical data objects, ownership, source-of-truth, and lifecycle notes
    - Relationships between terms, applications, and data objects
-10. Create the technical document from `templates/solution-architecture-design-template.md`.
+10. Create the technical document from `templates/solution-architecture-design-template.md`. Preserve the document metadata table, the `Solution Architecture Overview` table, and the `Short Summary` section.
 11. Use `../create-drawio-diagram/SKILL.md` to create separate Draw.io source files in the same output folder when the required architecture relationships are known:
     - `capability-overview.drawio` for the capability overview diagram
     - `integration-flow.drawio` for the integration flow or sequence diagram
@@ -62,13 +62,15 @@ Use `templates/solution-architecture-design-template.md` as the output structure
 15. Record specific technical design choices in the document. If a choice is durable, hard to reverse, surprising without context, and based on a real trade-off, propose an ADR using `../architecture-decision-record/SKILL.md`.
 16. Mark unknowns as assumptions or open questions. Do not invent implementation facts.
 17. Use linked document titles as Markdown link labels whenever possible. For local Markdown files such as source capability overviews and target architecture documents, derive the title from the first `#` heading; otherwise use the filename without extension. Do not use generic labels such as "Target architecture" when a document title is available.
-18. In the metadata table, link the `Capability` value to the source capability overview using `{{SOURCE_CAPABILITY_OVERVIEW}}`. Use the capability name as the link label unless the user asks to use the source document title.
+18. In the `Solution Architecture Overview` table, link the `Capability` value to the source capability overview using `{{SOURCE_CAPABILITY_OVERVIEW}}`. Use the capability name as the link label unless the user asks to use the source document title.
 
 ## Chapter Writing Guidance
 
 Write each chapter as implementation-oriented architecture guidance, not as a restatement of the capability overview. Prefer specific decisions, responsibilities, boundaries, data ownership, interfaces, constraints, and trade-offs. Use concise prose plus tables where comparison or accountability is clearer than paragraphs.
 
 The generated document title must stay `L2 - {{CAPABILITY_NAME}} Solution Architecture`. The generated content should be application-centered: use `Application Name` as the primary implementation anchor in the body, while using the capability as context in the title, `Architecture Summary`, and `Capability Overview`. After that, shift the rest of the document to the application, components, data, integrations, operations, and delivery impact. Avoid repeating the capability name throughout the body unless it prevents ambiguity.
+
+Start the document with the document metadata table, then the `Solution Architecture Overview` table with application name, capability, target architecture, domain, and owners. Include a `Short Summary` section before the table of contents that gives the business outcome, application focus, ownership, and main architecture concern in a few plain-language sentences.
 
 ## Readability Guidance
 
@@ -205,6 +207,9 @@ Make the document easy to read for both architects and delivery teams.
 
 Each solution architecture design document must include:
 
+- Document metadata table
+- Solution Architecture Overview table with application name, capability, target architecture, domain, and owners
+- Short Summary in italic text before the table of contents
 - Solution architecture design summary
 - Source capability overview reference
 - Scope and assumptions

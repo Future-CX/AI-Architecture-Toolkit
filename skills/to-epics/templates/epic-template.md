@@ -1,5 +1,14 @@
 # {{EPIC_NAME}}
 
+| Field             | Value                    |
+| ----------------- | ------------------------ |
+| Confluence Link   | {{CONFLUENCE_LINK}}      |
+| Last Update       | {{LAST_UPDATE}}          |
+| Open questions    | {{OPEN_QUESTIONS_COUNT}} |
+| Readability Score | TBD                      |
+
+## Epic Overview
+
 | Field                    | Value                                                                   |
 | ------------------------ | ----------------------------------------------------------------------- |
 | Epic                     | {{EPIC_NAME}}                                                           |

@@ -264,6 +264,8 @@ def main() -> None:
     attach_list_field(principles, "donts", args.principle_dont)
     rendered = TEMPLATE.read_text(encoding="utf-8")
     rendered = rendered.replace("{{PRINCIPLE_NAME}}", principle_name)
+    rendered = rendered.replace("{{CONFLUENCE_LINK}}", "TBD")
+    rendered = rendered.replace("{{LAST_UPDATE}}", date.today().isoformat())
     rendered = rendered.replace("{{INTENT}}", args.intent.strip())
     rendered = rendered.replace("{{PRINCIPLES_INDEX}}", format_principles_index(principles))
     rendered = rendered.replace("{{PRINCIPLE_DETAILS}}", format_principle_details(principles))

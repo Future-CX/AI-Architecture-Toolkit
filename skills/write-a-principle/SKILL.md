@@ -43,7 +43,7 @@ Each generated principle is also added to `principles/_principles-list.md` using
 7. Generate each principle identifier from the category code plus a three-digit incremental number starting with `001`, for example `DATA001`, `DATA002`, and `DATA003`.
 8. Add a linked list at the top of the document's `## Principles` section containing only first-level principle identifiers and names. If the document has multiple levels of principles, sub-principles, controls, examples, or nested guidance, keep those inside the matching principle detail section and do not include them in the top list.
 9. Capture practical usage guidance.
-10. Generate the file under the private lab repository's root `principles/` folder using the preset template.
+10. Generate the file under the private lab repository's root `principles/` folder using the preset template. Preserve the top metadata table; when the Confluence link is unknown, set `Confluence Link` to `TBD`.
 11. Add or update the generated principle in `<private-lab-root>/principles/_principles-list.md` with a relative link, intent, and `last_updated` date.
 12. Do not overwrite an existing principle file unless the user explicitly asks.
 13. Keep the style consistent with the existing files in `<private-lab-root>/principles/`.
@@ -54,6 +54,11 @@ Each principle file must use this structure:
 
 ```md
 # Principle Document Name
+
+| Field | Value |
+| --- | --- |
+| Confluence Link | TBD |
+| Last Update | YYYY-MM-DD |
 
 ## Intent
 

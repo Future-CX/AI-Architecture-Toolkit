@@ -31,6 +31,7 @@ Do not write real-company data architecture details into this public toolkit rep
 - Data object description and business purpose
 - Main capability or business process using the data object
 - Source of truth and data owner
+- Data classification
 - Producing systems, consuming systems, and integration touchpoints
 - Data lifecycle states, retention, privacy, and classification expectations
 - Known quality rules, reconciliation needs, lineage needs, and governance constraints
@@ -51,7 +52,7 @@ Do not write real-company data architecture details into this public toolkit rep
 4. After the clarification session, validate that `<private-lab-root>/GLOSSARY.md` was created or updated during the current run. If it was not created or updated, stop before generating data architecture files and ask the user to run `grill-me` followed by `ubiquitous-language` so the glossary is updated first.
 5. Ask for the canonical data object, source of truth, owner, main capability, producers, consumers, and known integrations when still not provided.
 6. Determine the output folder as `<private-lab-root>/data-architectures/<data-object-slug>/`.
-7. Create or update `<data-object-slug>-data-architecture-design.md` from `templates/data-architecture-design-template.md`.
+7. Create or update `<data-object-slug>-data-architecture-design.md` from `templates/data-architecture-design-template.md`. Preserve the two opening tables: the document metadata table first, followed by the `Data Architecture Overview` table.
 8. Create diagrams that make the data movement understandable:
    - Data object context diagram
    - Data flow diagram from source through transformations to consumers
@@ -68,6 +69,8 @@ Do not write real-company data architecture details into this public toolkit rep
 ## Writing Guidance
 
 - Center the document on one canonical data object.
+- Start with the document metadata table, then the `Data Architecture Overview` table with the data object, source of truth, main capability, data owner, and classification.
+- Include a `Short Summary` section before `Description` that gives the business meaning, ownership, and main architecture concern in a few plain-language sentences.
 - Treat the data architecture design as the source of truth for the canonical data model. Solution architecture documents should reference this model and describe application-specific usage, not redefine it.
 - Be explicit about source of truth, authoritative owner, allowed writers, and downstream consumers.
 - Identify data lifecycle states, create/update/delete behavior, retention, archival, purge, and audit requirements.

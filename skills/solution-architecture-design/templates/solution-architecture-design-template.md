@@ -1,20 +1,31 @@
 # L2 - {{CAPABILITY_NAME}} Solution Architecture
 
+| Field             | Value                    |
+| ----------------- | ------------------------ |
+| Confluence Link   | {{CONFLUENCE_LINK}}      |
+| Last Update       | {{LAST_UPDATE}}          |
+| Open questions    | {{OPEN_QUESTIONS_COUNT}} |
+| Readability Score | TBD                      |
+
+## Solution Architecture Overview
+
 | Field               | Value                                                         |
 | ------------------- | ------------------------------------------------------------- |
 | Application Name    | {{APPLICATION_NAME}}                                          |
 | Capability          | [{{CAPABILITY_NAME}}]({{SOURCE_CAPABILITY_OVERVIEW}})         |
 | Target architecture | [{{TARGET_ARCHITECTURE_TITLE}}]({{TARGET_ARCHITECTURE_LINK}}) |
-| Confluence Link     | {{CONFLUENCE_LINK}}                                           |
 | Domain              | {{DOMAIN}}                                                    |
 | Owner(s)            | {{OWNERS}}                                                    |
-| Last update         | {{LAST_UPDATE}}                                               |
+
+## Short Summary
+
+_{{SHORT_SUMMARY}}_
 
 ## Table of Contents
 
 - [Architecture Summary](#architecture-summary)
-- [Capability Overview](#capability-overview)
 - [Open Questions](#open-questions)
+- [Capability Overview](#capability-overview)
 - [Scope and Assumptions](#scope-and-assumptions)
 - [Target Technical Implementation](#target-technical-implementation)
 - [Application and Component Architecture](#application-and-component-architecture)

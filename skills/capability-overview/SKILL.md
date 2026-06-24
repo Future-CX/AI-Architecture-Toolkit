@@ -58,7 +58,9 @@ Run from the private lab root, this creates `capabilities/order-management/order
 - Domain
 - Business objective
 - Stakeholders
-- Existing systems
+- Application
+- Application lifecycle status
+- Owners
 - Strategic importance
 - Pain points
 - Related capabilities
@@ -69,7 +71,7 @@ Run from the private lab root, this creates `capabilities/order-management/order
 2. Validate that `<private-lab-root>/GLOSSARY.md` was created or updated. If not, stop and ask the user to run `grill-me` and then `ubiquitous-language` before continuing.
 3. Convert the capability name to `<workspace-root>/capabilities/<slug>/<slug>.md`, removing a redundant leading or trailing word `Capability` from the slug.
 4. Derive the outputs from the inputs and any available repository context.
-5. Use `templates/capability-overview-template.md` as the output structure.
+5. Use `templates/capability-overview-template.md` as the output structure. Preserve the two opening tables: the document metadata table first, followed by the `Data Architecture Overview` table.
 6. Use `../create-drawio-diagram/SKILL.md` and its capability context helper to create `<capability-slug>-capability-overview.drawio` beside the generated overview. Keep diagram layout, styling, SVG generation, and application-header rules in the create-drawio-diagram skill.
 7. Export or create a same-basename `<capability-slug>-capability-overview.svg`, sanitize it according to the Draw.io SVG export rules, and embed it in the capability overview just above `Main Business Features` without a separate diagram heading.
 8. Do not overwrite an existing capability file unless the user explicitly asks.
@@ -90,6 +92,8 @@ Run from the private lab root, this creates `capabilities/order-management/order
 
 Each capability overview must include:
 
+- Document metadata table
+- Data Architecture Overview table with the capability name, description, domain, application, application lifecycle status, and owners
 - Capability definition
 - Short Summary in italic text above Business Objective
 - Business outcome
