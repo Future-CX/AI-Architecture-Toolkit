@@ -34,40 +34,40 @@
                 <mxCell id="engagement-service-header" value="Application name when known" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;" parent="1" vertex="1">
                     <mxGeometry x="350" y="455" width="240" height="10" as="geometry"/>
                 </mxCell>
-                <mxCell id="engagement-service" value="Engagement capability or component&#xa;Business interaction or process API" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#d9eadf;strokeColor=default;fontColor=#17201d;fontStyle=1;strokeWidth=2;" parent="1" vertex="1">
+                <mxCell id="engagement-service" value="Engagement capability or component&#xa;Business interaction or process API" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;strokeWidth=2;" parent="1" vertex="1">
                     <mxGeometry x="350" y="465" width="240" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="integration-ingress-header" value="Application name when known" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;" parent="1" vertex="1">
                     <mxGeometry x="440" y="605" width="220" height="10" as="geometry"/>
                 </mxCell>
-                <mxCell id="integration-ingress" value="Integration capability or component&#xa;Gateway, topic, queue, or adapter" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#edf2f0;strokeColor=default;fontColor=#17201d;fontStyle=1;strokeWidth=2;" parent="1" vertex="1">
+                <mxCell id="integration-ingress" value="Integration capability or component&#xa;Gateway, topic, queue, or adapter" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;strokeWidth=2;" parent="1" vertex="1">
                     <mxGeometry x="440" y="615" width="220" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="integration-orchestration-header" value="Application name when known" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;" parent="1" vertex="1">
                     <mxGeometry x="720" y="605" width="260" height="10" as="geometry"/>
                 </mxCell>
-                <mxCell id="integration-orchestration" value="Integration capability or component&#xa;Routing, mapping, validation, or orchestration" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#edf2f0;strokeColor=default;fontColor=#17201d;fontStyle=1;strokeWidth=2;" parent="1" vertex="1">
+                <mxCell id="integration-orchestration" value="Integration capability or component&#xa;Routing, mapping, validation, or orchestration" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;strokeWidth=2;" parent="1" vertex="1">
                     <mxGeometry x="720" y="615" width="260" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="foundation-component-header" value="Application name when known" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;" parent="1" vertex="1">
                     <mxGeometry x="620" y="755" width="300" height="10" as="geometry"/>
                 </mxCell>
-                <mxCell id="foundation-component" value="Enterprise Foundation capability or component&#xa;System of record, platform, or shared service" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#dae8fc;strokeColor=default;fontColor=#17201d;fontStyle=1;strokeWidth=2;" parent="1" vertex="1">
+                <mxCell id="foundation-component" value="Enterprise Foundation capability or component&#xa;System of record, platform, or shared service" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" parent="1" vertex="1">
                     <mxGeometry x="620" y="765" width="300" height="50" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-public-frontend" value="request or event" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=default;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" parent="1" source="public-entry" target="frontend-component" edge="1">
+                <mxCell id="edge-public-frontend" value="request or event" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" parent="1" source="public-entry" target="frontend-component" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-frontend-engagement" value="calls" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=default;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" parent="1" source="frontend-component" target="engagement-service" edge="1">
+                <mxCell id="edge-frontend-engagement" value="calls" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" parent="1" source="frontend-component" target="engagement-service" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-engagement-integration" value="trigger, protocol, contract" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=default;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" parent="1" source="engagement-service" target="integration-ingress" edge="1">
+                <mxCell id="edge-engagement-integration" value="trigger, protocol, contract" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" parent="1" source="engagement-service" target="integration-ingress" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-integration-hop" value="route, transform, validate" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=default;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" parent="1" source="integration-ingress" target="integration-orchestration" edge="1">
+                <mxCell id="edge-integration-hop" value="route, transform, validate" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" parent="1" source="integration-ingress" target="integration-orchestration" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="edge-integration-foundation" value="deliver, retry, acknowledge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=default;labelBackgroundColor=default;labelBorderColor=none;strokeWidth=2;" parent="1" source="integration-orchestration" target="foundation-component" edge="1">
+                <mxCell id="edge-integration-foundation" value="deliver, retry, acknowledge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" parent="1" source="integration-orchestration" target="foundation-component" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
             </root>

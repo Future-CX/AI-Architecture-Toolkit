@@ -34,40 +34,40 @@
         <mxCell id="axeT-GRFkk37x7dI-ROH-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;" value="Application name when known" vertex="1">
           <mxGeometry height="10" width="240" x="350" y="455" as="geometry" />
         </mxCell>
-        <mxCell id="axeT-GRFkk37x7dI-ROH-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#d9eadf;strokeColor=default;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Engagement capability or component&#xa;Business interaction or process API" vertex="1">
+        <mxCell id="axeT-GRFkk37x7dI-ROH-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Engagement capability or component&#xa;Business interaction or process API" vertex="1">
           <mxGeometry height="50" width="240" x="350" y="465" as="geometry" />
         </mxCell>
         <mxCell id="axeT-GRFkk37x7dI-ROH-12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;" value="Application name when known" vertex="1">
           <mxGeometry height="10" width="220" x="440" y="605" as="geometry" />
         </mxCell>
-        <mxCell id="axeT-GRFkk37x7dI-ROH-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#edf2f0;strokeColor=default;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Integration capability or component&#xa;Gateway, topic, queue, or adapter" vertex="1">
+        <mxCell id="axeT-GRFkk37x7dI-ROH-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Integration capability or component&#xa;Gateway, topic, queue, or adapter" vertex="1">
           <mxGeometry height="50" width="220" x="440" y="615" as="geometry" />
         </mxCell>
         <mxCell id="axeT-GRFkk37x7dI-ROH-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;" value="Application name when known" vertex="1">
           <mxGeometry height="10" width="260" x="720" y="605" as="geometry" />
         </mxCell>
-        <mxCell id="axeT-GRFkk37x7dI-ROH-15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#edf2f0;strokeColor=default;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Integration capability or component&#xa;Routing, mapping, validation, or orchestration" vertex="1">
+        <mxCell id="axeT-GRFkk37x7dI-ROH-15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Integration capability or component&#xa;Routing, mapping, validation, or orchestration" vertex="1">
           <mxGeometry height="50" width="260" x="720" y="615" as="geometry" />
         </mxCell>
         <mxCell id="axeT-GRFkk37x7dI-ROH-16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;" value="Application name when known" vertex="1">
           <mxGeometry height="10" width="300" x="620" y="755" as="geometry" />
         </mxCell>
-        <mxCell id="axeT-GRFkk37x7dI-ROH-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#dae8fc;strokeColor=default;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Enterprise Foundation capability or component&#xa;System of record, platform, or shared service" vertex="1">
+        <mxCell id="axeT-GRFkk37x7dI-ROH-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Enterprise Foundation capability or component&#xa;System of record, platform, or shared service" vertex="1">
           <mxGeometry height="50" width="300" x="620" y="765" as="geometry" />
         </mxCell>
-        <mxCell id="axeT-GRFkk37x7dI-ROH-18" edge="1" parent="1" source="axeT-GRFkk37x7dI-ROH-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=default;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="axeT-GRFkk37x7dI-ROH-9" value="request or event">
+        <mxCell id="axeT-GRFkk37x7dI-ROH-18" edge="1" parent="1" source="axeT-GRFkk37x7dI-ROH-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="axeT-GRFkk37x7dI-ROH-9" value="request or event">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="axeT-GRFkk37x7dI-ROH-19" edge="1" parent="1" source="axeT-GRFkk37x7dI-ROH-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=default;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="axeT-GRFkk37x7dI-ROH-11" value="calls">
+        <mxCell id="axeT-GRFkk37x7dI-ROH-19" edge="1" parent="1" source="axeT-GRFkk37x7dI-ROH-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="axeT-GRFkk37x7dI-ROH-11" value="calls">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="axeT-GRFkk37x7dI-ROH-20" edge="1" parent="1" source="axeT-GRFkk37x7dI-ROH-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=default;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="axeT-GRFkk37x7dI-ROH-13" value="trigger, protocol, contract">
+        <mxCell id="axeT-GRFkk37x7dI-ROH-20" edge="1" parent="1" source="axeT-GRFkk37x7dI-ROH-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="axeT-GRFkk37x7dI-ROH-13" value="trigger, protocol, contract">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="axeT-GRFkk37x7dI-ROH-21" edge="1" parent="1" source="axeT-GRFkk37x7dI-ROH-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=default;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="axeT-GRFkk37x7dI-ROH-15" value="route, transform, validate">
+        <mxCell id="axeT-GRFkk37x7dI-ROH-21" edge="1" parent="1" source="axeT-GRFkk37x7dI-ROH-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="axeT-GRFkk37x7dI-ROH-15" value="route, transform, validate">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="axeT-GRFkk37x7dI-ROH-22" edge="1" parent="1" source="axeT-GRFkk37x7dI-ROH-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=default;labelBackgroundColor=default;labelBorderColor=none;strokeWidth=2;" target="axeT-GRFkk37x7dI-ROH-17" value="deliver, retry, acknowledge">
+        <mxCell id="axeT-GRFkk37x7dI-ROH-22" edge="1" parent="1" source="axeT-GRFkk37x7dI-ROH-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="axeT-GRFkk37x7dI-ROH-17" value="deliver, retry, acknowledge">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>

@@ -31,6 +31,17 @@ Use `STYLE.md` for colors, shape styles, connector styles, and layout rules.
 
 Do not introduce new colors unless the user explicitly asks for a palette change. Reuse the standard palette so diagrams stay consistent across solution architecture documents.
 
+## Light Theme Source Rules
+
+Create `.drawio` sources as light-theme diagrams from the start.
+
+- Every `mxGraphModel` must set `background="#fbfcfa"`. Do not leave the page background unset or transparent.
+- Every visible shape, layer band, connector, label, and application header must use explicit hex colors from `STYLE.md`.
+- Do not use Draw.io inherited or theme-dependent values such as `strokeColor=default`, `fontColor=default`, `labelBackgroundColor=default`, `currentColor`, CSS variables, or `light-dark(...)`.
+- Use dark text, normally `fontColor=#17201d`, on light fills. Use `fontColor=#5d6964` for connector labels unless a specific palette color communicates flow type.
+- Use `labelBackgroundColor=#fbfcfa` for connector labels so labels remain readable on light layer bands.
+- Treat dark-theme or theme-adaptive source styles as defects in the `.drawio` file. Fix the `.drawio` source before exporting SVG.
+
 ## Workflow
 
 1. Confirm the diagram purpose and choose the closest template.
@@ -123,6 +134,21 @@ When using `templates/integration-design.drawio`, preserve the vertical layer st
 - If the source content does not identify a component layer, use the neutral component style and record the categorization as an assumption or open question in the integration design.
 - Do not add real-company system names, internal endpoints, topics, queues, payload fields, credentials, or proprietary integration details to this public repository.
 
+## Data Architecture Diagram Layout
+
+When using `templates/data-architecture-diagram.drawio`, preserve the layered architecture structure. The diagram is a data architecture design view for one canonical data object, not an integration sequence diagram.
+
+- Place components inside the corresponding layer band, ordered from top to bottom: Public Internet, Frontend, Engagement Services, Integration, and Enterprise Foundation (Backoffice).
+- Always place Backend-for-Frontend components in the Frontend layer. Do not place a BFF in the Integration layer, even when it calls APIs, composes requests, or shapes channel responses.
+- Use the exact layer colors from `STYLE.md`: Public Internet light red, Frontend light yellow, Engagement light green, Integration light grey, and Enterprise Foundation (Backoffice) light blue.
+- Place components horizontally when they are different peer components, alternate sources, alternate consumers, parallel integrations, or separate solution copies. Do not stack unrelated components vertically inside one layer.
+- Use vertical alignment only when components are part of the same direct end-to-end flow and the alignment makes the data path easier to trace.
+- Grow layer width for additional horizontal component placement before adding vertical stacks. Grow layer height only when there are multiple related rows or connector routing needs.
+- Keep Backend-for-Frontend components near the channel or frontend component they support, then route calls down to Engagement Services or Integration with orthogonal connectors.
+- Keep the canonical data object visually central when possible. Place sources to the left or below, consumers to the right or above, and governance or ownership notes in the traceability area.
+- Put interface names, events, files, APIs, batches, ownership, and traceability details in concise connector labels or in the surrounding document table. Do not turn the diagram into a dense interface catalog.
+- Do not add real-company system names, internal endpoints, topics, queues, payload fields, credentials, or proprietary integration details to this public repository.
+
 ## Data Flow Layout
 
 When using `templates/data-flow.drawio`, preserve the horizontal swimlane structure. The diagram is an operational trace of one canonical data object, not a generic architecture context diagram.
@@ -148,8 +174,7 @@ Exported SVGs must preserve the exact colors from the `.drawio` source.
 - Keep the page background in the SVG. Exported SVGs must have a white or light page background from the source diagram, normally `#fbfcfa`. Do not export with transparent background.
 - Treat a dark, black, transparent, or theme-inverted SVG background as a failed export. Re-export from the light-themed `.drawio` source with an explicit page background before embedding or publishing.
 - Exported SVGs must use `color-scheme: light` only. Treat `color-scheme: light dark`, `color-scheme: dark`, missing explicit light color scheme, or `light-dark(...)` as failed exports. These Draw.io-generated CSS values can make Confluence, browsers, or dark-mode previews render the diagram with inverted/dark colors.
-- Before embedding or publishing, inspect the SVG text for `color-scheme` and `light-dark(`. If `color-scheme` is not explicitly light-only, or if `light-dark(` is present, regenerate or sanitize the SVG so all colors are fixed explicit hex values and the background remains white/light.
-- After every Draw.io SVG export, run `skills/create-drawio-diagram/scripts/sanitize-drawio-svg.py <diagram.svg>`. This forces `color-scheme: light`, removes `light-dark(...)`, and inserts a light background rectangle.
+- Before embedding or publishing, inspect the SVG text for `color-scheme` and `light-dark(`. If `color-scheme` is not explicitly light-only, or if `light-dark(` is present, first fix the `.drawio` source and re-export. Run `skills/create-drawio-diagram/scripts/sanitize-drawio-svg.py <diagram.svg>` only as a final compatibility guard for Draw.io exports that still emit theme-adaptive SVG CSS.
 - Do not post-process exported SVGs with CSS color filters, dark-mode transforms, image optimizers, or theme substitution.
 - Do not replace concrete hex colors with `currentColor`, CSS variables, inherited colors, or generated dark palette values.
 - Before embedding the SVG, inspect it visually against the `.drawio` source. If colors differ, regenerate the SVG before embedding it.

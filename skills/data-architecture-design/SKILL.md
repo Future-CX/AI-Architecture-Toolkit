@@ -101,7 +101,9 @@ Use `../create-drawio-diagram/templates/data-flow.drawio` as the starting point 
 
 ## Data Architecture Design Diagram Format
 
-Use `../create-drawio-diagram/templates/data-architecture-diagram.drawio` as the starting point for the Data Architecture Design diagram. Adapt the data architecture overview elements to show the data object's source systems, canonical data object, owners, consumers, integrations, governance touchpoints, and external systems. Keep the diagram focused on integration traceability for the data object; put interface detail in the Data Architecture Design table or linked integration designs.
+Use `../create-drawio-diagram/templates/data-architecture-diagram.drawio` as the starting point for the Data Architecture Design diagram. Follow the `Data Architecture Diagram Layout` rules in `../create-drawio-diagram/SKILL.md`.
+
+Adapt the data architecture overview elements to show the data object's source systems, canonical data object, owners, consumers, integrations, governance touchpoints, and external systems. Always place Backend-for-Frontend components in the Frontend layer. Place different peer components horizontally instead of stacking them vertically unless they are part of the same direct end-to-end flow. Keep the diagram focused on integration traceability for the data object; put interface detail in the Data Architecture Design table or linked integration designs.
 
 ## Phase C Link Format
 
