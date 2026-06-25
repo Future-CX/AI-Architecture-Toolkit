@@ -33,14 +33,6 @@ _{{SHORT_SUMMARY}}_
 
 Describe the data object, its business meaning, boundaries, aliases, and relationship to nearby concepts.
 
-## Ownership and Source of Truth
-
-Document the authoritative owner, source-of-truth application, allowed writers, allowed readers, and stewardship responsibilities.
-
-## Lifecycle
-
-Describe creation, update, deletion, archival, retention, purge, audit, and exception handling across the data object's lifecycle.
-
 ## Data Flow
 
 Explain how the data object moves from source through transformations, storage, integrations, and consumers. Describe the flow in the same order as the diagram: process stages across the top, systems or actors as horizontal lanes, and labeled movements between lanes.
@@ -68,6 +60,14 @@ Source: [{{DATA_OBJECT_SLUG}}-integration-map.drawio](diagrams/{{DATA_OBJECT_SLU
 ## Conceptual Data Model
 
 Describe important relationships, identifiers, aggregates, reference data, master data, and derived data. Add a diagram when relationships materially affect the architecture.
+
+## Ownership and Source of Truth
+
+Document the authoritative owner, source-of-truth application, allowed writers, allowed readers, and stewardship responsibilities.
+
+## Lifecycle
+
+Describe creation, update, deletion, archival, retention, purge, audit, and exception handling across the data object's lifecycle.
 
 ## Data Quality and Lineage
 

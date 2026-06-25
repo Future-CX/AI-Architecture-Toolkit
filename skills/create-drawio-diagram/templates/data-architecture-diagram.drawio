@@ -1,53 +1,74 @@
-<mxfile host="app.diagrams.net" modified="2026-05-27T00:00:00.000Z" agent="AI Architecture Toolkit" version="24.7.17">
+<mxfile host="Electron" agent="AI Architecture Toolkit">
   <diagram id="data-architecture-diagram" name="Data Architecture">
-    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#fbfcfa" math="0" shadow="0">
+    <mxGraphModel dx="1437" dy="1070" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="#fbfcfa" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="title" value="Data Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=24;fontColor=#17201d;" vertex="1" parent="1">
-          <mxGeometry x="60" y="40" width="420" height="40" as="geometry" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=24;fontColor=#17201d;" value="Data Architecture" vertex="1">
+          <mxGeometry height="40" width="420" x="60" y="40" as="geometry" />
         </mxCell>
-        <mxCell id="source-system" value="Source system" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="70" y="170" width="220" height="80" as="geometry" />
+        <mxCell id="axeT-GRFkk37x7dI-ROH-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=0;fillColor=#fee9e8;strokeColor=none;fontColor=#17201d;strokeWidth=2;" value="Public Internet" vertex="1">
+          <mxGeometry height="140" width="1740" x="60" y="100" as="geometry" />
         </mxCell>
-        <mxCell id="canonical-data-object" value="Canonical data object" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#fff3c4;strokeColor=#b7791f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="470" y="150" width="250" height="100" as="geometry" />
+        <mxCell id="axeT-GRFkk37x7dI-ROH-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=0;fillColor=#fffbe2;strokeColor=none;fontColor=#17201d;strokeWidth=2;" value="Frontend" vertex="1">
+          <mxGeometry height="140" width="1740" x="60" y="250" as="geometry" />
         </mxCell>
-        <mxCell id="data-owner" value="Data owner or steward" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="830" y="170" width="220" height="80" as="geometry" />
+        <mxCell id="axeT-GRFkk37x7dI-ROH-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=0;fillColor=#def9ea;strokeColor=none;fontColor=#17201d;strokeWidth=2;" value="Engagement Services" vertex="1">
+          <mxGeometry height="140" width="1740" x="60" y="400" as="geometry" />
         </mxCell>
-        <mxCell id="integration-or-pipeline" value="Integration or pipeline" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#e1d5e7;strokeColor=#7e5799;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="470" y="330" width="250" height="90" as="geometry" />
+        <mxCell id="axeT-GRFkk37x7dI-ROH-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=0;fillColor=#f5f5f5;strokeColor=none;fontColor=#17201d;strokeWidth=2;" value="Integration" vertex="1">
+          <mxGeometry height="140" width="1740" x="60" y="550" as="geometry" />
         </mxCell>
-        <mxCell id="consumer-system" value="Consumer system" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="830" y="330" width="220" height="80" as="geometry" />
+        <mxCell id="axeT-GRFkk37x7dI-ROH-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=0;fillColor=#e8f1ff;strokeColor=none;fontColor=#17201d;strokeWidth=2;" value="Enterprise Foundation &lt;br&gt;(Backoffice)" vertex="1">
+          <mxGeometry height="140" width="1740" x="60" y="700" as="geometry" />
         </mxCell>
-        <mxCell id="quality-governance" value="Quality, lineage, and governance" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#ffffff;strokeColor=#cbd5d1;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="200" y="500" width="310" height="90" as="geometry" />
+        <mxCell id="axeT-GRFkk37x7dI-ROH-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#f8cecc;strokeColor=#000000;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Public Internet component&#xa;User, partner, device, or endpoint" vertex="1">
+          <mxGeometry height="60" width="220" x="170" y="155" as="geometry" />
         </mxCell>
-        <mxCell id="privacy-security" value="Privacy, security, and retention" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#f8cecc;strokeColor=#a3433f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="650" y="500" width="310" height="90" as="geometry" />
+        <mxCell id="axeT-GRFkk37x7dI-ROH-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;" value="Application name when known" vertex="1">
+          <mxGeometry height="10" width="220" x="260" y="305" as="geometry" />
         </mxCell>
-        <mxCell id="edge-source-data" value="creates or updates" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="source-system" target="canonical-data-object">
+        <mxCell id="axeT-GRFkk37x7dI-ROH-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#fff3c4;strokeColor=#000000;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Frontend capability or component&#xa;Channel, app, or experience" vertex="1">
+          <mxGeometry height="50" width="220" x="260" y="315" as="geometry" />
+        </mxCell>
+        <mxCell id="axeT-GRFkk37x7dI-ROH-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;" value="Application name when known" vertex="1">
+          <mxGeometry height="10" width="240" x="350" y="455" as="geometry" />
+        </mxCell>
+        <mxCell id="axeT-GRFkk37x7dI-ROH-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#d9eadf;strokeColor=default;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Engagement capability or component&#xa;Business interaction or process API" vertex="1">
+          <mxGeometry height="50" width="240" x="350" y="465" as="geometry" />
+        </mxCell>
+        <mxCell id="axeT-GRFkk37x7dI-ROH-12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;" value="Application name when known" vertex="1">
+          <mxGeometry height="10" width="220" x="440" y="605" as="geometry" />
+        </mxCell>
+        <mxCell id="axeT-GRFkk37x7dI-ROH-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#edf2f0;strokeColor=default;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Integration capability or component&#xa;Gateway, topic, queue, or adapter" vertex="1">
+          <mxGeometry height="50" width="220" x="440" y="615" as="geometry" />
+        </mxCell>
+        <mxCell id="axeT-GRFkk37x7dI-ROH-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;" value="Application name when known" vertex="1">
+          <mxGeometry height="10" width="260" x="720" y="605" as="geometry" />
+        </mxCell>
+        <mxCell id="axeT-GRFkk37x7dI-ROH-15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#edf2f0;strokeColor=default;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Integration capability or component&#xa;Routing, mapping, validation, or orchestration" vertex="1">
+          <mxGeometry height="50" width="260" x="720" y="615" as="geometry" />
+        </mxCell>
+        <mxCell id="axeT-GRFkk37x7dI-ROH-16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;" value="Application name when known" vertex="1">
+          <mxGeometry height="10" width="300" x="620" y="755" as="geometry" />
+        </mxCell>
+        <mxCell id="axeT-GRFkk37x7dI-ROH-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#dae8fc;strokeColor=default;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Enterprise Foundation capability or component&#xa;System of record, platform, or shared service" vertex="1">
+          <mxGeometry height="50" width="300" x="620" y="765" as="geometry" />
+        </mxCell>
+        <mxCell id="axeT-GRFkk37x7dI-ROH-18" edge="1" parent="1" source="axeT-GRFkk37x7dI-ROH-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=default;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="axeT-GRFkk37x7dI-ROH-9" value="request or event">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge-owner-data" value="owns and governs" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="data-owner" target="canonical-data-object">
+        <mxCell id="axeT-GRFkk37x7dI-ROH-19" edge="1" parent="1" source="axeT-GRFkk37x7dI-ROH-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=default;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="axeT-GRFkk37x7dI-ROH-11" value="calls">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge-data-pipeline" value="flows through" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="canonical-data-object" target="integration-or-pipeline">
+        <mxCell id="axeT-GRFkk37x7dI-ROH-20" edge="1" parent="1" source="axeT-GRFkk37x7dI-ROH-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=default;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="axeT-GRFkk37x7dI-ROH-13" value="trigger, protocol, contract">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge-pipeline-consumer" value="delivers to" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="integration-or-pipeline" target="consumer-system">
+        <mxCell id="axeT-GRFkk37x7dI-ROH-21" edge="1" parent="1" source="axeT-GRFkk37x7dI-ROH-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=default;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="axeT-GRFkk37x7dI-ROH-15" value="route, transform, validate">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="edge-quality-data" value="controls" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="quality-governance" target="canonical-data-object">
+        <mxCell id="axeT-GRFkk37x7dI-ROH-22" edge="1" parent="1" source="axeT-GRFkk37x7dI-ROH-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=default;labelBackgroundColor=default;labelBorderColor=none;strokeWidth=2;" target="axeT-GRFkk37x7dI-ROH-17" value="deliver, retry, acknowledge">
           <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="edge-security-data" value="protects" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#5d6964;fontColor=#5d6964;strokeWidth=2;" edge="1" parent="1" source="privacy-security" target="canonical-data-object">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="note" value="Replace these placeholders with the data object's source of truth, owner, lifecycle controls, integrations, consumers, and governance concerns." style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#ffffff;strokeColor=#cbd5d1;fontColor=#5d6964;dashed=1;" vertex="1" parent="1">
-          <mxGeometry x="220" y="680" width="730" height="70" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
