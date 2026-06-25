@@ -22,23 +22,20 @@
         <mxCell id="stage-4" value="Stage or event 4" style="rounded=0;whiteSpace=wrap;html=1;spacing=6;fillColor=#ffffff;strokeColor=#17201d;fontColor=#17201d;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="1100" y="92" width="150" height="28" as="geometry" />
         </mxCell>
-        <mxCell id="lane-1-label" value="User channel or journey" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" vertex="1" parent="1">
+        <mxCell id="lane-1-label" value="Customer" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" vertex="1" parent="1">
           <mxGeometry x="70" y="150" width="150" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="lane-2-label" value="Application or BFF" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" vertex="1" parent="1">
-          <mxGeometry x="70" y="250" width="150" height="30" as="geometry" />
+        <mxCell id="lane-2-label" value="Channel&#xa;Example: New Webshop" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" vertex="1" parent="1">
+          <mxGeometry x="70" y="240" width="150" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="lane-3-label" value="Source of truth" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" vertex="1" parent="1">
+        <mxCell id="lane-3-label" value="Engagement solutions" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" vertex="1" parent="1">
           <mxGeometry x="70" y="350" width="150" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="lane-4-label" value="Integration or pipeline" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" vertex="1" parent="1">
+        <mxCell id="lane-4-label" value="Integration components" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" vertex="1" parent="1">
           <mxGeometry x="70" y="450" width="150" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="lane-5-label" value="Consumer or analytics" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" vertex="1" parent="1">
-          <mxGeometry x="70" y="550" width="150" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="lane-6-label" value="Archive, audit, or governance" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" vertex="1" parent="1">
-          <mxGeometry x="70" y="650" width="150" height="30" as="geometry" />
+        <mxCell id="lane-5-label" value="Enterprise Foundation&#xa;or MDM solutions" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" vertex="1" parent="1">
+          <mxGeometry x="70" y="545" width="160" height="50" as="geometry" />
         </mxCell>
         <mxCell id="lane-1-line" value="" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="40" y="135" width="1520" height="10" as="geometry" />
@@ -55,23 +52,20 @@
         <mxCell id="lane-5-line" value="" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="40" y="535" width="1520" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="lane-6-line" value="" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" vertex="1" parent="1">
+        <mxCell id="bottom-rule" value="" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="40" y="635" width="1520" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="bottom-rule" value="" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="40" y="735" width="1520" height="10" as="geometry" />
-        </mxCell>
         <mxCell id="stage-guide-1" value="" style="shape=line;html=1;strokeColor=#cbd5d1;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="430" y="88" width="1" height="647" as="geometry" />
+          <mxGeometry x="430" y="88" width="1" height="547" as="geometry" />
         </mxCell>
         <mxCell id="stage-guide-2" value="" style="shape=line;html=1;strokeColor=#cbd5d1;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="720" y="88" width="1" height="647" as="geometry" />
+          <mxGeometry x="720" y="88" width="1" height="547" as="geometry" />
         </mxCell>
         <mxCell id="stage-guide-3" value="" style="shape=line;html=1;strokeColor=#cbd5d1;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="1020" y="88" width="1" height="647" as="geometry" />
+          <mxGeometry x="1020" y="88" width="1" height="547" as="geometry" />
         </mxCell>
         <mxCell id="stage-guide-4" value="" style="shape=line;html=1;strokeColor=#cbd5d1;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="1320" y="88" width="1" height="647" as="geometry" />
+          <mxGeometry x="1320" y="88" width="1" height="547" as="geometry" />
         </mxCell>
         <mxCell id="object-created" value="Create&#xa;canonical object" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontSize=10;strokeWidth=2;" vertex="1" parent="1">
           <mxGeometry x="520" y="365" width="100" height="44" as="geometry" />
@@ -82,12 +76,12 @@
         <mxCell id="primary-read" value="Read object" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="300" y="365" as="sourcePoint" />
-            <mxPoint x="300" y="165" as="targetPoint" />
+            <mxPoint x="300" y="265" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="primary-write" value="Submit update" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="570" y="165" as="sourcePoint" />
+            <mxPoint x="570" y="265" as="sourcePoint" />
             <mxPoint x="570" y="365" as="targetPoint" />
           </mxGeometry>
         </mxCell>
@@ -106,7 +100,7 @@
         <mxCell id="archive-flow" value="Retain, archive, or audit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#8a9992;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;dashed=1;" edge="1" parent="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1160" y="365" as="sourcePoint" />
-            <mxPoint x="1160" y="665" as="targetPoint" />
+            <mxPoint x="1160" y="565" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="legend-primary" value="Primary read, write, replication, or publication" style="rounded=0;whiteSpace=wrap;html=1;spacing=6;fillColor=#ffffff;strokeColor=#315f8f;fontColor=#315f8f;fontSize=10;strokeWidth=2;" vertex="1" parent="1">

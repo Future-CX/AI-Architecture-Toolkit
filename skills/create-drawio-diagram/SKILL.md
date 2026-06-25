@@ -129,7 +129,7 @@ When using `templates/data-flow.drawio`, preserve the horizontal swimlane struct
 
 - Replace the title with `<Organization or domain> | Data Flow | <Data object>`.
 - Put the business journey, process stages, screens, or major events across the top from left to right.
-- Put systems, applications, external parties, data stores, integration layers, and operational teams as horizontal lanes down the left side.
+- Keep the default lane order from top to bottom: Customer; Channel, for example New Webshop; Engagement solutions; Integration components; Enterprise Foundation or MDM solutions. Rename the channel and solution labels to the real non-confidential names for the target design, but preserve this order unless the user explicitly asks for a different stack.
 - Draw data movement as vertical or orthogonal arrows crossing lanes. Label each arrow with the specific data object, event, command, file, API call, batch, or transformation.
 - Use the template's connector colors consistently: blue for primary read, write, replication, or publication flows; green for enrichment, rules, calculation, validation, or decisioning flows; grey dashed lines for optional, planned, deprecated, or uncertain flows.
 - Show where the data object is created, updated, enriched, read, replicated, archived, deleted, or submitted.
