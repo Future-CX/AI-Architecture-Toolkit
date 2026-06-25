@@ -63,13 +63,24 @@ Do not write real-company data architecture details into this public toolkit rep
    - Add it to the `## Data Architecture Designs` table in `05-phase-c-data-architecture.md` when section files exist.
    - Also update the assembled `target-architecture-document.md` when it exists.
 12. Populate `## Relevant Links` with the target architecture, capability overview, solution architecture design, integration designs, ADRs, and glossary references that are explicitly related. Use linked document titles as Markdown link labels when available.
-13. Capture unresolved ownership, lineage, quality, retention, privacy, integration, and operational facts as open questions rather than inventing details.
+13. Run the glossary and readability gate before final delivery:
+   - Read `<private-lab-root>/GLOSSARY.md`.
+   - In the Glossary, find the `Jargon` section and its Avoid list.
+   - Replace avoidable jargon in stakeholder-facing sections: `## Short Summary`, `## Description`, `## Data Flow`, `## Ownership and Source of Truth`, `## Lifecycle`, `## Data Quality and Lineage`, and `## Privacy, Security, and Compliance`.
+   - Run the `check-readability` skill in `../check-readability/SKILL.md` on the data architecture design.
+   - Update the top-table `Readability Score` row with the rounded numeric Flesch Reading Ease score.
+   - Aim to improve the full document toward a Flesch Reading Ease score of 40-50, while allowing lower scores when architecture documents require specialist terms.
+   - If the score remains below 40, make sure there are no sentences over 30 words in stakeholder-facing sections and explain any unavoidable specialist terms.
+14. Capture unresolved ownership, lineage, quality, retention, privacy, integration, and operational facts as open questions rather than inventing details.
 
 ## Writing Guidance
 
 - Center the document on one canonical data object.
 - Start with the document metadata table, then the `Data Architecture Overview` table with the data object, source of truth, main capability, data owner, and classification.
 - Include a `Short Summary` section before `Description` that gives the business meaning, ownership, and main architecture concern in a few plain-language sentences.
+- Write stakeholder-facing sections in plain business language first: `Short Summary`, `Description`, `Data Flow`, `Ownership and Source of Truth`, `Lifecycle`, `Data Quality and Lineage`, and `Privacy, Security, and Compliance`.
+- Prefer short sentences and active voice. Use technical terms only when they affect ownership, risk, integration behavior, support, privacy, or a decision.
+- Keep dense implementation detail in tables or linked integration designs.
 - Treat the data architecture design as the source of truth for the canonical data model. Solution architecture documents should reference this model and describe application-specific usage, not redefine it.
 - Be explicit about source of truth, authoritative owner, allowed writers, and downstream consumers.
 - Identify data lifecycle states, create/update/delete behavior, retention, archival, purge, and audit requirements.
@@ -80,6 +91,21 @@ Do not write real-company data architecture details into this public toolkit rep
 - Keep relevant links bidirectional. If the data architecture design is linked from Target Architecture Phase C, link back to the target architecture from the data architecture design.
 - Use linked document names as link labels. For local Markdown files, derive the name from the first `#` heading; otherwise use the filename without extension.
 - Maintain `<private-lab-root>/GLOSSARY.md` while writing whenever the design introduces or changes domain terms, applications, canonical data objects, lifecycle states, integration names, ownership roles, relationships, jargon, deprecated terms, or words to avoid.
+
+## Readability Requirements
+
+Data architecture designs are stakeholder-facing architecture documents. Architects and delivery teams need enough detail to act, but the opening and ownership sections must be understandable to non-technical business stakeholders.
+
+Use the `check-readability` skill in `../check-readability/SKILL.md` before finishing a data architecture design. Treat the target audience as non-technical business stakeholders unless the user gives a different audience. Aim to improve the Flesch Reading Ease score toward 40-50, but allow lower scores when required architecture terms, legal terms, data object names, system names, or quoted source text make that target impractical.
+
+The data architecture design is not complete until the readability check confirms these expectations:
+
+- The top metadata table's `Readability Score` row contains the rounded numeric Flesch Reading Ease score.
+- Glossary `Jargon` terms from `<private-lab-root>/GLOSSARY.md` are removed from stakeholder-facing sections unless they are quoted source text or explicit glossary references.
+- Preferred glossary terms are used exactly when the glossary gives one. If a preferred term is missing or unclear, use plain language and capture the terminology gap as an open question.
+- Acronyms and specialist terms are explained the first time they appear unless they are already defined in `GLOSSARY.md`.
+- If the score remains below 40, stakeholder-facing sections have no sentences over 30 words and any unavoidable specialist terms are briefly explained.
+- Long table cells are moved into notes, linked integration designs, or later technical sections when they make ownership, quality, lifecycle, privacy, risks, or decisions hard to scan.
 
 ## Data Flow Diagram Format
 
