@@ -45,13 +45,13 @@ Source: [{{DATA_OBJECT_SLUG}}-data-flow.drawio](diagrams/{{DATA_OBJECT_SLUG}}-da
 | ---- | ------------------ | --------------------- | ----------------- | -------------------------------- | --------- |
 | 1    | {{STAGE_OR_EVENT}} | {{LANE_TO_LANE_PATH}} | {{DATA_MOVEMENT}} | {{CREATE_UPDATE_READ_TRANSFORM}} | {{NOTES}} |
 
-## Integration Map
+## Data Architecture Design
 
 Summarize the integrations that produce, transform, enrich, replicate, or consume the data object. Link detailed integration designs instead of duplicating full contracts.
 
-![{{DATA_OBJECT}} integration map](diagrams/{{DATA_OBJECT_SLUG}}-integration-map.svg)
+![{{DATA_OBJECT}} data architecture design](diagrams/{{DATA_OBJECT_SLUG}}-data-architecture-design.svg)
 
-Source: [{{DATA_OBJECT_SLUG}}-integration-map.drawio](diagrams/{{DATA_OBJECT_SLUG}}-integration-map.drawio)
+Source: [{{DATA_OBJECT_SLUG}}-data-architecture-design.drawio](diagrams/{{DATA_OBJECT_SLUG}}-data-architecture-design.drawio)
 
 | Integration          | From - To     | Pattern     | Purpose     | Design                                                      |
 | -------------------- | ------------- | ----------- | ----------- | ----------------------------------------------------------- |

@@ -55,7 +55,7 @@ Do not write real-company data architecture details into this public toolkit rep
 7. Create or update `<data-object-slug>-data-architecture-design.md` from `templates/data-architecture-design-template.md`. Preserve the two opening tables: the document metadata table first, followed by the `Data Architecture Overview` table.
 8. Create diagrams that make the data movement understandable:
    - Data flow diagram from `../create-drawio-diagram/templates/data-flow.drawio`
-   - Integration map from `../create-drawio-diagram/templates/data-architecture-diagram.drawio`, showing systems, interfaces, events, files, APIs, or batches
+   - Data Architecture Design diagram from `../create-drawio-diagram/templates/data-architecture-diagram.drawio`, showing systems, interfaces, events, files, APIs, or batches
    - Optional conceptual data model when the object has important relationships
 9. Create every Draw.io diagram with `../create-drawio-diagram/SKILL.md` because it contains the required diagram instructions, style rules, and templates. Store each editable `.drawio` source in `diagrams/`.
 10. Export a same-basename `.svg` file for each Draw.io diagram that must be embedded, embed the SVG in the document, and link the `.drawio` source near the embedded SVG.
@@ -99,9 +99,9 @@ Use `../create-drawio-diagram/templates/data-flow.drawio` as the starting point 
 - Prefer a wide landscape canvas over compressed diagrams. Increase the canvas width for more stages and the canvas height for more solution lanes until arrows, labels, lane headers, stage labels, and boxes do not overlap.
 - Do not use a generic box-and-line context view for the data flow. The data flow diagram must show movement through lanes over time or process progression.
 
-## Integration Map Diagram Format
+## Data Architecture Design Diagram Format
 
-Use `../create-drawio-diagram/templates/data-architecture-diagram.drawio` as the starting point for the Integration Map diagram. Adapt the data architecture overview elements to show the data object's source systems, canonical data object, owners, consumers, integrations, governance touchpoints, and external systems. Keep the diagram focused on integration traceability for the data object; put interface detail in the Integration Map table or linked integration designs.
+Use `../create-drawio-diagram/templates/data-architecture-diagram.drawio` as the starting point for the Data Architecture Design diagram. Adapt the data architecture overview elements to show the data object's source systems, canonical data object, owners, consumers, integrations, governance touchpoints, and external systems. Keep the diagram focused on integration traceability for the data object; put interface detail in the Data Architecture Design table or linked integration designs.
 
 ## Phase C Link Format
 
