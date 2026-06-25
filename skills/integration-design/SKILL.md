@@ -58,7 +58,7 @@ Do not write real-company integration details into this public toolkit repositor
    - Build the filename as `int-<4-digits>-<data-object>-from-<source>-to-<destination>.md`.
 6. Create or update the integration design from `templates/integration-design-template.md`. Preserve the two opening tables: the document metadata table first, followed by the `Integration Overview` table.
 7. Populate the top metadata table with document tracking values from the template.
-8. Populate the `## Integration Overview` table with concise concrete values so agents can understand the integration status, purpose, source, destination, data object, trigger, pattern, and open-question count without reading the full document.
+8. Populate the `## Integration Overview` table with concise concrete values so agents can understand the integration status, purpose, source, destination, data object, trigger, pattern, and open-question count without reading the full document. Keep `Purpose` to one sentence under 25 words.
 9. After writing the `## Integration Overview` table and description, create a visual integration diagram:
    - Use the `create-drawio-diagram` skill and its `templates/integration-design.drawio` template.
    - Create a `diagrams/` subfolder in the same folder as the integration design document.
@@ -76,24 +76,49 @@ Do not write real-company integration details into this public toolkit repositor
    - Export the `.drawio` file to a same-basename `.svg`.
    - Run the create-drawio-diagram SVG sanitizer on the exported SVG so it uses `color-scheme: light`, has no `light-dark(...)` values, and includes a light background.
    - Embed the `.svg` directly in `## Integration Overview` using the relative path `diagrams/<same-basename>.svg`.
-10. Populate `## Relevant Links` with every confirmed related document, including capability overview, target architecture, solution architecture design, epic, ADR, or other integration designs. Use the linked document name as the Markdown link label.
-11. Run the glossary compliance gate before finishing the integration design:
+10. Add `## Business Summary` immediately after the diagram. Cover business outcome, operational impact, failure impact, and ownership before contract detail.
+11. Populate `## Relevant Links` with every confirmed related document, including capability overview, target architecture, solution architecture design, epic, ADR, or other integration designs. Use the linked document name as the Markdown link label.
+12. Run the glossary compliance gate before finishing the integration design:
    - Read `<private-lab-root>/GLOSSARY.md`.
    - In the Glossary, find the `Jargon` section and its Avoid list.
    - Search the generated integration design Markdown for each avoided word or phrase.
    - Replace avoided wording with the preferred glossary term when one is available.
    - If no preferred term is available, rewrite the sentence in plain language or add an open question rather than leaving the avoided wording in the design.
    - Repeat the search after edits until no avoided terms remain, except inside explicit glossary references or quoted source text.
-12. Update `<private-lab-root>/integrations/_integrations-overview.md` with the integration identifier, name, status, description, and count of open questions in the integration design.
-13. Capture unresolved facts as open questions rather than inventing payloads, endpoints, schemas, retry rules, owners, or service-level expectations.
-14. Link the integration design from the related target architecture, solution architecture design, capability overview, epic, or relevant links section when the related document exists and the user confirms the linkage. Whenever a link to the integration design is added to one of those documents, add the reciprocal link back to that document in the integration design's `## Relevant Links` section.
+13. Run the `check-readability` skill before finishing:
+   - Assess the full integration design and update the top-table `Readability Score` value.
+   - Aim for a full-document Flesch Reading Ease score of 30 or higher.
+   - Assess the opening sections through `## Business Summary` separately and aim for 40-50.
+   - If the opening score is below 40, simplify the opening sections first rather than removing necessary technical detail from later sections.
+14. Update `<private-lab-root>/integrations/_integrations-overview.md` with the integration identifier, name, status, description, and count of open questions in the integration design.
+15. Capture unresolved facts as open questions rather than inventing payloads, endpoints, schemas, retry rules, owners, or service-level expectations.
+16. Link the integration design from the related target architecture, solution architecture design, capability overview, epic, or relevant links section when the related document exists and the user confirms the linkage. Whenever a link to the integration design is added to one of those documents, add the reciprocal link back to that document in the integration design's `## Relevant Links` section.
+
+## Readability Requirements
+
+For stakeholder-facing integration designs:
+
+- Treat non-technical business stakeholders as the primary audience for the opening sections.
+- Keep the `Purpose` value in `## Integration Overview` to one sentence under 25 words.
+- Add `## Business Summary` immediately after the diagram.
+- In `## Business Summary`, explain business outcome, operational impact, failure impact, and ownership before contract detail.
+- Use bullets or tables instead of long paragraphs for scope, failure behavior, open questions, and ownership.
+- Keep opening-section paragraphs to 2-4 short sentences.
+- Avoid sentences over 30 words in the opening sections.
+- Put endpoint, schema, retry, idempotency, and monitoring detail in later sections.
+- Include clear failure and ownership subheadings, such as `### Failure Impact` and `### Ownership`.
+- Run the `check-readability` skill before finishing.
+- If the Flesch Reading Ease score is below 40 for the opening sections through `## Business Summary`, simplify the opening sections first rather than removing necessary technical detail.
+- Aim for a full-document Flesch Reading Ease score of 30 or higher.
+- Aim for an opening-section Flesch Reading Ease score of 40-50 through `## Business Summary`.
 
 ## Writing Guidance
 
 - Prefer concrete interface details over generic integration principles.
 - Enforce the Glossary `Jargon` section's Avoid list. Do not finish an integration design while avoided words or phrases remain in generated prose, headings, tables, diagram labels, or connector labels unless they are quoted source text or explicit glossary references.
 - Start with the document metadata table, then the `## Integration Overview` fact table.
-- Keep the `## Integration Overview` fact table short and factual. Use `TBD` for unknown fields, and mirror unresolved items in `## Open Questions`.
+- Keep the `## Integration Overview` fact table short and factual. Use `TBD` for unknown fields, and mirror unresolved items in `## Open Questions`. Keep `Purpose` short enough to scan.
+- Keep the first 1-2 pages business-readable: explain the outcome, operational change, failure impact, ownership, and open questions before introducing endpoint, schema, retry, idempotency, or monitoring detail.
 - Identify producer, consumer, owner, protocol, contract, trigger, frequency, payload, and versioning.
 - Place every sample API payload in a fenced code block with `javascript` as the language tag, even when the payload is JSON-shaped, because `javascript` blocks allow explanatory comments. Do not put sample payloads in Markdown tables, `json` code blocks, or untyped code blocks.
 - Call out source-of-truth and canonical data object ownership.

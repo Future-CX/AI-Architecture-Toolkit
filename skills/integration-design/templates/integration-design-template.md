@@ -9,24 +9,55 @@
 
 ## Integration Overview
 
-| Field          | Value                    |
-| -------------- | ------------------------ |
-| Status         | {{INTEGRATION_STATUS}}   |
-| Purpose        | {{INTEGRATION_PURPOSE}}  |
-| Source         | {{SOURCE_SYSTEM}}        |
-| Destination    | {{DESTINATION_SYSTEM}}   |
-| Data object    | {{DATA_OBJECT}}          |
-| Trigger        | {{INTEGRATION_TRIGGER}}  |
-| Pattern        | {{INTEGRATION_PATTERN}}  |
-| Open questions | {{OPEN_QUESTIONS_COUNT}} |
+| Field          | Value                                               |
+| -------------- | --------------------------------------------------- |
+| Status         | {{INTEGRATION_STATUS}}                              |
+| Purpose        | {{INTEGRATION_PURPOSE_ONE_SENTENCE_UNDER_25_WORDS}} |
+| Source         | {{SOURCE_SYSTEM}}                                   |
+| Destination    | {{DESTINATION_SYSTEM}}                              |
+| Data object    | {{DATA_OBJECT}}                                     |
+| Trigger        | {{INTEGRATION_TRIGGER}}                             |
+| Pattern        | {{INTEGRATION_PATTERN}}                             |
+| Open questions | {{OPEN_QUESTIONS_COUNT}}                            |
 
-Describe the integration purpose, source systems, target systems, and business process.
+## Business Summary
+
+### Business Outcome
+
+{{WHAT_THIS_ENABLES_IN_2_TO_4_SHORT_SENTENCES}}
 
 ![{{INTEGRATION_NAME}} integration diagram](diagrams/{{INTEGRATION_DIAGRAM_SVG}})
 
+### Operational Impact
+
+- {{WHAT_CHANGES_FOR_USERS_OR_TEAMS}}
+- {{WHAT_HAPPENS_IF_THIS_IS_DELAYED_OR_FAILS}}
+- {{WHO_NEEDS_TO_RESPOND}}
+
+### Failure Impact
+
+- What users, teams, or processes are affected if this integration fails: {{FAILURE_IMPACT}}
+- What business work stops, slows down, or needs manual handling: {{BUSINESS_CONTINUITY_IMPACT}}
+- How quickly the issue must be noticed or resolved: {{FAILURE_RESPONSE_EXPECTATION}}
+
+### Ownership
+
+| Responsibility            | Owner                         |
+| ------------------------- | ----------------------------- |
+| Business owner            | {{BUSINESS_OWNER}}            |
+| Source system owner       | {{SOURCE_SYSTEM_OWNER}}       |
+| Destination system owner  | {{DESTINATION_SYSTEM_OWNER}}  |
+| Integration support owner | {{INTEGRATION_SUPPORT_OWNER}} |
+| Escalation contact        | {{ESCALATION_CONTACT}}        |
+
+### Scope
+
+- In scope: {{IN_SCOPE}}
+- Out of scope: {{OUT_OF_SCOPE}}
+
 ## Open Questions
 
-A bullet list of open questions.
+- {{OPEN_QUESTION}}
 
 ## Pattern
 
