@@ -133,7 +133,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--summary",
         required=True,
-        help="One to three sentences describing the context, decision, and reason.",
+        help="One or two short paragraphs describing the context, decision, reason, and operational impact.",
     )
     parser.add_argument(
         "--status",
@@ -161,7 +161,20 @@ def main() -> None:
     number = next_adr_number(adr_dir)
     target = adr_dir / f"adr-{number:04d}-{slugify(args.title)}.md"
 
-    content = f"# {args.title.strip()}\n\n{args.summary.strip()}\n"
+    content = "\n".join(
+        [
+            f"# {args.title.strip()}",
+            "",
+            "| Field | Value |",
+            "| --- | --- |",
+            "| Confluence Link | {{CONFLUENCE_LINK}} |",
+            f"| Last Update | {date.today().isoformat()} |",
+            "| Readability Score | TBD, target 40+ |",
+            "",
+            args.summary.strip(),
+            "",
+        ]
+    )
 
     adr_dir.mkdir(parents=True, exist_ok=True)
     target.write_text(content + "\n", encoding="utf-8")

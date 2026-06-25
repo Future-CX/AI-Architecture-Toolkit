@@ -13,20 +13,24 @@ Create the `adr/` directory lazily in the consuming repository root — only whe
 | --- | --- |
 | Confluence Link | {{CONFLUENCE_LINK}} |
 | Last Update | {{LAST_UPDATE}} |
-| Readability Score | TBD |
+| Readability Score | TBD, target 40+ |
 
-{1-3 sentences: what's the context, what did we decide, and why.}
+{Opening summary, maximum two short paragraphs. State the business outcome, decision, reason, and operational impact. Explain any necessary technical term here or in a glossary.}
+
+{Optional second short paragraph. Keep implementation detail out unless it changes the decision.}
 ```
 
-That's it. An ADR can be a single paragraph. The value is in recording _that_ a decision was made and _why_ — not in filling out sections.
+That's it. An ADR can be a short summary. The value is in recording _that_ a decision was made and _why_ — not in filling out sections.
+
+Before publishing, make a final readability pass. Target a Readability Score of 40 or higher, shorten long sentences, split dense paragraphs, and replace dense technical terms with plain words where possible.
 
 ## Optional sections
 
 Only include these when they add genuine value. Most ADRs won't need them.
 
 - **Status** frontmatter (`proposed | accepted | deprecated | superseded by ADR-NNNN`) — useful when decisions are revisited
-- **Considered Options** — only when the rejected alternatives are worth remembering. List the options as bullets first, then add a comparison table with one column per option and rows for Architecture Fit, Company Fit, Effort, and Complexity.
-- **Consequences** — only when non-obvious downstream effects need to be called out
+- **Considered Options** — only when the rejected alternatives are worth remembering. List the options as bullets first, then add a comparison table with one column per option and required rows for Architecture Fit, Company Fit, Effort, and Complexity. Keep each table cell to one sentence, no more than about 15 words, and avoid implementation detail unless it changes the decision.
+- **Consequences** — only when non-obvious downstream effects need to be called out. Keep this section to 3-6 bullets.
 
 ### Considered Options Format
 
@@ -41,14 +45,61 @@ Use this structure when the ADR includes considered options:
 
 | Criteria | Option 1: {{OPTION_1_NAME}} | Option 2: {{OPTION_2_NAME}} | Option 3: {{OPTION_3_NAME}} |
 | --- | --- | --- | --- |
-| Architecture Fit | {{OPTION_1_ARCHITECTURE_FIT}} | {{OPTION_2_ARCHITECTURE_FIT}} | {{OPTION_3_ARCHITECTURE_FIT}} |
-| Company Fit | {{OPTION_1_COMPANY_FIT}} | {{OPTION_2_COMPANY_FIT}} | {{OPTION_3_COMPANY_FIT}} |
-| Effort | {{OPTION_1_EFFORT}} | {{OPTION_2_EFFORT}} | {{OPTION_3_EFFORT}} |
-| Complexity | {{OPTION_1_COMPLEXITY}} | {{OPTION_2_COMPLEXITY}} | {{OPTION_3_COMPLEXITY}} |
+| Architecture Fit | {{ONE_SENTENCE_MAX_15_WORDS}} | {{ONE_SENTENCE_MAX_15_WORDS}} | {{ONE_SENTENCE_MAX_15_WORDS}} |
+| Company Fit | {{ONE_SENTENCE_MAX_15_WORDS}} | {{ONE_SENTENCE_MAX_15_WORDS}} | {{ONE_SENTENCE_MAX_15_WORDS}} |
+| Effort | {{ONE_SENTENCE_MAX_15_WORDS}} | {{ONE_SENTENCE_MAX_15_WORDS}} | {{ONE_SENTENCE_MAX_15_WORDS}} |
+| Complexity | {{ONE_SENTENCE_MAX_15_WORDS}} | {{ONE_SENTENCE_MAX_15_WORDS}} | {{ONE_SENTENCE_MAX_15_WORDS}} |
 
 ## Recommendation
 
-Recommend {{PREFERRED_OPTION}} because {{WHY_THIS_OPTION_IS_PREFERRED}}. Explain the trade-offs that make this option stronger than the alternatives, including the architecture fit, company fit, effort, complexity, and any consequences the decision owner should accept.
+Recommend {{PREFERRED_OPTION}} because {{WHY_THIS_OPTION_IS_PREFERRED}}. Explain the trade-offs that make this option stronger than the alternatives.
+
+## Consequences
+
+- {{CONSEQUENCE_1}}
+- {{CONSEQUENCE_2}}
+- {{CONSEQUENCE_3}}
+```
+
+### Compact Example
+
+Use this shape as the model for future ADRs:
+
+```md
+# Use Events Between Ordering And Billing
+
+| Field | Value |
+| --- | --- |
+| Confluence Link | {{CONFLUENCE_LINK}} |
+| Last Update | 2026-06-25 |
+| Readability Score | 44 |
+
+Ordering and Billing will share order changes through events instead of direct calls. An event is a message that tells another system something important happened.
+
+This keeps checkout responsive when Billing is slow. It also means teams must monitor delayed messages.
+
+## Considered Options
+
+- Option 1: Events
+- Option 2: Direct API calls
+- Option 3: Shared database
+
+| Criteria | Option 1: Events | Option 2: Direct API calls | Option 3: Shared database |
+| --- | --- | --- | --- |
+| Architecture Fit | Keeps systems separate and supports independent release. | Creates runtime dependency between two systems. | Blurs ownership of customer and order data. |
+| Company Fit | Matches the goal of team autonomy. | Fits current skills but slows future change. | Conflicts with ownership and audit expectations. |
+| Effort | Needs message setup and monitoring. | Lowest short-term build effort. | Needs data model changes and migration planning. |
+| Complexity | Adds delivery and retry handling. | Simple flow but fragile during outages. | Creates hidden coupling across teams. |
+
+## Recommendation
+
+Recommend events because they protect checkout and support independent team changes.
+
+## Consequences
+
+- Teams must monitor failed and delayed events.
+- Billing updates may appear after checkout completes.
+- Support teams need clear status messages for delayed billing.
 ```
 
 ## Numbering
