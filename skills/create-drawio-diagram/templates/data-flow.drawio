@@ -1,0 +1,124 @@
+<mxfile host="app.diagrams.net" modified="2026-06-25T00:00:00.000Z" agent="AI Architecture Toolkit" version="24.7.17">
+  <diagram id="data-flow" name="Data Flow">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" background="#fbfcfa" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Domain | Data Flow | Canonical Data Object" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=20;fontColor=#17201d;" vertex="1" parent="1">
+          <mxGeometry x="40" y="24" width="650" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="top-rule" value="" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="70" width="1520" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="stage-1" value="Stage or event 1" style="rounded=0;whiteSpace=wrap;html=1;spacing=6;fillColor=#ffffff;strokeColor=#17201d;fontColor=#17201d;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="220" y="92" width="150" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="stage-2" value="Stage or event 2" style="rounded=0;whiteSpace=wrap;html=1;spacing=6;fillColor=#ffffff;strokeColor=#17201d;fontColor=#17201d;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="500" y="92" width="150" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="stage-3" value="Stage or event 3" style="rounded=0;whiteSpace=wrap;html=1;spacing=6;fillColor=#ffffff;strokeColor=#17201d;fontColor=#17201d;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="800" y="92" width="150" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="stage-4" value="Stage or event 4" style="rounded=0;whiteSpace=wrap;html=1;spacing=6;fillColor=#ffffff;strokeColor=#17201d;fontColor=#17201d;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="92" width="150" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-1-label" value="User channel or journey" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" vertex="1" parent="1">
+          <mxGeometry x="70" y="150" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-2-label" value="Application or BFF" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" vertex="1" parent="1">
+          <mxGeometry x="70" y="250" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-3-label" value="Source of truth" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" vertex="1" parent="1">
+          <mxGeometry x="70" y="350" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-4-label" value="Integration or pipeline" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" vertex="1" parent="1">
+          <mxGeometry x="70" y="450" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-5-label" value="Consumer or analytics" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" vertex="1" parent="1">
+          <mxGeometry x="70" y="550" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-6-label" value="Archive, audit, or governance" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" vertex="1" parent="1">
+          <mxGeometry x="70" y="650" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-1-line" value="" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="135" width="1520" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-2-line" value="" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="235" width="1520" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-3-line" value="" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="335" width="1520" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-4-line" value="" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="435" width="1520" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-5-line" value="" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="535" width="1520" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="lane-6-line" value="" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="635" width="1520" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="bottom-rule" value="" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="40" y="735" width="1520" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="stage-guide-1" value="" style="shape=line;html=1;strokeColor=#cbd5d1;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="88" width="1" height="647" as="geometry" />
+        </mxCell>
+        <mxCell id="stage-guide-2" value="" style="shape=line;html=1;strokeColor=#cbd5d1;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="88" width="1" height="647" as="geometry" />
+        </mxCell>
+        <mxCell id="stage-guide-3" value="" style="shape=line;html=1;strokeColor=#cbd5d1;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="88" width="1" height="647" as="geometry" />
+        </mxCell>
+        <mxCell id="stage-guide-4" value="" style="shape=line;html=1;strokeColor=#cbd5d1;strokeWidth=1;" vertex="1" parent="1">
+          <mxGeometry x="1320" y="88" width="1" height="647" as="geometry" />
+        </mxCell>
+        <mxCell id="object-created" value="Create&#xa;canonical object" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontSize=10;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="520" y="365" width="100" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="object-updated" value="Validate or enrich" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontSize=10;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="840" y="465" width="110" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="primary-read" value="Read object" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="300" y="365" as="sourcePoint" />
+            <mxPoint x="300" y="165" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="primary-write" value="Submit update" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="570" y="165" as="sourcePoint" />
+            <mxPoint x="570" y="365" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="replicate-flow" value="Publish event or file" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="660" y="365" as="sourcePoint" />
+            <mxPoint x="660" y="565" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="enrichment-flow" value="Rules or enrichment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#0f766e;fontColor=#0f766e;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="895" y="365" as="sourcePoint" />
+            <mxPoint x="895" y="465" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="archive-flow" value="Retain, archive, or audit" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#8a9992;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1160" y="365" as="sourcePoint" />
+            <mxPoint x="1160" y="665" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend-primary" value="Primary read, write, replication, or publication" style="rounded=0;whiteSpace=wrap;html=1;spacing=6;fillColor=#ffffff;strokeColor=#315f8f;fontColor=#315f8f;fontSize=10;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="620" y="790" width="260" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-enrichment" value="Enrichment, rule, validation, or decision" style="rounded=0;whiteSpace=wrap;html=1;spacing=6;fillColor=#ffffff;strokeColor=#0f766e;fontColor=#0f766e;fontSize=10;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="900" y="790" width="250" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="legend-optional" value="Optional, planned, deprecated, or uncertain" style="rounded=0;whiteSpace=wrap;html=1;spacing=6;fillColor=#ffffff;strokeColor=#8a9992;fontColor=#5d6964;fontSize=10;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1170" y="790" width="260" height="34" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

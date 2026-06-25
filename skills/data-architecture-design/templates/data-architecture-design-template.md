@@ -33,10 +33,6 @@ _{{SHORT_SUMMARY}}_
 
 Describe the data object, its business meaning, boundaries, aliases, and relationship to nearby concepts.
 
-![{{DATA_OBJECT}} context](diagrams/{{DATA_OBJECT_SLUG}}-context.svg)
-
-Source: [{{DATA_OBJECT_SLUG}}-context.drawio](diagrams/{{DATA_OBJECT_SLUG}}-context.drawio)
-
 ## Ownership and Source of Truth
 
 Document the authoritative owner, source-of-truth application, allowed writers, allowed readers, and stewardship responsibilities.
@@ -47,11 +43,15 @@ Describe creation, update, deletion, archival, retention, purge, audit, and exce
 
 ## Data Flow
 
-Explain how the data object moves from source through transformations, storage, integrations, and consumers.
+Explain how the data object moves from source through transformations, storage, integrations, and consumers. Describe the flow in the same order as the diagram: process stages across the top, systems or actors as horizontal lanes, and labeled movements between lanes.
 
 ![{{DATA_OBJECT}} data flow](diagrams/{{DATA_OBJECT_SLUG}}-data-flow.svg)
 
 Source: [{{DATA_OBJECT_SLUG}}-data-flow.drawio](diagrams/{{DATA_OBJECT_SLUG}}-data-flow.drawio)
+
+| Step | Stage or Event     | From - To             | Data Movement     | Action                           | Notes     |
+| ---- | ------------------ | --------------------- | ----------------- | -------------------------------- | --------- |
+| 1    | {{STAGE_OR_EVENT}} | {{LANE_TO_LANE_PATH}} | {{DATA_MOVEMENT}} | {{CREATE_UPDATE_READ_TRANSFORM}} | {{NOTES}} |
 
 ## Integration Map
 
@@ -61,7 +61,7 @@ Summarize the integrations that produce, transform, enrich, replicate, or consum
 
 Source: [{{DATA_OBJECT_SLUG}}-integration-map.drawio](diagrams/{{DATA_OBJECT_SLUG}}-integration-map.drawio)
 
-| Integration          | Direction     | Pattern     | Purpose     | Design                                                      |
+| Integration          | From - To     | Pattern     | Purpose     | Design                                                      |
 | -------------------- | ------------- | ----------- | ----------- | ----------------------------------------------------------- |
 | {{INTEGRATION_NAME}} | {{DIRECTION}} | {{PATTERN}} | {{PURPOSE}} | [{{INTEGRATION_DESIGN_TITLE}}]({{INTEGRATION_DESIGN_LINK}}) |
 

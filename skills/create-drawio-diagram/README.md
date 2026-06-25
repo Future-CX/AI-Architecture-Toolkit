@@ -3,6 +3,7 @@
 Create editable Draw.io diagrams from reusable architecture templates.
 
 Use this skill when a solution architecture, target architecture, data architecture, or integration design document needs stakeholder-editable `.drawio` diagrams. Templates cover target architecture overviews, solution architecture overviews, data architecture overviews, capability context, application/component views, conceptual data models, integration design component maps, and integration flows.
+Use the data flow template when a data architecture design needs a swimlane-style operational trace across systems and process stages.
 
 After exporting a Draw.io diagram to SVG, run `scripts/sanitize-drawio-svg.py <diagram.svg>` so the SVG uses a fixed light color scheme and renders with a light background in Confluence and dark-mode browsers.
 
@@ -12,6 +13,7 @@ After exporting a Draw.io diagram to SVG, run `scripts/sanitize-drawio-svg.py <d
 - [Target architecture diagram template](templates/target-architecture-diagram.drawio)
 - [Solution architecture diagram template](templates/solution-architecture-diagram.drawio)
 - [Data architecture diagram template](templates/data-architecture-diagram.drawio)
+- [Data flow template](templates/data-flow.drawio)
 - [Capability overview template](templates/capability-overview.drawio)
 - [Application component view template](templates/application-component-view.drawio)
 - [Conceptual data model template](templates/conceptual-data-model.drawio)

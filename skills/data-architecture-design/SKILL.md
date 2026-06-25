@@ -54,8 +54,7 @@ Do not write real-company data architecture details into this public toolkit rep
 6. Determine the output folder as `<private-lab-root>/data-architectures/<data-object-slug>/`.
 7. Create or update `<data-object-slug>-data-architecture-design.md` from `templates/data-architecture-design-template.md`. Preserve the two opening tables: the document metadata table first, followed by the `Data Architecture Overview` table.
 8. Create diagrams that make the data movement understandable:
-   - Data object context diagram
-   - Data flow diagram from source through transformations to consumers
+   - Data flow diagram from `../create-drawio-diagram/templates/data-flow.drawio`
    - Integration map showing systems, interfaces, events, files, APIs, or batches
    - Optional conceptual data model when the object has important relationships
 9. Create every Draw.io diagram with `../create-drawio-diagram/SKILL.md` because it contains the required diagram instructions, style rules, and templates. Store each editable `.drawio` source in `diagrams/`.
@@ -81,6 +80,23 @@ Do not write real-company data architecture details into this public toolkit rep
 - Keep relevant links bidirectional. If the data architecture design is linked from Target Architecture Phase C, link back to the target architecture from the data architecture design.
 - Use linked document names as link labels. For local Markdown files, derive the name from the first `#` heading; otherwise use the filename without extension.
 - Maintain `<private-lab-root>/GLOSSARY.md` while writing whenever the design introduces or changes domain terms, applications, canonical data objects, lifecycle states, integration names, ownership roles, relationships, jargon, deprecated terms, or words to avoid.
+
+## Data Flow Diagram Format
+
+Use `../create-drawio-diagram/templates/data-flow.drawio` as the starting point for the data flow diagram. The diagram should read like an operational trace of the data object across systems and process steps.
+
+- Title the diagram `<Organization or domain> | Data Flow | <Data object>`.
+- Put the business journey, process stages, screens, or major events across the top from left to right when they are known.
+- Put systems, applications, external parties, data stores, integration layers, and operational teams as horizontal lanes down the left side.
+- Draw data movements as vertical or orthogonal arrows crossing lanes. Label each arrow with the specific data object, event, command, file, API call, batch, or transformation.
+- Use color intentionally:
+  - Blue for primary read, write, replication, or publication flows.
+  - Green for enrichment, rules, calculation, validation, or decisioning flows.
+  - Grey or dashed lines for optional, planned, deprecated, or uncertain flows.
+- Show where the data object is created, updated, enriched, read, replicated, archived, deleted, or submitted.
+- Keep lane labels stable and readable on the left. Keep process-stage labels aligned across the top.
+- Prefer a wide landscape canvas over compressed diagrams. Increase the canvas size until arrows, labels, and lane headers do not overlap.
+- Do not use a generic box-and-line context view for the data flow. The data flow diagram must show movement through lanes over time or process progression.
 
 ## Phase C Link Format
 

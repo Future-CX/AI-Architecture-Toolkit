@@ -19,6 +19,7 @@ Use these templates as starting points:
 - `templates/target-architecture-diagram.drawio` for a simple target architecture overview across capabilities, applications, data, integrations, and technology
 - `templates/solution-architecture-diagram.drawio` for a simple solution architecture overview across channels, components, integrations, data stores, and external systems
 - `templates/data-architecture-diagram.drawio` for a simple data architecture overview across source systems, canonical data objects, owners, consumers, integrations, and governance
+- `templates/data-flow.drawio` for data flow diagrams with process stages across the top, systems as horizontal lanes, and labeled data movements between lanes
 - `templates/application-component-view.drawio` for applications, services, components, platforms, and responsibilities
 - `templates/conceptual-data-model.drawio` for canonical data objects and relationships
 - `templates/integration-design.drawio` for component maps organized in vertical layers: Public Internet, Frontend, Engagement, Integration, and Enterprise Foundation (Backoffice)
@@ -121,6 +122,20 @@ When using `templates/integration-design.drawio`, preserve the vertical layer st
 - Duplicate nodes inside a layer when the design has multiple components in that layer. Keep related components aligned so readers can trace each integration path through the layers.
 - If the source content does not identify a component layer, use the neutral component style and record the categorization as an assumption or open question in the integration design.
 - Do not add real-company system names, internal endpoints, topics, queues, payload fields, credentials, or proprietary integration details to this public repository.
+
+## Data Flow Layout
+
+When using `templates/data-flow.drawio`, preserve the horizontal swimlane structure. The diagram is an operational trace of one canonical data object, not a generic architecture context diagram.
+
+- Replace the title with `<Organization or domain> | Data Flow | <Data object>`.
+- Put the business journey, process stages, screens, or major events across the top from left to right.
+- Put systems, applications, external parties, data stores, integration layers, and operational teams as horizontal lanes down the left side.
+- Draw data movement as vertical or orthogonal arrows crossing lanes. Label each arrow with the specific data object, event, command, file, API call, batch, or transformation.
+- Use the template's connector colors consistently: blue for primary read, write, replication, or publication flows; green for enrichment, rules, calculation, validation, or decisioning flows; grey dashed lines for optional, planned, deprecated, or uncertain flows.
+- Show where the data object is created, updated, enriched, read, replicated, archived, deleted, or submitted.
+- Keep lane labels readable on the left and process-stage labels aligned across the top.
+- Widen the canvas before compressing the flow. The exported SVG must not have overlapping arrows, labels, lane headers, or process-stage labels.
+- Do not use real-company names, internal systems, proprietary event names, payload fields, endpoints, or confidential process details in this public repository.
 
 ## SVG Export Rules
 
