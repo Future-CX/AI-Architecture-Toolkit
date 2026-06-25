@@ -87,15 +87,16 @@ Use `../create-drawio-diagram/templates/data-flow.drawio` as the starting point 
 
 - Title the diagram `<Organization or domain> | Data Flow | <Data object>`.
 - Put the business journey, process stages, screens, or major events across the top from left to right when they are known.
-- Put systems, applications, external parties, data stores, integration layers, and operational teams as horizontal lanes down the left side.
+- Use one horizontal lane per concrete solution or component. Keep Customer first, Channel second, then Engagement solution lanes, Integration component lanes, and Enterprise Foundation or MDM solution lanes.
+- Do not group several solutions into one broad lane. Add more vertical canvas space instead.
 - Draw data movements as vertical or orthogonal arrows crossing lanes. Label each arrow with the specific data object, event, command, file, API call, batch, or transformation.
 - Use color intentionally:
   - Blue for primary read, write, replication, or publication flows.
   - Green for enrichment, rules, calculation, validation, or decisioning flows.
   - Grey or dashed lines for optional, planned, deprecated, or uncertain flows.
 - Show where the data object is created, updated, enriched, read, replicated, archived, deleted, or submitted.
-- Keep lane labels stable and readable on the left. Keep process-stage labels aligned across the top.
-- Prefer a wide landscape canvas over compressed diagrams. Increase the canvas size until arrows, labels, and lane headers do not overlap.
+- Keep lane labels stable and readable on the left. Keep each process-stage label centered over the boxes and arrows that belong to that stage.
+- Prefer a wide landscape canvas over compressed diagrams. Increase the canvas width for more stages and the canvas height for more solution lanes until arrows, labels, lane headers, stage labels, and boxes do not overlap.
 - Do not use a generic box-and-line context view for the data flow. The data flow diagram must show movement through lanes over time or process progression.
 
 ## Phase C Link Format

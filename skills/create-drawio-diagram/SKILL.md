@@ -129,12 +129,14 @@ When using `templates/data-flow.drawio`, preserve the horizontal swimlane struct
 
 - Replace the title with `<Organization or domain> | Data Flow | <Data object>`.
 - Put the business journey, process stages, screens, or major events across the top from left to right.
-- Keep the default lane order from top to bottom: Customer; Channel, for example New Webshop; Engagement solutions; Integration components; Enterprise Foundation or MDM solutions. Rename the channel and solution labels to the real non-confidential names for the target design, but preserve this order unless the user explicitly asks for a different stack.
+- Keep the default lane order from top to bottom: Customer; Channel, for example New Webshop; then one horizontal lane for each Engagement solution; one horizontal lane for each Integration component; and one horizontal lane for each Enterprise Foundation or MDM solution. Rename the channel and solution labels to the real non-confidential names for the target design, but preserve this order unless the user explicitly asks for a different stack.
+- Do not group multiple solutions into one broad lane such as `Engagement solutions` or `Integration components`. Each named solution or component gets its own lane and its own horizontal divider.
+- Align each stage or event header with the vertical flow column it describes. Center the header above the boxes and arrows for that stage, and move the stage guide line to the same x-position.
 - Draw data movement as vertical or orthogonal arrows crossing lanes. Label each arrow with the specific data object, event, command, file, API call, batch, or transformation.
 - Use the template's connector colors consistently: blue for primary read, write, replication, or publication flows; green for enrichment, rules, calculation, validation, or decisioning flows; grey dashed lines for optional, planned, deprecated, or uncertain flows.
 - Show where the data object is created, updated, enriched, read, replicated, archived, deleted, or submitted.
 - Keep lane labels readable on the left and process-stage labels aligned across the top.
-- Widen the canvas before compressing the flow. The exported SVG must not have overlapping arrows, labels, lane headers, or process-stage labels.
+- Expand the canvas horizontally and vertically before compressing the flow. Add width for more stages and add height for more solution lanes. The exported SVG must not have overlapping arrows, labels, lane headers, boxes, or process-stage labels.
 - Do not use real-company names, internal systems, proprietary event names, payload fields, endpoints, or confidential process details in this public repository.
 
 ## SVG Export Rules
