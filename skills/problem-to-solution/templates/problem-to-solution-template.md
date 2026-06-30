@@ -7,7 +7,7 @@
 | Open questions    | {{OPEN_QUESTIONS_COUNT}} |
 | Readability Score | TBD                      |
 
-## Integration Overview
+## Problem Overview
 
 | Field                  | Value                          |
 | ---------------------- | ------------------------------ |
