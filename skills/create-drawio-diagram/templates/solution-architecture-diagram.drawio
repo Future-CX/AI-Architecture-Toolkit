@@ -25,31 +25,31 @@
         <mxCell id="stGdpeZwPmTltRMmdIcY-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#f8cecc;strokeColor=#a3433f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Public Internet component&#xa;User, partner, device, or endpoint" vertex="1">
           <mxGeometry height="60" width="260" x="210" y="155" as="geometry" />
         </mxCell>
-        <mxCell id="stGdpeZwPmTltRMmdIcY-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=default;fontColor=light-dark(#ffffff, #8e9894);fontStyle=1;fontSize=6;strokeWidth=2;" value="Application name when known" vertex="1">
+        <mxCell id="stGdpeZwPmTltRMmdIcY-8" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;" value="Application name when known" vertex="1">
           <mxGeometry height="10" width="260" x="210" y="340" as="geometry" />
         </mxCell>
         <mxCell id="stGdpeZwPmTltRMmdIcY-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#fff3c4;strokeColor=#b7791f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Frontend capability or component&#xa;Channel, app, or experience" vertex="1">
           <mxGeometry height="60" width="260" x="210" y="350" as="geometry" />
         </mxCell>
-        <mxCell id="stGdpeZwPmTltRMmdIcY-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=default;fontColor=light-dark(#ffffff, #8e9894);fontStyle=1;fontSize=6;strokeWidth=2;fontFamily=Helvetica;align=center;verticalAlign=middle;" value="Application name when known" vertex="1">
+        <mxCell id="stGdpeZwPmTltRMmdIcY-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;fontFamily=Helvetica;align=center;verticalAlign=middle;" value="Application name when known" vertex="1">
           <mxGeometry height="10" width="260" x="210" y="535" as="geometry" />
         </mxCell>
         <mxCell id="stGdpeZwPmTltRMmdIcY-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Engagement capability or component&#xa;Business interaction or process API" vertex="1">
           <mxGeometry height="60" width="260" x="210" y="545" as="geometry" />
         </mxCell>
-        <mxCell id="stGdpeZwPmTltRMmdIcY-12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=default;fontColor=light-dark(#ffffff, #8e9894);fontStyle=1;fontSize=6;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;" value="Application name when known" vertex="1">
+        <mxCell id="stGdpeZwPmTltRMmdIcY-12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;" value="Application name when known" vertex="1">
           <mxGeometry height="10" width="260" x="210" y="730" as="geometry" />
         </mxCell>
         <mxCell id="stGdpeZwPmTltRMmdIcY-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Integration capability or component&#xa;Gateway, topic, queue, or adapter" vertex="1">
           <mxGeometry height="60" width="260" x="210" y="740" as="geometry" />
         </mxCell>
-        <mxCell id="stGdpeZwPmTltRMmdIcY-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=default;fontColor=light-dark(#ffffff, #8e9894);fontStyle=1;fontSize=6;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;" value="Application name when known" vertex="1">
+        <mxCell id="stGdpeZwPmTltRMmdIcY-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;" value="Application name when known" vertex="1">
           <mxGeometry height="10" width="280" x="570" y="730" as="geometry" />
         </mxCell>
         <mxCell id="stGdpeZwPmTltRMmdIcY-15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Integration capability or component&#xa;Routing, mapping, validation, or orchestration" vertex="1">
           <mxGeometry height="60" width="280" x="570" y="740" as="geometry" />
         </mxCell>
-        <mxCell id="stGdpeZwPmTltRMmdIcY-16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=default;fontColor=light-dark(#ffffff, #8e9894);fontStyle=1;fontSize=6;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;" value="Application name when known" vertex="1">
+        <mxCell id="stGdpeZwPmTltRMmdIcY-16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=0;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;strokeWidth=2;align=center;verticalAlign=middle;fontFamily=Helvetica;" value="Application name when known" vertex="1">
           <mxGeometry height="10" width="300" x="560" y="965" as="geometry" />
         </mxCell>
         <mxCell id="stGdpeZwPmTltRMmdIcY-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Enterprise Foundation capability or component&#xa;System of record, platform, or shared service" vertex="1">
