@@ -18,7 +18,6 @@ TOP_NODE_Y = 105
 CAPABILITY_Y = 320
 ACTOR_START_Y = 255
 EXTERNAL_Y = 330
-BOTTOM_HEADER_Y = 575
 BOTTOM_NODE_Y = 585
 ACTOR_WIDTH = 190
 NODE_WIDTH = 210
@@ -313,9 +312,9 @@ def write_capability_drawio(
         target_x = distributed_port(index, len(input_items), capability_x, CAPABILITY_WIDTH)
         target_port = relative_port(target_x, capability_x, CAPABILITY_WIDTH)
         route_y = staggered_lane(input_bus_y, index, len(input_items))
-        if provider.application:
-            add_cell(root_cell, f"{node_id}-app", provider.application, APP_HEADER_STYLE, x, BOTTOM_HEADER_Y, NODE_WIDTH, 10)
         add_cell(root_cell, node_id, provider.label, SYSTEM_STYLE, x, BOTTOM_NODE_Y, NODE_WIDTH, NODE_HEIGHT)
+        if provider.application:
+            add_cell(root_cell, f"{node_id}-app", provider.application, APP_HEADER_STYLE, x, BOTTOM_NODE_Y, NODE_WIDTH, 10)
         add_edge(
             root_cell,
             f"edge-{node_id}-capability",
@@ -499,9 +498,9 @@ def write_capability_svg(
         source_x = x + NODE_WIDTH // 2
         target_x = distributed_port(index, len(input_items), capability_x, CAPABILITY_WIDTH)
         route_y = staggered_lane(input_bus_y, index, len(input_items))
-        if provider.application:
-            input_nodes.append(svg_app_header(x, BOTTOM_HEADER_Y, NODE_WIDTH, provider.application))
         input_nodes.append(svg_box(x, BOTTOM_NODE_Y, NODE_WIDTH, NODE_HEIGHT, "#dae8fc", "#315f8f", provider.label, wrap_width=22))
+        if provider.application:
+            input_nodes.append(svg_app_header(x, BOTTOM_NODE_Y, NODE_WIDTH, provider.application))
         input_edges.append(
             svg_connector(
                 [

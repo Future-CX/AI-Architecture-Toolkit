@@ -41,10 +41,10 @@
           <mxGeometry height="10" width="200" x="880" y="250" as="geometry" />
         </mxCell>
         <mxCell id="hzigCzCzZuQ-4PxgagW3-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;spacing=0;strokeWidth=2;" value="Application Name" vertex="1">
-          <mxGeometry height="10" width="265" x="455" y="50" as="geometry" />
+          <mxGeometry height="10" width="265" x="455" y="60" as="geometry" />
         </mxCell>
         <mxCell id="hzigCzCzZuQ-4PxgagW3-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;fontStyle=1;fontSize=6;spacing=0;strokeWidth=2;" value="Application Name" vertex="1">
-          <mxGeometry height="10" width="265" x="455" y="430" as="geometry" />
+          <mxGeometry height="10" width="265" x="455" y="440" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
