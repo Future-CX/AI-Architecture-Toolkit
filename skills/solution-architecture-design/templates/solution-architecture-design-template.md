@@ -17,25 +17,12 @@
 | Domain              | {{DOMAIN}}                                                    |
 | Owner(s)            | {{OWNERS}}                                                    |
 
+{{SOLUTION_ARCHITECTURE_DIAGRAM_REFERENCE:
+Embed solution-architecture-diagram.svg when created with the create-drawio-diagram skill and its solution-architecture-diagram template. Show the main channels, application components, integration components, data stores, external systems, and ownership boundaries needed to understand the solution architecture.}}
+
 ## Short Summary
 
 _{{SHORT_SUMMARY}}_
-
-## Table of Contents
-
-- [Architecture Summary](#architecture-summary)
-- [Open Questions](#open-questions)
-- [Capability Overview](#capability-overview)
-- [Scope and Assumptions](#scope-and-assumptions)
-- [Target Technical Implementation](#target-technical-implementation)
-- [Application and Component Architecture](#application-and-component-architecture)
-- [Data Model and Ownership](#data-model-and-ownership)
-- [Data Integrations and Interface Contracts](#data-integrations-and-interface-contracts)
-- [Security, Privacy, and Compliance](#security-privacy-and-compliance)
-- [NFR and Operational Design](#nfr-and-operational-design)
-- [Technical Design Choices](#technical-design-choices)
-- [Risks, Dependencies, and Migration Notes](#risks-dependencies-and-migration-notes)
-- [Relevant Links](#relevant-links)
 
 ## Architecture Summary
 
@@ -53,7 +40,7 @@ List unresolved decisions, missing facts, and review items that block or materia
 Link to the source capability overview. Briefly summarize only the capability context needed to understand why this application architecture exists: business purpose, boundary, upstream/downstream business dependencies, triggering business events, expected outcomes, and source assumptions used. Keep this section short and avoid repeating the capability name elsewhere in the document unless needed for clarity. Call out source gaps or contradictions. Do not link ADRs here; ADR links belong in Technical Design Choices.}}
 
 {{CAPABILITY_CONTEXT_DIAGRAM_REFERENCE:
-Embed capability-overview.svg when created. Show actors, neighboring capabilities, and external dependencies.}}
+Embed capability-overview.svg when created with the create-drawio-diagram skill and its capability-overview template. Show actors, neighboring capabilities, and external dependencies while preserving the template's zone-based layout.}}
 
 ## Scope and Assumptions
 
@@ -93,7 +80,7 @@ Reference the relevant data architecture design when it exists. Summarize only t
 Describe each API, event, file, batch, stream, or manual handoff. For each, state producer, consumer, payload or data object, trigger, frequency, protocol or pattern, ownership, error handling, retry/idempotency needs, and observability.}}
 
 {{INTEGRATION_FLOW_DIAGRAM_REFERENCE:
-Embed integration-flow.svg when created. Show direction, trigger, protocol or pattern, and important sequencing.}}
+Embed integration-flow.svg when created with the create-drawio-diagram skill and its integration-flow template. Show direction, trigger, protocol or pattern, and important sequencing.}}
 
 ## Security, Privacy, and Compliance
 

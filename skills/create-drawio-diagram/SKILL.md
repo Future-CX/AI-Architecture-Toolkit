@@ -166,6 +166,27 @@ When using `templates/data-flow.drawio`, preserve the horizontal swimlane struct
 - Expand the canvas horizontally and vertically before compressing the flow. Add width for more stages and add height for more solution lanes. The exported SVG must not have overlapping arrows, labels, lane headers, boxes, or process-stage labels.
 - Do not use real-company names, internal systems, proprietary event names, payload fields, endpoints, or confidential process details in this public repository.
 
+## Integration Flow Layout
+
+When using `templates/integration-flow.drawio`, preserve the horizontal swimlane structure from the data flow template. The diagram is an operational trace of one integration scenario or interface chain, not a component map, endpoint catalog, or full data architecture view.
+
+- Replace the title with `<Organization or domain> | Integration Flow | <Integration scenario or interface name>`.
+- Put the business trigger, request, orchestration, transformation, delivery, acknowledgement, error handling, and completion stages across the top from left to right.
+- Keep the default lane order from top to bottom: actor or producing party; channel or producer application; optionally one backend-for-frontend lane when a BFF participates; one horizontal lane for each producing or orchestrating application; one horizontal lane for each integration component; one horizontal lane for each consuming application, enterprise foundation solution, MDM solution, external partner, or data store involved in the integration. Rename lanes to the real non-confidential names for the target design, but preserve this direction of responsibility unless the user explicitly asks for a different stack.
+- Include only lanes that actively send, receive, transform, route, persist, acknowledge, or monitor the integration. Do not add passive systems that are only mentioned in background context.
+- Do not group multiple applications or middleware components into broad lanes such as `Source systems`, `Integration layer`, or `Consumers`. Each named participant gets its own lane and horizontal divider when it has a distinct integration responsibility.
+- Align each stage or event header with the vertical flow column it describes. Center the header above the messages, transformations, acknowledgements, or failure paths for that stage, and move the stage guide line to the same x-position.
+- Draw integration messages as vertical or orthogonal arrows crossing lanes. Label each arrow with the business event, command, query, API call, event publication, file transfer, batch run, acknowledgement, retry, or error notification.
+- Put protocol or pattern information in concise connector labels only when it changes the design, for example `REST command`, `event publish`, `batch file`, `webhook`, `async acknowledgement`, or `manual retry`.
+- Use the template's connector colors consistently: blue for primary commands, queries, event publications, file transfers, batches, reads, writes, and delivery flows; green for routing, transformation, validation, enrichment, policy checks, or decisioning flows; grey dashed lines for optional, planned, deprecated, fallback, manual, or uncertain flows.
+- Show direction and sequencing explicitly. If an acknowledgement, response, callback, retry, compensation, or dead-letter path materially affects ownership or operations, show it as a separate arrow instead of hiding it inside a label.
+- Show where the payload is created, transformed, validated, enriched, routed, persisted, acknowledged, retried, rejected, or handed over. Keep payload and contract names business-readable and general.
+- Keep interface details at the right level of abstraction. Use connector labels for interface names, canonical data objects, protocol or pattern, trigger, frequency, retry, idempotency, acknowledgement, and ownership when short. Put endpoint paths, fields, schemas, topic names, queue names, credentials, and detailed error codes in the supporting document, not in the diagram.
+- Keep lane labels readable on the left and stage labels aligned across the top.
+- Expand the canvas horizontally and vertically before compressing the flow. Add width for more stages and add height for more participants. The exported SVG must not have overlapping arrows, labels, lane headers, boxes, or process-stage labels.
+- Use explicit orthogonal waypoints when automatic routing would make arrows cross through participant boxes, lane labels, stage headers, arrowheads, or other connector labels.
+- Do not use real-company names, internal systems, proprietary event names, payload fields, endpoints, topics, queues, credentials, or confidential process details in this public repository.
+
 ## SVG Export Rules
 
 Exported SVGs must preserve the exact colors from the `.drawio` source.

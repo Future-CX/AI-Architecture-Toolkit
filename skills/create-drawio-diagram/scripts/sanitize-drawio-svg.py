@@ -15,7 +15,13 @@ def sanitize_svg(svg: str, background: str = LIGHT_BACKGROUND) -> str:
     svg = re.sub(r"color-scheme\s*:\s*light\s+dark\s*;?", "color-scheme: light;", svg)
     svg = re.sub(r"color-scheme\s*:\s*dark\s*;?", "color-scheme: light;", svg)
 
-    # Draw.io may emit CSS like light-dark(#17201d, #ced5d3). Keep the light value.
+    # Draw.io may emit CSS like light-dark(#17201d, #ced5d3) or
+    # light-dark(rgb(93, 105, 100), rgb(142, 152, 148)). Keep the light value.
+    svg = re.sub(
+        r"light-dark\(\s*((?:rgb|rgba)\([^\)]*\))\s*,\s*(?:rgb|rgba)\([^\)]*\)\s*\)",
+        r"\1",
+        svg,
+    )
     svg = re.sub(r"light-dark\(\s*([^,\)]+?)\s*,\s*([^\)]+?)\s*\)", r"\1", svg)
 
     svg_tag = re.search(r"<svg\b[^>]*>", svg)
@@ -47,6 +53,8 @@ def validate_svg(svg: str) -> None:
         raise SystemExit("SVG still contains a dark-capable color-scheme.")
     if "light-dark(" in svg:
         raise SystemExit("SVG still contains light-dark(...) CSS values.")
+    if re.search(r"rgb[a]?\([^\)]*rgb[a]?\(", svg):
+        raise SystemExit("SVG contains malformed nested rgb(...) CSS after sanitizing.")
     if "color-scheme: light" not in svg:
         raise SystemExit("SVG does not contain explicit color-scheme: light.")
 

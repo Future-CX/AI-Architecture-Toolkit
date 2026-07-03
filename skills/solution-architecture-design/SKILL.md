@@ -21,7 +21,7 @@ After the clarification session, validate that `<private-lab-root>/GLOSSARY.md` 
 
 When this toolkit is used as a submodule, do not write generated solution architecture design files under `toolkit/solution-architectures/`. Run from the private lab root, or otherwise target the private lab root explicitly, so output goes to `<private-lab-root>/solution-architectures/L2-solution-architecture-<slug>/`.
 
-Use `templates/solution-architecture-design-template.md` as the output structure and follow the chapter writing guidance below when replacing placeholders. Preserve the two opening tables: the document metadata table first, followed by the `Solution Architecture Overview` table. Replace each complete placeholder block with finished document content; do not leave placeholder names, placeholder guidance, or drafting instructions in the generated document. Create every Draw.io diagram with `../create-drawio-diagram/SKILL.md` because it contains the required diagram instructions, style rules, and templates. Store each diagram as an editable `.drawio` file in the same folder as the solution architecture design document. Export a same-basename `.svg` file for every `.drawio` file that must be embedded, and embed the SVG in the document.
+Use `templates/solution-architecture-design-template.md` as the output structure and follow the chapter writing guidance below when replacing placeholders. Preserve the two opening tables: the document metadata table first, followed by the `Solution Architecture Overview` table. Do not add a table of contents. Replace each complete placeholder block with finished document content; do not leave placeholder names, placeholder guidance, or drafting instructions in the generated document. Create every Draw.io diagram with `../create-drawio-diagram/SKILL.md` because it contains the required diagram instructions, style rules, and templates. Store each diagram as an editable `.drawio` file in the same folder as the solution architecture design document. Export a same-basename `.svg` file for every `.drawio` file that must be embedded, and embed the SVG in the document.
 
 ## Required Inputs
 
@@ -52,12 +52,14 @@ Use `templates/solution-architecture-design-template.md` as the output structure
    - Relationships between terms, applications, and data objects
 10. Create the technical document from `templates/solution-architecture-design-template.md`. Preserve the document metadata table, the `Solution Architecture Overview` table, and the `Short Summary` section.
 11. Use `../create-drawio-diagram/SKILL.md` to create separate Draw.io source files in the same output folder when the required architecture relationships are known:
-    - `capability-overview.drawio` for the capability overview diagram
-    - `integration-flow.drawio` for the integration flow or sequence diagram
+    - `solution-architecture-diagram.drawio` from `../create-drawio-diagram/templates/solution-architecture-diagram.drawio` for the solution architecture diagram after `Solution Architecture Overview`
+    - `capability-overview.drawio` from `../create-drawio-diagram/templates/capability-overview.drawio` for the capability overview diagram after `Capability Overview`
+    - `integration-flow.drawio` from `../create-drawio-diagram/templates/integration-flow.drawio` for the integration flow diagram after `Data Integrations and Interface Contracts`
 12. Export a same-basename SVG for each created Draw.io file in the same output folder, using the SVG export rules in `../create-drawio-diagram/SKILL.md`:
+    - `solution-architecture-diagram.svg`
     - `capability-overview.svg`
     - `integration-flow.svg`
-13. Embed each created `.svg` file in the relevant section of `<slug>-architecture.md` using Markdown image syntax. Do not add links to the matching `.drawio` source files in the document.
+13. Embed each created `.svg` file inline in the relevant section of `<slug>-architecture.md` using Markdown image syntax. Do not add a `Diagrams` section or links to the matching `.drawio` source files in the document.
 14. Do not create placeholder `.drawio` or `.svg` files for unknown diagrams. Mark missing diagrams as assumptions or open questions in the design document.
 15. Record specific technical design choices in the document. If a choice is durable, hard to reverse, surprising without context, and based on a real trade-off, propose an ADR using `../architecture-decision-record/SKILL.md`.
 16. Mark unknowns as assumptions or open questions. Do not invent implementation facts.
@@ -70,7 +72,7 @@ Write each chapter as implementation-oriented architecture guidance, not as a re
 
 The generated document title must stay `L2 - {{CAPABILITY_NAME}} Solution Architecture`. The generated content should be application-centered: use `Application Name` as the primary implementation anchor in the body, while using the capability as context in the title, `Architecture Summary`, and `Capability Overview`. After that, shift the rest of the document to the application, components, data, integrations, operations, and delivery impact. Avoid repeating the capability name throughout the body unless it prevents ambiguity.
 
-Start the document with the document metadata table, then the `Solution Architecture Overview` table with application name, capability, target architecture, domain, and owners. Include a `Short Summary` section before the table of contents that gives the business outcome, application focus, ownership, and main architecture concern in a few plain-language sentences.
+Start the document with the document metadata table, then the `Solution Architecture Overview` table with application name, capability, target architecture, domain, and owners. Place the solution architecture diagram immediately after the `Solution Architecture Overview` table when enough detail is known. Include a `Short Summary` section after that diagram reference that gives the business outcome, application focus, ownership, and main architecture concern in a few plain-language sentences.
 
 ## Readability Guidance
 
@@ -152,13 +154,14 @@ Make the document easy to read for both architects and delivery teams.
 - Distinguish command, query, event, synchronization, and reporting flows.
 - Flag unclear interface contracts as open questions instead of inventing fields or endpoints.
 
-### Diagrams
+### Visual Architecture Views
 
-- Create editable `.drawio` diagrams using `../create-drawio-diagram/SKILL.md`; do not hand-roll Draw.io files outside that skill's instructions and templates.
-- Embed the exported SVG for each diagram. Do not add `.drawio` source links to the document.
-- Use diagrams only where they clarify boundaries, relationships, ownership, or sequence. Do not add decorative diagrams.
-- The capability overview diagram should show actors, neighboring capabilities, and external dependencies while preserving the zone-based layout from `../create-drawio-diagram/templates/capability-overview.drawio`.
-- The integration flow should show direction, trigger, protocol or pattern, and important sequencing.
+- Create editable `.drawio` files using `../create-drawio-diagram/SKILL.md`; do not hand-roll Draw.io files outside that skill's instructions and templates.
+- Embed the exported SVG for each created view inline where the template places it. Do not add a separate `Diagrams` section or `.drawio` source links to the document.
+- Use visual views only where they clarify boundaries, relationships, ownership, or sequence. Do not add decorative views.
+- The solution architecture view must use `../create-drawio-diagram/templates/solution-architecture-diagram.drawio` and show channels, application components, integration components, data stores, external systems, and ownership boundaries.
+- The capability overview view must use `../create-drawio-diagram/templates/capability-overview.drawio` and show actors, neighboring capabilities, and external dependencies while preserving the template's zone-based layout.
+- The integration flow view must use `../create-drawio-diagram/templates/integration-flow.drawio` and show direction, trigger, protocol or pattern, and important sequencing.
 
 ### Security, Privacy, and Compliance
 
@@ -209,7 +212,7 @@ Each solution architecture design document must include:
 
 - Document metadata table
 - Solution Architecture Overview table with application name, capability, target architecture, domain, and owners
-- Short Summary in italic text before the table of contents
+- Short Summary in italic text
 - Solution architecture design summary
 - Source capability overview reference
 - Scope and assumptions
@@ -217,7 +220,7 @@ Each solution architecture design document must include:
 - Application and component architecture
 - Data model and data ownership
 - Data integrations and interface contracts
-- Draw.io `.drawio` source files and exported `.svg` files in the same folder as the design document, with SVGs embedded in the document where enough detail is known
+- Draw.io `.drawio` source files and exported `.svg` files in the same folder as the design document, with SVGs embedded inline where enough detail is known
 - Security, privacy, and compliance design
 - NFR and operational design
 - Technical design choices and trade-offs

@@ -24,7 +24,7 @@ Use the exact hex values below. Do not darken, tint, theme, or approximate these
 | Enterprise Foundation (Backoffice) component             | `#dae8fc` | `#315f8f` | `#000000` |
 | External dependency, risk, or constraint                 | `#f8cecc` | `#a3433f` | `#000000` |
 | Neutral component, payload, or note                      | `#ffffff` | `#d8dfda` | `#000000` |
-| Application name header                                  | `#000000` | `#000000` | `#ffffff` |
+| Application name header                                  | `#ffffff` | `#d8dfda` | `#5d6964` |
 | Connector                                                | n/a       | `#000000` | `#000000` |
 
 ## Shape Styles
@@ -45,7 +45,7 @@ rounded=0;whiteSpace=wrap;html=1;spacing=12;fontColor=#17201d;fontStyle=1;stroke
 
 For layered integration design maps, use layer colors for the layer-band rectangles and component colors for the component bodies. Component bodies must use dark text (`#17201d`) for readability: Public Internet component light red, Frontend component light yellow, Engagement component light green, Integration component light grey, and Enterprise Foundation (Backoffice) component light blue. If a component's layer is unclear, use the neutral component style and capture the categorization as an open question in the supporting document.
 
-When a component, capability, system, or dependency is implemented by a named application, place only the application name in a separate 10 px high header box attached to the top of the component. Use the same width as the component, `fillColor=#000000`, `strokeColor=#000000`, `fontColor=#ffffff`, `fontStyle=1`, `fontSize=6`, `spacing=0`, and `strokeWidth=2`. Put capability names, component names, responsibilities, dependencies, and integration roles in the component body below the header. If the application name is unknown, omit the header.
+When a component, capability, system, or dependency is implemented by a named application, place only the application name in a separate 10 px high header box attached to the top of the component. Use the same width as the component, `fillColor=#ffffff`, `strokeColor=#d8dfda`, `fontColor=#5d6964`, `fontStyle=1`, `fontSize=6`, `spacing=0`, and `strokeWidth=2`. Put capability names, component names, responsibilities, dependencies, and integration roles in the component body below the header. If the application name is unknown, omit the header.
 
 Use swimlanes only for meaningful ownership or application boundaries:
 
