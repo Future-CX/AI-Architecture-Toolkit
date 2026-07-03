@@ -107,6 +107,22 @@ The helper also accepts compatibility aliases for upstream capability workflows:
 - `--related-capability` as an alias for `--outcome`
 - `--pain-point` as an alias for `--constraint`
 
+## Solution Architecture Layout
+
+When using `templates/solution-architecture-diagram.drawio`, preserve the layered architecture structure. The diagram is a solution overview for one application or capability implementation, not a detailed sequence diagram or interface catalog.
+
+- Place components inside the corresponding layer band, ordered from top to bottom: Public Internet, Frontend, Engagement Services, Integration, and Enterprise Foundation (Backoffice).
+- When the solution includes a Backend-for-Frontend component, place it in the Frontend layer directly below the frontend/channel component it supports. Align the frontend component and BFF on the same x-position and use a vertical connector between them whenever possible.
+- Do not place a Backend-for-Frontend component in Engagement Services or Integration. It remains a Frontend component even when it calls APIs, composes responses, or orchestrates channel-specific requests.
+- Treat the canvas as flexible. Increase `pageWidth`, `pageHeight`, and every layer-band width or height whenever the default template would force cramped components, overlapping connectors, clipped labels, or crowded layer bands.
+- Prefer widening or heightening the canvas and spreading components before shrinking boxes, shortening important labels, or stacking unrelated components.
+- Grow all layer bands to the same width when the diagram needs more horizontal space so the architecture layers remain visually aligned. Increase layer heights and move lower bands down when components, notes, or connector labels need more vertical space.
+- Leave enough whitespace between components for connector routing and labels. For labeled horizontal connectors, reserve at least 180 px between component edges; for labels longer than 24 characters, reserve at least 240 px or move detail into the document.
+- Use separate routing lanes for different relationships. Do not let connectors share the same segment when their labels, arrowheads, or vertical drops would overlap.
+- Route long cross-layer connectors through open whitespace lanes. Do not run connectors through layer labels, component bodies, application headers, or other connector labels.
+- For dense solution architecture diagrams, widen and heighten the canvas first, then increase layer heights, then move components farther apart. Do not accept an SVG where component labels, connector labels, or arrowheads overlap.
+- Keep the diagram readable at document scale. It is better to create a wider or taller same-basename SVG than to compress a complete solution into the default canvas.
+
 ## Integration Design Layout
 
 When using `templates/integration-design.drawio`, preserve the vertical layer structure. The diagram is a layered component map for an integration design, not a sequence diagram, endpoint catalog, or source-to-destination column layout.
@@ -182,6 +198,7 @@ When using `templates/integration-flow.drawio`, preserve the horizontal swimlane
 - Prefer continuous left-to-right and top-to-bottom arrows across stage columns over repeated component boxes. A reader should be able to follow the scenario by tracing arrows, not by guessing that repeated boxes are the same system.
 - Color each participant by its architecture layer, not by the direction of the flow.
 - Treat Backend-for-Frontend and BFF components as Frontend components. They must use the yellow Frontend component style (`fillColor=#fff3c4;strokeColor=#b7791f`) even when they call APIs, compose responses, or orchestrate channel requests.
+- Place a Backend-for-Frontend directly below the frontend/channel participant it supports, aligned on the same x-position, and connect them vertically where possible. Do not place the BFF as a peer beside the frontend component unless the flow has multiple frontend participants and vertical placement would make the path unreadable.
 - Treat API gateway, API management, mediation, routing, and integration-platform components as Integration components. Azure API Management, API gateway, ESB, iPaaS, queue broker, and event broker nodes must use the grey Integration component style (`fillColor=#edf2f0;strokeColor=#8a9992`).
 - Treat backoffice API providers, MDM APIs, host APIs, mainframe APIs, and enterprise system APIs as Enterprise Foundation components. IBMi APIs and similar foundation API provider nodes must use the blue Enterprise Foundation component style (`fillColor=#dae8fc;strokeColor=#315f8f`).
 - Use green Engagement Service component styling (`fillColor=#d9eadf;strokeColor=#0f766e`) only for business-facing engagement services or application capabilities, not for BFFs, API management, or foundation APIs.
