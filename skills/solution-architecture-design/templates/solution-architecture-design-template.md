@@ -77,7 +77,11 @@ Reference the relevant data architecture design when it exists. Summarize only t
 ## Data Integrations and Interface Contracts
 
 {{DATA_INTEGRATIONS_AND_INTERFACE_CONTRACTS:
-Describe each API, event, file, batch, stream, or manual handoff. For each, state producer, consumer, payload or data object, trigger, frequency, protocol or pattern, ownership, error handling, retry/idempotency needs, and observability.}}
+Summarize the integrations needed by this solution architecture. Link detailed integration designs instead of duplicating full contracts. Use `No design yet` when a detailed integration design is not available, and mirror material missing designs in Open Questions or Dependencies.}}
+
+| Integration          | From - To     | Pattern     | Purpose     | Design                                                      |
+| -------------------- | ------------- | ----------- | ----------- | ----------------------------------------------------------- |
+| {{INTEGRATION_NAME}} | {{DIRECTION}} | {{PATTERN}} | {{PURPOSE}} | [{{INTEGRATION_DESIGN_TITLE}}]({{INTEGRATION_DESIGN_LINK}}) |
 
 {{INTEGRATION_FLOW_DIAGRAM_REFERENCE:
 Embed integration-flow.svg when created with the create-drawio-diagram skill and its integration-flow template. Show direction, trigger, protocol or pattern, and important sequencing.}}

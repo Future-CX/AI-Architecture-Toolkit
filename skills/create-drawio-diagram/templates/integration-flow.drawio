@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="AI Architecture Toolkit">
-  <diagram id="data-flow" name="Data Flow">
-    <mxGraphModel dx="1863" dy="1211" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1100" background="#fbfcfa" math="0" shadow="0">
+  <diagram id="integration-flow" name="Integration Flow">
+    <mxGraphModel dx="2217" dy="1622" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1100" background="#fbfcfa" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -79,31 +79,31 @@
         <mxCell id="engagement-enrichment" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontSize=10;strokeWidth=2;" value="Validation or enrichment" vertex="1">
           <mxGeometry height="44" width="140" x="910" y="518" as="geometry" />
         </mxCell>
-        <mxCell id="integration-component" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontSize=10;strokeWidth=2;" value="Sync, event, API, batch, or file" vertex="1">
+        <mxCell id="integration-component" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontSize=10;strokeWidth=2;" value="API gateway, event, batch, or file" vertex="1">
           <mxGeometry height="44" width="170" x="1215" y="608" as="geometry" />
         </mxCell>
-        <mxCell id="enterprise-store" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;fontSize=10;strokeWidth=2;" value="Enterprise or MDM copy" vertex="1">
+        <mxCell id="enterprise-store" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;fontSize=10;strokeWidth=2;" value="Foundation API or data store" vertex="1">
           <mxGeometry height="44" width="150" x="585" y="698" as="geometry" />
         </mxCell>
         <mxCell id="customer-channel-flow" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" value="Request or intent">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="340" y="165" as="sourcePoint" />
+            <mxPoint x="340" y="200" as="sourcePoint" />
             <mxPoint x="340" y="248" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="channel-engagement-flow" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" value="Submit object change">
+        <mxCell id="channel-engagement-flow" edge="1" parent="1" source="channel-action" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" value="Submit object change">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="660" y="292" as="sourcePoint" />
             <mxPoint x="660" y="338" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="bff-engagement-flow" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" value="Forward request or compose response">
+        <mxCell id="bff-engagement-flow" edge="1" parent="1" source="bff-component" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" value="Forward request or compose response">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="980" y="382" as="sourcePoint" />
             <mxPoint x="980" y="428" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="enterprise-read-flow" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" value="Read master data">
+        <mxCell id="enterprise-read-flow" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="yCrfHCC8E2HfHPLwqUdN-2" value="Read master data">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="660" y="698" as="sourcePoint" />
             <mxPoint x="660" y="382" as="targetPoint" />
@@ -115,7 +115,7 @@
             <mxPoint x="980" y="518" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="publish-flow" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" value="Publish event or file">
+        <mxCell id="publish-flow" edge="1" parent="1" source="engagement-enrichment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" value="Publish event or file">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="1300" y="562" as="sourcePoint" />
             <mxPoint x="1300" y="608" as="targetPoint" />
@@ -135,6 +135,21 @@
         </mxCell>
         <mxCell id="legend-optional" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=6;fillColor=#ffffff;strokeColor=#8a9992;fontColor=#5d6964;fontSize=10;strokeWidth=2;dashed=1;" value="Optional, planned, deprecated, or uncertain" vertex="1">
           <mxGeometry height="34" width="270" x="1310" y="820" as="geometry" />
+        </mxCell>
+        <mxCell id="yCrfHCC8E2HfHPLwqUdN-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;strokeWidth=2;" value="Customer" vertex="1">
+          <mxGeometry height="44" width="120" x="280" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="yCrfHCC8E2HfHPLwqUdN-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontSize=10;strokeWidth=2;" value="API gateway, event, batch, or file" vertex="1">
+          <mxGeometry height="44" width="170" x="575.5" y="601" as="geometry" />
+        </mxCell>
+        <mxCell id="yCrfHCC8E2HfHPLwqUdN-3" edge="1" parent="1" source="yCrfHCC8E2HfHPLwqUdN-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="bff-component" value="Read master data">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="650" y="703" as="sourcePoint" />
+            <mxPoint x="650" y="650" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yCrfHCC8E2HfHPLwqUdN-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;fontSize=10;strokeWidth=2;" value="Foundation API or data store" vertex="1">
+          <mxGeometry height="44" width="150" x="1225" y="698" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

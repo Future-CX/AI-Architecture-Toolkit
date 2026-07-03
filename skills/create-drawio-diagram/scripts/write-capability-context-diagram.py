@@ -216,6 +216,13 @@ def distributed_port(index: int, count: int, start: int, size: int, padding: int
     return start + padding + round((usable * index) / (count - 1))
 
 
+def staggered_lane(base: int, index: int, count: int, spacing: int = 24) -> int:
+    if count <= 1:
+        return base
+    midpoint = (count - 1) / 2
+    return int(base + round((index - midpoint) * spacing))
+
+
 def write_capability_drawio(
     target: Path,
     capability_name: str,
@@ -278,22 +285,25 @@ def write_capability_drawio(
     outcome_start_x = max(360, capability_x - ((len(outcome_items) * 245 - 25) // 2))
     external_x = page_width - 290
     actor_lane_x = capability_x - 70
-    input_bus_y = BOTTOM_NODE_Y - 55
-    outcome_bus_y = TOP_NODE_Y + NODE_HEIGHT + 55
+    input_bus_y = BOTTOM_NODE_Y - 78
+    outcome_bus_y = TOP_NODE_Y + NODE_HEIGHT + 58
 
     for index, stakeholder in enumerate(actor_items):
         node_id = f"actor-{index + 1}"
         y = ACTOR_START_Y + index * 105
         actor_center_y = y + NODE_HEIGHT // 2
+        actor_route_x = actor_lane_x - index * 30
+        target_y = distributed_port(index, len(actor_items), CAPABILITY_Y, CAPABILITY_HEIGHT, padding=28)
+        target_port_y = relative_port(target_y, CAPABILITY_Y, CAPABILITY_HEIGHT)
         add_cell(root_cell, node_id, stakeholder, ACTOR_STYLE, actor_x, y, ACTOR_WIDTH, NODE_HEIGHT)
         add_edge(
             root_cell,
             f"edge-{node_id}-capability",
             node_id,
             "capability",
-            "triggers or uses",
-            points=[(actor_lane_x, actor_center_y), (actor_lane_x, capability_center_y)],
-            style_suffix=f"exitX=1;exitY=0.5;entryX=0;entryY={relative_port(capability_center_y, CAPABILITY_Y, CAPABILITY_HEIGHT):.2f};",
+            "triggers or uses" if index == 0 else "",
+            points=[(actor_route_x, actor_center_y), (actor_route_x, target_y)],
+            style_suffix=f"exitX=1;exitY=0.5;entryX=0;entryY={target_port_y:.2f};",
         )
 
     for index, provider in enumerate(input_items):
@@ -302,6 +312,7 @@ def write_capability_drawio(
         source_x = x + NODE_WIDTH // 2
         target_x = distributed_port(index, len(input_items), capability_x, CAPABILITY_WIDTH)
         target_port = relative_port(target_x, capability_x, CAPABILITY_WIDTH)
+        route_y = staggered_lane(input_bus_y, index, len(input_items))
         if provider.application:
             add_cell(root_cell, f"{node_id}-app", provider.application, APP_HEADER_STYLE, x, BOTTOM_HEADER_Y, NODE_WIDTH, 10)
         add_cell(root_cell, node_id, provider.label, SYSTEM_STYLE, x, BOTTOM_NODE_Y, NODE_WIDTH, NODE_HEIGHT)
@@ -311,7 +322,7 @@ def write_capability_drawio(
             node_id,
             "capability",
             "provides input" if index == 0 else "",
-            points=[(source_x, input_bus_y), (target_x, input_bus_y)],
+            points=[(source_x, route_y), (target_x, route_y)],
             style_suffix=f"exitX=0.5;exitY=0;entryX={target_port:.2f};entryY=1;",
         )
 
@@ -321,6 +332,7 @@ def write_capability_drawio(
         source_x = distributed_port(index, len(outcome_items), capability_x, CAPABILITY_WIDTH)
         source_port = relative_port(source_x, capability_x, CAPABILITY_WIDTH)
         target_x = x + NODE_WIDTH // 2
+        route_y = staggered_lane(outcome_bus_y, index, len(outcome_items))
         add_cell(root_cell, node_id, outcome, SYSTEM_STYLE, x, TOP_NODE_Y, NODE_WIDTH, NODE_HEIGHT)
         add_edge(
             root_cell,
@@ -328,7 +340,7 @@ def write_capability_drawio(
             "capability",
             node_id,
             "gets data" if index == 0 else "",
-            points=[(source_x, outcome_bus_y), (target_x, outcome_bus_y)],
+            points=[(source_x, route_y), (target_x, route_y)],
             style_suffix=f"exitX={source_port:.2f};exitY=0;entryX=0.5;entryY=1;",
         )
 
@@ -456,25 +468,27 @@ def write_capability_svg(
     external_x = page_width - 290
     capability_center_y = capability_y + CAPABILITY_HEIGHT // 2
     actor_lane_x = capability_x - 70
-    input_bus_y = BOTTOM_NODE_Y - 55
-    outcome_bus_y = TOP_NODE_Y + NODE_HEIGHT + 55
+    input_bus_y = BOTTOM_NODE_Y - 78
+    outcome_bus_y = TOP_NODE_Y + NODE_HEIGHT + 58
 
     actor_nodes = []
     actor_edges = []
     for index, stakeholder in enumerate(actor_items):
         y = ACTOR_START_Y + index * 105
         actor_center_y = y + NODE_HEIGHT // 2
+        actor_route_x = actor_lane_x - index * 30
+        target_y = distributed_port(index, len(actor_items), capability_y, CAPABILITY_HEIGHT, padding=28)
         actor_nodes.append(svg_box(actor_x, y, ACTOR_WIDTH, NODE_HEIGHT, "#fff3c4", "#b7791f", stakeholder, bold=True, wrap_width=20))
         actor_edges.append(
             svg_connector(
                 [
                     (actor_x + ACTOR_WIDTH, actor_center_y),
-                    (actor_lane_x, actor_center_y),
-                    (actor_lane_x, capability_center_y),
-                    (capability_x, capability_center_y),
+                    (actor_route_x, actor_center_y),
+                    (actor_route_x, target_y),
+                    (capability_x, target_y),
                 ],
-                "triggers or uses",
-                (actor_lane_x - 18, actor_center_y - 10),
+                "triggers or uses" if index == 0 else "",
+                ((actor_x + ACTOR_WIDTH + actor_route_x) // 2, actor_center_y - 10),
             )
         )
 
@@ -484,6 +498,7 @@ def write_capability_svg(
         x = input_start_x + index * 245
         source_x = x + NODE_WIDTH // 2
         target_x = distributed_port(index, len(input_items), capability_x, CAPABILITY_WIDTH)
+        route_y = staggered_lane(input_bus_y, index, len(input_items))
         if provider.application:
             input_nodes.append(svg_app_header(x, BOTTOM_HEADER_Y, NODE_WIDTH, provider.application))
         input_nodes.append(svg_box(x, BOTTOM_NODE_Y, NODE_WIDTH, NODE_HEIGHT, "#dae8fc", "#315f8f", provider.label, wrap_width=22))
@@ -491,12 +506,12 @@ def write_capability_svg(
             svg_connector(
                 [
                     (source_x, BOTTOM_NODE_Y),
-                    (source_x, input_bus_y),
-                    (target_x, input_bus_y),
+                    (source_x, route_y),
+                    (target_x, route_y),
                     (target_x, capability_y + CAPABILITY_HEIGHT),
                 ],
                 "provides input" if index == 0 else "",
-                ((source_x + target_x) // 2, input_bus_y - 10),
+                ((source_x + target_x) // 2, route_y - 10),
             )
         )
 
@@ -506,17 +521,18 @@ def write_capability_svg(
         x = outcome_start_x + index * 245
         source_x = distributed_port(index, len(outcome_items), capability_x, CAPABILITY_WIDTH)
         target_x = x + NODE_WIDTH // 2
+        route_y = staggered_lane(outcome_bus_y, index, len(outcome_items))
         outcome_nodes.append(svg_box(x, TOP_NODE_Y, NODE_WIDTH, NODE_HEIGHT, "#dae8fc", "#315f8f", outcome, wrap_width=22))
         outcome_edges.append(
             svg_connector(
                 [
                     (source_x, capability_y),
-                    (source_x, outcome_bus_y),
-                    (target_x, outcome_bus_y),
+                    (source_x, route_y),
+                    (target_x, route_y),
                     (target_x, TOP_NODE_Y + NODE_HEIGHT),
                 ],
                 "gets data" if index == 0 else "",
-                ((source_x + target_x) // 2, outcome_bus_y - 10),
+                ((source_x + target_x) // 2, route_y - 10),
             )
         )
 

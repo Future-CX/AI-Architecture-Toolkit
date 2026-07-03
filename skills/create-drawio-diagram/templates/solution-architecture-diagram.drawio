@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="AI Architecture Toolkit">
   <diagram id="solution-architecture-diagram" name="Solution Architecture">
-    <mxGraphModel dx="1829" dy="1362" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="920" background="#fbfcfa" math="0" shadow="0">
+    <mxGraphModel dx="1341" dy="999" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="920" background="#fbfcfa" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -81,6 +81,9 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="710" y="755" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="YCqWQmMgM9Lqs8QDDATt-1" parent="1" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="5.82" width="1060" x="40" y="70" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

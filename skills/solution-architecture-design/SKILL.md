@@ -149,8 +149,14 @@ Make the document easy to read for both architects and delivery teams.
 
 ### Data Integrations and Interface Contracts
 
-- Describe each interface, event, API, file, batch, stream, or manual handoff needed for the capability.
-- For each integration, state producer, consumer, payload or data object, trigger, frequency, protocol or pattern, ownership, error handling, retry/idempotency needs, and observability.
+- Use the same integration summary table format as Data Architecture Design: `Integration`, `From - To`, `Pattern`, `Purpose`, and `Design`.
+- Add one row per API, event, file, batch, stream, or manual handoff needed for the solution.
+- Write `Integration` as a short business-readable name, such as `Audience sync to Talon.One`.
+- Write `From - To` as the producer and consumer path, such as `Masif - Talon.One`, without endpoint paths, topic names, table names, or payload fields.
+- Write `Pattern` as the integration pattern and cadence, such as `Scheduled morning sync`, `API lookup`, `Event publication`, `Batch file`, or `Webhook`.
+- Write `Purpose` as the business or operational reason for the integration in one concise sentence.
+- Write `Design` as a Markdown link to the detailed integration design when one exists. Use `No design yet` when no detailed design exists, and mirror material missing designs in `Open Questions` or `Dependencies`.
+- Keep full contracts out of this table. Put payload fields, schemas, endpoint paths, retry policy, idempotency details, error handling, observability, and ownership details in linked integration designs or supporting paragraphs only when they materially affect the solution architecture.
 - Distinguish command, query, event, synchronization, and reporting flows.
 - Flag unclear interface contracts as open questions instead of inventing fields or endpoints.
 
