@@ -35,154 +35,69 @@ Summarize the domain purpose, strategic importance, target direction, and most i
 - [09 Roadmap Themes](09-roadmap-themes.md)
 - [10 Governance Actions](10-governance-actions.md)
 - [11 Risks and Open Questions](11-risks-and-open-questions.md)
-- [Assembled Target Architecture Document](target-architecture-document.md)
 
 ## 2. Capability Overview
 
-Create a high-level overview for each included capability.
+Summarize the included capabilities, the target-state direction, and the most important business outcomes.
 
-| Capability          | Definition                | Business Outcome     | Scope Boundary     | Target-State Direction     |
-| ------------------- | ------------------------- | -------------------- | ------------------ | -------------------------- |
-| {{CAPABILITY_NAME}} | {{CAPABILITY_DEFINITION}} | {{BUSINESS_OUTCOME}} | {{SCOPE_BOUNDARY}} | {{TARGET_STATE_DIRECTION}} |
+[Read the detailed Capability Overview](01-capability-overview.md)
 
 ## 3. Preliminary Phase Input
 
-Describe the enterprise architecture context that frames the target architecture document.
+Summarize the enterprise scope, governance context, stakeholder forums, and reusable architecture assets that frame this target architecture.
 
-### Enterprise Scope
-
-{{ENTERPRISE_SCOPE}}
-
-### Architecture Principles and Standards
-
-{{ARCHITECTURE_PRINCIPLES_AND_STANDARDS}}
-
-### Governance Model
-
-{{GOVERNANCE_MODEL}}
-
-### Stakeholders and Decision Forums
-
-{{STAKEHOLDERS_AND_DECISION_FORUMS}}
-
-### Reusable Architecture Assets
-
-{{REUSABLE_ARCHITECTURE_ASSETS}}
+[Read the detailed Preliminary Phase input](02-preliminary-phase.md)
 
 ## 4. Phase A - Architecture Vision
 
-### Strategic Drivers
+Summarize the strategic drivers, intended business outcomes, key scenarios, constraints, and success measures.
 
-{{STRATEGIC_DRIVERS}}
-
-### Business Outcomes
-
-{{BUSINESS_OUTCOMES}}
-
-### Value Streams and Key Scenarios
-
-{{VALUE_STREAMS_AND_KEY_SCENARIOS}}
-
-### Scope, Assumptions, and Constraints
-
-{{SCOPE_ASSUMPTIONS_AND_CONSTRAINTS}}
-
-### Success Measures
-
-{{SUCCESS_MEASURES}}
+[Read the detailed Phase A - Architecture Vision](03-phase-a-architecture-vision.md)
 
 ## 5. Phase B - Business Architecture
 
-### Capability Map
+Summarize the target business capabilities, business process changes, operating model impact, and major business gaps or dependencies.
 
-{{CAPABILITY_MAP}}
-
-### Business Processes
-
-{{BUSINESS_PROCESSES}}
-
-### Organization and Operating Model Impact
-
-{{ORGANIZATION_AND_OPERATING_MODEL_IMPACT}}
-
-### Business Gaps, Risks, and Dependencies
-
-{{BUSINESS_GAPS_RISKS_AND_DEPENDENCIES}}
+[Read the detailed Phase B - Business Architecture](04-phase-b-business-architecture.md)
 
 ## 6. Phase C - Data Architecture
 
-### Application Landscape
+Summarize the application landscape, data domains, ownership model, linked data architecture designs, integration landscape, and modernization opportunities.
 
-{{APPLICATION_LANDSCAPE}}
-
-### Data Domains and Ownership
-
-{{DATA_DOMAINS_AND_OWNERSHIP}}
-
-### Data Architecture Designs
-
-| Data Architecture Design                   | Data Object | Source of Truth | Description |
-| ------------------------------------------ | ----------- | --------------- | ----------- |
-| _No linked data architecture designs yet._ |             |                 |             |
-
-### Integration Landscape
-
-{{INTEGRATION_LANDSCAPE}}
-
-### Reuse, Rationalization, and Modernization Opportunities
-
-{{REUSE_RATIONALIZATION_AND_MODERNIZATION_OPPORTUNITIES}}
+[Read the detailed Phase C - Data Architecture](05-phase-c-data-architecture.md)
 
 ## 7. Phase D - Technology Architecture
 
-### Platform and Infrastructure Direction
+Summarize the platform direction, security and operations expectations, technology standards, constraints, and lifecycle concerns.
 
-{{PLATFORM_AND_INFRASTRUCTURE_DIRECTION}}
-
-### Security, Observability, and Operations
-
-{{SECURITY_OBSERVABILITY_AND_OPERATIONS}}
-
-### Technology Standards and Constraints
-
-{{TECHNOLOGY_STANDARDS_AND_CONSTRAINTS}}
-
-### Lifecycle and Technical Health Concerns
-
-{{LIFECYCLE_AND_TECHNICAL_HEALTH_CONCERNS}}
+[Read the detailed Phase D - Technology Architecture](06-phase-d-technology-architecture.md)
 
 ## 8. Phase E - Solution Building Blocks
 
-Translate the target architecture into user-confirmed epics to build.
+Summarize the confirmed solution building blocks, delivery dependencies, sequencing notes, and open delivery questions.
 
-### Epics To Build
-
-List only epics explicitly created or confirmed by the user through the `to-epics` skill.
-
-| Epic                   | Main Capability | Description | Phase |
-| ---------------------- | --------------- | ----------- | ----- |
-| _No linked epics yet._ |                 |             |       |
-
-### Sequencing Notes
-
-{{SEQUENCING_NOTES}}
-
-### Open Delivery Questions
-
-{{OPEN_DELIVERY_QUESTIONS}}
+[Read the detailed Phase E - Solution Building Blocks](07-phase-e-solution-building-blocks.md)
 
 ## 9. Gap Analysis
 
-Describe capability, process, application, data, integration, and technology gaps between the current and target state.
+Summarize the most important capability, process, application, data, integration, and technology gaps between the current and target state.
+
+[Read the detailed Gap Analysis](08-gap-analysis.md)
 
 ## 10. Roadmap Themes
 
-Group recommended work into pragmatic roadmap themes with sequencing logic and dependencies.
+Summarize the recommended roadmap themes, sequencing logic, dependencies, and near-term priorities.
+
+[Read the detailed Roadmap Themes](09-roadmap-themes.md)
 
 ## 11. Governance Actions
 
-List decisions, standards updates, review checkpoints, and ownership actions needed to move the domain toward the target architecture.
+Summarize the required decisions, standards updates, review checkpoints, and ownership actions needed to move toward the target architecture.
+
+[Read the detailed Governance Actions](10-governance-actions.md)
 
 ## 12. Risks and Open Questions
 
-Document unresolved assumptions, risks, dependencies, and questions that need stakeholder input.
+Summarize the unresolved assumptions, risks, dependencies, and open questions that need stakeholder input.
+
+[Read the detailed Risks and Open Questions](11-risks-and-open-questions.md)

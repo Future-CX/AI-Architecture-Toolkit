@@ -2,7 +2,7 @@
 
 Write target architecture documents that connect business capabilities to strategy, target architecture, applications, data, integration, technology direction, and epics to build.
 
-Generated documents belong under the private company lab root at `solution-architectures/<slug>/`, with numbered section files and an assembled `target-architecture-document.md`.
+Generated documents belong under the private company lab root at `solution-architectures/<slug>/`, with numbered detailed section files and a summary `00-target-architecture-document.md` that links to them.
 
 Before any files are created, the workflow must run a `grill-me` style clarification session and update the private lab root `GLOSSARY.md` with `ubiquitous-language` as terms are clarified. If `GLOSSARY.md` was not created or updated afterwards, stop and ask the user to run `grill-me` followed by `ubiquitous-language`.
 
@@ -21,7 +21,7 @@ solution-architectures/<slug>/
 ├── 09-roadmap-themes.md
 ├── 10-governance-actions.md
 ├── 11-risks-and-open-questions.md
-└── target-architecture-document.md
+└── 00-target-architecture-document.md
 ```
 
 - [SKILL.md](SKILL.md)

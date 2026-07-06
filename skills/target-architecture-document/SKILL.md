@@ -19,9 +19,9 @@ While creating or updating target architecture section files, also update `<priv
 
 After the clarification session, validate that `<private-lab-root>/GLOSSARY.md` was created or updated during the current run. If it was not created or updated, stop before generating target architecture files and ask the user to run the `grill-me` skill followed by the `ubiquitous-language` skill so the glossary is updated first.
 
-Use the matching template in `templates/` for each generated section file. Use `templates/00-target-architecture-document-template.md` only for the assembled final document.
+Use the matching template in `templates/` for each generated section file. Use `templates/00-target-architecture-document-template.md` only for the summary and navigation document.
 
-Every generated section file and the assembled document must keep the top metadata table from its template. Replace `{{CONFLUENCE_LINK}}`, `{{LAST_UPDATE}}`, and `{{OPEN_QUESTIONS_COUNT}}` with document-specific values. Leave `Readability Score` as `TBD` unless a readability check has actually been run.
+Every generated section file and the summary document must keep the top metadata table from its template. Replace `{{CONFLUENCE_LINK}}`, `{{LAST_UPDATE}}`, and `{{OPEN_QUESTIONS_COUNT}}` with document-specific values. Leave `Readability Score` as `TBD` unless a readability check has actually been run.
 
 Readability guideline: write for business stakeholders first. Aim for a readability score of `40+` for the Executive Summary and section-level summary or introduction text, and `30+` for the remaining body content. Prefer short sentences, concrete nouns, active voice, and plain-language trade-offs. Keep specialist terms only where they affect decisions, risk, cost, ownership, timeline, or support model, and explain them on first use.
 
@@ -29,7 +29,7 @@ Store generated target architecture documents under the private company lab root
 
 When this toolkit is used as a submodule, do not write generated target architecture documents under `toolkit/solution-architectures/` or inside this public toolkit repository. Run from the private company lab root, or otherwise target the private lab root explicitly, so output goes to `<private-lab-root>/solution-architectures/`.
 
-Use one file per major workflow section, plus one assembled final document:
+Use one file per major workflow section, plus one stakeholder-facing summary and navigation document:
 
 ```text
 solution-architectures/<slug>/
@@ -44,7 +44,7 @@ solution-architectures/<slug>/
 ├── 09-roadmap-themes.md
 ├── 10-governance-actions.md
 ├── 11-risks-and-open-questions.md
-└── target-architecture-document.md
+└── 00-target-architecture-document.md
 ```
 
 ## Required Inputs
@@ -71,7 +71,7 @@ solution-architectures/<slug>/
    - Applications and the capabilities or functions they deliver
    - General canonical data objects, ownership, source-of-truth, and lifecycle notes
    - Relationships between terms, applications, and data objects
-7. Do not overwrite an existing section file or assembled document unless the user explicitly asks.
+7. Do not overwrite an existing section file or summary document unless the user explicitly asks.
 8. Create `01-capability-overview.md` from `templates/01-capability-overview-template.md` with a high-level overview for each included capability:
    - Definition
    - Business outcome
@@ -125,11 +125,12 @@ solution-architectures/<slug>/
 - Epics to build, left as `_No linked epics yet._` until the user explicitly creates epics with `../to-epics/SKILL.md`
 
 15. Create `08-gap-analysis.md`, `09-roadmap-themes.md`, `10-governance-actions.md`, and `11-risks-and-open-questions.md` from their matching templates.
-16. Before assembling the final document, review the generated section files against `<private-lab-root>/GLOSSARY.md` and add any missing terms, applications, data objects, and relationships discovered during drafting.
-17. Assemble `target-architecture-document.md` from the section files using `templates/00-target-architecture-document-template.md` as the final document structure.
-18. Keep the section files as reviewable working artifacts. The assembled `target-architecture-document.md` is the final consolidated artifact.
-19. Leave the Phase E `Epics To Build` table empty until the user explicitly creates epics with `../to-epics/SKILL.md`. Generated epic files belong under `<private-lab-root>/requirements/<name-of-target-architecture>/`, not under the target architecture folder. Do not infer or create epics during target architecture drafting. Every epic requires a user-provided main capability.
-20. Leave the Phase C `Data Architecture Designs` table empty until the user explicitly creates data architecture designs with `../data-architecture-design/SKILL.md`. Generated data architecture design files belong under `<private-lab-root>/data-architectures/<data-object-slug>/`, not under the target architecture folder.
+16. Before creating the summary document, review the generated section files against `<private-lab-root>/GLOSSARY.md` and add any missing terms, applications, data objects, and relationships discovered during drafting.
+17. Create `00-target-architecture-document.md` from `templates/00-target-architecture-document-template.md` as the summary and navigation document.
+18. Summarize each numbered section in `00-target-architecture-document.md` and link to the matching detailed section file. Keep detailed analysis, tables, and implementation detail in the numbered section files.
+19. Keep the section files as the detailed reviewable artifacts. The `00-target-architecture-document.md` file is the stakeholder-facing overview with links to those detailed sections.
+20. Leave the Phase E `Epics To Build` table empty until the user explicitly creates epics with `../to-epics/SKILL.md`. Generated epic files belong under `<private-lab-root>/requirements/<name-of-target-architecture>/`, not under the target architecture folder. Do not infer or create epics during target architecture drafting. Every epic requires a user-provided main capability.
+21. Leave the Phase C `Data Architecture Designs` table empty until the user explicitly creates data architecture designs with `../data-architecture-design/SKILL.md`. Generated data architecture design files belong under `<private-lab-root>/data-architectures/<data-object-slug>/`, not under the target architecture folder.
 
 ## Guardrails
 
