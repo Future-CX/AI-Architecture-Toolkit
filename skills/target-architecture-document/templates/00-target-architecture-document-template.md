@@ -1,24 +1,48 @@
 # {{DOMAIN_NAME}} Target Architecture Document
 
-| Field | Value |
-| --- | --- |
-| Domain | {{DOMAIN_NAME}} |
-| Scope | {{SCOPE}} |
+| Field             | Value                    |
+| ----------------- | ------------------------ |
+| Confluence Link   | {{CONFLUENCE_LINK}}      |
+| Last Update       | {{LAST_UPDATE}}          |
+| Open questions    | {{OPEN_QUESTIONS_COUNT}} |
+| Readability Score | TBD                      |
+
+## Introduction
+
+| Field                 | Value                     |
+| --------------------- | ------------------------- |
+| Domain                | {{DOMAIN_NAME}}           |
+| Scope                 | {{SCOPE}}                 |
 | Included Capabilities | {{INCLUDED_CAPABILITIES}} |
-| Primary Stakeholders | {{STAKEHOLDERS}} |
-| Confluence Link | {{CONFLUENCE_LINK}} |
-| Last Update | {{LAST_UPDATE}} |
+| Primary Stakeholders  | {{STAKEHOLDERS}}          |
+| Confluence Link       | {{CONFLUENCE_LINK}}       |
+| Last Update           | {{LAST_UPDATE}}           |
 
 ## 1. Executive Summary
 
 Summarize the domain purpose, strategic importance, target direction, and most important architecture recommendations.
 
+## Section Index
+
+- [01 Capability Overview](01-capability-overview.md)
+- [02 Preliminary Phase](02-preliminary-phase.md)
+- [03 Phase A - Architecture Vision](03-phase-a-architecture-vision.md)
+- [04 Phase B - Business Architecture](04-phase-b-business-architecture.md)
+- [05 Phase C - Data Architecture](05-phase-c-data-architecture.md)
+- [06 Phase D - Technology Architecture](06-phase-d-technology-architecture.md)
+- [07 Phase E - Solution Building Blocks](07-phase-e-solution-building-blocks.md) (Epics)
+- [08 Gap Analysis](08-gap-analysis.md)
+- [09 Roadmap Themes](09-roadmap-themes.md)
+- [10 Governance Actions](10-governance-actions.md)
+- [11 Risks and Open Questions](11-risks-and-open-questions.md)
+- [Assembled Target Architecture Document](target-architecture-document.md)
+
 ## 2. Capability Overview
 
 Create a high-level overview for each included capability.
 
-| Capability | Definition | Business Outcome | Scope Boundary | Target-State Direction |
-| --- | --- | --- | --- | --- |
+| Capability          | Definition                | Business Outcome     | Scope Boundary     | Target-State Direction     |
+| ------------------- | ------------------------- | -------------------- | ------------------ | -------------------------- |
 | {{CAPABILITY_NAME}} | {{CAPABILITY_DEFINITION}} | {{BUSINESS_OUTCOME}} | {{SCOPE_BOUNDARY}} | {{TARGET_STATE_DIRECTION}} |
 
 ## 3. Preliminary Phase Input
@@ -97,9 +121,9 @@ Describe the enterprise architecture context that frames the target architecture
 
 ### Data Architecture Designs
 
-| Data Architecture Design | Data Object | Source of Truth | Description |
-| --- | --- | --- | --- |
-| _No linked data architecture designs yet._ |  |  |  |
+| Data Architecture Design                   | Data Object | Source of Truth | Description |
+| ------------------------------------------ | ----------- | --------------- | ----------- |
+| _No linked data architecture designs yet._ |             |                 |             |
 
 ### Integration Landscape
 
@@ -135,9 +159,9 @@ Translate the target architecture into user-confirmed epics to build.
 
 List only epics explicitly created or confirmed by the user through the `to-epics` skill.
 
-| Epic | Main Capability | Description | Phase |
-| --- | --- | --- | --- |
-| _No linked epics yet._ |  |  |  |
+| Epic                   | Main Capability | Description | Phase |
+| ---------------------- | --------------- | ----------- | ----- |
+| _No linked epics yet._ |                 |             |       |
 
 ### Sequencing Notes
 

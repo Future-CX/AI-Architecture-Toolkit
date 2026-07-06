@@ -1,9 +1,18 @@
 # Gap Analysis
 
+| Field             | Value                    |
+| ----------------- | ------------------------ |
+| Confluence Link   | {{CONFLUENCE_LINK}}      |
+| Last Update       | {{LAST_UPDATE}}          |
+| Open questions    | {{OPEN_QUESTIONS_COUNT}} |
+| Readability Score | TBD                      |
+
+## Introduction
+
 Describe gaps between the current and target state.
 
-| Area | Current State | Target State | Gap | Impact | Recommended Response |
-| --- | --- | --- | --- | --- | --- |
+| Area       | Current State     | Target State     | Gap     | Impact     | Recommended Response     |
+| ---------- | ----------------- | ---------------- | ------- | ---------- | ------------------------ |
 | Capability | {{CURRENT_STATE}} | {{TARGET_STATE}} | {{GAP}} | {{IMPACT}} | {{RECOMMENDED_RESPONSE}} |
 
 ## Capability Gaps

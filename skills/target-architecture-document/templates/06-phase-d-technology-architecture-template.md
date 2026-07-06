@@ -1,5 +1,14 @@
 # Phase D - Technology Architecture
 
+| Field             | Value                    |
+| ----------------- | ------------------------ |
+| Confluence Link   | {{CONFLUENCE_LINK}}      |
+| Last Update       | {{LAST_UPDATE}}          |
+| Open questions    | {{OPEN_QUESTIONS_COUNT}} |
+| Readability Score | TBD                      |
+
+## Introduction
+
 ## Platform and Infrastructure Direction
 
 {{PLATFORM_AND_INFRASTRUCTURE_DIRECTION}}

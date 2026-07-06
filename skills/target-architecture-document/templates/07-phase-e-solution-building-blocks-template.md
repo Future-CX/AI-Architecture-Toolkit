@@ -1,5 +1,14 @@
 # Phase E - Solution Building Blocks
 
+| Field             | Value                    |
+| ----------------- | ------------------------ |
+| Confluence Link   | {{CONFLUENCE_LINK}}      |
+| Last Update       | {{LAST_UPDATE}}          |
+| Open questions    | {{OPEN_QUESTIONS_COUNT}} |
+| Readability Score | TBD                      |
+
+## Introduction
+
 Translate the target architecture into user-confirmed epics to build.
 
 ## Solution Building Blocks (Epics) To Build

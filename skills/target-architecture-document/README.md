@@ -10,7 +10,6 @@ While target architecture section files are created or updated, the workflow mus
 
 ```text
 solution-architectures/<slug>/
-├── 00-index.md
 ├── 01-capability-overview.md
 ├── 02-preliminary-phase.md
 ├── 03-phase-a-architecture-vision.md
@@ -30,7 +29,6 @@ solution-architectures/<slug>/
 
 ### Templates
 
-- [Index template](templates/00-index-template.md)
 - [Capability overview template](templates/01-capability-overview-template.md)
 - [Preliminary phase template](templates/02-preliminary-phase-template.md)
 - [Phase A architecture vision template](templates/03-phase-a-architecture-vision-template.md)
@@ -42,4 +40,4 @@ solution-architectures/<slug>/
 - [Roadmap themes template](templates/09-roadmap-themes-template.md)
 - [Governance actions template](templates/10-governance-actions-template.md)
 - [Risks and open questions template](templates/11-risks-and-open-questions-template.md)
-- [Target architecture document template](templates/target-architecture-document-template.md)
+- [Target architecture document template](templates/00-target-architecture-document-template.md)

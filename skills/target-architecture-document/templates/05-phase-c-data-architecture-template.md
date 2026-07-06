@@ -1,5 +1,14 @@
 # Phase C - Data Architecture
 
+| Field             | Value                    |
+| ----------------- | ------------------------ |
+| Confluence Link   | {{CONFLUENCE_LINK}}      |
+| Last Update       | {{LAST_UPDATE}}          |
+| Open questions    | {{OPEN_QUESTIONS_COUNT}} |
+| Readability Score | TBD                      |
+
+## Introduction
+
 ## Application Landscape
 
 {{APPLICATION_LANDSCAPE}}
@@ -10,9 +19,9 @@
 
 ## Data Architecture Designs
 
-| Data Architecture Design | Data Object | Source of Truth | Description |
-| --- | --- | --- | --- |
-| _No linked data architecture designs yet._ |  |  |  |
+| Data Architecture Design                   | Data Object | Source of Truth | Description |
+| ------------------------------------------ | ----------- | --------------- | ----------- |
+| _No linked data architecture designs yet._ |             |                 |             |
 
 ## Integration Landscape
 

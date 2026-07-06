@@ -1,9 +1,18 @@
 # Governance Actions
 
+| Field             | Value                    |
+| ----------------- | ------------------------ |
+| Confluence Link   | {{CONFLUENCE_LINK}}      |
+| Last Update       | {{LAST_UPDATE}}          |
+| Open questions    | {{OPEN_QUESTIONS_COUNT}} |
+| Readability Score | TBD                      |
+
+## Introduction
+
 List decisions, standards updates, review checkpoints, and ownership actions needed to move toward the target architecture.
 
-| Action | Owner | Decision Forum | Due By | Status |
-| --- | --- | --- | --- | --- |
+| Action     | Owner     | Decision Forum     | Due By     | Status     |
+| ---------- | --------- | ------------------ | ---------- | ---------- |
 | {{ACTION}} | {{OWNER}} | {{DECISION_FORUM}} | {{DUE_BY}} | {{STATUS}} |
 
 ## Required Decisions

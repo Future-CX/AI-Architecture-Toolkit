@@ -1,9 +1,18 @@
 # Capability Overview
 
+| Field             | Value                    |
+| ----------------- | ------------------------ |
+| Confluence Link   | {{CONFLUENCE_LINK}}      |
+| Last Update       | {{LAST_UPDATE}}          |
+| Open questions    | {{OPEN_QUESTIONS_COUNT}} |
+| Readability Score | TBD                      |
+
+## Introduction
+
 Create a high-level overview for each included capability.
 
-| Capability | Definition | Business Outcome | Scope Boundary | Target-State Direction |
-| --- | --- | --- | --- | --- |
+| Capability          | Definition                | Business Outcome     | Scope Boundary     | Target-State Direction     |
+| ------------------- | ------------------------- | -------------------- | ------------------ | -------------------------- |
 | {{CAPABILITY_NAME}} | {{CAPABILITY_DEFINITION}} | {{BUSINESS_OUTCOME}} | {{SCOPE_BOUNDARY}} | {{TARGET_STATE_DIRECTION}} |
 
 ## Stakeholders

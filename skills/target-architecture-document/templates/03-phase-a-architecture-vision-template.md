@@ -1,5 +1,14 @@
 # Phase A - Architecture Vision
 
+| Field             | Value                    |
+| ----------------- | ------------------------ |
+| Confluence Link   | {{CONFLUENCE_LINK}}      |
+| Last Update       | {{LAST_UPDATE}}          |
+| Open questions    | {{OPEN_QUESTIONS_COUNT}} |
+| Readability Score | TBD                      |
+
+## Introduction
+
 ## Strategic Drivers
 
 {{STRATEGIC_DRIVERS}}
