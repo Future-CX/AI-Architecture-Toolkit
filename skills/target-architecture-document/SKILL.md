@@ -21,9 +21,9 @@ After the clarification session, validate that `<private-lab-root>/GLOSSARY.md` 
 
 Use the matching template in `templates/` for each generated section file. Use `templates/00-target-architecture-document-template.md` only for the summary and navigation document.
 
-Every generated section file and the summary document must keep the top metadata table from its template. Replace `{{CONFLUENCE_LINK}}`, `{{LAST_UPDATE}}`, and `{{OPEN_QUESTIONS_COUNT}}` with document-specific values. Leave `Readability Score` as `TBD` unless a readability check has actually been run.
+Every generated section file and the summary document must keep the top metadata table from its template. Replace every `{{PLACEHOLDER}}` and every drafting instruction with final, document-specific content; do not leave template guidance in generated artifacts. In particular, replace `{{CONFLUENCE_LINK}}`, `{{LAST_UPDATE}}`, and `{{OPEN_QUESTIONS_COUNT}}` with document-specific values. Leave `Readability Score` as `TBD` unless a readability check has actually been run.
 
-Readability guideline: write for business stakeholders first. Aim for a readability score of `40+` for the Executive Summary and section-level summary or introduction text, and `30+` for the remaining body content. Prefer short sentences, concrete nouns, active voice, and plain-language trade-offs. Keep specialist terms only where they affect decisions, risk, cost, ownership, timeline, or support model, and explain them on first use.
+Readability guideline: write for business stakeholders first. Aim for a readability score of `40+` for management summaries and section introductions, and `30+` for the remaining body content. Prefer short sentences, concrete nouns, active voice, and plain-language trade-offs. Keep specialist terms only where they affect decisions, risk, cost, ownership, timeline, or support model, and explain them on first use.
 
 Store generated target architecture documents under the private company lab root at `solution-architectures/L1-target-architecture-<slug>/`.
 
@@ -33,25 +33,30 @@ Use one file per major workflow section, plus one stakeholder-facing summary and
 
 ```text
 solution-architectures/<slug>/
-├── 01-capability-overview.md
-├── 02-preliminary-phase.md
+├── 01-preliminary-phase.md
+├── 02-capability-overview.md
+├── capability-map.drawio
+├── capability-map.svg
 ├── 03-phase-a-architecture-vision.md
 ├── 04-phase-b-business-architecture.md
-├── 05-phase-c-data-architecture.md
-├── 06-phase-d-technology-architecture.md
-├── 07-phase-e-solution-building-blocks.md
-├── 08-gap-analysis.md
-├── 09-roadmap-themes.md
-├── 10-governance-actions.md
-├── 11-risks-and-open-questions.md
+├── 05-phase-c-application-architecture.md
+├── 06-phase-c-data-architecture.md
+├── 07-phase-d-technology-architecture.md
+├── 08-phase-e-solution-building-blocks.md
+├── 09-gap-analysis.md
+├── 10-roadmap-themes.md
+├── 11-governance-actions.md
+├── 12-risks-and-open-questions.md
 └── 00-target-architecture-document.md
 ```
 
 ## Required Inputs
 
-- Domain or enterprise scope
+- Enterprise and organizational context
+- Architecture capability, maturity, framework, governance, standards, roles, and reusable assets
+- Rationale and scope for the target architecture initiative
 - Capabilities to include
-- Strategic drivers and business outcomes
+- Company mission and vision, strategic drivers, objectives, product vision, and business outcomes
 - Stakeholders and governance bodies
 - Current-state application, data, integration, and technology context
 - Target-state direction, constraints, standards, and roadmap expectations
@@ -72,7 +77,25 @@ solution-architectures/<slug>/
    - General canonical data objects, ownership, source-of-truth, and lifecycle notes
    - Relationships between terms, applications, and data objects
 7. Do not overwrite an existing section file or summary document unless the user explicitly asks.
-8. Create `01-capability-overview.md` from `templates/01-capability-overview-template.md` with a high-level overview for each included capability:
+8. Create `01-preliminary-phase.md` from `templates/01-preliminary-phase-template.md` using Preliminary Phase input to establish architecture context:
+
+- Introduction explaining how enterprise architecture is organized and governed
+- Enterprise and organizational context - Establishes where architecture operates organizationally
+- Architecture capability and maturity - Defines where and how enterprise architecture is practiced
+- Architecture framework and method - Describes the chosen framework and methodological approach
+- Architecture principles and standards - Establishes reusable rules and constraints
+- Governance model and decision rights - Defines architecture decision rights and governance mechanisms
+- Architecture roles and decision forums - Establishes the standing architecture organization
+- Integration with portfolio, delivery, risk, and other governance
+- Architecture repository, tools, and reusable assets - Establishes the shared architecture knowledge base
+
+9. Create `02-capability-overview.md` from `templates/02-capability-overview-template.md` with a high-level overview for each included capability:
+   - Before the capability table, create `capability-map.drawio` with `../create-drawio-diagram/SKILL.md` using `../create-drawio-diagram/templates/capability-map.drawio`
+   - Place every included capability exactly once in its confirmed layer: Channel, Engagement Services, Integration, or Enterprise Foundation
+   - Keep capability names identical across the diagram, capability table, glossary, and linked capability documents
+   - Export `capability-map.drawio` to a same-basename `capability-map.svg`, inspect the SVG using the `create-drawio-diagram` export rules, embed the SVG under `## Capability Map`, and link the editable Draw.io source beside it
+   - If a capability's layer is unknown or disputed, record it as an open question and resolve it instead of guessing
+   - Capability name linked to the matching capability overview document when one exists under `<private-lab-root>/capabilities/<capability-slug>/<capability-slug>.md`; otherwise use an explicit placeholder such as `TBD` or mark it as an open question instead of inventing a path
    - Definition
    - Business outcome
    - Scope boundary
@@ -81,20 +104,22 @@ solution-architectures/<slug>/
    - Target-state direction
    - Application, data, integration, and technology implications
    - Dependencies, risks, and roadmap considerations
-9. Create `02-preliminary-phase.md` from `templates/02-preliminary-phase-template.md` using Preliminary Phase input to establish architecture context:
-
-- Enterprise scope
-- Architecture principles and standards
-- Governance model
-- Stakeholders and decision forums
-- Architecture repository or reusable assets
-
 10. Create `03-phase-a-architecture-vision.md` from `templates/03-phase-a-architecture-vision-template.md` using Phase A input:
 
+- Introduction explaining why this target architecture is needed now - Explains the purpose and value of this architecture initiative
+- Company mission and vision - Provides strategic context for the proposed change
 - Strategic drivers
+- Objectives
+- Product vision - Describes the intended future product or service experience
 - Business outcomes
+- Stakeholders, concerns, and key requirements - Identifies who is affected by this architecture and what matters to them
+- Architecture initiative scope and exclusions - Defines what this specific ADM cycle includes and excludes
 - Value streams or major scenarios
-- Scope, assumptions, constraints, and success measures
+- High-level baseline and target vision - Communicates the proposed change at vision level
+- Assumptions, constraints, dependencies, and risks
+- Transformation readiness
+- Success measures - Supports approval of the architecture work
+- Approval and Statement of Architecture Work
 
 11. Create `04-phase-b-business-architecture.md` from `templates/04-phase-b-business-architecture-template.md` using Phase B input:
 
@@ -104,33 +129,59 @@ solution-architectures/<slug>/
 - Operating model changes
 - Business risks and dependencies
 
-12. Create `05-phase-c-data-architecture.md` from `templates/05-phase-c-data-architecture-template.md` using Phase C input:
+12. Create `05-phase-c-application-architecture.md` from `templates/05-phase-c-application-architecture-template.md` using Phase C input:
 
 - Application landscape
-- Data domains and ownership
-- Linked data architecture designs for specific canonical data objects, left as `_No linked data architecture designs yet._` until the user explicitly creates them with `../data-architecture-design/SKILL.md`
-- Integration patterns
-- Reuse and rationalization opportunities
+- Application responsibilities and boundaries
+- Channels and frontends
+- Engagement services
+- Commerce services
+- Enterprise applications
+- Application interactions
+- APIs and integration patterns
+- Reuse and application rationalization
+- Application gaps, dependencies, and risks
+- Detailed Ecommerce Solution Blueprint
 
-13. Create `06-phase-d-technology-architecture.md` from `templates/06-phase-d-technology-architecture-template.md` using Phase D input:
+13. Create `06-phase-c-data-architecture.md` from `templates/06-phase-c-data-architecture-template.md` using Phase C input:
+
+- Data domains
+- Data ownership
+- Systems of record
+- Master and reference data
+- Customer identity and 360-degree customer view
+- Product, customer, order, and interaction data
+- Data flows and synchronization
+- Data quality, privacy, and retention
+- Analytics and data activation
+- Data gaps, dependencies, and risks
+- Linked data architecture designs for specific canonical data objects, left as `_No linked data architecture designs yet._` until the user explicitly creates them with `../data-architecture-design/SKILL.md`
+
+14. Create `07-phase-d-technology-architecture.md` from `templates/07-phase-d-technology-architecture-template.md` using Phase D input:
 
 - Platforms, infrastructure, security, observability, and operations
 - Technology standards and constraints
 - Technology lifecycle concerns
 
-14. Create `07-phase-e-solution-building-blocks.md` from `templates/07-phase-e-solution-building-blocks-template.md` using Phase E input:
+15. Create `08-phase-e-solution-building-blocks.md` from `templates/08-phase-e-solution-building-blocks-template.md` using Phase E input:
 
 - Related capabilities and architecture trace references
 - Delivery dependencies and sequencing notes
 - Epics to build, left as `_No linked epics yet._` until the user explicitly creates epics with `../to-epics/SKILL.md`
 
-15. Create `08-gap-analysis.md`, `09-roadmap-themes.md`, `10-governance-actions.md`, and `11-risks-and-open-questions.md` from their matching templates.
-16. Before creating the summary document, review the generated section files against `<private-lab-root>/GLOSSARY.md` and add any missing terms, applications, data objects, and relationships discovered during drafting.
-17. Create `00-target-architecture-document.md` from `templates/00-target-architecture-document-template.md` as the summary and navigation document.
-18. Summarize each numbered section in `00-target-architecture-document.md` and link to the matching detailed section file. Keep detailed analysis, tables, and implementation detail in the numbered section files.
-19. Keep the section files as the detailed reviewable artifacts. The `00-target-architecture-document.md` file is the stakeholder-facing overview with links to those detailed sections.
-20. Leave the Phase E `Epics To Build` table empty until the user explicitly creates epics with `../to-epics/SKILL.md`. Generated epic files belong under `<private-lab-root>/requirements/<name-of-target-architecture>/`, not under the target architecture folder. Do not infer or create epics during target architecture drafting. Every epic requires a user-provided main capability.
-21. Leave the Phase C `Data Architecture Designs` table empty until the user explicitly creates data architecture designs with `../data-architecture-design/SKILL.md`. Generated data architecture design files belong under `<private-lab-root>/data-architectures/<data-object-slug>/`, not under the target architecture folder.
+16. Create `09-gap-analysis.md`, `10-roadmap-themes.md`, `11-governance-actions.md`, and `12-risks-and-open-questions.md` from their matching templates.
+17. Before creating the summary document, review the generated section files against `<private-lab-root>/GLOSSARY.md` and add any missing terms, applications, data objects, and relationships discovered during drafting.
+18. Create `00-target-architecture-document.md` from `templates/00-target-architecture-document-template.md` as the summary and navigation document.
+19. Begin `00-target-architecture-document.md` with its title and a one-sentence document purpose directly below it, without a purpose heading.
+20. For every numbered detailed page, add the following to `00-target-architecture-document.md` in this order:
+    - The detailed page title
+    - A one-sentence purpose directly below the title, with no purpose heading
+    - A `Management Summary` copied verbatim from that detailed page's `Introduction`; do not paraphrase, shorten, or otherwise rewrite it
+    - A link to the detailed page
+21. Keep every detailed page's `Introduction` concise and suitable for management readers because it is also the source text for the summary document. Keep detailed analysis, tables, and implementation detail in the numbered section files.
+22. Keep the section files as the detailed reviewable artifacts. The `00-target-architecture-document.md` file is the stakeholder-facing overview with links to those detailed sections.
+23. Leave the Phase E `Epics To Build` table empty until the user explicitly creates epics with `../to-epics/SKILL.md`. Generated epic files belong under `<private-lab-root>/requirements/<name-of-target-architecture>/`, not under the target architecture folder. Do not infer or create epics during target architecture drafting. Every epic requires a user-provided main capability.
+24. Leave the Phase C `Data Architecture Designs` table empty until the user explicitly creates data architecture designs with `../data-architecture-design/SKILL.md`. Generated data architecture design files belong under `<private-lab-root>/data-architectures/<data-object-slug>/`, not under the target architecture folder.
 
 ## Guardrails
 

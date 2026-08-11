@@ -11,9 +11,17 @@
 
 Create a high-level overview for each included capability.
 
-| Capability          | Definition                | Business Outcome     | Scope Boundary     | Target-State Direction     |
-| ------------------- | ------------------------- | -------------------- | ------------------ | -------------------------- |
-| {{CAPABILITY_NAME}} | {{CAPABILITY_DEFINITION}} | {{BUSINESS_OUTCOME}} | {{SCOPE_BOUNDARY}} | {{TARGET_STATE_DIRECTION}} |
+## Capability Map
+
+![Capability Map](capability-map.svg)
+
+[Edit the Capability Map in Draw.io](capability-map.drawio)
+
+## Included Capabilities
+
+| Capability                                | Definition                | Business Outcome     | Scope Boundary     | Target-State Direction     |
+| ----------------------------------------- | ------------------------- | -------------------- | ------------------ | -------------------------- |
+| [{{CAPABILITY_NAME}}]({{CAPABILITY_LINK}}) | {{CAPABILITY_DEFINITION}} | {{BUSINESS_OUTCOME}} | {{SCOPE_BOUNDARY}} | {{TARGET_STATE_DIRECTION}} |
 
 ## Stakeholders
 
