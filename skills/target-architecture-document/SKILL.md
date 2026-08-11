@@ -35,8 +35,9 @@ Use one file per major workflow section, plus one stakeholder-facing summary and
 solution-architectures/<slug>/
 ├── 01-preliminary-phase.md
 ├── 02-capability-overview.md
-├── capability-map.drawio
-├── capability-map.svg
+├── diagrams/
+│   ├── capability-map.drawio
+│   └── capability-map.svg
 ├── 03-phase-a-architecture-vision.md
 ├── 04-phase-b-business-architecture.md
 ├── 05-phase-c-application-architecture.md
@@ -49,6 +50,8 @@ solution-architectures/<slug>/
 ├── 12-risks-and-open-questions.md
 └── 00-target-architecture-document.md
 ```
+
+Store every Draw.io source and same-basename export created for a target architecture document under `solution-architectures/<slug>/diagrams/`. Do not place target architecture diagram files beside the numbered Markdown documents.
 
 ## Required Inputs
 
@@ -69,7 +72,7 @@ solution-architectures/<slug>/
 2. Validate that `<private-lab-root>/GLOSSARY.md` was created or updated. If not, stop and ask the user to run `grill-me` and then `ubiquitous-language` before continuing.
 3. Gather and confirm the capability list from the user.
 4. Determine the output folder as `<private-lab-root>/solution-architectures/<slug>/`, where `<slug>` is derived from the target architecture document name.
-5. Create the `solution-architectures/<slug>/` folder if needed.
+5. Create the `solution-architectures/<slug>/` folder if needed. Create its `diagrams/` subfolder before generating any target architecture diagram.
 6. For every section below, update `<private-lab-root>/GLOSSARY.md` before or alongside the section when the section introduces or changes:
    - Domain terms and aliases
    - Jargon, deprecated terms, or words to avoid, captured in the glossary `## Jargon` section
@@ -90,10 +93,11 @@ solution-architectures/<slug>/
 - Architecture repository, tools, and reusable assets - Establishes the shared architecture knowledge base
 
 9. Create `02-capability-overview.md` from `templates/02-capability-overview-template.md` with a high-level overview for each included capability:
-   - Before the capability table, create `capability-map.drawio` with `../create-drawio-diagram/SKILL.md` using `../create-drawio-diagram/templates/capability-map.drawio`
+   - Before the capability table, create `diagrams/capability-map.drawio` with `../create-drawio-diagram/SKILL.md` using `../create-drawio-diagram/templates/capability-map.drawio`
    - Place every included capability exactly once in its confirmed layer: Channel, Engagement Services, Integration, or Enterprise Foundation
+   - Use at most eight capabilities per row in each layer; when a layer needs multiple rows, use the minimum number of rows and distribute its capabilities evenly according to the Capability Map layout rules in `../create-drawio-diagram/SKILL.md`
    - Keep capability names identical across the diagram, capability table, glossary, and linked capability documents
-   - Export `capability-map.drawio` to a same-basename `capability-map.svg`, inspect the SVG using the `create-drawio-diagram` export rules, embed the SVG under `## Capability Map`, and link the editable Draw.io source beside it
+   - Export `diagrams/capability-map.drawio` to `diagrams/capability-map.svg`, inspect the SVG using the `create-drawio-diagram` export rules, embed the SVG under `## Capability Map`, and link the editable Draw.io source from the same `diagrams/` subfolder
    - If a capability's layer is unknown or disputed, record it as an open question and resolve it instead of guessing
    - Capability name linked to the matching capability overview document when one exists under `<private-lab-root>/capabilities/<capability-slug>/<capability-slug>.md`; otherwise use an explicit placeholder such as `TBD` or mark it as an open question instead of inventing a path
    - Definition

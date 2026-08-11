@@ -12,8 +12,9 @@ While target architecture section files are created or updated, the workflow mus
 solution-architectures/<slug>/
 ├── 01-preliminary-phase.md
 ├── 02-capability-overview.md
-├── capability-map.drawio
-├── capability-map.svg
+├── diagrams/
+│   ├── capability-map.drawio
+│   └── capability-map.svg
 ├── 03-phase-a-architecture-vision.md
 ├── 04-phase-b-business-architecture.md
 ├── 05-phase-c-application-architecture.md
@@ -26,6 +27,8 @@ solution-architectures/<slug>/
 ├── 12-risks-and-open-questions.md
 └── 00-target-architecture-document.md
 ```
+
+All target architecture Draw.io sources and same-basename exports belong under `solution-architectures/<slug>/diagrams/`.
 
 - [SKILL.md](SKILL.md)
 - Epics are listed in Phase E and created under `requirements/<name-of-target-architecture>/` with [To Epics](../to-epics/SKILL.md) only after the user provides an epic name, description, and main capability.

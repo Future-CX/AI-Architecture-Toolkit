@@ -13,9 +13,9 @@ Create a high-level overview for each included capability.
 
 ## Capability Map
 
-![Capability Map](capability-map.svg)
+![Capability Map](diagrams/capability-map.svg)
 
-[Edit the Capability Map in Draw.io](capability-map.drawio)
+[Edit the Capability Map in Draw.io](diagrams/capability-map.drawio)
 
 ## Included Capabilities
 

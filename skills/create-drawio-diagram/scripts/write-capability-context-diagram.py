@@ -560,7 +560,12 @@ def write_capability_svg(
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("capability_name", help="Capability name shown as the central node.")
-    parser.add_argument("--output-dir", type=Path, required=True, help="Folder where diagram files should be written.")
+    parser.add_argument(
+        "--output-dir",
+        type=Path,
+        required=True,
+        help="Required diagrams/ subfolder where diagram files should be written.",
+    )
     parser.add_argument("--basename", default=DEFAULT_BASENAME, help="Diagram filename basename. Defaults to capability-overview.")
     parser.add_argument("--stakeholder", action="append", default=[], help="Stakeholder, user, team, or actor. Repeat for multiple actors.")
     parser.add_argument("--input-provider", action="append", default=[], help="Input provider or source system. Repeat for multiple providers.")
