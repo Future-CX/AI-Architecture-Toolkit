@@ -60,7 +60,7 @@ Do not write real-company data architecture details into this public toolkit rep
 9. Create every Draw.io diagram with `../create-drawio-diagram/SKILL.md` because it contains the required diagram instructions, style rules, and templates. Store each editable `.drawio` source in `diagrams/`.
 10. Export a same-basename `.svg` file for each Draw.io diagram that must be embedded, embed the SVG in the document, and link the `.drawio` source near the embedded SVG.
 11. Link the data architecture design from Phase C of the target architecture:
-   - Add it to the `## Data Architecture Designs` table in `05-phase-c-data-architecture.md` when section files exist.
+   - Add it to the `## Data Architecture Designs` table in `06-phase-c-data-architecture.md` when section files exist.
    - Also update the assembled `target-architecture-document.md` when it exists.
 12. Populate `## Relevant Links` with the target architecture, capability overview, solution architecture design, integration designs, ADRs, and glossary references that are explicitly related. Use linked document titles as Markdown link labels when available.
 13. Run the glossary and readability gate before final delivery:

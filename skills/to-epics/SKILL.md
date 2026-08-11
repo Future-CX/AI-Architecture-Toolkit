@@ -32,7 +32,7 @@ Use the target architecture folder name as `<name-of-target-architecture>` unles
 │       └── <epic-slug>.md
 └── solution-architectures/
     └── <target-architecture-slug>/
-        ├── 07-phase-e-solution-building-blocks.md
+        ├── 08-phase-e-solution-building-blocks.md
         └── target-architecture-document.md
 ```
 
@@ -44,7 +44,7 @@ Use `templates/epic-template.md` for the epic file. Preserve the two opening tab
    - If the user named a target architecture, confirm the exact folder or document path before continuing.
    - If the user did not name one, search for `solution-architectures/*/target-architecture-document.md`, present the candidates, and ask the user to choose.
    - Do not create an epic until the user has selected or confirmed the target architecture linkage.
-2. Read the target architecture document and relevant section files, especially `07-phase-e-solution-building-blocks.md`, roadmap themes, gap analysis, governance actions, risks, and open questions.
+2. Read the target architecture document and relevant section files, especially `08-phase-e-solution-building-blocks.md`, roadmap themes, gap analysis, governance actions, risks, and open questions.
 3. Ask the user for the epic name, phase, epic description, and main capability if not already provided.
 4. Ask for reference links:
    - Main capability link
@@ -81,7 +81,7 @@ Use `templates/epic-template.md` for the epic file. Preserve the two opening tab
    - Do not write real-company terminology into this public toolkit repository; update the private lab root glossary.
 8. Create `requirements/<name-of-target-architecture>/<epic-slug>.md` from the template. Preserve the document metadata table and the `Epic Overview` table. Do not overwrite an existing epic unless the user explicitly asks to update it.
 9. Update the target architecture linkage:
-   - Add or update the `## Epics To Build` table in `07-phase-e-solution-building-blocks.md` when that file exists.
+   - Add or update the `## Epics To Build` table in `08-phase-e-solution-building-blocks.md` when that file exists.
    - Add or update the `### Epics To Build` table in the Phase E section of `target-architecture-document.md`.
    - Link the epic file with a relative markdown link from the target architecture document folder to the requirements file.
 10. Summarize what was created, which grill-me questions materially shaped the epic, which glossary terms were confirmed or added, and which target architecture sections the epic traces to.
@@ -143,7 +143,7 @@ If terms are missing or unclear, pause epic creation and use `../ubiquitous-lang
 
 ## Phase E Epic List Format
 
-When adding the link to `07-phase-e-solution-building-blocks.md`, use this table:
+When adding the link to `08-phase-e-solution-building-blocks.md`, use this table:
 
 ```md
 ## Epics To Build
@@ -153,7 +153,7 @@ When adding the link to `07-phase-e-solution-building-blocks.md`, use this table
 | [{{EPIC_NAME}}](../../requirements/{{TARGET_ARCHITECTURE_NAME}}/{{EPIC_SLUG}}.md) | {{MAIN_CAPABILITY}} | {{EPIC_DESCRIPTION}} | {{PHASE}} |
 ```
 
-When adding the same link to the assembled `target-architecture-document.md`, use the matching `### Epics To Build` table inside `## 8. Phase E - Solution Building Blocks`.
+When adding the same link to the assembled `target-architecture-document.md`, use the matching `### Epics To Build` table inside `## 08 Phase E - Solution Building Blocks`.
 
 If the table still contains `_No linked epics yet._`, replace that placeholder row with the first real epic. If the table already has epics, append or update the matching epic row. Keep the table sorted by epic name unless the document already uses another ordering.
 
