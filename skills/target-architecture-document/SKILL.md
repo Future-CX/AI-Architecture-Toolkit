@@ -94,8 +94,10 @@ Store every Draw.io source and same-basename export created for a target archite
 
 9. Create `02-capability-overview.md` from `templates/02-capability-overview-template.md` with a high-level overview for each included capability:
    - Before the capability table, create `diagrams/capability-map.drawio` with `../create-drawio-diagram/SKILL.md` using `../create-drawio-diagram/templates/capability-map.drawio`
-   - Place every included capability exactly once in its confirmed layer: Channel, Engagement Services, Integration, or Enterprise Foundation
+   - Place every included layered capability exactly once in its confirmed horizontal layer: Channel, Engagement Services, Integration, or Enterprise Foundation
    - Use at most eight capabilities per row in each layer; when a layer needs multiple rows, use the minimum number of rows and distribute its capabilities evenly according to the Capability Map layout rules in `../create-drawio-diagram/SKILL.md`
+   - Preserve the three cross-cutting columns to the right of the horizontal layers: UI Design and Testing; Observability (Logging, Monitoring & Alerting); DevOps; do not duplicate these as nodes inside a horizontal layer
+   - Start with the typical cross-cutting capabilities defined by the Capability Map layout in `../create-drawio-diagram/SKILL.md`, then keep, replace, remove, or add nodes based on confirmed target architecture input; do not present unconfirmed starter capabilities as enterprise facts
    - Keep capability names identical across the diagram, capability table, glossary, and linked capability documents
    - Export `diagrams/capability-map.drawio` to `diagrams/capability-map.svg`, inspect the SVG using the `create-drawio-diagram` export rules, embed the SVG under `## Capability Map`, and link the editable Draw.io source from the same `diagrams/` subfolder
    - If a capability's layer is unknown or disputed, record it as an open question and resolve it instead of guessing

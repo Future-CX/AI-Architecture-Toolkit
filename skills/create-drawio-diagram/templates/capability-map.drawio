@@ -1,6 +1,6 @@
 <mxfile host="Electron">
   <diagram id="capability-map" name="Capability Map">
-    <mxGraphModel dx="1341" dy="997" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="900" background="#fbfcfa" math="0" shadow="0">
+    <mxGraphModel dx="1341" dy="997" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1460" pageHeight="900" background="#fbfcfa" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -8,16 +8,64 @@
           <mxGeometry height="40" width="420" x="60" y="40" as="geometry" />
         </mxCell>
         <mxCell id="channel-layer" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=1;fillColor=#fffbe2;strokeColor=none;fontColor=#17201d;strokeWidth=2;" value="Channel" vertex="1">
-          <mxGeometry height="160" width="1049" x="60" y="100" as="geometry" />
+          <mxGeometry height="160" width="820" x="60" y="100" as="geometry" />
         </mxCell>
         <mxCell id="engagement-layer" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=1;fillColor=#def9ea;strokeColor=none;fontColor=#17201d;strokeWidth=2;" value="Engagement Services" vertex="1">
-          <mxGeometry height="160" width="1049" x="60" y="270" as="geometry" />
+          <mxGeometry height="160" width="820" x="60" y="270" as="geometry" />
         </mxCell>
         <mxCell id="integration-layer" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=1;fillColor=#f5f5f5;strokeColor=none;fontColor=#17201d;strokeWidth=2;" value="Integration" vertex="1">
-          <mxGeometry height="160" width="1049" x="60" y="440" as="geometry" />
+          <mxGeometry height="160" width="820" x="60" y="440" as="geometry" />
         </mxCell>
         <mxCell id="foundation-layer" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=1;fillColor=#e8f1ff;strokeColor=none;fontColor=#17201d;strokeWidth=2;" value="Enterprise Foundation" vertex="1">
-          <mxGeometry height="160" width="1049" x="60" y="610" as="geometry" />
+          <mxGeometry height="160" width="820" x="60" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="ui-design-testing-column" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;spacingTop=14;align=center;verticalAlign=top;fillColor=#ffffff;strokeColor=#d8dfda;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="UI Design and Testing" vertex="1">
+          <mxGeometry height="670" width="160" x="900" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="observability-column" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;spacingTop=14;align=center;verticalAlign=top;fillColor=#ffffff;strokeColor=#d8dfda;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Observability&lt;br&gt;(Logging, Monitoring &amp;amp; Alerting)" vertex="1">
+          <mxGeometry height="670" width="160" x="1070" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="devops-column" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;spacingTop=14;align=center;verticalAlign=top;fillColor=#ffffff;strokeColor=#d8dfda;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="DevOps" vertex="1">
+          <mxGeometry height="670" width="160" x="1240" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ui-usability-testing" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;align=center;verticalAlign=middle;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;fontSize=10;strokeWidth=2;" value="Usability Testing" vertex="1">
+          <mxGeometry height="70" width="130" x="915" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="ui-browser-testing" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;align=center;verticalAlign=middle;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;fontSize=10;strokeWidth=2;" value="Browser Testing" vertex="1">
+          <mxGeometry height="70" width="130" x="915" y="275" as="geometry" />
+        </mxCell>
+        <mxCell id="ui-design-system" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;align=center;verticalAlign=middle;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;fontSize=10;strokeWidth=2;" value="Design System" vertex="1">
+          <mxGeometry height="70" width="130" x="915" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="observability-apm" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;align=center;verticalAlign=middle;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;fontSize=10;strokeWidth=2;" value="Application Performance Monitoring" vertex="1">
+          <mxGeometry height="70" width="130" x="1085" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="observability-api-monitoring" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;align=center;verticalAlign=middle;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;fontSize=10;strokeWidth=2;" value="API Monitoring" vertex="1">
+          <mxGeometry height="70" width="130" x="1085" y="275" as="geometry" />
+        </mxCell>
+        <mxCell id="observability-logfile-monitoring" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;align=center;verticalAlign=middle;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;fontSize=10;strokeWidth=2;" value="Logfile Monitoring" vertex="1">
+          <mxGeometry height="70" width="130" x="1085" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="observability-alerting" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;align=center;verticalAlign=middle;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;fontSize=10;strokeWidth=2;" value="Alerting" vertex="1">
+          <mxGeometry height="70" width="130" x="1085" y="445" as="geometry" />
+        </mxCell>
+        <mxCell id="devops-code-management" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;align=center;verticalAlign=middle;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;fontSize=10;strokeWidth=2;" value="Code Management" vertex="1">
+          <mxGeometry height="70" width="130" x="1255" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="devops-cicd" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;align=center;verticalAlign=middle;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;fontSize=10;strokeWidth=2;" value="CI/CD" vertex="1">
+          <mxGeometry height="70" width="130" x="1255" y="275" as="geometry" />
+        </mxCell>
+        <mxCell id="devops-code-quality" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;align=center;verticalAlign=middle;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;fontSize=10;strokeWidth=2;" value="Code Quality Management" vertex="1">
+          <mxGeometry height="70" width="130" x="1255" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="devops-code-vulnerability" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;align=center;verticalAlign=middle;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;fontSize=10;strokeWidth=2;" value="Code Vulnerability Management" vertex="1">
+          <mxGeometry height="70" width="130" x="1255" y="445" as="geometry" />
+        </mxCell>
+        <mxCell id="devops-agile-project-management" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;align=center;verticalAlign=middle;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;fontSize=10;strokeWidth=2;" value="(Agile) Project Management" vertex="1">
+          <mxGeometry height="70" width="130" x="1255" y="530" as="geometry" />
+        </mxCell>
+        <mxCell id="devops-project-documentation" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;align=center;verticalAlign=middle;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontStyle=1;fontSize=10;strokeWidth=2;" value="Project Documentation" vertex="1">
+          <mxGeometry height="70" width="130" x="1255" y="615" as="geometry" />
         </mxCell>
         <mxCell id="channel-capability-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#fff3c4;strokeColor=#b7791f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Channel capability" vertex="1">
           <mxGeometry height="70" width="240" x="240" y="165" as="geometry" />

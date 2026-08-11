@@ -1,6 +1,6 @@
 ---
 name: create-drawio-diagram
-description: Create Draw.io diagrams from reusable architecture diagram templates and store editable `.drawio` files beside architecture documents. Use when the user asks for Draw.io, diagrams.net, editable architecture diagrams, or when an architecture workflow needs Draw.io versions of target architecture, solution architecture, data architecture, capability context, application component, conceptual data model, integration design, or integration flow diagrams.
+description: Create Draw.io diagrams from reusable architecture diagram templates and always store editable `.drawio` files and exports in a `diagrams/` subfolder. Use when the user asks for Draw.io, diagrams.net, editable architecture diagrams, or when an architecture workflow needs Draw.io versions of target architecture, solution architecture, data architecture, capability context, application component, conceptual data model, integration design, or integration flow diagrams.
 ---
 
 # Create Draw.io Diagram
@@ -9,13 +9,13 @@ description: Create Draw.io diagrams from reusable architecture diagram template
 
 Create editable Draw.io diagrams for architecture deliverables using the templates in `templates/` and the visual rules in `STYLE.md`.
 
-Use this skill when a generated architecture document needs diagrams that stakeholders can edit in Draw.io or diagrams.net. Store generated `.drawio` files in the same folder as the architecture document they support.
+Use this skill when a generated architecture document needs diagrams that stakeholders can edit in Draw.io or diagrams.net. Always create a `diagrams/` subfolder next to the supporting document and store every generated `.drawio` source and same-basename export there. Never place diagram files beside the supporting document.
 
 ## Diagram Templates
 
 Use these templates as starting points:
 
-- `templates/capability-map.drawio` for a layered map of capabilities across Channel, Engagement Services, Integration, and Enterprise Foundation
+- `templates/capability-map.drawio` for a layered map of capabilities across Channel, Engagement Services, Integration, and Enterprise Foundation, with three cross-cutting columns
 - `templates/capability-overview.drawio` for actors, neighboring capabilities, and external dependencies
 - `templates/target-architecture-diagram.drawio` for a simple target architecture overview across capabilities, applications, data, integrations, and technology
 - `templates/solution-architecture-diagram.drawio` for a simple solution architecture overview across channels, components, integrations, data stores, and external systems
@@ -46,7 +46,7 @@ Create `.drawio` sources as light-theme diagrams from the start.
 ## Workflow
 
 1. Confirm the diagram purpose and choose the closest template.
-2. Copy the template into the target architecture folder using a descriptive same-purpose filename, such as `capability-overview.drawio`.
+2. Create a `diagrams/` subfolder next to the supporting document, then copy the template into it using a descriptive same-purpose filename, such as `diagrams/capability-overview.drawio`.
 3. Replace placeholder labels with concrete architecture content from the source document, glossary, capability overview, or clarification session.
 4. Apply the exact standard colors and connector styles from `STYLE.md`. Do not use dark theme variants, approximate colors, or inherited editor defaults.
 5. Keep labels business-readable and concise. Use notes in the surrounding architecture document for detail that would clutter the diagram.
@@ -56,16 +56,34 @@ Create `.drawio` sources as light-theme diagrams from the start.
 
 ## Capability Map Layout
 
-When using `templates/capability-map.drawio`, preserve the four horizontal layers and place every confirmed capability in exactly one corresponding layer.
+When using `templates/capability-map.drawio`, preserve the four horizontal layers and the three cross-cutting vertical columns to their right. Place every confirmed layered capability in exactly one corresponding horizontal layer.
 
 - Keep the layer order from top to bottom: Channel, Engagement Services, Integration, and Enterprise Foundation.
+- Keep these three equal-width vertical columns from left to right: UI Design and Testing; Observability (Logging, Monitoring & Alerting); DevOps.
+- Treat the vertical columns as cross-cutting capabilities that apply across all four horizontal layers. Do not duplicate them as nodes inside a horizontal layer.
+- Use these editable starter capabilities inside the cross-cutting columns:
+  - UI Design and Testing: Usability Testing; Browser Testing; Design System.
+  - Observability (Logging, Monitoring & Alerting): Application Performance Monitoring; API Monitoring; Logfile Monitoring; Alerting.
+  - DevOps: Code Management; CI/CD; Code Quality Management; Code Vulnerability Management; (Agile) Project Management; Project Documentation.
+- Treat the starter capabilities as typical examples, not confirmed enterprise facts. Keep only capabilities supported by the source material; replace, remove, or add capability nodes when the target architecture differs.
+- Align the top of every cross-cutting column with the top of the Channel layer and its bottom with the bottom of the Enterprise Foundation layer. Keep a consistent gap between the horizontal layers and the columns and between adjacent columns.
+- Place each column heading at the top and stack its capability nodes vertically from top to bottom beneath it, in the order documented above. Start every column's first capability at the same vertical position and use consistent node widths, heights, and compact vertical gaps. Do not spread a short list evenly across the full column height.
+- Use the neutral palette for cross-cutting columns: white fill, light grey stroke, and dark text. Use the light-grey Integration component palette for capability nodes inside the columns. Keep all labels horizontally centered and wrapped; do not rotate the text.
 - Use capability names only inside capability nodes. Put definitions, applications, responsibilities, and rationale in the supporting document.
 - Keep capability names identical to the names in the capability overview table and linked capability documents.
-- Arrange peer capabilities from left to right inside their layer. Increase the canvas width and all layer-band widths together before stacking peers or shrinking labels.
+- Arrange peer capabilities from left to right inside their layer, with no more than eight capability nodes in one row.
+- When a layer contains more than eight capabilities, use the minimum number of rows needed and distribute the capabilities as evenly as possible. Calculate `row_count = ceil(capability_count / 8)`; each row must differ from the others by no more than one capability. For example, use rows of `5 + 4` for 9 capabilities, `6 + 5` for 11, `8 + 8` for 16, and `6 + 6 + 5` for 17.
+- Center every row horizontally within its layer. Use consistent node widths and horizontal gaps within that layer, while allowing long capability names to wrap without reducing the font below the template size.
+- Increase the affected layer's height for additional rows, keep clear space below the layer label and between rows, then move every following layer down by the same added height. Increase `pageHeight` so the final layer and its nodes remain fully inside the page.
+- Whenever horizontal layers grow taller, extend all three cross-cutting columns by the same total added height so they still span the complete layered area.
+- Increase the canvas width and every layer-band width together only when eight readable nodes cannot fit in a row. Do not solve crowding by placing more than eight nodes in one row or by shrinking text until it is hard to read.
+- Whenever the horizontal layer bands grow wider, move the three-column group to the right while preserving its column widths and gaps, then increase `pageWidth` to keep the final column inside the page.
 - Duplicate or remove placeholder nodes as needed so every included capability appears exactly once and no unused placeholder remains.
 - Use the exact layer and component colors from `STYLE.md`: Channel yellow, Engagement Services green, Integration grey, and Enterprise Foundation blue.
 - Do not add connectors merely to decorate the map. Add a relationship only when the source architecture explicitly defines it and the relationship materially helps readers.
 - If a capability's layer is unknown or disputed, do not guess. Record it as an open question in the Capability Overview and resolve it before completing the map.
+- If a cross-cutting column needs more vertical space, increase the complete layered height, extend all three columns equally, and increase `pageHeight`; do not make capability labels unreadably small.
+- Before export, verify each capability appears exactly once, no row has more than eight nodes, rows within each layer are balanced, all three cross-cutting columns span the full layered height, and no layer label, column heading, capability node, or row overlaps or is clipped.
 
 ## Capability Context Layout
 
@@ -102,7 +120,7 @@ Use `scripts/write-capability-context-diagram.py` when a workflow needs to gener
 
 ```sh
 python3 skills/create-drawio-diagram/scripts/write-capability-context-diagram.py "Order Management" \
-  --output-dir capabilities/order-management \
+  --output-dir capabilities/order-management/diagrams \
   --stakeholder "Customer service" \
   --stakeholder "Operations" \
   --input-provider $'ERP\nCustomer order\nCustomer account' \
@@ -111,7 +129,7 @@ python3 skills/create-drawio-diagram/scripts/write-capability-context-diagram.py
   --constraint "Order status is fragmented across systems."
 ```
 
-By default, the helper creates `capability-overview.drawio` and `capability-overview.svg` in the output directory. Use `--basename <name>` when a different same-basename pair is needed.
+The `--output-dir` value must be the supporting document's `diagrams/` subfolder. The helper creates `capability-overview.drawio` and `capability-overview.svg` there by default. Use `--basename <name>` when a different same-basename pair is needed.
 
 For `--input-provider`, pass either a single application or source system name, an inline `Application: Data object` value, or a multiline block where the first line is the application/source system and each later line is a main data object or contributing capability. Multiline blocks generate one bottom node per later line.
 
@@ -248,7 +266,8 @@ Exported SVGs must preserve the exact colors from the `.drawio` source.
 
 ## Output Rules
 
-- Store `.drawio` files beside the document they support.
+- Always store `.drawio` files and same-basename exports under a `diagrams/` subfolder next to the supporting document.
+- Never place diagram sources or exports beside the supporting document.
 - Prefer one diagram per file.
 - Use stable filenames that match the architecture section, such as `application-component-view.drawio`.
 - Keep generated diagrams editable in Draw.io. Do not replace them with static-only SVGs unless the user explicitly asks for export-only output.
