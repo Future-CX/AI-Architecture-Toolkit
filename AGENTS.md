@@ -52,12 +52,12 @@ Solution architecture design outputs belong under `solution-architectures/<slug>
 
 When a solution architecture design creates diagrams:
 
-- Store each Draw.io source as a separate `.drawio` file beside the design document.
-- Export a same-basename `.svg` file for every `.drawio` file when the diagram must be embedded.
+- Store each Draw.io source as a separate `.drawio` file under the design document's `diagrams/` subfolder.
+- Export a same-basename `.svg` file into the same `diagrams/` subfolder for every `.drawio` file when the diagram must be embedded.
 - Embed the `.svg` file in the design document.
 - Link the `.drawio` source near the embedded SVG.
 
-When creating any Draw.io diagram, use the create-drawio-diagram skill because it contains the diagram instructions, style rules, and templates. Store generated `.drawio` files beside the document they support, and export same-basename `.svg` files when the diagram must be embedded.
+When creating any Draw.io diagram, use the create-drawio-diagram skill because it contains the diagram instructions, style rules, and templates. Always store generated `.drawio` files and same-basename `.svg` exports under a `diagrams/` subfolder next to the document they support. Do not place diagram files beside the document.
 
 When creating target architecture documents, use the target-architecture-document skill.
 

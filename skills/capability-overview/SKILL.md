@@ -72,8 +72,8 @@ Run from the private lab root, this creates `capabilities/order-management/order
 3. Convert the capability name to `<workspace-root>/capabilities/<slug>/<slug>.md`, removing a redundant leading or trailing word `Capability` from the slug.
 4. Derive the outputs from the inputs and any available repository context.
 5. Use `templates/capability-overview-template.md` as the output structure. Preserve the two opening tables: the document metadata table first, followed by the `Data Architecture Overview` table.
-6. Use `../create-drawio-diagram/SKILL.md` and its capability context helper to create `<capability-slug>-capability-overview.drawio` beside the generated overview. Keep diagram layout, styling, SVG generation, and application-header rules in the create-drawio-diagram skill.
-7. Export or create a same-basename `<capability-slug>-capability-overview.svg`, sanitize it according to the Draw.io SVG export rules, and embed it in the capability overview just above `Main Business Features` without a separate diagram heading.
+6. Create `capabilities/<slug>/diagrams/`, then use `../create-drawio-diagram/SKILL.md` and its capability context helper to create `diagrams/<capability-slug>-capability-overview.drawio`. Keep diagram layout, styling, SVG generation, and application-header rules in the create-drawio-diagram skill.
+7. Export or create `diagrams/<capability-slug>-capability-overview.svg`, sanitize it according to the Draw.io SVG export rules, and embed it in the capability overview just above `Main Business Features` without a separate diagram heading.
 8. Do not overwrite an existing capability file unless the user explicitly asks.
 9. Add or update the generated capability in `<workspace-root>/capabilities/_capability-list.md` with a relative link to `<slug>/<slug>.md`, description, and `last_updated` date.
 10. If the toolkit is mounted as `toolkit/` in a private lab repo, write the generated capability overview to the private lab root, not to `toolkit/capabilities/`.
@@ -97,7 +97,7 @@ Each capability overview must include:
 - Capability definition
 - Short Summary in italic text above Business Objective
 - Business outcome
-- Capability context diagram as editable `.drawio` and embedded `.svg`
+- Capability context diagram as editable `.drawio` and embedded `.svg`, both stored under `diagrams/`
 - Main Business Features
 - Scope
 - Inputs/outputs

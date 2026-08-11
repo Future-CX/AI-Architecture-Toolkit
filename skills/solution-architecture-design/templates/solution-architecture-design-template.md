@@ -18,7 +18,7 @@
 | Owner(s)            | {{OWNERS}}                                                    |
 
 {{SOLUTION_ARCHITECTURE_DIAGRAM_REFERENCE:
-Embed solution-architecture-diagram.svg when created with the create-drawio-diagram skill and its solution-architecture-diagram template. Show the main channels, application components, integration components, data stores, external systems, and ownership boundaries needed to understand the solution architecture.}}
+Embed diagrams/solution-architecture-diagram.svg when created with the create-drawio-diagram skill and its solution-architecture-diagram template. Show the main channels, application components, integration components, data stores, external systems, and ownership boundaries needed to understand the solution architecture.}}
 
 ## Short Summary
 
@@ -40,7 +40,7 @@ List unresolved decisions, missing facts, and review items that block or materia
 Link to the source capability overview. Briefly summarize only the capability context needed to understand why this application architecture exists: business purpose, boundary, upstream/downstream business dependencies, triggering business events, expected outcomes, and source assumptions used. Keep this section short and avoid repeating the capability name elsewhere in the document unless needed for clarity. Call out source gaps or contradictions. Do not link ADRs here; ADR links belong in Technical Design Choices.}}
 
 {{CAPABILITY_CONTEXT_DIAGRAM_REFERENCE:
-Embed capability-overview.svg when created with the create-drawio-diagram skill and its capability-overview template. Show actors, neighboring capabilities, and external dependencies while preserving the template's zone-based layout.}}
+Embed diagrams/capability-overview.svg when created with the create-drawio-diagram skill and its capability-overview template. Show actors, neighboring capabilities, and external dependencies while preserving the template's zone-based layout.}}
 
 ## Scope and Assumptions
 
@@ -84,7 +84,7 @@ Summarize the integrations needed by this solution architecture. Link detailed i
 | {{INTEGRATION_NAME}} | {{DIRECTION}} | {{PATTERN}} | {{PURPOSE}} | [{{INTEGRATION_DESIGN_TITLE}}]({{INTEGRATION_DESIGN_LINK}}) |
 
 {{INTEGRATION_FLOW_DIAGRAM_REFERENCE:
-Embed integration-flow.svg when created with the create-drawio-diagram skill and its integration-flow template. Show direction, trigger, protocol or pattern, and important sequencing.}}
+Embed diagrams/integration-flow.svg when created with the create-drawio-diagram skill and its integration-flow template. Show direction, trigger, protocol or pattern, and important sequencing.}}
 
 ## Security, Privacy, and Compliance
 

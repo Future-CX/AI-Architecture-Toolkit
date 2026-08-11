@@ -21,7 +21,7 @@ After the clarification session, validate that `<private-lab-root>/GLOSSARY.md` 
 
 When this toolkit is used as a submodule, do not write generated solution architecture design files under `toolkit/solution-architectures/`. Run from the private lab root, or otherwise target the private lab root explicitly, so output goes to `<private-lab-root>/solution-architectures/L2-solution-architecture-<slug>/`.
 
-Use `templates/solution-architecture-design-template.md` as the output structure and follow the chapter writing guidance below when replacing placeholders. Preserve the two opening tables: the document metadata table first, followed by the `Solution Architecture Overview` table. Do not add a table of contents. Replace each complete placeholder block with finished document content; do not leave placeholder names, placeholder guidance, or drafting instructions in the generated document. Create every Draw.io diagram with `../create-drawio-diagram/SKILL.md` because it contains the required diagram instructions, style rules, and templates. Store each diagram as an editable `.drawio` file in the same folder as the solution architecture design document. Export a same-basename `.svg` file for every `.drawio` file that must be embedded, and embed the SVG in the document.
+Use `templates/solution-architecture-design-template.md` as the output structure and follow the chapter writing guidance below when replacing placeholders. Preserve the two opening tables: the document metadata table first, followed by the `Solution Architecture Overview` table. Do not add a table of contents. Replace each complete placeholder block with finished document content; do not leave placeholder names, placeholder guidance, or drafting instructions in the generated document. Create every Draw.io diagram with `../create-drawio-diagram/SKILL.md` because it contains the required diagram instructions, style rules, and templates. Store each diagram as an editable `.drawio` file under a `diagrams/` subfolder next to the solution architecture design document. Export every same-basename `.svg` into that `diagrams/` subfolder and embed the SVG in the document.
 
 ## Required Inputs
 
@@ -51,15 +51,15 @@ Use `templates/solution-architecture-design-template.md` as the output structure
    - General canonical data objects, ownership, source-of-truth, and lifecycle notes
    - Relationships between terms, applications, and data objects
 10. Create the technical document from `templates/solution-architecture-design-template.md`. Preserve the document metadata table, the `Solution Architecture Overview` table, and the `Short Summary` section.
-11. Use `../create-drawio-diagram/SKILL.md` to create separate Draw.io source files in the same output folder when the required architecture relationships are known:
-    - `solution-architecture-diagram.drawio` from `../create-drawio-diagram/templates/solution-architecture-diagram.drawio` for the solution architecture diagram after `Solution Architecture Overview`
-    - `capability-overview.drawio` from `../create-drawio-diagram/templates/capability-overview.drawio` for the capability overview diagram after `Capability Overview`
-    - `integration-flow.drawio` from `../create-drawio-diagram/templates/integration-flow.drawio` for the integration flow diagram after `Data Integrations and Interface Contracts`
-12. Export a same-basename SVG for each created Draw.io file in the same output folder, using the SVG export rules in `../create-drawio-diagram/SKILL.md`:
-    - `solution-architecture-diagram.svg`
-    - `capability-overview.svg`
-    - `integration-flow.svg`
-13. Embed each created `.svg` file inline in the relevant section of `<slug>-architecture.md` using Markdown image syntax. Do not add a `Diagrams` section or links to the matching `.drawio` source files in the document.
+11. Create a `diagrams/` subfolder next to `<slug>-architecture.md`, then use `../create-drawio-diagram/SKILL.md` to create separate Draw.io source files there when the required architecture relationships are known:
+    - `diagrams/solution-architecture-diagram.drawio` from `../create-drawio-diagram/templates/solution-architecture-diagram.drawio` for the solution architecture diagram after `Solution Architecture Overview`
+    - `diagrams/capability-overview.drawio` from `../create-drawio-diagram/templates/capability-overview.drawio` for the capability overview diagram after `Capability Overview`
+    - `diagrams/integration-flow.drawio` from `../create-drawio-diagram/templates/integration-flow.drawio` for the integration flow diagram after `Data Integrations and Interface Contracts`
+12. Export a same-basename SVG for each created Draw.io file into the `diagrams/` subfolder, using the SVG export rules in `../create-drawio-diagram/SKILL.md`:
+    - `diagrams/solution-architecture-diagram.svg`
+    - `diagrams/capability-overview.svg`
+    - `diagrams/integration-flow.svg`
+13. Embed each created `.svg` file inline in the relevant section of `<slug>-architecture.md` using a `diagrams/<filename>.svg` Markdown image path. Do not add a separate `Diagrams` section or links to the matching `.drawio` source files in the document.
 14. Do not create placeholder `.drawio` or `.svg` files for unknown diagrams. Mark missing diagrams as assumptions or open questions in the design document.
 15. Record specific technical design choices in the document. If a choice is durable, hard to reverse, surprising without context, and based on a real trade-off, propose an ADR using `../architecture-decision-record/SKILL.md`.
 16. Mark unknowns as assumptions or open questions. Do not invent implementation facts.
@@ -226,7 +226,7 @@ Each solution architecture design document must include:
 - Application and component architecture
 - Data model and data ownership
 - Data integrations and interface contracts
-- Draw.io `.drawio` source files and exported `.svg` files in the same folder as the design document, with SVGs embedded inline where enough detail is known
+- Draw.io `.drawio` source files and exported `.svg` files under the design document's `diagrams/` subfolder, with SVGs embedded inline where enough detail is known
 - Security, privacy, and compliance design
 - NFR and operational design
 - Technical design choices and trade-offs

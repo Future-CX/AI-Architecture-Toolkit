@@ -185,7 +185,7 @@ def main() -> None:
 
     replacements = {
         "{{CAPABILITY_NAME}}": capability_name,
-        "{{CAPABILITY_DIAGRAM_SVG}}": f"{diagram_basename}.svg",
+        "{{CAPABILITY_DIAGRAM_SVG}}": f"diagrams/{diagram_basename}.svg",
         "{{CAPABILITY_DESCRIPTION}}": paragraph(args.business_objective),
         "{{CAPABILITY_DEFINITION}}": f"{capability_name} is the business capability responsible for achieving the stated objective within the {args.domain.strip()} domain.",
         "{{DOMAIN}}": paragraph(args.domain),
@@ -223,10 +223,11 @@ def main() -> None:
         rendered = rendered.replace(token, value)
 
     capability_dir.mkdir(parents=True, exist_ok=True)
-    drawio_target = capability_dir / f"{diagram_basename}.drawio"
-    svg_target = capability_dir / f"{diagram_basename}.svg"
+    diagram_dir = capability_dir / "diagrams"
+    drawio_target = diagram_dir / f"{diagram_basename}.drawio"
+    svg_target = diagram_dir / f"{diagram_basename}.svg"
     write_capability_diagram(
-        capability_dir,
+        diagram_dir,
         diagram_basename,
         capability_name,
         args.stakeholder,
