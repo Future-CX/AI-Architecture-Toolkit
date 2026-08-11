@@ -1,0 +1,49 @@
+<mxfile host="Electron">
+  <diagram id="capability-map" name="Capability Map">
+    <mxGraphModel dx="1341" dy="997" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="900" background="#fbfcfa" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontStyle=1;fontSize=24;fontColor=#17201d;" value="Capability Map" vertex="1">
+          <mxGeometry height="40" width="420" x="60" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="channel-layer" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=1;fillColor=#fffbe2;strokeColor=none;fontColor=#17201d;strokeWidth=2;" value="Channel" vertex="1">
+          <mxGeometry height="160" width="1049" x="60" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="engagement-layer" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=1;fillColor=#def9ea;strokeColor=none;fontColor=#17201d;strokeWidth=2;" value="Engagement Services" vertex="1">
+          <mxGeometry height="160" width="1049" x="60" y="270" as="geometry" />
+        </mxCell>
+        <mxCell id="integration-layer" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=1;fillColor=#f5f5f5;strokeColor=none;fontColor=#17201d;strokeWidth=2;" value="Integration" vertex="1">
+          <mxGeometry height="160" width="1049" x="60" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="foundation-layer" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=12;fontStyle=1;fillColor=#e8f1ff;strokeColor=none;fontColor=#17201d;strokeWidth=2;" value="Enterprise Foundation" vertex="1">
+          <mxGeometry height="160" width="1049" x="60" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="channel-capability-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#fff3c4;strokeColor=#b7791f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Channel capability" vertex="1">
+          <mxGeometry height="70" width="240" x="240" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="channel-capability-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#fff3c4;strokeColor=#b7791f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Channel capability" vertex="1">
+          <mxGeometry height="70" width="240" x="540" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="engagement-capability-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Engagement capability" vertex="1">
+          <mxGeometry height="70" width="240" x="240" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="engagement-capability-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Engagement capability" vertex="1">
+          <mxGeometry height="70" width="240" x="540" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="integration-capability-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontStyle=1;strokeWidth=2;" value="Integration capability" vertex="1">
+          <mxGeometry height="70" width="240" x="240" y="505" as="geometry" />
+        </mxCell>
+        <mxCell id="integration-capability-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontStyle=1;strokeWidth=2;" value="Integration capability" vertex="1">
+          <mxGeometry height="70" width="240" x="540" y="505" as="geometry" />
+        </mxCell>
+        <mxCell id="foundation-capability-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Enterprise Foundation capability" vertex="1">
+          <mxGeometry height="70" width="280" x="240" y="675" as="geometry" />
+        </mxCell>
+        <mxCell id="foundation-capability-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=12;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;fontStyle=1;strokeWidth=2;" value="Enterprise Foundation capability" vertex="1">
+          <mxGeometry height="70" width="280" x="580" y="675" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

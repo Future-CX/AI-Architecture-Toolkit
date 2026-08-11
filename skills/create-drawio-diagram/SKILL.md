@@ -15,6 +15,7 @@ Use this skill when a generated architecture document needs diagrams that stakeh
 
 Use these templates as starting points:
 
+- `templates/capability-map.drawio` for a layered map of capabilities across Channel, Engagement Services, Integration, and Enterprise Foundation
 - `templates/capability-overview.drawio` for actors, neighboring capabilities, and external dependencies
 - `templates/target-architecture-diagram.drawio` for a simple target architecture overview across capabilities, applications, data, integrations, and technology
 - `templates/solution-architecture-diagram.drawio` for a simple solution architecture overview across channels, components, integrations, data stores, and external systems
@@ -52,6 +53,19 @@ Create `.drawio` sources as light-theme diagrams from the start.
 6. Keep canonical data object names general. Do not use vendor object names, table names, endpoint resources, or internal system names in this public repository.
 7. Do not invent systems, relationships, protocols, owners, or data flows. Mark unknowns as assumptions or open questions in the architecture document.
 8. If an image export is needed, export the Draw.io diagram to a same-basename `.svg` using the SVG export rules below, then embed the SVG in the architecture document with a nearby link to the `.drawio` source.
+
+## Capability Map Layout
+
+When using `templates/capability-map.drawio`, preserve the four horizontal layers and place every confirmed capability in exactly one corresponding layer.
+
+- Keep the layer order from top to bottom: Channel, Engagement Services, Integration, and Enterprise Foundation.
+- Use capability names only inside capability nodes. Put definitions, applications, responsibilities, and rationale in the supporting document.
+- Keep capability names identical to the names in the capability overview table and linked capability documents.
+- Arrange peer capabilities from left to right inside their layer. Increase the canvas width and all layer-band widths together before stacking peers or shrinking labels.
+- Duplicate or remove placeholder nodes as needed so every included capability appears exactly once and no unused placeholder remains.
+- Use the exact layer and component colors from `STYLE.md`: Channel yellow, Engagement Services green, Integration grey, and Enterprise Foundation blue.
+- Do not add connectors merely to decorate the map. Add a relationship only when the source architecture explicitly defines it and the relationship materially helps readers.
+- If a capability's layer is unknown or disputed, do not guess. Record it as an open question in the Capability Overview and resolve it before completing the map.
 
 ## Capability Context Layout
 
