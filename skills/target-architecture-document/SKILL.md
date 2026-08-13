@@ -93,21 +93,22 @@ Store every Draw.io source and same-basename export created for a target archite
 - Architecture repository, tools, and reusable assets - Establishes the shared architecture knowledge base
 
 9. Create `02-capability-overview.md` from `templates/02-capability-overview-template.md` with a high-level overview for each included capability:
-   - Before the capability table, create `diagrams/capability-map.drawio` with `../create-drawio-diagram/SKILL.md` using `../create-drawio-diagram/templates/capability-map.drawio`
+   - Before the capability descriptions, create `diagrams/capability-map.drawio` with `../create-drawio-diagram/SKILL.md` using `../create-drawio-diagram/templates/capability-map.drawio`
    - Place every included layered capability exactly once in its confirmed horizontal layer: Channel, Engagement Services, Integration, or Enterprise Foundation
    - Use at most eight capabilities per row in each layer; when a layer needs multiple rows, use the minimum number of rows and distribute its capabilities evenly according to the Capability Map layout rules in `../create-drawio-diagram/SKILL.md`
    - Preserve the three cross-cutting columns to the right of the horizontal layers: UI Design and Testing; Observability (Logging, Monitoring & Alerting); DevOps; do not duplicate these as nodes inside a horizontal layer
    - Start with the typical cross-cutting capabilities defined by the Capability Map layout in `../create-drawio-diagram/SKILL.md`, then keep, replace, remove, or add nodes based on confirmed target architecture input; do not present unconfirmed starter capabilities as enterprise facts
-   - Keep capability names identical across the diagram, capability table, glossary, and linked capability documents
+   - Keep capability names identical across the diagram, capability descriptions, glossary, and linked capability documents
    - Export `diagrams/capability-map.drawio` to `diagrams/capability-map.svg`, inspect the SVG using the `create-drawio-diagram` export rules, embed the SVG under `## Capability Map`, and link the editable Draw.io source from the same `diagrams/` subfolder
    - If a capability's layer is unknown or disputed, record it as an open question and resolve it instead of guessing
-   - Capability name linked to the matching capability overview document when one exists under `<private-lab-root>/capabilities/<capability-slug>/<capability-slug>.md`; otherwise use an explicit placeholder such as `TBD` or mark it as an open question instead of inventing a path
-   - Definition
-   - Business outcome
-   - Scope boundary
-   - Key stakeholders
-   - Current-state pain points
-   - Target-state direction
+   - Present each capability as a short text block instead of a table row, using this order: capability name as a level-three heading, definition, Business outcome, Scope boundary, and Target-state direction
+   - Link the capability name in its level-three heading to the matching capability overview document when one exists under `<private-lab-root>/capabilities/<capability-slug>/<capability-slug>.md`; otherwise use an explicit placeholder such as `TBD` or mark it as an open question instead of inventing a path
+   - Write each capability definition in plain English for a non-technical reader. Explain what the organization must be able to do, avoid implementation language, and spell out unfamiliar abbreviations on first use
+   - Write Business outcome as the practical benefit or measurable change for customers, employees, partners, or the organization; do not describe a system feature or technical deliverable as the outcome
+   - Write Target-state direction as a concise description of how the capability should work in the future, focusing on the user or business experience before any necessary technical detail
+   - Write Scope boundary as a clearly labeled short paragraph that states what the capability includes and excludes
+   - Add one Markdown horizontal divider (`---`) between consecutive capability blocks. Do not place a divider before the first capability or after the final capability
+   - Put shared stakeholders and current-state pain points in their dedicated sections after the capability descriptions rather than repeating them inside every capability block
    - Application, data, integration, and technology implications
    - Dependencies, risks, and roadmap considerations
 10. Create `03-phase-a-architecture-vision.md` from `templates/03-phase-a-architecture-vision-template.md` using Phase A input:

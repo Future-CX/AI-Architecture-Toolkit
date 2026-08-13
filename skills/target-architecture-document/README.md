@@ -4,6 +4,8 @@ Write target architecture documents that connect business capabilities to strate
 
 Generated documents belong under the private company lab root at `solution-architectures/<slug>/`, with numbered detailed section files and a summary `00-target-architecture-document.md` that links to them. Each summary entry contains the detailed page title, a one-sentence purpose, a management summary copied verbatim from the detailed page's introduction, and the detailed page link.
 
+The Capability Overview presents each included capability under a level-three heading, followed by its definition, business outcome, scope boundary, and target-state direction. Definitions, outcomes, and target-state directions use plain English for non-technical readers rather than a wide table or implementation-heavy language. A horizontal divider separates consecutive capability blocks.
+
 Before any files are created, the workflow must run a `grill-me` style clarification session and update the private lab root `GLOSSARY.md` with `ubiquitous-language` as terms are clarified. If `GLOSSARY.md` was not created or updated afterwards, stop and ask the user to run `grill-me` followed by `ubiquitous-language`.
 
 While target architecture section files are created or updated, the workflow must keep `GLOSSARY.md` current with any newly introduced or changed domain terms, applications, data objects, and relationships.

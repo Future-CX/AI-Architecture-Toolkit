@@ -19,9 +19,19 @@ Create a high-level overview for each included capability.
 
 ## Included Capabilities
 
-| Capability                                | Definition                | Business Outcome     | Scope Boundary     | Target-State Direction     |
-| ----------------------------------------- | ------------------------- | -------------------- | ------------------ | -------------------------- |
-| [{{CAPABILITY_NAME}}]({{CAPABILITY_LINK}}) | {{CAPABILITY_DEFINITION}} | {{BUSINESS_OUTCOME}} | {{SCOPE_BOUNDARY}} | {{TARGET_STATE_DIRECTION}} |
+### [{{CAPABILITY_NAME}}]({{CAPABILITY_LINK}})
+
+{{CAPABILITY_DEFINITION}}
+
+**Business objectives:** {{BUSINESS_OUTCOME}}
+
+**Scope:** {{SCOPE_BOUNDARY}}
+
+{{TARGET_STATE_DIRECTION}}
+
+---
+
+<!-- Repeat the capability block above for every included capability. Keep one divider between consecutive capabilities, remove the divider after the final capability, then remove this instruction. -->
 
 ## Stakeholders
 
