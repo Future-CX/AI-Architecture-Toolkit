@@ -76,7 +76,7 @@ Run from the private lab root, this creates `capabilities/order-management/order
 7. Export or create `diagrams/<capability-slug>-capability-overview.svg`, sanitize it according to the Draw.io SVG export rules, and embed it in the capability overview just above `Main Business Features` without a separate diagram heading.
 8. Do not overwrite an existing capability file unless the user explicitly asks.
 9. Add or update the generated capability in `<workspace-root>/capabilities/_capability-list.md` with a relative link to `<slug>/<slug>.md`, description, and `last_updated` date.
-10. Populate the `Relevant ADRs` field in the capability's `Data Architecture Overview` table with links to confirmed ADRs that directly affect the capability. Use each ADR title as its Markdown link label and separate multiple links with `<br>`. If none are confirmed, write `_No related ADRs yet._`; do not invent ADR paths.
+10. Populate the `Relevant ADRs` field in the capability's `Data Architecture Overview` table with links to confirmed ADRs that directly affect the capability. Use each ADR title as its Markdown link label and separate multiple links with `<br>`. Leave the field empty when none are confirmed; do not add an empty-state message or invent ADR paths.
 11. If the toolkit is mounted as `toolkit/` in a private lab repo, write the generated capability overview to the private lab root, not to `toolkit/capabilities/`.
 12. Keep company-confidential details out of the public toolkit repository; use a private company lab repo for real company content.
 13. Run the readability and glossary compliance gate before finishing:

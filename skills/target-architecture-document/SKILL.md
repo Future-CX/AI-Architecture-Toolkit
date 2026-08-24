@@ -107,7 +107,7 @@ Store every Draw.io source and same-basename export created for a target archite
    - Write Business outcome as the practical benefit or measurable change for customers, employees, partners, or the organization; do not describe a system feature or technical deliverable as the outcome
    - Write Target-state direction as a concise description of how the capability should work in the future, focusing on the user or business experience before any necessary technical detail
    - Write Scope boundary as a clearly labeled short paragraph that states what the capability includes and excludes
-   - Within each capability block, populate `Relevant architecture decisions` with links to confirmed ADRs that directly affect that capability. Use each ADR title as its Markdown link label. If none are confirmed for that capability, write `_No related ADRs yet._`; do not invent ADR paths
+   - Within each capability block, populate `Relevant architecture decisions` with links to confirmed ADRs that directly affect that capability. Use each ADR title as its Markdown link label. Leave it empty when none are confirmed for that capability; do not add an empty-state message or invent ADR paths
    - Add one Markdown horizontal divider (`---`) between consecutive capability blocks. Do not place a divider before the first capability or after the final capability
    - Put shared stakeholders and current-state pain points in their dedicated sections after the capability descriptions rather than repeating them inside every capability block
    - Application, data, integration, and technology implications

@@ -215,7 +215,7 @@ def main() -> None:
         "{{RISKS}}": "TBD: Identify business, delivery, operational, integration, data, security, and compliance risks.",
         "{{MATURITY_ASSESSMENT}}": "TBD: Assess current maturity and target maturity using a clear scale.",
         "{{RELATED_CAPABILITIES}}": bullet_list(args.related_capability),
-        "{{RELEVANT_ARCHITECTURE_DECISIONS}}": "_No related ADRs yet._",
+        "{{RELEVANT_ARCHITECTURE_DECISIONS}}": "",
         "{{FUTURE_STATE_CONSIDERATIONS}}": "TBD: Describe target-state improvements, simplification opportunities, platform changes, and roadmap implications.",
     }
 
