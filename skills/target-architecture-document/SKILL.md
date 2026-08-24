@@ -110,6 +110,7 @@ Store every Draw.io source and same-basename export created for a target archite
    - Add one Markdown horizontal divider (`---`) between consecutive capability blocks. Do not place a divider before the first capability or after the final capability
    - Put shared stakeholders and current-state pain points in their dedicated sections after the capability descriptions rather than repeating them inside every capability block
    - Application, data, integration, and technology implications
+   - Populate `Relevant Architecture Decisions` with links to confirmed ADRs that directly affect the included capabilities; group them by capability when useful, use each ADR title as the link label, and write `_No related ADRs yet._` when none are confirmed rather than inventing paths
    - Dependencies, risks, and roadmap considerations
 10. Create `03-phase-a-architecture-vision.md` from `templates/03-phase-a-architecture-vision-template.md` using Phase A input:
 

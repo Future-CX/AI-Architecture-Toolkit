@@ -144,6 +144,12 @@ _Identify adjacent or dependent capabilities within the landscape._
 
 {{RELATED_CAPABILITIES}}
 
+## Relevant Architecture Decisions
+
+_Link only Architecture Decision Records (ADRs) that directly affect this capability. Use the ADR title as the link label._
+
+{{RELEVANT_ARCHITECTURE_DECISIONS}}
+
 ## Future-State Considerations
 
 _Describe modernization opportunities or future strategic direction._

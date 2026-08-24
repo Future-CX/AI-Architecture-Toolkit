@@ -59,6 +59,12 @@ Create a high-level overview for each included capability.
 
 {{TECHNOLOGY_IMPLICATIONS}}
 
+## Relevant Architecture Decisions
+
+Link only Architecture Decision Records (ADRs) that directly affect the included capabilities. Group links by capability when that makes the relationship clearer. Use each ADR title as the link label.
+
+{{RELEVANT_ARCHITECTURE_DECISIONS}}
+
 ## Dependencies, Risks, and Roadmap Considerations
 
 {{DEPENDENCIES_RISKS_AND_ROADMAP_CONSIDERATIONS}}

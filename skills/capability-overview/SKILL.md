@@ -76,9 +76,10 @@ Run from the private lab root, this creates `capabilities/order-management/order
 7. Export or create `diagrams/<capability-slug>-capability-overview.svg`, sanitize it according to the Draw.io SVG export rules, and embed it in the capability overview just above `Main Business Features` without a separate diagram heading.
 8. Do not overwrite an existing capability file unless the user explicitly asks.
 9. Add or update the generated capability in `<workspace-root>/capabilities/_capability-list.md` with a relative link to `<slug>/<slug>.md`, description, and `last_updated` date.
-10. If the toolkit is mounted as `toolkit/` in a private lab repo, write the generated capability overview to the private lab root, not to `toolkit/capabilities/`.
-11. Keep company-confidential details out of the public toolkit repository; use a private company lab repo for real company content.
-12. Run the readability and glossary compliance gate before finishing:
+10. Populate `Relevant Architecture Decisions` with links to confirmed ADRs that directly affect the capability. Use each ADR title as its Markdown link label. If none are confirmed, write `_No related ADRs yet._`; do not invent ADR paths.
+11. If the toolkit is mounted as `toolkit/` in a private lab repo, write the generated capability overview to the private lab root, not to `toolkit/capabilities/`.
+12. Keep company-confidential details out of the public toolkit repository; use a private company lab repo for real company content.
+13. Run the readability and glossary compliance gate before finishing:
 
 - Read `<private-lab-root>/GLOSSARY.md`.
 - In the Glossary, find the `Jargon` section and its Avoid list.
@@ -110,6 +111,7 @@ Each capability overview must include:
 - NFR considerations
 - Risks
 - Maturity assessment
+- Relevant architecture decisions, linked to their ADR documents when confirmed
 - Future-state considerations
 
 ## Readability Guidance
