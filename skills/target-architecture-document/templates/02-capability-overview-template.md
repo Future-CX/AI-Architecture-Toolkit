@@ -29,6 +29,10 @@ Create a high-level overview for each included capability.
 
 {{TARGET_STATE_DIRECTION}}
 
+**Relevant architecture decisions:**
+
+{{RELEVANT_ARCHITECTURE_DECISIONS}}
+
 ---
 
 <!-- Repeat the capability block above for every included capability. Keep one divider between consecutive capabilities, remove the divider after the final capability, then remove this instruction. -->
@@ -58,12 +62,6 @@ Create a high-level overview for each included capability.
 ### Technology
 
 {{TECHNOLOGY_IMPLICATIONS}}
-
-## Relevant Architecture Decisions
-
-Link only Architecture Decision Records (ADRs) that directly affect the included capabilities. Group links by capability when that makes the relationship clearer. Use each ADR title as the link label.
-
-{{RELEVANT_ARCHITECTURE_DECISIONS}}
 
 ## Dependencies, Risks, and Roadmap Considerations
 

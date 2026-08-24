@@ -71,12 +71,12 @@ Run from the private lab root, this creates `capabilities/order-management/order
 2. Validate that `<private-lab-root>/GLOSSARY.md` was created or updated. If not, stop and ask the user to run `grill-me` and then `ubiquitous-language` before continuing.
 3. Convert the capability name to `<workspace-root>/capabilities/<slug>/<slug>.md`, removing a redundant leading or trailing word `Capability` from the slug.
 4. Derive the outputs from the inputs and any available repository context.
-5. Use `templates/capability-overview-template.md` as the output structure. Preserve the two opening tables: the document metadata table first, followed by the `Data Architecture Overview` table.
+5. Use `templates/capability-overview-template.md` as the output structure. Preserve the two opening tables: the document metadata table first, followed by the `Data Architecture Overview` table, including its capability-specific `Relevant ADRs` field.
 6. Create `capabilities/<slug>/diagrams/`, then use `../create-drawio-diagram/SKILL.md` and its capability context helper to create `diagrams/<capability-slug>-capability-overview.drawio`. Keep diagram layout, styling, SVG generation, and application-header rules in the create-drawio-diagram skill.
 7. Export or create `diagrams/<capability-slug>-capability-overview.svg`, sanitize it according to the Draw.io SVG export rules, and embed it in the capability overview just above `Main Business Features` without a separate diagram heading.
 8. Do not overwrite an existing capability file unless the user explicitly asks.
 9. Add or update the generated capability in `<workspace-root>/capabilities/_capability-list.md` with a relative link to `<slug>/<slug>.md`, description, and `last_updated` date.
-10. Populate `Relevant Architecture Decisions` with links to confirmed ADRs that directly affect the capability. Use each ADR title as its Markdown link label. If none are confirmed, write `_No related ADRs yet._`; do not invent ADR paths.
+10. Populate the `Relevant ADRs` field in the capability's `Data Architecture Overview` table with links to confirmed ADRs that directly affect the capability. Use each ADR title as its Markdown link label and separate multiple links with `<br>`. If none are confirmed, write `_No related ADRs yet._`; do not invent ADR paths.
 11. If the toolkit is mounted as `toolkit/` in a private lab repo, write the generated capability overview to the private lab root, not to `toolkit/capabilities/`.
 12. Keep company-confidential details out of the public toolkit repository; use a private company lab repo for real company content.
 13. Run the readability and glossary compliance gate before finishing:
@@ -94,7 +94,7 @@ Run from the private lab root, this creates `capabilities/order-management/order
 Each capability overview must include:
 
 - Document metadata table
-- Data Architecture Overview table with the capability name, description, domain, application, application lifecycle status, and owners
+- Data Architecture Overview table with the capability name, description, domain, application, application lifecycle status, owners, and relevant ADR links
 - Capability definition
 - Short Summary in italic text above Business Objective
 - Business outcome
@@ -111,7 +111,6 @@ Each capability overview must include:
 - NFR considerations
 - Risks
 - Maturity assessment
-- Relevant architecture decisions, linked to their ADR documents when confirmed
 - Future-state considerations
 
 ## Readability Guidance

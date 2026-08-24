@@ -101,16 +101,16 @@ Store every Draw.io source and same-basename export created for a target archite
    - Keep capability names identical across the diagram, capability descriptions, glossary, and linked capability documents
    - Export `diagrams/capability-map.drawio` to `diagrams/capability-map.svg`, inspect the SVG using the `create-drawio-diagram` export rules, embed the SVG under `## Capability Map`, and link the editable Draw.io source from the same `diagrams/` subfolder
    - If a capability's layer is unknown or disputed, record it as an open question and resolve it instead of guessing
-   - Present each capability as a short text block instead of a table row, using this order: capability name as a level-three heading, definition, Business outcome, Scope boundary, and Target-state direction
+   - Present each capability as a short text block instead of a table row, using this order: capability name as a level-three heading, definition, Business outcome, Scope boundary, Target-state direction, and Relevant architecture decisions
    - Link the capability name in its level-three heading to the matching capability overview document when one exists under `<private-lab-root>/capabilities/<capability-slug>/<capability-slug>.md`; otherwise use an explicit placeholder such as `TBD` or mark it as an open question instead of inventing a path
    - Write each capability definition in plain English for a non-technical reader. Explain what the organization must be able to do, avoid implementation language, and spell out unfamiliar abbreviations on first use
    - Write Business outcome as the practical benefit or measurable change for customers, employees, partners, or the organization; do not describe a system feature or technical deliverable as the outcome
    - Write Target-state direction as a concise description of how the capability should work in the future, focusing on the user or business experience before any necessary technical detail
    - Write Scope boundary as a clearly labeled short paragraph that states what the capability includes and excludes
+   - Within each capability block, populate `Relevant architecture decisions` with links to confirmed ADRs that directly affect that capability. Use each ADR title as its Markdown link label. If none are confirmed for that capability, write `_No related ADRs yet._`; do not invent ADR paths
    - Add one Markdown horizontal divider (`---`) between consecutive capability blocks. Do not place a divider before the first capability or after the final capability
    - Put shared stakeholders and current-state pain points in their dedicated sections after the capability descriptions rather than repeating them inside every capability block
    - Application, data, integration, and technology implications
-   - Populate `Relevant Architecture Decisions` with links to confirmed ADRs that directly affect the included capabilities; group them by capability when useful, use each ADR title as the link label, and write `_No related ADRs yet._` when none are confirmed rather than inventing paths
    - Dependencies, risks, and roadmap considerations
 10. Create `03-phase-a-architecture-vision.md` from `templates/03-phase-a-architecture-vision-template.md` using Phase A input:
 
