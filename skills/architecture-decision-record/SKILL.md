@@ -22,7 +22,8 @@ Start at `adr-0001`. For new ADRs, inspect existing `adr/adr-*.md` files and any
 ```sh
 python3 skills/architecture-decision-record/scripts/write-adr.py "Use Domain Events Between Ordering And Billing" \
   --status accepted \
-  --summary "Ordering and Billing will communicate via domain events instead of synchronous HTTP. This reduces runtime coupling and supports independent deployment, accepting eventual consistency as a trade-off."
+  --summary "Billing outages must not stop customers from completing checkout." \
+  --decision "Ordering and Billing will communicate through domain events instead of synchronous HTTP."
 ```
 
 When running from a private lab repo that contains this toolkit as a submodule:
@@ -30,7 +31,8 @@ When running from a private lab repo that contains this toolkit as a submodule:
 ```sh
 python3 toolkit/skills/architecture-decision-record/scripts/write-adr.py "Use Domain Events Between Ordering And Billing" \
   --status accepted \
-  --summary "Ordering and Billing will communicate via domain events instead of synchronous HTTP. This reduces runtime coupling and supports independent deployment, accepting eventual consistency as a trade-off."
+  --summary "Billing outages must not stop customers from completing checkout." \
+  --decision "Ordering and Billing will communicate through domain events instead of synchronous HTTP."
 ```
 
 Each generated ADR is also added to `adr/_adr-overview.md` using a markdown table with `name`, `status`, `description`, and `last_updated` columns. Create `_adr-overview.md` when it does not exist. Keep rows sorted alphabetically by ADR title.
@@ -52,17 +54,19 @@ Create ADRs only when all three conditions are true:
 
 1. Confirm the decision, context, and selected option.
 2. Identify the meaningful alternatives that were rejected.
-3. Write the opening summary as no more than two short paragraphs. Start with the business outcome, the decision, and the operational impact.
-4. Target a Readability Score of 40 or higher. If the score is below 40, simplify before publishing.
-5. When rejected alternatives are worth remembering, include a `Considered Options` section with the options listed as bullets first, followed by a comparison table. Use options as columns and include rows for Architecture Fit, Company Fit, Effort, and Complexity. Keep each table cell to one sentence, no more than about 15 words, and avoid implementation detail unless it changes the decision.
-6. Add a `Recommendation` section after `Considered Options` that names the preferred option and explains why it is stronger than the alternatives.
-7. Keep `Consequences` to 3-6 bullets when the downstream effects are worth calling out.
-8. Avoid dense technical terms where a plain phrase works. If a technical term is necessary, use it consistently and explain it in the first paragraph or in a glossary.
-9. Run a final readability pass before publishing: shorten long sentences, split dense paragraphs, explain necessary terms, and remove implementation detail that does not affect the decision.
-10. Check whether the decision meets the ADR threshold.
-11. If it qualifies, write the ADR under the consuming repository's root `adr/` folder using `templates/adr-template.md` and the `adr-<4-digits>-<slug>.md` filename format.
-12. Add or update the ADR in `adr/_adr-overview.md` with a relative link, status with colored icon, summary, and `last_updated` date.
-13. If it does not qualify, summarize the decision inline without creating an ADR.
+3. Write the opening summary as no more than two short paragraphs. Start with the business outcome, context, and operational impact.
+4. Add a required `Decision` section immediately after the opening summary. State the selected option and its important boundaries in direct language.
+5. Target a Readability Score of 40 or higher. If the score is below 40, simplify before publishing.
+6. When rejected alternatives are worth remembering, include a `Considered Options` section with the options listed as bullets first, followed by a comparison table. Use options as columns and include rows for Architecture Fit, Company Fit, Effort, and Complexity. Keep each table cell to one sentence, no more than about 15 words, and avoid implementation detail unless it changes the decision.
+7. Add a `Recommendation` section after `Considered Options` that names the preferred option and explains why it is stronger than the alternatives.
+8. Keep `Consequences` to 3-6 bullets when the downstream effects are worth calling out.
+9. Avoid dense technical terms where a plain phrase works. If a technical term is necessary, use it consistently and explain it in the first paragraph or in a glossary.
+10. End the ADR with a `Reference Links` section. List the Confluence page for the ADR Overview first and the Confluence page for the current ADR second. Replace the template placeholders with the actual Confluence URLs before finalizing the ADR.
+11. Run a final readability pass before publishing: shorten long sentences, split dense paragraphs, explain necessary terms, and remove implementation detail that does not affect the decision.
+12. Check whether the decision meets the ADR threshold.
+13. If it qualifies, write the ADR under the consuming repository's root `adr/` folder using `templates/adr-template.md` and the `adr-<4-digits>-<slug>.md` filename format.
+14. Add or update the ADR in `adr/_adr-overview.md` with a relative link, status with colored icon, summary, and `last_updated` date.
+15. If it does not qualify, summarize the decision inline without creating an ADR.
 
 ## Format
 

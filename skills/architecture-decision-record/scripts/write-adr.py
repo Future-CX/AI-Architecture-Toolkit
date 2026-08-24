@@ -133,7 +133,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--summary",
         required=True,
-        help="One or two short paragraphs describing the context, decision, reason, and operational impact.",
+        help="One or two short paragraphs describing the business outcome, context, and operational impact.",
+    )
+    parser.add_argument(
+        "--decision",
+        required=True,
+        help="Direct statement of the selected option and its important boundaries.",
     )
     parser.add_argument(
         "--status",
@@ -172,6 +177,15 @@ def main() -> None:
             "| Readability Score | TBD, target 40+ |",
             "",
             args.summary.strip(),
+            "",
+            "## Decision",
+            "",
+            args.decision.strip(),
+            "",
+            "## Reference Links",
+            "",
+            "- [ADR Overview]({{ADR_OVERVIEW_CONFLUENCE_LINK}})",
+            "- [This ADR]({{CONFLUENCE_LINK}})",
             "",
         ]
     )

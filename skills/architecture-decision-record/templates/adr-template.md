@@ -15,9 +15,18 @@ Create the `adr/` directory lazily in the consuming repository root — only whe
 | Last Update | {{LAST_UPDATE}} |
 | Readability Score | TBD, target 40+ |
 
-{Opening summary, maximum two short paragraphs. State the business outcome, decision, reason, and operational impact. Explain any necessary technical term here or in a glossary.}
+{Opening summary, maximum two short paragraphs. State the business outcome, context, and operational impact. Explain any necessary technical term here or in a glossary.}
 
 {Optional second short paragraph. Keep implementation detail out unless it changes the decision.}
+
+## Decision
+
+{State the selected option and its important boundaries in direct language.}
+
+## Reference Links
+
+- [ADR Overview]({{ADR_OVERVIEW_CONFLUENCE_LINK}})
+- [This ADR]({{CONFLUENCE_LINK}})
 ```
 
 That's it. An ADR can be a short summary. The value is in recording _that_ a decision was made and _why_ — not in filling out sections.
@@ -37,6 +46,10 @@ Only include these when they add genuine value. Most ADRs won't need them.
 Use this structure when the ADR includes considered options:
 
 ```md
+## Decision
+
+{{STATE_THE_SELECTED_OPTION_AND_ITS_IMPORTANT_BOUNDARIES}}
+
 ## Considered Options
 
 - Option 1: {{OPTION_1_NAME}}
@@ -59,6 +72,11 @@ Recommend {{PREFERRED_OPTION}} because {{WHY_THIS_OPTION_IS_PREFERRED}}. Explain
 - {{CONSEQUENCE_1}}
 - {{CONSEQUENCE_2}}
 - {{CONSEQUENCE_3}}
+
+## Reference Links
+
+- [ADR Overview]({{ADR_OVERVIEW_CONFLUENCE_LINK}})
+- [This ADR]({{CONFLUENCE_LINK}})
 ```
 
 ### Compact Example
@@ -74,9 +92,13 @@ Use this shape as the model for future ADRs:
 | Last Update | 2026-06-25 |
 | Readability Score | 44 |
 
-Ordering and Billing will share order changes through events instead of direct calls. An event is a message that tells another system something important happened.
+Checkout currently depends on Billing responding immediately. A Billing outage can therefore stop customers from completing an order.
 
-This keeps checkout responsive when Billing is slow. It also means teams must monitor delayed messages.
+The integration must keep checkout responsive when Billing is slow while preserving clear ownership between the systems.
+
+## Decision
+
+Ordering and Billing will communicate through domain events instead of direct API calls or a shared database.
 
 ## Considered Options
 
@@ -100,6 +122,11 @@ Recommend events because they protect checkout and support independent team chan
 - Teams must monitor failed and delayed events.
 - Billing updates may appear after checkout completes.
 - Support teams need clear status messages for delayed billing.
+
+## Reference Links
+
+- [ADR Overview](https://example.atlassian.net/wiki/spaces/ARCH/pages/100/ADR+Overview)
+- [This ADR](https://example.atlassian.net/wiki/spaces/ARCH/pages/101/Use+Events+Between+Ordering+And+Billing)
 ```
 
 ## Numbering
