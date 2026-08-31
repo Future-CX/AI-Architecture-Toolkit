@@ -27,7 +27,9 @@ When creating stakeholder-facing documents:
 - Start with the business outcome, the decision or recommendation, and the operational impact.
 - Use plain language first. Add technical detail only when it changes a decision, risk, cost, ownership, timeline, or support model.
 - Prefer short sentences, short paragraphs, clear headings, and concrete trade-offs.
-- Keep dense implementation detail in later sections, tables, or appendices after the stakeholder summary.
+- Prefer short sections and bullet lists over tables. Tables are often harder for people to read, especially when cells contain full sentences or detailed explanations.
+- Use a table only when it makes a compact comparison, repeated field mapping, or index materially easier to scan. Move detailed explanation into prose, bullets, or an appendix.
+- Keep dense implementation detail in later sections or appendices after the stakeholder summary.
 - Avoid unnecessary technical jargon. Explain acronyms and domain-specific terms when first used.
 - Make recommendations, decisions, owners, risks, and open questions easy to find.
 - Before finishing, reread the opening sections and simplify any sentence that a business reader would need to parse twice.
