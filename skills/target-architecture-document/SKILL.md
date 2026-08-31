@@ -176,8 +176,14 @@ Store every Draw.io source and same-basename export created for a target archite
 - Related capabilities and architecture trace references
 - Delivery dependencies and sequencing notes
 - Epics to build, left as `_No linked epics yet._` until the user explicitly creates epics with `../to-epics/SKILL.md`
+- When epics exist, present each epic as a level-three linked heading followed by short labeled paragraphs for main capability, description, and phase. Do not use an epic list table.
 
 16. Create `09-gap-analysis.md`, `10-roadmap-themes.md`, `11-governance-actions.md`, and `12-risks-and-open-questions.md` from their matching templates.
+   - In `09-gap-analysis.md`, write the opening `Gap Analysis Summary` as five short labeled paragraphs: current situation, target outcome, most important gaps, operational impact, and recommended response.
+   - Under each gap category, present every distinct gap as a level-three heading followed by short labeled paragraphs or bullets for current state, target state, gap, impact, and recommended response.
+   - Do not use a gap-analysis comparison table. If a category has no confirmed gaps, state that briefly instead of adding an empty table or placeholder row.
+   - In `10-roadmap-themes.md`, write the opening `Roadmap Summary` as three short labeled paragraphs: business outcome, sequencing approach, and key dependencies.
+   - Under each time horizon, present every roadmap theme as a level-three heading followed by short labeled paragraphs or bullets for outcome, scope, dependencies, and suggested sequence. Do not use a roadmap-theme comparison table.
 17. Before creating the summary document, review the generated section files against `<private-lab-root>/GLOSSARY.md` and add any missing terms, applications, data objects, and relationships discovered during drafting.
 18. Create `00-target-architecture-document.md` from `templates/00-target-architecture-document-template.md` as the summary and navigation document.
 19. Begin `00-target-architecture-document.md` with its title and a one-sentence document purpose directly below it, without a purpose heading.
@@ -188,7 +194,7 @@ Store every Draw.io source and same-basename export created for a target archite
     - A link to the detailed page
 21. Keep every detailed page's `Introduction` concise and suitable for management readers because it is also the source text for the summary document. Keep detailed analysis, tables, and implementation detail in the numbered section files.
 22. Keep the section files as the detailed reviewable artifacts. The `00-target-architecture-document.md` file is the stakeholder-facing overview with links to those detailed sections.
-23. Leave the Phase E `Epics To Build` table empty until the user explicitly creates epics with `../to-epics/SKILL.md`. Generated epic files belong under `<private-lab-root>/requirements/<name-of-target-architecture>/`, not under the target architecture folder. Do not infer or create epics during target architecture drafting. Every epic requires a user-provided main capability.
+23. Leave the Phase E `Epics To Build` section as `_No linked epics yet._` until the user explicitly creates epics with `../to-epics/SKILL.md`. Generated epic files belong under `<private-lab-root>/requirements/<name-of-target-architecture>/`, not under the target architecture folder. Do not infer or create epics during target architecture drafting. Every epic requires a user-provided main capability.
 24. Leave the Phase C `Data Architecture Designs` table empty until the user explicitly creates data architecture designs with `../data-architecture-design/SKILL.md`. Generated data architecture design files belong under `<private-lab-root>/data-architectures/<data-object-slug>/`, not under the target architecture folder.
 
 ## Guardrails

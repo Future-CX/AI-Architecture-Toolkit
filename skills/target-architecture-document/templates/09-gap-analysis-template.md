@@ -11,9 +11,17 @@
 
 Describe gaps between the current and target state.
 
-| Area       | Current State     | Target State     | Gap     | Impact     | Recommended Response     |
-| ---------- | ----------------- | ---------------- | ------- | ---------- | ------------------------ |
-| Capability | {{CURRENT_STATE}} | {{TARGET_STATE}} | {{GAP}} | {{IMPACT}} | {{RECOMMENDED_RESPONSE}} |
+## Gap Analysis Summary
+
+**Current situation:** {{CURRENT_STATE_SUMMARY}}
+
+**Target outcome:** {{TARGET_STATE_SUMMARY}}
+
+**Most important gaps:** {{MOST_IMPORTANT_GAPS}}
+
+**Operational impact:** {{OVERALL_IMPACT}}
+
+**Recommended response:** {{OVERALL_RECOMMENDED_RESPONSE}}
 
 ## Capability Gaps
 

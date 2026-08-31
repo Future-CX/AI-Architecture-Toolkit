@@ -81,8 +81,8 @@ Use `templates/epic-template.md` for the epic file. Preserve the two opening tab
    - Do not write real-company terminology into this public toolkit repository; update the private lab root glossary.
 8. Create `requirements/<name-of-target-architecture>/<epic-slug>.md` from the template. Preserve the document metadata table and the `Epic Overview` table. Do not overwrite an existing epic unless the user explicitly asks to update it.
 9. Update the target architecture linkage:
-   - Add or update the `## Epics To Build` table in `08-phase-e-solution-building-blocks.md` when that file exists.
-   - Add or update the `### Epics To Build` table in the Phase E section of `target-architecture-document.md`.
+   - Add or update the epic's titled block in the `## Epics To Build` section of `08-phase-e-solution-building-blocks.md` when that file exists.
+   - Add or update the same titled block in a `### Epics To Build` subsection of the Phase E section in `target-architecture-document.md` when that subsection exists.
    - Link the epic file with a relative markdown link from the target architecture document folder to the requirements file.
 10. Summarize what was created, which grill-me questions materially shaped the epic, which glossary terms were confirmed or added, and which target architecture sections the epic traces to.
 
@@ -143,19 +143,23 @@ If terms are missing or unclear, pause epic creation and use `../ubiquitous-lang
 
 ## Phase E Epic List Format
 
-When adding the link to `08-phase-e-solution-building-blocks.md`, use this table:
+When adding the link to `08-phase-e-solution-building-blocks.md`, use this readable block:
 
 ```md
 ## Epics To Build
 
-| Epic                                                                              | Main Capability     | Description          | Phase     |
-| --------------------------------------------------------------------------------- | ------------------- | -------------------- | --------- |
-| [{{EPIC_NAME}}](../../requirements/{{TARGET_ARCHITECTURE_NAME}}/{{EPIC_SLUG}}.md) | {{MAIN_CAPABILITY}} | {{EPIC_DESCRIPTION}} | {{PHASE}} |
+### [{{EPIC_NAME}}](../../requirements/{{TARGET_ARCHITECTURE_NAME}}/{{EPIC_SLUG}}.md)
+
+**Main capability:** {{MAIN_CAPABILITY}}
+
+**Description:** {{EPIC_DESCRIPTION}}
+
+**Phase:** {{PHASE}}
 ```
 
-When adding the same link to the assembled `target-architecture-document.md`, use the matching `### Epics To Build` table inside `## 08 Phase E - Solution Building Blocks`.
+When adding the same link to the assembled `target-architecture-document.md`, use the same block under `### Epics To Build` inside `## 08 Phase E - Solution Building Blocks`.
 
-If the table still contains `_No linked epics yet._`, replace that placeholder row with the first real epic. If the table already has epics, append or update the matching epic row. Keep the table sorted by epic name unless the document already uses another ordering.
+If the section still contains `_No linked epics yet._`, replace that placeholder with the first real epic. If the section already has epics, append or update the matching epic block. Keep epic blocks sorted by epic name unless the document already uses another ordering.
 
 ## Guardrails
 

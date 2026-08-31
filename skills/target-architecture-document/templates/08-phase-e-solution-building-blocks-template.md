@@ -11,13 +11,11 @@
 
 Translate the target architecture into user-confirmed epics to build.
 
-## Solution Building Blocks (Epics) To Build
+## Epics To Build
 
 List only epics explicitly created or confirmed by the user through the `to-epics` skill.
 
-| Epic                   | Main Capability | Description | Phase |
-| ---------------------- | --------------- | ----------- | ----- |
-| _No linked epics yet._ |                 |             |       |
+_No linked epics yet._
 
 ## Sequencing Notes
 

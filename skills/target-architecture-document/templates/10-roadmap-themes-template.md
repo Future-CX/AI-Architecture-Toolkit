@@ -11,9 +11,13 @@
 
 Group recommended work into pragmatic roadmap themes with sequencing logic and dependencies.
 
-| Theme     | Outcome     | Scope     | Dependencies     | Suggested Sequence     |
-| --------- | ----------- | --------- | ---------------- | ---------------------- |
-| {{THEME}} | {{OUTCOME}} | {{SCOPE}} | {{DEPENDENCIES}} | {{SUGGESTED_SEQUENCE}} |
+## Roadmap Summary
+
+**Business outcome:** {{ROADMAP_OUTCOME}}
+
+**Sequencing approach:** {{SEQUENCING_APPROACH}}
+
+**Key dependencies:** {{KEY_DEPENDENCIES}}
 
 ## Near-Term Themes
 
