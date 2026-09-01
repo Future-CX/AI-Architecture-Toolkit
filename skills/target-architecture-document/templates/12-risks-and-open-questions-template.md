@@ -13,9 +13,59 @@ Document unresolved assumptions, risks, dependencies, and questions that need st
 
 ## Risks
 
-| Risk     | Impact     | Likelihood     | Mitigation     | Owner     |
-| -------- | ---------- | -------------- | -------------- | --------- |
-| {{RISK}} | {{IMPACT}} | {{LIKELIHOOD}} | {{MITIGATION}} | {{OWNER}} |
+### High Risks
+
+{{RISK_NUMBER}} - {{RISK}}
+
+| Likelihood     | Owner     |
+| -------------- | --------- |
+| {{LIKELIHOOD}} | {{OWNER}} |
+
+#### Impact
+
+{{IMPACT}}
+
+#### Mitigation
+
+{{MITIGATION}}
+
+---
+
+### Medium Risks
+
+{{RISK_NUMBER}} - {{RISK}}
+
+| Likelihood     | Owner     |
+| -------------- | --------- |
+| {{LIKELIHOOD}} | {{OWNER}} |
+
+#### Impact
+
+{{IMPACT}}
+
+#### Mitigation
+
+{{MITIGATION}}
+
+---
+
+### Low Risks
+
+{{RISK_NUMBER}} - {{RISK}}
+
+| Likelihood     | Owner     |
+| -------------- | --------- |
+| {{LIKELIHOOD}} | {{OWNER}} |
+
+#### Impact
+
+{{IMPACT}}
+
+#### Mitigation
+
+{{MITIGATION}}
+
+---
 
 ## Assumptions
 

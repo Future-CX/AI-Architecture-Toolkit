@@ -184,6 +184,10 @@ Store every Draw.io source and same-basename export created for a target archite
    - Do not use a gap-analysis comparison table. If a category has no confirmed gaps, state that briefly instead of adding an empty table or placeholder row.
    - In `10-roadmap-themes.md`, write the opening `Roadmap Summary` as three short labeled paragraphs: business outcome, sequencing approach, and key dependencies.
    - Under each time horizon, present every roadmap theme as a level-three heading followed by short labeled paragraphs or bullets for outcome, scope, dependencies, and suggested sequence. Do not use a roadmap-theme comparison table.
+   - In `12-risks-and-open-questions.md`, group risks under `High Risks`, `Medium Risks`, and `Low Risks` in that order.
+   - Number risks sequentially across all three groups with two-digit identifiers starting at `00`.
+   - Present each risk using the repeatable block from the template: numbered risk name, a compact Likelihood and Owner table, an Impact section, a Mitigation section, and a horizontal divider.
+   - If a severity group has no confirmed risks, keep its heading and state `_No confirmed high risks._`, `_No confirmed medium risks._`, or `_No confirmed low risks._` as applicable. Do not leave placeholders or an empty risk block.
 17. Before creating the summary document, review the generated section files against `<private-lab-root>/GLOSSARY.md` and add any missing terms, applications, data objects, and relationships discovered during drafting.
 18. Create `00-target-architecture-document.md` from `templates/00-target-architecture-document-template.md` as the summary and navigation document.
 19. Begin `00-target-architecture-document.md` with its title and a one-sentence document purpose directly below it, without a purpose heading.
