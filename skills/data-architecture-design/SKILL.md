@@ -18,9 +18,17 @@ Use `templates/data-architecture-design-template.md` as the output structure. Re
 Store generated data architecture designs under the consuming repository's private lab root:
 
 ```text
-data-architectures/<data-object-slug>/<data-object-slug>-data-architecture-design.md
+data-architectures/<data-object-slug>/<data-architecture-basename>.md
 data-architectures/<data-object-slug>/diagrams/
 ```
+
+Derive `<data-architecture-basename>` without repeating `data`:
+
+- When `<data-object-slug>` ends in `-data`, use `<data-object-slug>-architecture-design`.
+- Otherwise, use `<data-object-slug>-data-architecture-design`.
+- Never generate a filename containing `-data-data-`.
+
+Examples: `customer-data` becomes `customer-data-architecture-design.md`, `customer-user-data` becomes `customer-user-data-architecture-design.md`, and `audiences` becomes `audiences-data-architecture-design.md`.
 
 Do not write real-company data architecture details into this public toolkit repository.
 
@@ -51,10 +59,10 @@ Do not write real-company data architecture details into this public toolkit rep
 3. During the `grill-me` session, validate terminology against `<private-lab-root>/GLOSSARY.md`. If the data object, applications, capabilities, integrations, lifecycle states, or important terms are missing or ambiguous, use `../ubiquitous-language/SKILL.md` immediately to update the private lab glossary.
 4. After the clarification session, validate that `<private-lab-root>/GLOSSARY.md` was created or updated during the current run. If it was not created or updated, stop before generating data architecture files and ask the user to run `grill-me` followed by `ubiquitous-language` so the glossary is updated first.
 5. Ask for the canonical data object, source of truth, owner, main capability, producers, consumers, and known integrations when still not provided.
-6. Determine the output folder as `<private-lab-root>/data-architectures/<data-object-slug>/`.
-7. Create or update `<data-object-slug>-data-architecture-design.md` from `templates/data-architecture-design-template.md`. Preserve the two opening tables: the document metadata table first, followed by the `Data Architecture Overview` table.
+6. Determine the output folder as `<private-lab-root>/data-architectures/<data-object-slug>/` and derive `<data-architecture-basename>` with the naming rule above.
+7. Create or update `<data-architecture-basename>.md` from `templates/data-architecture-design-template.md`. Replace `{{DATA_ARCHITECTURE_BASENAME}}` with the derived basename. Preserve the two opening tables: the document metadata table first, followed by the `Data Architecture Overview` table.
 8. Create diagrams that make the data architecture understandable:
-   - Data Architecture Design diagram from `../create-drawio-diagram/templates/data-architecture-diagram.drawio`, showing systems, interfaces, events, files, APIs, or batches
+   - Data Architecture Design diagram at `diagrams/<data-architecture-basename>.drawio` from `../create-drawio-diagram/templates/data-architecture-diagram.drawio`, showing systems, interfaces, events, files, APIs, or batches
    - Optional conceptual data model when the object has important relationships
 9. Create every Draw.io diagram with `../create-drawio-diagram/SKILL.md` because it contains the required diagram instructions, style rules, and templates. Store each editable `.drawio` source in `diagrams/`.
 10. Export a same-basename `.svg` file for each Draw.io diagram that must be embedded, embed the SVG in the document, and link the `.drawio` source near the embedded SVG.

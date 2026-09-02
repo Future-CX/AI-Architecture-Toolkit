@@ -45,9 +45,9 @@ Explain how the data object moves from source through transformations, storage, 
 
 Summarize the integrations that produce, transform, enrich, replicate, or consume the data object. Link detailed integration designs instead of duplicating full contracts.
 
-![{{DATA_OBJECT}} data architecture design](diagrams/{{DATA_OBJECT_SLUG}}-data-architecture-design.svg)
+![{{DATA_OBJECT}} data architecture design](diagrams/{{DATA_ARCHITECTURE_BASENAME}}.svg)
 
-Source: [{{DATA_OBJECT_SLUG}}-data-architecture-design.drawio](diagrams/{{DATA_OBJECT_SLUG}}-data-architecture-design.drawio)
+Source: [{{DATA_ARCHITECTURE_BASENAME}}.drawio](diagrams/{{DATA_ARCHITECTURE_BASENAME}}.drawio)
 
 | Integration          | From - To     | Pattern     | Purpose     | Design                                                      |
 | -------------------- | ------------- | ----------- | ----------- | ----------------------------------------------------------- |
