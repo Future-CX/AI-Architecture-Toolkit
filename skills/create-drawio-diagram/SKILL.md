@@ -189,12 +189,13 @@ When using `templates/integration-design.drawio`, preserve the vertical layer st
 When using `templates/data-architecture-diagram.drawio`, preserve the layered architecture structure. The diagram is a data architecture design view for one canonical data object, not an integration sequence diagram.
 
 - Place components inside the corresponding layer band, ordered from top to bottom: Public Internet, Frontend, Engagement Services, Integration, and Enterprise Foundation (Backoffice).
-- Always place Backend-for-Frontend components in the Frontend layer. Do not place a BFF in the Integration layer, even when it calls APIs, composes requests, or shapes channel responses.
+- Always place the Backend-for-Frontend directly below the New Webshop component, aligned on the same x-position. Keep both components inside the Frontend layer and connect them vertically where possible. Do not place the BFF in the Engagement Services or Integration layer, even when it calls APIs, composes requests, or shapes channel responses.
 - Use the exact layer colors from `STYLE.md`: Public Internet light red, Frontend light yellow, Engagement light green, Integration light grey, and Enterprise Foundation (Backoffice) light blue.
 - Place components horizontally when they are different peer components, alternate sources, alternate consumers, parallel integrations, or separate solution copies. Do not stack unrelated components vertically inside one layer.
-- Use vertical alignment only when components are part of the same direct end-to-end flow and the alignment makes the data path easier to trace.
+- Use vertical alignment only when components are part of the same direct end-to-end flow and the alignment makes the data path easier to trace. The New Webshop and its Backend-for-Frontend are a required related stack, not peer components.
 - Grow layer width for additional horizontal component placement before adding vertical stacks. Grow layer height only when there are multiple related rows or connector routing needs.
-- Keep Backend-for-Frontend components near the channel or frontend component they support, then route calls down to Engagement Services or Integration with orthogonal connectors.
+- Route every connector through whitespace between components. Connectors and connector labels must not cross or overlap component bodies, application headers, layer labels, arrowheads, or other connector labels. Reposition components, enlarge layer bands, and add explicit orthogonal waypoints until every route is clear.
+- Omit deprecated components and their connectors. If a deprecated component still affects a decision or migration, capture that context in the architecture document rather than showing the component in the diagram.
 - Keep the canonical data object visually central when possible. Place sources to the left or below, consumers to the right or above, and governance or ownership notes in the traceability area.
 - Put interface names, events, files, APIs, batches, ownership, and traceability details in concise connector labels or in the surrounding document table. Do not turn the diagram into a dense interface catalog.
 - Do not add real-company system names, internal endpoints, topics, queues, payload fields, credentials, or proprietary integration details to this public repository.
@@ -262,6 +263,7 @@ Exported SVGs must preserve the exact colors from the `.drawio` source.
 - Before embedding a capability overview SVG, inspect connector routing and labels. Regenerate the `.drawio` with staggered connector lanes or wider spacing if any connector, connector label, or arrowhead overlaps another connector, node, application header, or label.
 - Before embedding an integration design SVG, inspect connector routing and labels. Regenerate the `.drawio` with wider spacing or explicit waypoints if any connector or connector label overlaps a component, component header, layer label, arrowhead, or other label.
 - Before embedding an integration design SVG, inspect alignment and spacing. Regenerate the `.drawio` if the diagram has large unused left-side whitespace, components appear unnecessarily centered, labeled connectors have cramped horizontal space, or any connector crosses through a component.
+- Before embedding a data architecture design SVG, inspect connector routing, the Frontend layer, and component status. Regenerate the `.drawio` if any connector or connector label overlaps a component or label, if the Backend-for-Frontend is not directly below New Webshop within the Frontend layer, or if a deprecated component is shown.
 - Before embedding an integration flow SVG, inspect participant colors. Regenerate the `.drawio` if Backend-for-Frontend/BFF nodes are not yellow, API management or gateway nodes are not grey, or foundation API provider nodes such as IBMi APIs are not blue.
 
 ## Output Rules

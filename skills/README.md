@@ -8,7 +8,7 @@
 - [Check Readability](check-readability/SKILL.md) - Review stakeholder-facing content for reading level, long sentences, passive voice, dense paragraphs, and unexplained jargon.
 - [Assess Solution](assess-solution/SKILL.md) - Self-assess proposed or existing solutions against architecture principles and a selected capability overview or solution architecture design.
 - [Solution Architecture Design](solution-architecture-design/SKILL.md) - Write solution architecture design documents from existing capability overviews.
-- [Data Architecture Design](data-architecture-design/SKILL.md) - Create data-object-specific architecture designs with data flow diagrams, integration traceability, ownership, lifecycle, quality, privacy, and Phase C linkage.
+- [Data Architecture Design](data-architecture-design/SKILL.md) - Create data-object-specific architecture designs with integration traceability, ownership, lifecycle, quality, privacy, and Phase C linkage.
 - [Integration Design](integration-design/SKILL.md) - Create integration design documents for APIs, events, files, batches, messaging, and orchestration.
 - [Create Draw.io Diagram](create-drawio-diagram/SKILL.md) - Create editable Draw.io architecture diagrams from reusable templates for architecture and integration design documents.
 - [To Epics](to-epics/SKILL.md) - Break target architecture work into user-confirmed epics and list each epic in Phase E of the target architecture document.

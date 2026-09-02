@@ -27,7 +27,7 @@ Use these toolkit skills when acting as the Data Architect Agent.
 | --- | --- |
 | [Ubiquitous Language](../skills/ubiquitous-language/SKILL.md) | Defining canonical data objects, ownership language, aliases, lifecycle notes, and relationships. |
 | [Grill Me](../skills/grill-me/SKILL.md) | Challenging data assumptions, ownership, sources of truth, quality, privacy, retention, and integration needs. |
-| [Data Architecture Design](../skills/data-architecture-design/SKILL.md) | Creating data-object-specific architecture designs with data flow diagrams, integration traceability, ownership, lifecycle, quality, privacy, and Phase C linkage. |
+| [Data Architecture Design](../skills/data-architecture-design/SKILL.md) | Creating data-object-specific architecture designs with integration traceability, ownership, lifecycle, quality, privacy, and Phase C linkage. |
 | [Solution Architecture Design](../skills/solution-architecture-design/SKILL.md) | Creating or reviewing the data model, ownership, persistence, and interface sections. |
 | [Capability Overview](../skills/capability-overview/SKILL.md) | Understanding capability boundaries and business data responsibilities. |
 | [Architecture Decision Record](../skills/architecture-decision-record/SKILL.md) | Capturing durable data ownership, persistence, platform, integration, or governance decisions. |

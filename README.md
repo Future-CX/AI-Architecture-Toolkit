@@ -128,7 +128,7 @@ git commit -m "Update AI Architecture Toolkit submodule"
 | [Check Readability](skills/check-readability/SKILL.md) | Review stakeholder-facing content for reading level, long sentences, passive voice, dense paragraphs, and unexplained jargon. |
 | [Assess Solution](skills/assess-solution/SKILL.md) | Self-assess proposed or existing solutions against architecture principles and a selected capability overview or solution architecture design. |
 | [Solution Architecture Design](skills/solution-architecture-design/SKILL.md) | Write implementation-oriented solution designs with chapter guidance, editable Draw.io sources, rendered SVGs, and linked ADRs. |
-| [Data Architecture Design](skills/data-architecture-design/SKILL.md) | Create data-object-specific architecture designs with data flow diagrams, integration traceability, ownership, lifecycle, quality, privacy, and Phase C linkage. |
+| [Data Architecture Design](skills/data-architecture-design/SKILL.md) | Create data-object-specific architecture designs with integration traceability, ownership, lifecycle, quality, privacy, and Phase C linkage. |
 | [Integration Design](skills/integration-design/SKILL.md) | Create integration design documents for APIs, events, files, batches, messaging, and orchestration. |
 | [Create Draw.io Diagram](skills/create-drawio-diagram/SKILL.md) | Create editable Draw.io architecture diagrams from reusable templates for solution, target, data, and integration design documents. |
 | [To Epics](skills/to-epics/SKILL.md) | Break target architecture work into user-confirmed epics and list each epic in Phase E of the target architecture document. |

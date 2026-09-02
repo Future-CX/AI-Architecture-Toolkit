@@ -1,6 +1,6 @@
 ---
 name: data-architecture-design
-description: Create data architecture design documents for a specific canonical data object, including data flow diagrams, integration traceability, ownership, lifecycle, quality, privacy, and governance. Use when the user asks to design, document, review, or update the architecture of a data object and link it to Target Architecture Phase C.
+description: Create data architecture design documents for a specific canonical data object, including integration traceability, ownership, lifecycle, quality, privacy, and governance. Use when the user asks to design, document, review, or update the architecture of a data object and link it to Target Architecture Phase C.
 ---
 
 # Data Architecture Design
@@ -53,8 +53,7 @@ Do not write real-company data architecture details into this public toolkit rep
 5. Ask for the canonical data object, source of truth, owner, main capability, producers, consumers, and known integrations when still not provided.
 6. Determine the output folder as `<private-lab-root>/data-architectures/<data-object-slug>/`.
 7. Create or update `<data-object-slug>-data-architecture-design.md` from `templates/data-architecture-design-template.md`. Preserve the two opening tables: the document metadata table first, followed by the `Data Architecture Overview` table.
-8. Create diagrams that make the data movement understandable:
-   - Data flow diagram from `../create-drawio-diagram/templates/data-flow.drawio`
+8. Create diagrams that make the data architecture understandable:
    - Data Architecture Design diagram from `../create-drawio-diagram/templates/data-architecture-diagram.drawio`, showing systems, interfaces, events, files, APIs, or batches
    - Optional conceptual data model when the object has important relationships
 9. Create every Draw.io diagram with `../create-drawio-diagram/SKILL.md` because it contains the required diagram instructions, style rules, and templates. Store each editable `.drawio` source in `diagrams/`.
@@ -107,29 +106,17 @@ The data architecture design is not complete until the readability check confirm
 - If the score remains below 40, stakeholder-facing sections have no sentences over 30 words and any unavoidable specialist terms are briefly explained.
 - Long table cells are moved into notes, linked integration designs, or later technical sections when they make ownership, quality, lifecycle, privacy, risks, or decisions hard to scan.
 
-## Data Flow Diagram Format
-
-Use `../create-drawio-diagram/templates/data-flow.drawio` as the starting point for the data flow diagram. The diagram should read like an operational trace of the data object across systems and process steps.
-
-- Title the diagram `<Organization or domain> | Data Flow | <Data object>`.
-- Put the business journey, process stages, screens, or major events across the top from left to right when they are known.
-- Use one horizontal lane per concrete solution or component. Keep Customer first, Channel second, optionally add one backend-for-frontend lane when a BFF participates in the flow, then Engagement solution lanes, Integration component lanes, and Enterprise Foundation or MDM solution lanes.
-- Do not group several solutions into one broad lane. Add more vertical canvas space instead.
-- Draw data movements as vertical or orthogonal arrows crossing lanes. Label each arrow with the specific data object, event, command, file, API call, batch, or transformation.
-- Use color intentionally:
-  - Blue for primary read, write, replication, or publication flows.
-  - Green for enrichment, rules, calculation, validation, or decisioning flows.
-  - Grey or dashed lines for optional, planned, deprecated, or uncertain flows.
-- Show where the data object is created, updated, enriched, read, replicated, archived, deleted, or submitted.
-- Keep lane labels stable and readable on the left. Keep each process-stage label centered over the boxes and arrows that belong to that stage.
-- Prefer a wide landscape canvas over compressed diagrams. Increase the canvas width for more stages and the canvas height for more solution lanes until arrows, labels, lane headers, stage labels, and boxes do not overlap.
-- Do not use a generic box-and-line context view for the data flow. The data flow diagram must show movement through lanes over time or process progression.
-
 ## Data Architecture Design Diagram Format
 
 Use `../create-drawio-diagram/templates/data-architecture-diagram.drawio` as the starting point for the Data Architecture Design diagram. Follow the `Data Architecture Diagram Layout` rules in `../create-drawio-diagram/SKILL.md`.
 
-Adapt the data architecture overview elements to show the data object's source systems, canonical data object, owners, consumers, integrations, governance touchpoints, and external systems. Always place Backend-for-Frontend components in the Frontend layer. Place different peer components horizontally instead of stacking them vertically unless they are part of the same direct end-to-end flow. Keep the diagram focused on integration traceability for the data object; put interface detail in the Data Architecture Design table or linked integration designs.
+Adapt the data architecture overview elements to show the data object's source systems, canonical data object, owners, consumers, integrations, governance touchpoints, and external systems.
+
+- Always place the Backend-for-Frontend directly below the New Webshop component. Keep both components inside the Frontend layer, align them on the same x-position, and connect them vertically where possible.
+- Treat the New Webshop and Backend-for-Frontend as a related stack. Place other peer components horizontally instead of stacking them vertically unless they are part of the same direct end-to-end flow.
+- Route every connector through whitespace between components. Connectors and connector labels must not cross or overlap component bodies, application headers, layer labels, or other connector labels. Move components, enlarge layer bands, and add explicit orthogonal waypoints until the route is clear.
+- Omit deprecated components and their connectors from the diagram. When their status still affects the design, explain it in the document rather than adding it to the diagram.
+- Keep the diagram focused on integration traceability for the data object; put interface detail in the Data Architecture Design table or linked integration designs.
 
 ## Phase C Link Format
 

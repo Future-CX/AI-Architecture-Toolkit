@@ -35,11 +35,7 @@ Describe the data object, its business meaning, boundaries, aliases, and relatio
 
 ## Data Flow
 
-Explain how the data object moves from source through transformations, storage, integrations, and consumers. Describe the flow in the same order as the diagram: process stages across the top, systems or actors as horizontal lanes, and labeled movements between lanes.
-
-![{{DATA_OBJECT}} data flow](diagrams/{{DATA_OBJECT_SLUG}}-data-flow.svg)
-
-Source: [{{DATA_OBJECT_SLUG}}-data-flow.drawio](diagrams/{{DATA_OBJECT_SLUG}}-data-flow.drawio)
+Explain how the data object moves from source through transformations, storage, integrations, and consumers. Describe the flow in process order and capture each movement in the table.
 
 | Step | Stage or Event     | From - To             | Data Movement     | Action                           | Notes     |
 | ---- | ------------------ | --------------------- | ----------------- | -------------------------------- | --------- |
