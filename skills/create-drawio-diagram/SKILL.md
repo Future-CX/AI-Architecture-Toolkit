@@ -19,7 +19,7 @@ Use these templates as starting points:
 - `templates/capability-overview.drawio` for actors, neighboring capabilities, and external dependencies
 - `templates/target-architecture-diagram.drawio` for a simple target architecture overview across capabilities, applications, data, integrations, and technology
 - `templates/solution-architecture-diagram.drawio` for a simple solution architecture overview across channels, components, integrations, data stores, and external systems
-- `templates/data-architecture-diagram.drawio` for a simple data architecture overview across source systems, canonical data objects, owners, consumers, integrations, and governance
+- `templates/data-architecture-diagram.drawio` for a simple data architecture overview across source systems, owners, consumers, integrations, and governance
 - `templates/data-flow.drawio` for data flow diagrams with process stages across the top, systems as horizontal lanes, and labeled data movements between lanes
 - `templates/application-component-view.drawio` for applications, services, components, platforms, and responsibilities
 - `templates/conceptual-data-model.drawio` for canonical data objects and relationships
@@ -196,7 +196,9 @@ When using `templates/data-architecture-diagram.drawio`, preserve the layered ar
 - Grow layer width for additional horizontal component placement before adding vertical stacks. Grow layer height only when there are multiple related rows or connector routing needs.
 - Route every connector through whitespace between components. Connectors and connector labels must not cross or overlap component bodies, application headers, layer labels, arrowheads, or other connector labels. Reposition components, enlarge layer bands, and add explicit orthogonal waypoints until every route is clear.
 - Omit deprecated components and their connectors. If a deprecated component still affects a decision or migration, capture that context in the architecture document rather than showing the component in the diagram.
-- Keep the canonical data object visually central when possible. Place sources to the left or below, consumers to the right or above, and governance or ownership notes in the traceability area.
+- Do not add a standalone box, node, or component for the canonical data object. The diagram's subject is the data object, while its visible components represent systems, capabilities, integrations, or external parties.
+- Show where the data is mastered, stored, transformed, and consumed through the relevant components and connectors. Use the business data object name in a connector label only when it helps distinguish the flow.
+- Keep the data flow visually central when possible. Place sources to the left or below, consumers to the right or above, and governance or ownership notes in the traceability area.
 - Put interface names, events, files, APIs, batches, ownership, and traceability details in concise connector labels or in the surrounding document table. Do not turn the diagram into a dense interface catalog.
 - Do not add real-company system names, internal endpoints, topics, queues, payload fields, credentials, or proprietary integration details to this public repository.
 
@@ -263,7 +265,7 @@ Exported SVGs must preserve the exact colors from the `.drawio` source.
 - Before embedding a capability overview SVG, inspect connector routing and labels. Regenerate the `.drawio` with staggered connector lanes or wider spacing if any connector, connector label, or arrowhead overlaps another connector, node, application header, or label.
 - Before embedding an integration design SVG, inspect connector routing and labels. Regenerate the `.drawio` with wider spacing or explicit waypoints if any connector or connector label overlaps a component, component header, layer label, arrowhead, or other label.
 - Before embedding an integration design SVG, inspect alignment and spacing. Regenerate the `.drawio` if the diagram has large unused left-side whitespace, components appear unnecessarily centered, labeled connectors have cramped horizontal space, or any connector crosses through a component.
-- Before embedding a data architecture design SVG, inspect connector routing, the Frontend layer, and component status. Regenerate the `.drawio` if any connector or connector label overlaps a component or label, if the Backend-for-Frontend is not directly below New Webshop within the Frontend layer, or if a deprecated component is shown.
+- Before embedding a data architecture design SVG, inspect connector routing, the Frontend layer, component status, and data representation. Regenerate the `.drawio` if any connector or connector label overlaps a component or label, if the Backend-for-Frontend is not directly below New Webshop within the Frontend layer, if a deprecated component is shown, or if the data object appears as a standalone component.
 - Before embedding an integration flow SVG, inspect participant colors. Regenerate the `.drawio` if Backend-for-Frontend/BFF nodes are not yellow, API management or gateway nodes are not grey, or foundation API provider nodes such as IBMi APIs are not blue.
 
 ## Output Rules
