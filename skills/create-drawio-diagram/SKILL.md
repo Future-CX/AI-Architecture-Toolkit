@@ -48,11 +48,26 @@ Create `.drawio` sources as light-theme diagrams from the start.
 1. Confirm the diagram purpose and choose the closest template.
 2. Create a `diagrams/` subfolder next to the supporting document, then copy the template into it using a descriptive same-purpose filename, such as `diagrams/capability-overview.drawio`.
 3. Replace placeholder labels with concrete architecture content from the source document, glossary, capability overview, or clarification session.
-4. Apply the exact standard colors and connector styles from `STYLE.md`. Do not use dark theme variants, approximate colors, or inherited editor defaults.
-5. Keep labels business-readable and concise. Use notes in the surrounding architecture document for detail that would clutter the diagram.
-6. Keep canonical data object names general. Do not use vendor object names, table names, endpoint resources, or internal system names in this public repository.
-7. Do not invent systems, relationships, protocols, owners, or data flows. Mark unknowns as assumptions or open questions in the architecture document.
-8. If an image export is needed, export the Draw.io diagram to a same-basename `.svg` using the SVG export rules below, then embed the SVG in the architecture document with a nearby link to the `.drawio` source.
+4. Position all components first and reserve visible whitespace corridors for every connector before adding or rerouting edges.
+5. Apply the exact standard colors and connector styles from `STYLE.md`. Do not use dark theme variants, approximate colors, or inherited editor defaults.
+6. Route and inspect every connector using the non-negotiable routing gate below. Do not rely on Draw.io automatic routing when it creates an ambiguous or obstructed path.
+7. Keep labels business-readable and concise. Use notes in the surrounding architecture document for detail that would clutter the diagram.
+8. Keep canonical data object names general. Do not use vendor object names, table names, endpoint resources, or internal system names in this public repository.
+9. Do not invent systems, relationships, protocols, owners, or data flows. Mark unknowns as assumptions or open questions in the architecture document.
+10. If an image export is needed, export the Draw.io diagram to a same-basename `.svg` using the SVG export rules below, visually inspect the rendered SVG at 100% zoom, and embed it only after it passes the routing gate.
+
+## Non-negotiable Connector Routing Gate
+
+A generated diagram fails review if any connector or connector label passes through, runs over, or is hidden behind a component. Fix the `.drawio` source and re-export it; never accept the collision as a layout compromise.
+
+- Treat the complete visible component as blocked space. This includes its body, border, text, icon, application-name header, badge, and any nested child shape.
+- A connector may touch its source and target only at one deliberate boundary attachment point. Except for the arrowhead at that endpoint, no part of the connector may enter either endpoint component's interior.
+- Application-name headers occupy the component's top edge. Never route a connector into, out of, across, or underneath such a header. Use a left, right, or unobstructed bottom port and an orthogonal waypoint instead.
+- Keep the full connector path in whitespace with at least 10 px clearance from every unrelated component and header. Use more clearance where an arrowhead or label needs it.
+- Use explicit entry and exit ports plus explicit orthogonal `mxPoint` waypoints whenever automatic routing could cross blocked space. Automatic routing is not evidence that the route is safe.
+- Do not use a component as a visual bridge and do not let unrelated connectors share a hidden trunk behind it. Shared segments are allowed only for an explicitly modeled bus, and that bus must remain fully visible in whitespace.
+- Trace each rendered connector end to end at 100% zoom after SVG export. Check the source endpoint, every bend and label, and the target arrowhead. If any section touches blocked space anywhere other than its two deliberate endpoints, move the nodes or reroute the connector and inspect again.
+- When a clean route does not fit, enlarge the canvas or layer band and move components apart. Never solve the problem by drawing over a component, sending a connector behind it, or depending on z-order to conceal the collision.
 
 ## Capability Map Layout
 
@@ -144,7 +159,7 @@ The helper also accepts compatibility aliases for upstream capability workflows:
 When using `templates/solution-architecture-diagram.drawio`, preserve the layered architecture structure. The diagram is a solution overview for one application or capability implementation, not a detailed sequence diagram or interface catalog.
 
 - Place components inside the corresponding layer band, ordered from top to bottom: Public Internet, Frontend, Engagement Services, Integration, and Enterprise Foundation (Backoffice).
-- When the solution includes a Backend-for-Frontend component, place it in the Frontend layer directly below the frontend/channel component it supports. Align the frontend component and BFF on the same x-position and use a vertical connector between them whenever possible.
+- When the solution includes a Backend-for-Frontend component, place it in the Frontend layer directly below the frontend/channel component it supports. Align the frontend component and BFF on the same x-position. Use a vertical connector only when its attachment edges are unobstructed; when an application header blocks the top edge, keep the components aligned and route through side ports in the adjacent whitespace.
 - Do not place a Backend-for-Frontend component in Engagement Services or Integration. It remains a Frontend component even when it calls APIs, composes responses, or orchestrates channel-specific requests.
 - Treat the canvas as flexible. Increase `pageWidth`, `pageHeight`, and every layer-band width or height whenever the default template would force cramped components, overlapping connectors, clipped labels, or crowded layer bands.
 - Prefer widening or heightening the canvas and spreading components before shrinking boxes, shortening important labels, or stacking unrelated components.
@@ -172,7 +187,7 @@ When using `templates/integration-design.drawio`, preserve the vertical layer st
 - Show every confirmed component needed to understand how data or commands move from source to destination.
 - Show the integration path by connecting components across layers. Route connectors clearly between layers and between peer components when needed.
 - Use concise connector labels for trigger, protocol, contract, routing, transformation, retry, acknowledgement, or ownership details.
-- For cross-layer flows, connect components from bottom-to-top or top-to-bottom using straight vertical orthogonal connectors whenever possible. Use side connectors only when vertical routing would cross another component or label.
+- For cross-layer flows, connect components from bottom-to-top or top-to-bottom using straight vertical orthogonal connectors only when both attachment edges are unobstructed. Use side ports and explicit waypoints when a vertical route would cross a component, application header, or label.
 - Route every connector around components, not through components. Use explicit orthogonal `mxPoint` waypoints whenever Draw.io automatic routing would cross a component, component header, layer label, or another connector label.
 - Put connector labels on open horizontal or vertical lane segments with clear whitespace. Do not place connector text on top of components, application headers, layer labels, arrowheads, or other connector labels.
 - Leave at least 160 px of horizontal space between two components connected by a labeled connector. If the connector label is longer than 24 characters, leave at least 220 px, shorten the label, or route the label onto a longer empty segment.
@@ -189,7 +204,7 @@ When using `templates/integration-design.drawio`, preserve the vertical layer st
 When using `templates/data-architecture-diagram.drawio`, preserve the layered architecture structure. The diagram is a data architecture design view for one canonical data object, not an integration sequence diagram.
 
 - Place components inside the corresponding layer band, ordered from top to bottom: Public Internet, Frontend, Engagement Services, Integration, and Enterprise Foundation (Backoffice).
-- Always place the Backend-for-Frontend directly below the New Webshop component, aligned on the same x-position. Keep both components inside the Frontend layer and connect them vertically where possible. Do not place the BFF in the Engagement Services or Integration layer, even when it calls APIs, composes requests, or shapes channel responses.
+- Always place the Backend-for-Frontend directly below the New Webshop component, aligned on the same x-position. Keep both components inside the Frontend layer. Connect them vertically only when the attachment edges are unobstructed; otherwise route through side ports in the adjacent whitespace. Do not place the BFF in the Engagement Services or Integration layer, even when it calls APIs, composes requests, or shapes channel responses.
 - Use the exact layer colors from `STYLE.md`: Public Internet light red, Frontend light yellow, Engagement light green, Integration light grey, and Enterprise Foundation (Backoffice) light blue.
 - Place components horizontally when they are different peer components, alternate sources, alternate consumers, parallel integrations, or separate solution copies. Do not stack unrelated components vertically inside one layer.
 - Use vertical alignment only when components are part of the same direct end-to-end flow and the alignment makes the data path easier to trace. The New Webshop and its Backend-for-Frontend are a required related stack, not peer components.
@@ -233,7 +248,7 @@ When using `templates/integration-flow.drawio`, preserve the horizontal swimlane
 - Prefer continuous left-to-right and top-to-bottom arrows across stage columns over repeated component boxes. A reader should be able to follow the scenario by tracing arrows, not by guessing that repeated boxes are the same system.
 - Color each participant by its architecture layer, not by the direction of the flow.
 - Treat Backend-for-Frontend and BFF components as Frontend components. They must use the yellow Frontend component style (`fillColor=#fff3c4;strokeColor=#b7791f`) even when they call APIs, compose responses, or orchestrate channel requests.
-- Place a Backend-for-Frontend directly below the frontend/channel participant it supports, aligned on the same x-position, and connect them vertically where possible. Do not place the BFF as a peer beside the frontend component unless the flow has multiple frontend participants and vertical placement would make the path unreadable.
+- Place a Backend-for-Frontend directly below the frontend/channel participant it supports and align it on the same x-position. Connect them vertically only when the attachment edges are unobstructed; otherwise route through side ports in the adjacent whitespace. Do not place the BFF as a peer beside the frontend component unless the flow has multiple frontend participants and vertical placement would make the path unreadable.
 - Treat API gateway, API management, mediation, routing, and integration-platform components as Integration components. Azure API Management, API gateway, ESB, iPaaS, queue broker, and event broker nodes must use the grey Integration component style (`fillColor=#edf2f0;strokeColor=#8a9992`).
 - Treat backoffice API providers, MDM APIs, host APIs, mainframe APIs, and enterprise system APIs as Enterprise Foundation components. IBMi APIs and similar foundation API provider nodes must use the blue Enterprise Foundation component style (`fillColor=#dae8fc;strokeColor=#315f8f`).
 - Use green Engagement Service component styling (`fillColor=#d9eadf;strokeColor=#0f766e`) only for business-facing engagement services or application capabilities, not for BFFs, API management, or foundation APIs.

@@ -9,6 +9,8 @@ Always store editable Draw.io sources and same-basename exports under a `diagram
 
 Create `.drawio` sources with explicit light-theme colors and a `#fbfcfa` page background. After exporting to SVG, use `scripts/sanitize-drawio-svg.py <diagram.svg>` only as a final compatibility guard when Draw.io still emits theme-adaptive SVG CSS.
 
+Connector routing is a hard acceptance gate. Connectors may touch their source and target only at deliberate boundary ports; they must never pass through, over, or behind a component body, application header, or label. Render and inspect the exported SVG at 100% zoom before accepting it.
+
 - [SKILL.md](SKILL.md)
 - [Style guide](STYLE.md)
 - [Capability context diagram helper](scripts/write-capability-context-diagram.py)

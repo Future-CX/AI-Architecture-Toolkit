@@ -120,11 +120,11 @@ Use `../create-drawio-diagram/templates/data-architecture-diagram.drawio` as the
 
 Adapt the data architecture overview elements to show the data object's source systems, owners, consumers, integrations, governance touchpoints, and external systems.
 
-- Always place the Backend-for-Frontend directly below the New Webshop component. Keep both components inside the Frontend layer, align them on the same x-position, and connect them vertically where possible.
+- Always place the Backend-for-Frontend directly below the New Webshop component. Keep both components inside the Frontend layer and align them on the same x-position. Connect them vertically only when the attachment edges are unobstructed; if an application-name header blocks the top edge, route through side ports in the adjacent whitespace.
 - Treat the New Webshop and Backend-for-Frontend as a related stack. Place other peer components horizontally instead of stacking them vertically unless they are part of the same direct end-to-end flow.
 - Do not add a standalone box, node, or component for the canonical data object. Show where the data is mastered, stored, transformed, and consumed through the named system or capability components and their labeled connectors.
 - Use the business data object name in a connector label only when it helps distinguish the flow. Do not represent the same data object as an application or architecture component.
-- Route every connector through whitespace between components. Connectors and connector labels must not cross or overlap component bodies, application headers, layer labels, or other connector labels. Move components, enlarge layer bands, and add explicit orthogonal waypoints until the route is clear.
+- Route every connector through whitespace between components. A connector may touch its source and target only at deliberate boundary ports; every other segment must stay at least 10 px from component bodies, application headers, layer labels, and other connector labels. Never enter or leave a component through its application-name header. Move components, enlarge layer bands, choose an unobstructed side or bottom port, and add explicit orthogonal waypoints until the complete rendered route is clear.
 - Omit deprecated components and their connectors from the diagram. When their status still affects the design, explain it in the document rather than adding it to the diagram.
 - Keep the diagram focused on integration traceability for the data object; put interface detail in the Data Architecture Design table or linked integration designs.
 

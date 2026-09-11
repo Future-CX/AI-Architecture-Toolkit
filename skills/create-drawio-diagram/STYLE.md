@@ -84,12 +84,16 @@ Use dashed connectors only for optional, informational, or payload relationships
 - Keep data models centered around canonical business data objects.
 - Prefer 80-120 px tall nodes for readability.
 - Route connectors on separate orthogonal lanes. Do not let two connectors share the same horizontal or vertical segment when their labels or arrowheads would overlap.
-- Do not route connectors through nodes, node labels, edge labels, or arrowheads.
-- For cross-layer flow connectors, prefer top-to-bottom vertical orthogonal lines from the bottom center of the upstream component to the top center of the downstream component. Use side ports and horizontal jogs only to avoid collisions.
+- Treat every component body, border, application header, label, icon, badge, and nested child shape as blocked space. Do not route connectors through, over, or behind any of them.
+- Let a connector touch its source and target only at one deliberate boundary attachment point. Apart from the endpoint arrowhead, the connector must remain outside both component interiors and at least 10 px from every unrelated component.
+- Never attach a connector through an application-name header on the top edge of a component. Use an explicit left, right, or unobstructed bottom port and orthogonal waypoints instead.
+- Do not rely on z-order to hide a collision. A connector concealed behind a component is still an invalid route.
+- For cross-layer flow connectors, prefer top-to-bottom vertical orthogonal lines only when both attachment edges are unobstructed. If a top edge contains an application header, use a side or bottom port and horizontal jogs so the connector never crosses the header.
 - Place connector labels on clear line segments with enough whitespace around the label. If labels collide, move the label position or reroute the connector with explicit waypoints.
 - For integration design diagrams, reserve connector lanes between components and between layer bands. Place components far enough apart that connectors can route around them without crossing through component bodies or application headers.
 - For labeled connectors between adjacent components, reserve at least 160 px of horizontal space between component edges. For labels longer than 24 characters, reserve at least 220 px or shorten the label and capture detail in the document.
 - Connector labels must not overlap components, application headers, layer labels, arrowheads, or other connector labels. If a label cannot fit cleanly on the connector, shorten the label and capture the detail in the document.
 - Avoid crossing connectors when repositioning nodes or adding waypoints would remove the crossing.
+- Render the SVG and trace every connector end to end at 100% zoom before accepting it. Move components, enlarge the canvas, or add explicit waypoints until every route remains visibly in whitespace.
 - Keep labels short and business-readable.
 - Do not use decorative colors outside the palette.
