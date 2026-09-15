@@ -138,13 +138,15 @@ git commit -m "Update AI Architecture Toolkit submodule"
 
 ## What The Toolkit Creates
 
-- Capability overviews under `capabilities/`, with editable Draw.io context diagrams and embedded SVG exports.
+- Capability overviews under `capabilities/`, with editable Draw.io context diagrams and embedded SVG exports, separate connector paths, and canvases sized to the content.
 - Target architecture and solution architecture design documents under `solution-architectures/`.
 - Data architecture designs under `data-architectures/<data-object>/`, linked from Phase C of the target architecture document.
 - User-confirmed epics under `requirements/<name-of-target-architecture>/`, listed in Phase E of the target architecture document.
 - Problem-to-solution briefs under `problem-to-solutions/` with problem framing, options, trade-offs, and recommendations for stakeholder decision-making.
 - Integration designs under `integrations/` using `int-0001-<data-object>-from-<source>-to-<destination>.md` numbering.
 - Editable Draw.io `.drawio` diagram sources paired with same-basename `.svg` files embedded in design documents.
+- Solution architecture diagrams with separate connector paths and a geometry check before export.
+- Integration flow diagrams with adjoining layers in a fixed order: Public Internet (red), Frontend (yellow), Engagement Services (green), Integrations (grey), and Enterprise Foundation (blue).
 - ADRs linked from the technical design choices they support.
 - Private-lab glossary entries in `GLOSSARY.md`.
 - Architecture principle documents under `principles/`.

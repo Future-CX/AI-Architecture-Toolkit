@@ -121,12 +121,15 @@ When using `templates/capability-overview.drawio`, preserve the template topolog
 - Use orthogonal connectors for capability context diagrams. Do not use diagonal straight-line connectors when an orthogonal route can keep labels and arrowheads clearer.
 - Attach arrows to the nearest relevant edge of each box using explicit ports. Do not let arrowheads float near a box or land inside another box.
 - Route connector waypoints through whitespace lanes between rows and columns. Connectors must not cross through node bodies, application headers, or node text.
-- Do not route multiple capability overview connectors through a shared bus line when their labels, arrowheads, or vertical segments would overlap. Use one staggered orthogonal lane per connector for actor, input-provider, outcome, and external-dependency relationships.
+- Capability context connectors must not cross, touch, or share any segment with another connector. Give each relationship a distinct boundary port and a clear orthogonal path; line jumps and hidden overlaps do not satisfy this rule.
+- Center provider and consumer rows on the target capability and preserve node order at the capability's ports. Order bends from the outside of each fan inward, reversing the bend order on the opposite side. Staggering every bend in the same left-to-right order can still create crossings.
+- Keep horizontal provider and consumer routing lanes outside the full middle zone occupied by actors, the target capability, and constraints. A tall actor stack must not extend into these lanes. Route providers with application headers from side ports through gaps beside their nodes.
 - Keep repeated relationship labels on their own connector segments. If repeated labels such as `uses / governs`, `produces`, `provides input`, or `depends on` collide, stagger the connector lanes or shorten the labels before exporting.
 - Avoid repeated relationship labels that overlap. When many connectors share the same relationship such as `provides input` or `gets data`, label one clear lane or stagger labels in whitespace rather than labeling every parallel connector.
-- Leave generous vertical space between the top consumer row, the target capability, and the bottom data-provider row so connector labels do not sit on top of nodes or each other.
+- Reserve only the vertical space needed for connector paths and labels between rows. Increase node sizes and routing gaps when more items or longer labels need them.
 - When there are multiple nodes in one zone, stagger their connector lanes so labels and arrowheads do not overlap. Use explicit `mxPoint` waypoints where automatic routing creates overlap.
 - If a zone has many items, widen the canvas and spread nodes across the zone before grouping. Group only when the source content does not provide enough detail to keep the nodes meaningful or the diagram would become unreadable even after widening.
+- Fit `pageWidth`, `pageHeight`, and the SVG `viewBox` to the final visible content, including labels and connector bends, with approximately 60 px of outer padding. Do not retain a fixed minimum page height or add blank bottom space based on node counts. Keep the light background.
 - If the source content does not identify a relationship direction, keep the node out of the diagram and record the gap as an assumption or open question in the document.
 
 ## Capability Context Helper
@@ -148,6 +151,8 @@ The `--output-dir` value must be the supporting document's `diagrams/` subfolder
 
 For `--input-provider`, pass either a single application or source system name, an inline `Application: Data object` value, or a multiline block where the first line is the application/source system and each later line is a main data object or contributing capability. Multiline blocks generate one bottom node per later line.
 
+The helper uses one shared layout calculation for `.drawio` and `.svg`: centered rows, ordered connector bends, distinct ports, side exits around application headers, and a canvas fitted to the content. Preserve these rules when editing a generated diagram manually. Replace or remove every template placeholder, including application headers, before accepting the output.
+
 The helper also accepts compatibility aliases for upstream capability workflows:
 
 - `--existing-system` as an alias for `--input-provider`
@@ -165,10 +170,30 @@ When using `templates/solution-architecture-diagram.drawio`, preserve the layere
 - Prefer widening or heightening the canvas and spreading components before shrinking boxes, shortening important labels, or stacking unrelated components.
 - Grow all layer bands to the same width when the diagram needs more horizontal space so the architecture layers remain visually aligned. Increase layer heights and move lower bands down when components, notes, or connector labels need more vertical space.
 - Leave enough whitespace between components for connector routing and labels. For labeled horizontal connectors, reserve at least 180 px between component edges; for labels longer than 24 characters, reserve at least 240 px or move detail into the document.
-- Use separate routing lanes for different relationships. Do not let connectors share the same segment when their labels, arrowheads, or vertical drops would overlap.
+- Solution architecture connectors must not cross, touch, or share a segment with another connector. Give every relationship its own attachment ports and route. A dashed line, line jump, or hidden segment does not resolve a collision.
+- Before adding edges, reserve horizontal and vertical routing corridors and assign a distinct port to every connection. Keep neighboring ports and parallel paths at least 24 px apart, preferably 32 px when space allows. Keep ports clear of corners and application headers.
+- For a component with several connections, order its ports to match the positions of connected components. Give each branch its own bend lane and order the bends so outer branches do not cross inner branches. Do not send every relationship through the same side-center port.
+- Route request and return arrows through separate parallel paths with different ports. Use opposite sides of a component or separate perimeter corridors for incoming, outgoing, and long return paths when this removes crossings.
+- Keep direct calls close to the main component column. Route longer links and branches that skip components through dedicated side corridors or beneath the affected row, with separate horizontal lanes. Move components or widen the layer when a reserved path is obstructed.
+- Use explicit entry and exit ports plus all required orthogonal waypoints. Set `noEdgeStyle=1;exitPerimeter=0;entryPerimeter=0;` on these edges so the editor preserves the planned route instead of choosing new bends automatically. Use side or bottom ports when a top application header blocks attachment.
 - Route long cross-layer connectors through open whitespace lanes. Do not run connectors through layer labels, component bodies, application headers, or other connector labels.
 - For dense solution architecture diagrams, widen and heighten the canvas first, then increase layer heights, then move components farther apart. Do not accept an SVG where component labels, connector labels, or arrowheads overlap.
 - Keep the diagram readable at document scale. It is better to create a wider or taller same-basename SVG than to compress a complete solution into the default canvas.
+- Keep every confirmed relationship and its direction while fixing the layout. Do not remove an edge, merge unrelated relationships, or mark a confirmed flow as optional to conceal a routing problem. If a complete overview remains too dense, use additional focused views and keep the relationships traceable.
+- Replace all template titles, component labels, application headers, and relationship labels with confirmed design content. Remove unused starter components and edges; omit application headers when the application is unknown. Do not leave template labels such as `Solution name` or `Application name` in the final diagram.
+
+### Solution Architecture Routing Check
+
+Before SVG export, run the geometry check on the generated source:
+
+```sh
+python3 skills/create-drawio-diagram/scripts/check-solution-architecture-routing.py \
+  solution-architectures/<slug>/diagrams/solution-architecture-diagram.drawio
+```
+
+Use the toolkit script path from the consuming repository when this toolkit is a submodule. The check reads the specified file without modifying it. It checks flat, uncompressed Draw.io XML with rectangular components and explicit orthogonal connector paths. Save compressed pages as uncompressed XML and normalize nested, rotated, or flipped components before checking; unsupported geometry must not be treated as a pass.
+
+Fix every reported crossing, shared segment or port, component/header collision, or unchecked automatic route and rerun the check. A geometry pass does not verify rendered label dimensions, arrowheads, or all visual spacing. Export the SVG, trace every connector and label at 100% zoom, and reroute or reposition anything that still overlaps before embedding it.
 
 ## Integration Design Layout
 
@@ -236,17 +261,26 @@ When using `templates/data-flow.drawio`, preserve the horizontal swimlane struct
 
 ## Integration Flow Layout
 
-When using `templates/integration-flow.drawio`, preserve the horizontal swimlane structure from the data flow template. The diagram is an operational trace of one integration scenario or interface chain, not a component map, endpoint catalog, or full data architecture view.
+When using `templates/integration-flow.drawio`, preserve its five adjoining architecture-layer bands and the participant lanes within them. The diagram is an operational trace of one integration scenario or interface chain. Stages progress from left to right; architecture layers determine the vertical order.
 
 - Replace the title with `<Organization or domain> | Integration Flow | <Integration scenario or interface name>`.
 - Put the business trigger, request, orchestration, transformation, delivery, acknowledgement, error handling, and completion stages across the top from left to right.
-- Keep the default lane order from top to bottom: actor or producing party; channel or producer application; optionally one backend-for-frontend lane when a BFF participates; one horizontal lane for each producing or orchestrating application; one horizontal lane for each integration component; one horizontal lane for each consuming application, enterprise foundation solution, MDM solution, external partner, or data store involved in the integration. Rename lanes to the real non-confidential names for the target design, but preserve this direction of responsibility unless the user explicitly asks for a different stack.
+- Always keep these five layer bands together in this exact top-to-bottom order, using these visible names and the existing palette:
+  1. `Public Internet` — red (`#fee9e8` band; `#f8cecc` components with `#a3433f` borders).
+  2. `Frontend` — yellow (`#fffbe2` band; `#fff3c4` components with `#b7791f` borders).
+  3. `Engagement Services` — green (`#def9ea` band; `#d9eadf` components with `#0f766e` borders).
+  4. `Integrations` — grey (`#f5f5f5` band; `#edf2f0` components with `#8a9992` borders).
+  5. `Enterprise Foundation` — blue (`#e8f1ff` band; `#dae8fc` components with `#315f8f` borders).
+- Draw each layer as one continuous, full-width background rectangle with a visible layer heading. Use the same left edge and width for all five bands. Each band's bottom must meet the next band's top with no blank gap. Keep padding and routing space inside the bands.
+- Group all participant lanes from the same architecture layer together inside that band's boundaries. Never split or repeat a layer elsewhere in the stack. A producer or consumer stays in its architecture layer even when this requires an upward arrow or a return path. Put external actors and external parties in Public Internet; channels and their BFFs in Frontend; business services in Engagement Services; middleware in Integrations; and foundation APIs and stores in Enterprise Foundation. Resolve uncertain classification from the source design before placing a participant.
+- Retain all five bands, including a compact heading-only band when that layer has no active participants. Do not invent participants to fill an empty layer.
 - Include only lanes that actively send, receive, transform, route, persist, acknowledge, or monitor the integration. Do not add passive systems that are only mentioned in background context.
-- Do not group multiple applications or middleware components into broad lanes such as `Source systems`, `Integration layer`, or `Consumers`. Each named participant gets its own lane and horizontal divider when it has a distinct integration responsibility.
+- Keep separate participant lanes and horizontal dividers within a layer when applications or middleware have distinct responsibilities. The shared colored layer band must not collapse participants into a single broad lane such as `Source systems` or `Consumers`.
 - Do not duplicate the same participant in the same lane just to show a later step in the same interaction. Keep one participant box where possible and draw an orthogonal arrow from the preceding step to that existing box, then onward to the next participant.
 - Duplicate a participant only when it represents a clearly separate occurrence in a different stage, branch, or independent interaction and a direct arrow would create crossings, unreadable backtracking, or an excessively long connector. If duplicated, use the exact same label and styling so readers understand it is the same participant appearing again for layout clarity.
-- Prefer continuous left-to-right and top-to-bottom arrows across stage columns over repeated component boxes. A reader should be able to follow the scenario by tracing arrows, not by guessing that repeated boxes are the same system.
+- Prefer continuous arrows across stage columns over repeated component boxes. Use upward or return arrows when the scenario requires them, keeping the layer order fixed. A reader should be able to follow the scenario by tracing arrows.
 - Color each participant by its architecture layer, not by the direction of the flow.
+- Use the red Public Internet component style for external actors and parties in this view, including customer nodes; the yellow actor style used in capability context diagrams does not apply here.
 - Treat Backend-for-Frontend and BFF components as Frontend components. They must use the yellow Frontend component style (`fillColor=#fff3c4;strokeColor=#b7791f`) even when they call APIs, compose responses, or orchestrate channel requests.
 - Place a Backend-for-Frontend directly below the frontend/channel participant it supports and align it on the same x-position. Connect them vertically only when the attachment edges are unobstructed; otherwise route through side ports in the adjacent whitespace. Do not place the BFF as a peer beside the frontend component unless the flow has multiple frontend participants and vertical placement would make the path unreadable.
 - Treat API gateway, API management, mediation, routing, and integration-platform components as Integration components. Azure API Management, API gateway, ESB, iPaaS, queue broker, and event broker nodes must use the grey Integration component style (`fillColor=#edf2f0;strokeColor=#8a9992`).
@@ -261,6 +295,8 @@ When using `templates/integration-flow.drawio`, preserve the horizontal swimlane
 - Keep interface details at the right level of abstraction. Use connector labels for interface names, canonical data objects, protocol or pattern, trigger, frequency, retry, idempotency, acknowledgement, and ownership when short. Put endpoint paths, fields, schemas, topic names, queue names, credentials, and detailed error codes in the supporting document, not in the diagram.
 - Keep lane labels readable on the left and stage labels aligned across the top.
 - Expand the canvas horizontally and vertically before compressing the flow. Add width for more stages and add height for more participants. The exported SVG must not have overlapping arrows, labels, lane headers, boxes, or process-stage labels.
+- When adding participant lanes, grow their enclosing layer and shift every lower band down by the same amount so all five bands remain adjoining. Widen all five bands together when adding stages. Fit the page to the final bands and legend with a small outer margin.
+- Replace the template title, stage labels, participant labels, component labels, and connector labels with confirmed scenario content. Remove unused example nodes, participant lanes, and connectors while retaining all five layer headings. Leave no `Domain`, `Scenario`, `name`, or other drafting placeholder in the final diagram.
 - Use explicit orthogonal waypoints when automatic routing would make arrows cross through participant boxes, lane labels, stage headers, arrowheads, or other connector labels.
 - Do not use real-company names, internal systems, proprietary event names, payload fields, endpoints, topics, queues, credentials, or confidential process details in this public repository.
 
@@ -278,10 +314,11 @@ Exported SVGs must preserve the exact colors from the `.drawio` source.
 - Before embedding the SVG, inspect it visually against the `.drawio` source. If colors differ, regenerate the SVG before embedding it.
 - Before embedding the SVG, inspect the exported background. Regenerate the `.drawio` or export if the SVG background is not white/light.
 - Before embedding a capability overview SVG, inspect connector routing and labels. Regenerate the `.drawio` with staggered connector lanes or wider spacing if any connector, connector label, or arrowhead overlaps another connector, node, application header, or label.
+- Before embedding a solution architecture SVG, require a passing solution architecture routing check and inspect the rendered paths, ports, arrowheads, and labels. Regenerate the source and export if connectors cross or share segments, if labels obscure another path, or if any route touches a component or application header outside its deliberate endpoint.
 - Before embedding an integration design SVG, inspect connector routing and labels. Regenerate the `.drawio` with wider spacing or explicit waypoints if any connector or connector label overlaps a component, component header, layer label, arrowhead, or other label.
 - Before embedding an integration design SVG, inspect alignment and spacing. Regenerate the `.drawio` if the diagram has large unused left-side whitespace, components appear unnecessarily centered, labeled connectors have cramped horizontal space, or any connector crosses through a component.
 - Before embedding a data architecture design SVG, inspect connector routing, the Frontend layer, component status, and data representation. Regenerate the `.drawio` if any connector or connector label overlaps a component or label, if the Backend-for-Frontend is not directly below New Webshop within the Frontend layer, if a deprecated component is shown, or if the data object appears as a standalone component.
-- Before embedding an integration flow SVG, inspect participant colors. Regenerate the `.drawio` if Backend-for-Frontend/BFF nodes are not yellow, API management or gateway nodes are not grey, or foundation API provider nodes such as IBMi APIs are not blue.
+- Before embedding an integration flow SVG, verify that all five adjoining bands appear exactly once in this order: Public Internet (red), Frontend (yellow), Engagement Services (green), Integrations (grey), Enterprise Foundation (blue). Regenerate the `.drawio` if a band is missing, repeated, separated by a gap, or out of order; if participant lanes are outside their architecture layer; or if participant colors differ from their layer. Check external actors are red, BFFs are yellow, middleware is grey, and foundation APIs are blue.
 
 ## Output Rules
 

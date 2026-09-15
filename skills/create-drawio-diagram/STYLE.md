@@ -55,6 +55,8 @@ swimlane;whiteSpace=wrap;html=1;startSize=34;align=left;spacingLeft=12;fillColor
 
 For integration design layer bands, use plain colored rectangles, not Draw.io swimlanes. Use the layer fill color with `strokeColor=none`. Keep layer labels left-aligned and top-aligned with `align=left;verticalAlign=top;spacing=12;fontStyle=1`.
 
+For integration flow diagrams, group participant lanes inside five adjoining background bands in this exact order: Public Internet (red), Frontend (yellow), Engagement Services (green), Integrations (grey), Enterprise Foundation (blue). Use the layer fills above, explicit dark text, no band stroke, and the same left edge and width. Keep each layer in one continuous band with no gaps between bands. Use the visible heading `Integrations` for the Integration palette category in this view. Participant boxes use their layer's component colors, including red for external actors. Keep the fixed layer order when routing upward or return flows.
+
 Use title text with:
 
 ```text
@@ -94,6 +96,7 @@ Use dashed connectors only for optional, informational, or payload relationships
 - For labeled connectors between adjacent components, reserve at least 160 px of horizontal space between component edges. For labels longer than 24 characters, reserve at least 220 px or shorten the label and capture detail in the document.
 - Connector labels must not overlap components, application headers, layer labels, arrowheads, or other connector labels. If a label cannot fit cleanly on the connector, shorten the label and capture the detail in the document.
 - Avoid crossing connectors when repositioning nodes or adding waypoints would remove the crossing.
+- For solution architecture diagrams, keep every connector on a separate path with distinct ports. Reserve at least 24 px between neighboring ports and parallel routes. Give branching and return flows their own lanes, preserve explicit orthogonal waypoints, and run the solution architecture routing check before export. A crossing, shared segment, or concealed path requires rerouting.
 - Render the SVG and trace every connector end to end at 100% zoom before accepting it. Move components, enlarge the canvas, or add explicit waypoints until every route remains visibly in whitespace.
 - Keep labels short and business-readable.
 - Do not use decorative colors outside the palette.

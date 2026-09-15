@@ -165,9 +165,9 @@ Make the document easy to read for both architects and delivery teams.
 - Create editable `.drawio` files using `../create-drawio-diagram/SKILL.md`; do not hand-roll Draw.io files outside that skill's instructions and templates.
 - Embed the exported SVG for each created view inline where the template places it. Do not add a separate `Diagrams` section or `.drawio` source links to the document.
 - Use visual views only where they clarify boundaries, relationships, ownership, or sequence. Do not add decorative views.
-- The solution architecture view must use `../create-drawio-diagram/templates/solution-architecture-diagram.drawio` and show channels, application components, integration components, data stores, external systems, and ownership boundaries.
+- The solution architecture view must use `../create-drawio-diagram/templates/solution-architecture-diagram.drawio` and show channels, application components, integration components, data stores, external systems, and ownership boundaries. Follow that skill's rules for separate connector paths and distinct ports. Run its solution architecture routing check, fix every reported issue, then visually inspect the SVG for connector, arrowhead, and label overlaps before embedding it.
 - The capability overview view must use `../create-drawio-diagram/templates/capability-overview.drawio` and show actors, neighboring capabilities, and external dependencies while preserving the template's zone-based layout.
-- The integration flow view must use `../create-drawio-diagram/templates/integration-flow.drawio` and show direction, trigger, protocol or pattern, and important sequencing.
+- The integration flow view must use `../create-drawio-diagram/templates/integration-flow.drawio`, preserve the five adjoining architecture layers and participant grouping required by the create-drawio-diagram skill, and show direction, trigger, protocol or pattern, and important sequencing.
 
 ### Security, Privacy, and Compliance
 

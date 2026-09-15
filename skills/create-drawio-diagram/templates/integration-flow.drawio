@@ -1,155 +1,152 @@
 <mxfile host="Electron" agent="AI Architecture Toolkit">
   <diagram id="integration-flow" name="Integration Flow">
-    <mxGraphModel dx="2217" dy="1622" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1900" pageHeight="1100" background="#fbfcfa" math="0" shadow="0">
+    <mxGraphModel dx="2217" dy="1622" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1820" pageHeight="1100" background="#fbfcfa" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=20;fontColor=#17201d;" value="Domain | Integration Flow" vertex="1">
-          <mxGeometry height="36" width="760" x="40" y="24" as="geometry" />
+        <mxCell id="layer-public-internet" parent="1" vertex="1" value="Public Internet" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fee9e8;strokeColor=none;fontColor=#17201d;fontStyle=1;fontSize=14;align=left;verticalAlign=top;spacingLeft=20;spacingTop=10;">
+          <mxGeometry x="40" y="140" width="1740" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="top-rule" parent="1" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" value="" vertex="1">
-          <mxGeometry height="10" width="1820" x="40" y="70" as="geometry" />
+        <mxCell id="layer-frontend" parent="1" vertex="1" value="Frontend" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fffbe2;strokeColor=none;fontColor=#17201d;fontStyle=1;fontSize=14;align=left;verticalAlign=top;spacingLeft=20;spacingTop=10;">
+          <mxGeometry x="40" y="260" width="1740" height="240" as="geometry" />
         </mxCell>
-        <mxCell id="lane-1-label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" value="Customer" vertex="1">
-          <mxGeometry height="30" width="180" x="70" y="150" as="geometry" />
+        <mxCell id="layer-engagement-services" parent="1" vertex="1" value="Engagement Services" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#def9ea;strokeColor=none;fontColor=#17201d;fontStyle=1;fontSize=14;align=left;verticalAlign=top;spacingLeft=20;spacingTop=10;">
+          <mxGeometry x="40" y="500" width="1740" height="240" as="geometry" />
         </mxCell>
-        <mxCell id="lane-2-label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" value="Channel&#xa;Example: New Webshop" vertex="1">
-          <mxGeometry height="50" width="190" x="70" y="238" as="geometry" />
+        <mxCell id="layer-integrations" parent="1" vertex="1" value="Integrations" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=none;fontColor=#17201d;fontStyle=1;fontSize=14;align=left;verticalAlign=top;spacingLeft=20;spacingTop=10;">
+          <mxGeometry x="40" y="740" width="1740" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="lane-3-label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" value="Backend-for-frontend&#xa;Optional BFF name" vertex="1">
-          <mxGeometry height="50" width="190" x="70" y="328" as="geometry" />
+        <mxCell id="layer-enterprise-foundation" parent="1" vertex="1" value="Enterprise Foundation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e8f1ff;strokeColor=none;fontColor=#17201d;fontStyle=1;fontSize=14;align=left;verticalAlign=top;spacingLeft=20;spacingTop=10;">
+          <mxGeometry x="40" y="860" width="1740" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="lane-4-label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" value="Engagement solution&#xa;Solution name" vertex="1">
-          <mxGeometry height="50" width="190" x="70" y="418" as="geometry" />
+        <mxCell id="title" parent="1" vertex="1" value="Domain | Integration Flow | Scenario" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#17201d;fontStyle=1;fontSize=20;">
+          <mxGeometry x="40" y="24" width="1220" height="36" as="geometry" />
         </mxCell>
-        <mxCell id="lane-5-label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" value="Engagement solution&#xa;Solution name" vertex="1">
-          <mxGeometry height="50" width="190" x="70" y="508" as="geometry" />
+        <mxCell id="top-rule" parent="1" vertex="1" value="" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;">
+          <mxGeometry x="40" y="70" width="1740" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="lane-6-label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" value="Integration component&#xa;Component name" vertex="1">
-          <mxGeometry height="50" width="210" x="70" y="598" as="geometry" />
+        <mxCell id="stage-1" parent="1" vertex="1" value="1. Request" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#17201d;align=center;fontStyle=1;fontSize=12;">
+          <mxGeometry x="370" y="94" width="220" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="lane-7-label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=11;fontColor=#17201d;" value="Enterprise Foundation or MDM&#xa;Solution name" vertex="1">
-          <mxGeometry height="50" width="210" x="70" y="688" as="geometry" />
+        <mxCell id="stage-2" parent="1" vertex="1" value="2. Validate" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#17201d;align=center;fontStyle=1;fontSize=12;">
+          <mxGeometry x="710" y="94" width="220" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="lane-1-line" parent="1" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" value="" vertex="1">
-          <mxGeometry height="10" width="1820" x="40" y="135" as="geometry" />
+        <mxCell id="stage-3" parent="1" vertex="1" value="3. Deliver" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#17201d;align=center;fontStyle=1;fontSize=12;">
+          <mxGeometry x="1070" y="94" width="220" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="lane-2-line" parent="1" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" value="" vertex="1">
-          <mxGeometry height="10" width="1820" x="40" y="225" as="geometry" />
+        <mxCell id="stage-4" parent="1" vertex="1" value="4. Persist" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#17201d;align=center;fontStyle=1;fontSize=12;">
+          <mxGeometry x="1430" y="94" width="220" height="32" as="geometry" />
         </mxCell>
-        <mxCell id="lane-3-line" parent="1" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" value="" vertex="1">
-          <mxGeometry height="10" width="1820" x="40" y="315" as="geometry" />
+        <mxCell id="lane-1-label" parent="1" vertex="1" value="Customer" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#17201d;fontSize=11;">
+          <mxGeometry x="70" y="184" width="210" height="36" as="geometry" />
         </mxCell>
-        <mxCell id="lane-4-line" parent="1" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" value="" vertex="1">
-          <mxGeometry height="10" width="1820" x="40" y="405" as="geometry" />
+        <mxCell id="lane-2-label" parent="1" vertex="1" value="Channel name" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#17201d;fontSize=11;">
+          <mxGeometry x="70" y="304" width="210" height="36" as="geometry" />
         </mxCell>
-        <mxCell id="lane-5-line" parent="1" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" value="" vertex="1">
-          <mxGeometry height="10" width="1820" x="40" y="495" as="geometry" />
+        <mxCell id="lane-3-label" parent="1" vertex="1" value="BFF name" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#17201d;fontSize=11;">
+          <mxGeometry x="70" y="424" width="210" height="36" as="geometry" />
         </mxCell>
-        <mxCell id="lane-6-line" parent="1" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" value="" vertex="1">
-          <mxGeometry height="10" width="1820" x="40" y="585" as="geometry" />
+        <mxCell id="lane-4-label" parent="1" vertex="1" value="Business service name" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#17201d;fontSize=11;">
+          <mxGeometry x="70" y="544" width="210" height="36" as="geometry" />
         </mxCell>
-        <mxCell id="lane-7-line" parent="1" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" value="" vertex="1">
-          <mxGeometry height="10" width="1820" x="40" y="675" as="geometry" />
+        <mxCell id="lane-5-label" parent="1" vertex="1" value="Validation service name" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#17201d;fontSize=11;">
+          <mxGeometry x="70" y="664" width="210" height="36" as="geometry" />
         </mxCell>
-        <mxCell id="bottom-rule" parent="1" style="shape=line;html=1;strokeColor=#17201d;strokeWidth=2;" value="" vertex="1">
-          <mxGeometry height="10" width="1820" x="40" y="765" as="geometry" />
+        <mxCell id="lane-6-label" parent="1" vertex="1" value="Middleware name" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#17201d;fontSize=11;">
+          <mxGeometry x="70" y="784" width="210" height="36" as="geometry" />
         </mxCell>
-        <mxCell id="stage-guide-1" parent="1" style="shape=line;html=1;strokeColor=#cbd5d1;strokeWidth=1;" value="" vertex="1">
-          <mxGeometry height="677" width="1" x="340" y="88" as="geometry" />
+        <mxCell id="lane-7-label" parent="1" vertex="1" value="Foundation system name" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontColor=#17201d;fontSize=11;">
+          <mxGeometry x="70" y="904" width="210" height="36" as="geometry" />
         </mxCell>
-        <mxCell id="stage-guide-2" parent="1" style="shape=line;html=1;strokeColor=#cbd5d1;strokeWidth=1;" value="" vertex="1">
-          <mxGeometry height="677" width="1" x="660" y="88" as="geometry" />
+        <mxCell id="frontend-divider" parent="1" vertex="1" value="" style="shape=line;html=1;strokeColor=#8a9992;strokeWidth=1;">
+          <mxGeometry x="40" y="375" width="1740" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="stage-guide-3" parent="1" style="shape=line;html=1;strokeColor=#cbd5d1;strokeWidth=1;" value="" vertex="1">
-          <mxGeometry height="677" width="1" x="980" y="88" as="geometry" />
+        <mxCell id="engagement-divider" parent="1" vertex="1" value="" style="shape=line;html=1;strokeColor=#8a9992;strokeWidth=1;">
+          <mxGeometry x="40" y="615" width="1740" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="stage-guide-4" parent="1" style="shape=line;html=1;strokeColor=#cbd5d1;strokeWidth=1;" value="" vertex="1">
-          <mxGeometry height="677" width="1" x="1300" y="88" as="geometry" />
+        <mxCell id="bottom-rule" parent="1" vertex="1" value="" style="shape=line;html=1;strokeColor=#8a9992;strokeWidth=1;">
+          <mxGeometry x="40" y="975" width="1740" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="channel-action" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#fff3c4;strokeColor=#b7791f;fontColor=#17201d;fontSize=10;strokeWidth=2;" value="Channel action" vertex="1">
-          <mxGeometry height="44" width="120" x="280" y="248" as="geometry" />
+        <mxCell id="customer" parent="1" vertex="1" value="Customer" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;fontColor=#17201d;fontSize=12;strokeWidth=2;fillColor=#f8cecc;strokeColor=#a3433f;">
+          <mxGeometry x="400" y="174" width="160" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="bff-component" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#fff3c4;strokeColor=#b7791f;fontColor=#17201d;fontSize=10;strokeWidth=2;" value="Optional BFF component" vertex="1">
-          <mxGeometry height="44" width="130" x="595" y="338" as="geometry" />
+        <mxCell id="channel-action" parent="1" vertex="1" value="Channel action" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;fontColor=#17201d;fontSize=12;strokeWidth=2;fillColor=#fff3c4;strokeColor=#b7791f;">
+          <mxGeometry x="400" y="294" width="160" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="engagement-object" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontSize=10;strokeWidth=2;" value="Canonical object" vertex="1">
-          <mxGeometry height="44" width="140" x="910" y="428" as="geometry" />
+        <mxCell id="bff-component" parent="1" vertex="1" value="Backend-for-Frontend" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;fontColor=#17201d;fontSize=12;strokeWidth=2;fillColor=#fff3c4;strokeColor=#b7791f;">
+          <mxGeometry x="390" y="414" width="180" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="engagement-enrichment" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#d9eadf;strokeColor=#0f766e;fontColor=#17201d;fontSize=10;strokeWidth=2;" value="Validation or enrichment" vertex="1">
-          <mxGeometry height="44" width="140" x="910" y="518" as="geometry" />
+        <mxCell id="engagement-object" parent="1" vertex="1" value="Business service" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;fontColor=#17201d;fontSize=12;strokeWidth=2;fillColor=#d9eadf;strokeColor=#0f766e;">
+          <mxGeometry x="720" y="534" width="200" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="integration-component" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontSize=10;strokeWidth=2;" value="API gateway, event, batch, or file" vertex="1">
-          <mxGeometry height="44" width="170" x="1215" y="608" as="geometry" />
+        <mxCell id="engagement-enrichment" parent="1" vertex="1" value="Validation service" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;fontColor=#17201d;fontSize=12;strokeWidth=2;fillColor=#d9eadf;strokeColor=#0f766e;">
+          <mxGeometry x="720" y="654" width="200" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="enterprise-store" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;fontSize=10;strokeWidth=2;" value="Foundation API or data store" vertex="1">
-          <mxGeometry height="44" width="150" x="585" y="698" as="geometry" />
+        <mxCell id="integration-component" parent="1" vertex="1" value="Integration component" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;fontColor=#17201d;fontSize=12;strokeWidth=2;fillColor=#edf2f0;strokeColor=#8a9992;">
+          <mxGeometry x="1080" y="774" width="200" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="customer-channel-flow" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" value="Request or intent">
+        <mxCell id="enterprise-store" parent="1" vertex="1" value="Foundation API or store" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;fontColor=#17201d;fontSize=12;strokeWidth=2;fillColor=#dae8fc;strokeColor=#315f8f;">
+          <mxGeometry x="1440" y="894" width="200" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="customer-channel-flow" parent="1" edge="1" source="customer" target="channel-action" value="Request" style="edgeStyle=orthogonalEdgeStyle;noEdgeStyle=1;rounded=0;html=1;endArrow=block;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;fontSize=12;exitPerimeter=0;entryPerimeter=0;strokeColor=#315f8f;fontColor=#315f8f;exitX=0.5;exitY=1.0;entryX=0.5;entryY=0.0;">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="340" y="200" as="sourcePoint" />
-            <mxPoint x="340" y="248" as="targetPoint" />
+            <mxPoint x="60.0" y="0.0" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="channel-engagement-flow" edge="1" parent="1" source="channel-action" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" value="Submit object change">
+        <mxCell id="channel-bff-flow" parent="1" edge="1" source="channel-action" target="bff-component" value="Compose request" style="edgeStyle=orthogonalEdgeStyle;noEdgeStyle=1;rounded=0;html=1;endArrow=block;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;fontSize=12;exitPerimeter=0;entryPerimeter=0;strokeColor=#315f8f;fontColor=#315f8f;exitX=0.5;exitY=1.0;entryX=0.5;entryY=0.0;">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="660" y="292" as="sourcePoint" />
-            <mxPoint x="660" y="338" as="targetPoint" />
+            <mxPoint x="86.0" y="0.0" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="bff-engagement-flow" edge="1" parent="1" source="bff-component" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" value="Forward request or compose response">
+        <mxCell id="bff-engagement-flow" parent="1" edge="1" source="bff-component" target="engagement-object" value="Forward request" style="edgeStyle=orthogonalEdgeStyle;noEdgeStyle=1;rounded=0;html=1;endArrow=block;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;fontSize=12;exitPerimeter=0;entryPerimeter=0;strokeColor=#315f8f;fontColor=#315f8f;exitX=0.5;exitY=1.0;entryX=0.5;entryY=0.0;">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="980" y="382" as="sourcePoint" />
-            <mxPoint x="980" y="428" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="480" y="496" />
+              <mxPoint x="820" y="496" />
+            </Array>
+            <mxPoint x="-4.0" y="-16.0" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="enterprise-read-flow" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" target="yCrfHCC8E2HfHPLwqUdN-2" value="Read master data">
+        <mxCell id="enrichment-flow" parent="1" edge="1" source="engagement-object" target="engagement-enrichment" value="Validate or enrich" style="edgeStyle=orthogonalEdgeStyle;noEdgeStyle=1;rounded=0;html=1;endArrow=block;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;fontSize=12;exitPerimeter=0;entryPerimeter=0;strokeColor=#0f766e;fontColor=#0f766e;exitX=0.5;exitY=1.0;entryX=0.5;entryY=0.0;">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="660" y="698" as="sourcePoint" />
-            <mxPoint x="660" y="382" as="targetPoint" />
+            <mxPoint x="92.0" y="0.0" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="enrichment-flow" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#0f766e;fontColor=#0f766e;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;" value="Validate or enrich">
+        <mxCell id="publish-flow" parent="1" edge="1" source="engagement-enrichment" target="integration-component" value="Publish event or file" style="edgeStyle=orthogonalEdgeStyle;noEdgeStyle=1;rounded=0;html=1;endArrow=block;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;fontSize=12;exitPerimeter=0;entryPerimeter=0;strokeColor=#315f8f;fontColor=#315f8f;exitX=0.5;exitY=1.0;entryX=0.5;entryY=0.0;">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="980" y="472" as="sourcePoint" />
-            <mxPoint x="980" y="518" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="820" y="736" />
+              <mxPoint x="1180" y="736" />
+            </Array>
+            <mxPoint x="-4.0" y="-16.0" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="publish-flow" edge="1" parent="1" source="engagement-enrichment" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" value="Publish event or file">
+        <mxCell id="delivery-flow" parent="1" edge="1" source="integration-component" target="enterprise-store" value="Deliver" style="edgeStyle=orthogonalEdgeStyle;noEdgeStyle=1;rounded=0;html=1;endArrow=block;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;fontSize=12;exitPerimeter=0;entryPerimeter=0;strokeColor=#315f8f;fontColor=#315f8f;exitX=0.5;exitY=1.0;entryX=0.5;entryY=0.0;">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1300" y="562" as="sourcePoint" />
-            <mxPoint x="1300" y="608" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1180" y="856" />
+              <mxPoint x="1540" y="856" />
+            </Array>
+            <mxPoint x="-4.0" y="-16.0" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="optional-retention-flow" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#8a9992;fontColor=#5d6964;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;dashed=1;" value="Optional retain, archive, or audit">
+        <mxCell id="acknowledgement-flow" parent="1" edge="1" source="enterprise-store" target="integration-component" value="Acknowledgement (optional)" style="edgeStyle=orthogonalEdgeStyle;noEdgeStyle=1;rounded=0;html=1;endArrow=block;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;fontSize=12;exitPerimeter=0;entryPerimeter=0;strokeColor=#8a9992;fontColor=#8a9992;exitX=1.0;exitY=0.5;entryX=1.0;entryY=0.5;dashed=1;">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="1300" y="652" as="sourcePoint" />
-            <mxPoint x="1300" y="698" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1700" y="920" />
+              <mxPoint x="1700" y="800" />
+            </Array>
+            <mxPoint x="-90.0" y="-18.0" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="legend-primary" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=6;fillColor=#ffffff;strokeColor=#315f8f;fontColor=#315f8f;fontSize=10;strokeWidth=2;" value="Primary read, write, replication, or publication" vertex="1">
-          <mxGeometry height="34" width="270" x="740" y="820" as="geometry" />
+        <mxCell id="legend-primary" parent="1" vertex="1" value="Primary request, delivery, read, or write" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;fontColor=#17201d;fontSize=12;strokeWidth=2;fillColor=#ffffff;strokeColor=#315f8f;fontColor=#315f8f;">
+          <mxGeometry x="400" y="1005" width="300" height="34" as="geometry" />
         </mxCell>
-        <mxCell id="legend-enrichment" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=6;fillColor=#ffffff;strokeColor=#0f766e;fontColor=#0f766e;fontSize=10;strokeWidth=2;" value="Enrichment, rule, validation, or decision" vertex="1">
-          <mxGeometry height="34" width="260" x="1030" y="820" as="geometry" />
+        <mxCell id="legend-enrichment" parent="1" vertex="1" value="Validation, transformation, or decision" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;fontColor=#17201d;fontSize=12;strokeWidth=2;fillColor=#ffffff;strokeColor=#0f766e;fontColor=#0f766e;">
+          <mxGeometry x="740" y="1005" width="320" height="34" as="geometry" />
         </mxCell>
-        <mxCell id="legend-optional" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=6;fillColor=#ffffff;strokeColor=#8a9992;fontColor=#5d6964;fontSize=10;strokeWidth=2;dashed=1;" value="Optional, planned, deprecated, or uncertain" vertex="1">
-          <mxGeometry height="34" width="270" x="1310" y="820" as="geometry" />
-        </mxCell>
-        <mxCell id="yCrfHCC8E2HfHPLwqUdN-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;strokeWidth=2;" value="Customer" vertex="1">
-          <mxGeometry height="44" width="120" x="280" y="150" as="geometry" />
-        </mxCell>
-        <mxCell id="yCrfHCC8E2HfHPLwqUdN-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#edf2f0;strokeColor=#8a9992;fontColor=#17201d;fontSize=10;strokeWidth=2;" value="API gateway, event, batch, or file" vertex="1">
-          <mxGeometry height="44" width="170" x="575.5" y="601" as="geometry" />
-        </mxCell>
-        <mxCell id="yCrfHCC8E2HfHPLwqUdN-3" edge="1" parent="1" source="yCrfHCC8E2HfHPLwqUdN-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;strokeColor=#315f8f;fontColor=#315f8f;labelBackgroundColor=#fbfcfa;labelBorderColor=none;strokeWidth=2;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="bff-component" value="Read master data">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="650" y="703" as="sourcePoint" />
-            <mxPoint x="650" y="650" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="yCrfHCC8E2HfHPLwqUdN-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;spacing=4;fillColor=#dae8fc;strokeColor=#315f8f;fontColor=#17201d;fontSize=10;strokeWidth=2;" value="Foundation API or data store" vertex="1">
-          <mxGeometry height="44" width="150" x="1225" y="698" as="geometry" />
+        <mxCell id="legend-optional" parent="1" vertex="1" value="Optional, fallback, or uncertain flow" style="rounded=0;whiteSpace=wrap;html=1;spacing=8;fontColor=#17201d;fontSize=12;strokeWidth=2;fillColor=#ffffff;strokeColor=#8a9992;fontColor=#8a9992;dashed=1;">
+          <mxGeometry x="1100" y="1005" width="360" height="34" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
