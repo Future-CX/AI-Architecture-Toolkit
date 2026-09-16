@@ -11,11 +11,11 @@ Always store editable Draw.io sources and same-basename exports under a `diagram
 
 Create `.drawio` sources with explicit light-theme colors and a `#fbfcfa` page background. After exporting to SVG, use `scripts/sanitize-drawio-svg.py <diagram.svg>` only as a final compatibility guard when Draw.io still emits theme-adaptive SVG CSS.
 
-Connector routing is a hard acceptance gate. Connectors may touch their source and target only at deliberate boundary ports; they must never pass through, over, or behind a component body, application header, or label. Render and inspect the exported SVG at 100% zoom before accepting it.
+Connector routing is a hard acceptance gate. Connectors may touch their source and target only at deliberate boundary ports; they must never pass through, over, or behind a component body, application header, or label. A composite component with an application header may expose one explicit outer top-center boundary port when the connector immediately travels into whitespace. Render and inspect the exported SVG at 100% zoom before accepting it.
 
 Solution architecture diagrams use distinct ports and explicit paths for direct calls, branches, and return arrows. Before export, run `scripts/check-solution-architecture-routing.py <diagram.drawio>`. It checks flat, uncompressed XML for connector crossings, shared segments or ports, and component/header collisions, and rejects routes that still depend on automatic routing. Rendered labels and arrowheads still need visual inspection.
 
-The capability context helper keeps connector paths separate, routes around application headers, and fits the canvas to the content with 60 px of bottom padding. Both `.drawio` and `.svg` use the same node positions, connector bends, and page dimensions.
+The capability context helper keeps connector paths separate, uses explicit top-center boundary ports on application headers, and fits the canvas to the content with 60 px of bottom padding. Both `.drawio` and `.svg` use the same node positions, connector bends, and page dimensions.
 
 Run its routing and export regression checks from the repository root:
 

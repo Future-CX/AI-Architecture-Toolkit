@@ -78,7 +78,10 @@ class CapabilityContextTests(unittest.TestCase):
                     f"Unattached edge: {edge.id}",
                 )
                 if node.application:
-                    self.assertGreater(y, node.y + 10, f"Edge through application header: {edge.id}")
+                    self.assertEqual(
+                        (x, y), (node.x + node.width / 2, node.y),
+                        f"Application header must use its outer top-center port: {edge.id}",
+                    )
         labels = []
         for edge in layout.edges:
             if not edge.label:

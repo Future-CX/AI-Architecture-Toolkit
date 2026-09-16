@@ -42,12 +42,61 @@ def intersects(first, second):
     )
 
 
+def same(first: float, second: float) -> bool:
+    return abs(first - second) <= EPSILON
+
+
+def is_application_header(style: dict[str, str], box) -> bool:
+    return (
+        style.get("fillColor", "").lower() == "#000000"
+        and style.get("strokeColor", "").lower() == "#000000"
+        and same(box[3] - box[1], 10)
+    )
+
+
+def allows_top_center_endpoint(
+    header_id: str,
+    header_box,
+    shape_styles: dict[str, dict[str, str]],
+    endpoint_shapes: tuple[str, str],
+    endpoint_boxes: tuple[tuple[float, float, float, float], tuple[float, float, float, float]],
+    endpoints: list[tuple[float, float]],
+    segments,
+) -> bool:
+    """Allow only a vertical endpoint at a composite component's outer top-center."""
+    if not is_application_header(shape_styles[header_id], header_box):
+        return False
+    for index, (_shape_id, component_box, endpoint) in enumerate(zip(endpoint_shapes, endpoint_boxes, endpoints)):
+        left, top, right, _ = component_box
+        if not (
+            same(header_box[0], left)
+            and same(header_box[1], top)
+            and same(header_box[2], right)
+            and same(endpoint[0], (left + right) / 2)
+            and same(endpoint[1], top)
+        ):
+            continue
+        endpoint_segment_index = 0 if index == 0 else len(segments) - 1
+        colliding = [
+            segment_index
+            for segment_index, segment in enumerate(segments)
+            if intersects(bounds(segment), header_box)
+        ]
+        if colliding != [endpoint_segment_index]:
+            return False
+        segment = segments[endpoint_segment_index]
+        other = segment[1] if index == 0 else segment[0]
+        return same(other[0], endpoint[0]) and other[1] < top - EPSILON
+    return False
+
+
 def check_graph(graph: ET.Element) -> list[str]:
     cells = list(graph.iter("mxCell"))
     ids = [cell.get("id") for cell in cells]
     if None in ids or len(ids) != len(set(ids)):
         return ["Every cell needs a unique ID."]
     shapes = {}
+    shape_styles = {}
     for cell in cells:
         if cell.get("vertex") != "1":
             continue
@@ -67,6 +116,7 @@ def check_graph(graph: ET.Element) -> list[str]:
         if width <= 0 or height <= 0:
             return [f"{id}: component width and height must be positive."]
         shapes[id] = (x, y, x + width, y + height)
+        shape_styles[id] = style
 
     errors = []
     routes = {}
@@ -112,11 +162,17 @@ def check_graph(graph: ET.Element) -> list[str]:
             errors.append(f"{id}: route every segment orthogonally.")
             continue
         routes[id] = segments
+        endpoint_shapes = (source, target)
+        endpoint_boxes = (shapes[source], shapes[target])
         for shape_id, box in shapes.items():
             # Endpoints may touch their own boundary, never their interior.
             padding = -EPSILON if shape_id in (source, target) else CLEARANCE - EPSILON
             obstacle = (box[0] - padding, box[1] - padding, box[2] + padding, box[3] + padding)
             if any(intersects(bounds(segment), obstacle) for segment in segments):
+                if allows_top_center_endpoint(
+                    shape_id, box, shape_styles, endpoint_shapes, endpoint_boxes, endpoints, segments,
+                ):
+                    continue
                 errors.append(f"{id}: component/header collision or insufficient clearance at {shape_id}.")
         for (i, a), (j, b) in itertools.combinations(enumerate(segments), 2):
             if j > i + 1 and intersects(bounds(a), bounds(b)):

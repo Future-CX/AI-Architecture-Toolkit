@@ -249,13 +249,10 @@ def build_layout(
     consumer_xs = row_positions(len(consumers), center_x)
     provider_ports = [distributed_port(i, len(providers), capability_x, capability_width) for i in range(len(providers))]
     consumer_ports = [distributed_port(i, len(consumers), capability_x, capability_width) for i in range(len(consumers))]
-    # Named applications cover the top border. Leave through a side port and
-    # use a dedicated shaft in the gap beside the provider instead.
-    provider_shafts = [
-        x + (NODE_WIDTH + 20 if x + NODE_WIDTH // 2 <= center_x else -20)
-        if provider.application else x + NODE_WIDTH // 2
-        for x, provider in zip(provider_xs, providers)
-    ]
+    # Treat the application header and body as one composite component. The
+    # outer top-center boundary is an explicit port; the route immediately
+    # travels upward into whitespace without crossing the header interior.
+    provider_shafts = [x + NODE_WIDTH // 2 for x in provider_xs]
     consumer_centers = [x + NODE_WIDTH // 2 for x in consumer_xs]
     input_depths = fan_depths(provider_shafts, provider_ports)
     outcome_depths = fan_depths(consumer_centers, consumer_ports)
@@ -305,12 +302,7 @@ def build_layout(
         )
         shaft_x = provider_shafts[i]
         lane_y = middle_y + middle_height + PORT_CLEARANCE + input_depths[i] * LANE_SPACING
-        if provider.application:
-            source_x = node.right if shaft_x > node.right else node.x
-            source_y = node.y + node.height // 2
-            points = [(source_x, source_y), (shaft_x, source_y), (shaft_x, lane_y)]
-        else:
-            points = [(shaft_x, node.y), (shaft_x, lane_y)]
+        points = [(shaft_x, node.y), (shaft_x, lane_y)]
         label_segment = (points[-2], points[-1])
         points.extend([(provider_ports[i], lane_y), (provider_ports[i], capability.bottom)])
         nodes.append(node)

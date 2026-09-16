@@ -63,11 +63,27 @@ class SolutionRoutingTests(unittest.TestCase):
         blocker.set("y", "100")
         self.assertTrue(any("collision" in error and "top" in error for error in checker.check_graph(graph)))
 
-    def test_application_header_is_blocked_even_at_an_endpoint(self):
+    def test_application_header_allows_outer_top_center_endpoint(self):
         graph = fixture()
         header = ET.SubElement(graph.find("root"), "mxCell", {
             "id": "right-app", "parent": "1", "vertex": "1",
-            "style": "fillColor=#000000;strokeColor=#000000;",
+            "style": "fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;",
+        })
+        ET.SubElement(header, "mxGeometry", {
+            "x": "300", "y": "100", "width": "40", "height": "10", "as": "geometry",
+        })
+        edge = graph.find(".//mxCell[@id='horizontal']")
+        edge.set("style", edge.get("style").replace("entryX=0;entryY=0.5", "entryX=0.5;entryY=0"))
+        points = ET.SubElement(edge.find("mxGeometry"), "Array", {"as": "points"})
+        for x, y in [(280, 120), (280, 80), (320, 80)]:
+            ET.SubElement(points, "mxPoint", {"x": str(x), "y": str(y)})
+        self.assertEqual(checker.check_graph(graph), [])
+
+    def test_application_header_rejects_route_along_its_top_edge(self):
+        graph = fixture()
+        header = ET.SubElement(graph.find("root"), "mxCell", {
+            "id": "right-app", "parent": "1", "vertex": "1",
+            "style": "fillColor=#000000;strokeColor=#000000;fontColor=#ffffff;",
         })
         ET.SubElement(header, "mxGeometry", {
             "x": "300", "y": "100", "width": "40", "height": "10", "as": "geometry",
